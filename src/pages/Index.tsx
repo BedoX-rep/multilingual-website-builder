@@ -71,8 +71,8 @@ const Index: React.FC = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center">
-        <div className="absolute inset-0 z-0">
+      <section className="relative min-h-screen">
+        <div className="absolute inset-0">
           <img 
             src={heroImage} 
             alt="Person wearing glasses" 
@@ -81,25 +81,28 @@ const Index: React.FC = () => {
           <div className="absolute inset-0 bg-black/30" />
         </div>
         
-        <div className="luxury-container relative z-10 text-white pt-24">
-          <div className="max-w-2xl">
-            <p className="text-sm uppercase tracking-[0.2em] mb-4 text-white/80">
-              {t('hero.subtitle')}
-            </p>
-            <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-medium mb-6">
-              {t('hero.title')}
-            </h1>
-            <p className="text-lg mb-8 text-white/80">
-              {t('hero.description')}
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <button className="btn-primary bg-white text-black hover:bg-white/90">
-                {t('hero.cta.shop')}
-              </button>
-              <button className="btn-outline border-white text-white hover:bg-white hover:text-black">
-                {t('hero.cta.learn')}
-              </button>
+        <div className="luxury-container relative h-screen flex items-center">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="text-white z-10">
+              <p className="text-sm uppercase tracking-[0.2em] mb-4 text-white/90 font-medium">
+                {t('hero.subtitle')}
+              </p>
+              <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-medium mb-8 leading-[1.1]">
+                {t('hero.title')}
+              </h1>
+              <p className="text-lg mb-10 text-white/90 leading-relaxed max-w-xl">
+                {t('hero.description')}
+              </p>
+              <div className="flex flex-wrap gap-6">
+                <button className="btn-primary bg-white text-black hover:bg-white/90">
+                  {t('hero.cta.shop')}
+                </button>
+                <button className="btn-outline border-2 border-white text-white hover:bg-white hover:text-black">
+                  {t('hero.cta.learn')}
+                </button>
+              </div>
             </div>
+            <div className="hidden md:block"> </div>
           </div>
         </div>
       </section>
