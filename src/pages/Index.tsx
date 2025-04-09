@@ -78,26 +78,25 @@ const Index: React.FC = () => {
             alt="Person wearing glasses" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/30" />
-        </div>
+          </div>
         
         <div className="luxury-container relative h-screen flex items-center">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="text-white z-10">
-              <p className="text-sm uppercase tracking-[0.2em] mb-4 text-white/90 font-medium">
+            <div className="text-gray-800 z-10">
+              <p className="text-sm uppercase tracking-[0.2em] mb-4 text-gray-700 font-medium">
                 {t('hero.subtitle')}
               </p>
               <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-medium mb-8 leading-[1.1]">
                 {t('hero.title')}
               </h1>
-              <p className="text-lg mb-10 text-white/90 leading-relaxed max-w-xl">
+              <p className="text-lg mb-10 text-gray-700 leading-relaxed max-w-xl">
                 {t('hero.description')}
               </p>
               <div className="flex flex-wrap gap-6">
-                <button className="btn-primary bg-white text-black hover:bg-white/90">
+                <button className="btn-primary bg-gray-800 text-white hover:bg-gray-700">
                   {t('hero.cta.shop')}
                 </button>
-                <button className="btn-outline border-2 border-white text-white hover:bg-white hover:text-black">
+                <button className="btn-outline border-2 border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white">
                   {t('hero.cta.learn')}
                 </button>
               </div>
