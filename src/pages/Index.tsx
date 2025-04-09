@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
 import { CheckCircle } from 'lucide-react';
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 
 // Hero section image
 const heroImage = "/lovable-uploads/beautiful-young-woman-with-glasses.jpg";
@@ -368,7 +369,7 @@ const Index: React.FC = () => {
       </section>
       
       {/* Brand Partners */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-gray-50 overflow-hidden">
         <div className="luxury-container">
           <div className="text-center mb-16">
             <p className="section-subtitle">
@@ -379,16 +380,38 @@ const Index: React.FC = () => {
             </h2>
           </div>
           
-          <div className="flex flex-wrap justify-center items-center gap-12 lg:gap-24">
-            {brandLogos.map((brand, index) => (
-              <div key={index} className="w-32 h-16 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
-                <img 
-                  src={brand.logo} 
-                  alt={brand.name} 
-                  className="max-h-full max-w-full object-contain"
-                />
-              </div>
-            ))}
+          <div className="w-full">
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+                dragFree: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent>
+                {[
+                  { name: 'Essilor', logo: '/lovable-uploads/essilor.png' },
+                  { name: 'Indo', logo: '/lovable-uploads/indo.png' },
+                  { name: 'Zeiss', logo: '/lovable-uploads/zeiss.png' },
+                  { name: 'Hoya', logo: '/lovable-uploads/hoya.png' },
+                  { name: 'Rodenstock', logo: '/lovable-uploads/rodenstock.png' },
+                  { name: 'Shamir', logo: '/lovable-uploads/shamir.png' },
+                  { name: 'Seiko', logo: '/lovable-uploads/seiko.png' },
+                  { name: 'Nikon', logo: '/lovable-uploads/nikon.png' }
+                ].map((brand, index) => (
+                  <CarouselItem key={index} className="basis-1/2 md:basis-1/3 lg:basis-1/4">
+                    <div className="h-32 p-6 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
+                      <img 
+                        src={brand.logo} 
+                        alt={brand.name}
+                        className="max-h-full max-w-full object-contain"
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
           </div>
         </div>
       </section>
