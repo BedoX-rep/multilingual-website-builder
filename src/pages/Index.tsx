@@ -105,6 +105,95 @@ const Index: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Frame Shape Section */}
+      <section className="py-16 bg-white">
+        <div className="luxury-container">
+          <h2 className="text-3xl font-bold text-center mb-4">SHOP BY FRAME SHAPE</h2>
+          <p className="text-center text-gray-600 mb-12">Bloom into new frames with fresh shapes, colors, and patterns.</p>
+          
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-6">
+            {['Rectangle', 'Square', 'Round', 'Cat-Eye', 'Aviator', 'Browline'].map((shape) => (
+              <div key={shape} className="text-center group cursor-pointer">
+                <div className="mb-4 transform transition-transform group-hover:scale-110">
+                  <img
+                    src={`/lovable-uploads/${shape.toLowerCase()}-frame.png`}
+                    alt={shape}
+                    className="w-20 h-12 mx-auto object-contain"
+                  />
+                </div>
+                <p className="text-sm">{shape}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Best Sellers Section */}
+      <section className="py-16 bg-[#E5F6F8]">
+        <div className="luxury-container">
+          <h2 className="text-3xl font-bold text-center mb-8">BEST SELLERS ACROSS CANADA</h2>
+          <div className="flex gap-4 justify-center mb-8">
+            <button className="px-4 py-2 bg-black text-white rounded-full text-sm">Eyeglasses</button>
+            <button className="px-4 py-2 text-gray-600 rounded-full text-sm">Sunglasses</button>
+            <button className="px-4 py-2 text-gray-600 rounded-full text-sm">Designer Glasses</button>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[1, 2, 3].map((item) => (
+              <div key={item} className="bg-white rounded-lg p-4 relative group">
+                <button className="absolute right-4 top-4 text-gray-400 hover:text-red-500">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
+                </button>
+                <img
+                  src={`/lovable-uploads/45bb2648-7da7-44ab-bd32-7044f1470203.png`}
+                  alt="Best seller glasses"
+                  className="w-full h-48 object-contain mb-4"
+                />
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-lg font-bold">CAD$20.95</span>
+                  <div className="flex items-center">
+                    <span className="text-yellow-400">★</span>
+                    <span className="text-sm ml-1">4.8 (2972)</span>
+                  </div>
+                </div>
+                <p className="text-sm text-gray-600 mb-4">Get it as early as Tue, Apr 15</p>
+                <div className="flex gap-2">
+                  {['red', 'black', 'blue', 'gray'].map((color) => (
+                    <button
+                      key={color}
+                      className={`w-6 h-6 rounded-full bg-${color}-500 border-2 border-white shadow`}
+                    />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Style Selection Section */}
+      <section className="py-16 bg-white">
+        <div className="luxury-container">
+          <h2 className="text-3xl font-bold text-center mb-12">Pick a style, any style:</h2>
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
+            {['Classic', 'Eco Friendly', 'Artsy', 'Retro', 'Street Style', 'Bold'].map((style) => (
+              <div key={style} className="text-center group cursor-pointer">
+                <div className="rounded-full bg-gray-100 p-4 mb-4 transform transition-transform group-hover:scale-110">
+                  <img
+                    src={`/lovable-uploads/45bb2648-7da7-44ab-bd32-7044f1470203.png`}
+                    alt={style}
+                    className="w-full h-24 object-contain"
+                  />
+                </div>
+                <p className="text-sm font-medium">{style}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
       
       {/* How to Pick Section */}
       <section className="py-24 bg-gray-50">
