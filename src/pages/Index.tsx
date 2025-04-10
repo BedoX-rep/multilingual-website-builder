@@ -70,7 +70,7 @@ const Index: React.FC = () => {
   return (
     <div className={dir === 'rtl' ? 'font-sans rtl' : 'font-sans'}>
       <Header />
-      
+
       {/* Hero Section */}
       <section className="relative min-h-screen">
         <div className="absolute inset-0">
@@ -80,7 +80,7 @@ const Index: React.FC = () => {
             className="w-full h-full object-cover"
           />
           </div>
-        
+
         <div className="luxury-container relative h-screen flex items-center">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="text-gray-800 z-10">
@@ -107,12 +107,32 @@ const Index: React.FC = () => {
         </div>
       </section>
 
+      {/* Shipping Info Banner */}
+      <section className="bg-white border-y border-gray-200">
+        <div className="luxury-container">
+          <div className="grid grid-cols-4 divide-x divide-gray-200">
+            <div className="py-4 text-center">
+              <p className="text-sm font-medium">Free shipping</p>
+            </div>
+            <div className="py-4 text-center">
+              <p className="text-sm font-medium">Free 30-day returns</p>
+            </div>
+            <div className="py-4 text-center">
+              <p className="text-sm font-medium">Free eye tests</p>
+            </div>
+            <div className="py-4 text-center">
+              <p className="text-sm font-medium">We also offer contacts!</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Frame Shape Section */}
       <section className="py-16 bg-white">
         <div className="luxury-container">
           <h2 className="text-3xl font-bold text-center mb-4">{t('frame.title')}</h2>
           <p className="text-center text-gray-600 mb-12">{t('frame.subtitle')}</p>
-          
+
           <div className="grid grid-cols-3 md:grid-cols-6 gap-6">
             {['Rectangle', 'Square', 'Round', 'Cat-Eye', 'Aviator', 'Browline'].map((shape) => (
               <div key={shape} className="text-center group cursor-pointer">
@@ -139,7 +159,7 @@ const Index: React.FC = () => {
             <button className="px-4 py-2 text-gray-600 rounded-full text-sm">{t('bestsellers.sunglasses')}</button>
             <button className="px-4 py-2 text-gray-600 rounded-full text-sm">{t('bestsellers.designer')}</button>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[1, 2, 3].map((item) => (
               <div key={item} className="bg-white rounded-lg p-4 relative group">
@@ -195,7 +215,7 @@ const Index: React.FC = () => {
           </div>
         </div>
       </section>
-      
+
       {/* How to Pick Section */}
       <section id="how-to-pick" className="py-24 bg-gray-50">
         <div className="luxury-container">
@@ -207,7 +227,7 @@ const Index: React.FC = () => {
               {t('pick.title')}
             </h2>
           </div>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* Step 1 */}
             <div className="text-center group">
@@ -217,7 +237,7 @@ const Index: React.FC = () => {
               <h3 className="font-serif text-xl mb-3">{t('pick.step1.title')}</h3>
               <p className="text-gray-600">{t('pick.step1.desc')}</p>
             </div>
-            
+
             {/* Step 2 */}
             <div className="text-center group">
               <div className="w-32 h-32 flex items-center justify-center bg-white rounded-full mx-auto mb-8 shadow-lg transition-transform duration-300 group-hover:scale-110">
@@ -226,7 +246,7 @@ const Index: React.FC = () => {
               <h3 className="font-serif text-xl mb-3">{t('pick.step2.title')}</h3>
               <p className="text-gray-600">{t('pick.step2.desc')}</p>
             </div>
-            
+
             {/* Step 3 */}
             <div className="text-center group">
               <div className="w-32 h-32 flex items-center justify-center bg-white rounded-full mx-auto mb-8 shadow-lg transition-transform duration-300 group-hover:scale-110">
@@ -235,7 +255,7 @@ const Index: React.FC = () => {
               <h3 className="font-serif text-xl mb-3">{t('pick.step3.title')}</h3>
               <p className="text-gray-600">{t('pick.step3.desc')}</p>
             </div>
-            
+
             {/* Step 4 */}
             <div className="text-center group">
               <div className="w-32 h-32 flex items-center justify-center bg-white rounded-full mx-auto mb-8 shadow-lg transition-transform duration-300 group-hover:scale-110">
@@ -245,7 +265,7 @@ const Index: React.FC = () => {
               <p className="text-gray-600">{t('pick.step4.desc')}</p>
             </div>
           </div>
-          
+
           <div className="text-center mt-16">
             <button className="btn-primary">
               {t('pick.button')}
@@ -253,7 +273,7 @@ const Index: React.FC = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Custom Sunglasses Section */}
       <section className="py-24 bg-white overflow-hidden">
         <div className="luxury-container">
@@ -268,7 +288,7 @@ const Index: React.FC = () => {
               <p className="text-gray-600 mb-12 text-lg">
                 {t('custom.desc')}
               </p>
-              
+
               {/* Color Options */}
               <div className="mb-12">
                 <div className="flex flex-wrap gap-6">
@@ -280,7 +300,7 @@ const Index: React.FC = () => {
                   <button className="w-12 h-12 rounded-full bg-eyewear-platinum border-2 border-white shadow-lg hover:scale-110 transition-transform"></button>
                 </div>
               </div>
-              
+
               <button className="btn-primary">
                 {t('custom.button')}
               </button>
@@ -298,7 +318,7 @@ const Index: React.FC = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Featured Collection */}
       <section className="py-24">
         <div className="luxury-container">
@@ -309,7 +329,7 @@ const Index: React.FC = () => {
             <h2 className="section-title">
               {t('collection.title')}
             </h2>
-            
+
             {/* Collection Filters */}
             <div className="flex flex-wrap justify-center gap-4 mt-8">
               <button 
@@ -344,7 +364,7 @@ const Index: React.FC = () => {
               </button>
             </div>
           </div>
-          
+
           {/* Products Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {products.map(product => (
@@ -358,7 +378,7 @@ const Index: React.FC = () => {
               />
             ))}
           </div>
-          
+
           {/* View More Button */}
           <div className="text-center mt-16">
             <button className="btn-outline">
@@ -367,7 +387,7 @@ const Index: React.FC = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Brand Partners */}
       <section className="py-24 bg-gray-50 overflow-hidden">
         <div className="luxury-container">
@@ -379,7 +399,7 @@ const Index: React.FC = () => {
               {t('partners.title')}
             </h2>
           </div>
-          
+
           <div className="w-full">
             <Carousel
               opts={{
@@ -415,14 +435,14 @@ const Index: React.FC = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Client Reviews */}
       <section className="py-24">
         <div className="luxury-container">
           <h2 className="section-title text-center">
             {t('reviews.title')}
           </h2>
-          
+
           <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-xl p-12 mt-16">
             <div className="text-center">
               <p className="text-xl text-gray-600 italic mb-8 font-serif">
@@ -444,7 +464,7 @@ const Index: React.FC = () => {
           </div>
         </div>
       </section>
-      
+
       <Footer />
     </div>
   );
