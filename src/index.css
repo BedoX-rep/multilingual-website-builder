@@ -82,7 +82,17 @@ html {
 }
 
 .luxury-container {
-  @apply w-full max-w-[90%] ml-[10%] px-0;
+  @apply w-[90%] ml-[10%] px-0 relative;
+}
+
+/* Add consistent section padding */
+section > div:not(.luxury-container) {
+  @apply ml-[10%] w-[90%];
+}
+
+/* Override full-width sections that need it */
+.full-width {
+  @apply w-full ml-0 !important;
 }
 
 .nav-link {

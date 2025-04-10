@@ -74,7 +74,7 @@ const Index: React.FC = () => {
 
       {/* Hero Section - Properly aligned with 10% margin */}
       <section className="relative min-h-[100vh] md:h-[80vh] w-full">
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 full-width">
           <img 
             src={heroImage} 
             alt="Person wearing glasses" 
@@ -83,9 +83,9 @@ const Index: React.FC = () => {
           <div className="absolute inset-0 bg-black/5"></div>
         </div>
 
-        <div className="relative h-full flex items-center">
+        <div className="luxury-container h-full flex items-center">
           <div className="w-full">
-            <div className="w-full max-w-[90%] ml-[10%] md:max-w-[40%] py-12 md:py-0">
+            <div className="w-full md:max-w-[40%] py-12 md:py-0">
               <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium mb-8 leading-[1.1] text-gray-800">
                 {t('hero.title')}
               </h1>
@@ -110,7 +110,7 @@ const Index: React.FC = () => {
 
       {/* Shipping Info Banner */}
       <section className="bg-blue-50">
-        <div className="flex justify-between items-center py-4 px-6">
+        <div className="luxury-container flex justify-between items-center py-4">
           <div className="text-center flex-1">
             <p className="text-base font-medium text-blue-800">{t('shipping.delivery')}</p>
           </div>
