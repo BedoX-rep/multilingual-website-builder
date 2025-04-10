@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import Header from '../components/Header';
@@ -71,45 +72,45 @@ const Index: React.FC = () => {
     <div className={dir === 'rtl' ? 'font-sans rtl' : 'font-sans'}>
       <Header />
 
-      {/* Hero Section - Properly aligned with 10% margin */}
-      <section className="relative min-h-[100vh] md:h-[80vh] w-full">
-        <div className="absolute inset-0 full-width-container">
+      {/* Hero Section - Adjusted with ml-[5%] for left/right margin and proper RTL support */}
+      <section className="relative h-[80vh]">
+        <div className="absolute inset-0">
           <img 
             src={heroImage} 
             alt="Person wearing glasses" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-top"
           />
-          <div className="absolute inset-0 bg-black/5"></div>
         </div>
 
-        <div className="content-wrapper h-full flex items-center">
-          <div className="w-full">
-            <div className="w-full md:max-w-[40%] py-12 md:py-0">
-              <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium mb-8 leading-[1.1] text-gray-800">
+        <div className="luxury-container relative h-[80vh] flex items-center">
+          <div className="grid md:grid-cols-2 gap-12 items-center w-full">
+            <div className={`text-gray-800 z-10 ${dir === 'rtl' ? 'mr-[5%] md:mr-[7%]' : 'ml-[5%] md:ml-[7%]'}`}>
+              <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-medium mb-8 leading-[1.1] text-gray-800">
                 {t('hero.title')}
               </h1>
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <button className="w-full sm:w-auto px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+              <div className="flex flex-wrap gap-6 mb-8">
+                <button className="btn-primary bg-blue-600 text-white hover:bg-blue-700">
                   {t('hero.shopmen')}
                 </button>
-                <button className="w-full sm:w-auto px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                <button className="btn-primary bg-blue-600 text-white hover:bg-blue-700">
                   {t('hero.shopwomen')}
                 </button>
               </div>
               <a 
                 href="#how-to-pick" 
-                className="inline-block text-blue-600 hover:text-blue-700 font-medium transition-colors"
+                className="text-blue-600 hover:text-blue-700 font-medium transition-colors"
               >
                 {t('hero.learnmore')}
               </a>
             </div>
+            <div className="hidden md:block"> </div>
           </div>
         </div>
       </section>
 
       {/* Shipping Info Banner */}
       <section className="bg-blue-50">
-        <div className="luxury-container flex justify-between items-center py-4">
+        <div className="flex justify-between items-center py-4 px-6">
           <div className="text-center flex-1">
             <p className="text-base font-medium text-blue-800">{t('shipping.delivery')}</p>
           </div>
@@ -164,7 +165,7 @@ const Index: React.FC = () => {
             <h2 className="text-4xl font-bold">BEST SELLERS ACROSS MOROCCO</h2>
             <a href="/products" className="text-sm font-medium hover:underline">Shop all</a>
           </div>
-
+          
           <div className="flex flex-wrap gap-4 mb-8 text-sm">
             <button className="hover:underline">Eyeglasses</button>
             <button className="hover:underline">Sunglasses</button>
@@ -336,7 +337,7 @@ const Index: React.FC = () => {
             <p className="text-lg text-gray-800 mb-12 leading-relaxed">
               {t('insurance.description')}
             </p>
-
+            
             {/* Insurance Logos */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
               {[
@@ -357,7 +358,7 @@ const Index: React.FC = () => {
                 </div>
               ))}
             </div>
-
+            
             <div className={`flex flex-wrap gap-6 ${dir === 'rtl' ? 'justify-start' : 'justify-start'}`}>
               <button className="px-8 py-3 bg-black text-white font-medium hover:bg-gray-900 transition-colors rounded-lg">
                 {t('insurance.browse')}
