@@ -217,27 +217,6 @@ const Index: React.FC = () => {
         </div>
       </section>
 
-      {/* Style Selection Section */}
-      <section className="py-16 bg-white">
-        <div className="luxury-container">
-          <h2 className="text-3xl font-bold text-center mb-12">{t('style.title')}</h2>
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
-            {['Classic', 'Eco Friendly', 'Artsy', 'Retro', 'Street Style', 'Bold'].map((style) => (
-              <div key={style} className="text-center group cursor-pointer">
-                <div className="rounded-full bg-gray-100 p-4 mb-4 transform transition-transform group-hover:scale-110">
-                  <img
-                    src={`/lovable-uploads/45bb2648-7da7-44ab-bd32-7044f1470203.png`}
-                    alt={style}
-                    className="w-full h-24 object-contain"
-                  />
-                </div>
-                <p className="text-sm font-medium">{t(`style.${style.toLowerCase().replace(' ', '')}`)}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* How to Pick Section */}
       <section id="how-to-pick" className="py-24 bg-gray-50">
         <div className="luxury-container">
@@ -334,75 +313,6 @@ const Index: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent rounded-lg"></div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Collection */}
-      <section className="py-24">
-        <div className="luxury-container">
-          <div className="text-center mb-16">
-            <p className="section-subtitle">
-              {t('collection.subtitle')}
-            </p>
-            <h2 className="section-title">
-              {t('collection.title')}
-            </h2>
-
-            {/* Collection Filters */}
-            <div className="flex flex-wrap justify-center gap-4 mt-8">
-              <button 
-                className={`px-6 py-2 text-sm rounded-full border-2 transition-colors ${activeFilter === 'all' ? 'bg-black text-white border-black' : 'border-gray-300 text-gray-600 hover:border-black'}`}
-                onClick={() => setActiveFilter('all')}
-              >
-                {t('collection.all')}
-              </button>
-              <button 
-                className={`px-6 py-2 text-sm rounded-full border-2 transition-colors ${activeFilter === 'optical' ? 'bg-black text-white border-black' : 'border-gray-300 text-gray-600 hover:border-black'}`}
-                onClick={() => setActiveFilter('optical')}
-              >
-                {t('collection.optical')}
-              </button>
-              <button 
-                className={`px-6 py-2 text-sm rounded-full border-2 transition-colors ${activeFilter === 'sun' ? 'bg-black text-white border-black' : 'border-gray-300 text-gray-600 hover:border-black'}`}
-                onClick={() => setActiveFilter('sun')}
-              >
-                {t('collection.sun')}
-              </button>
-              <button 
-                className={`px-6 py-2 text-sm rounded-full border-2 transition-colors ${activeFilter === 'kids' ? 'bg-black text-white border-black' : 'border-gray-300 text-gray-600 hover:border-black'}`}
-                onClick={() => setActiveFilter('kids')}
-              >
-                {t('collection.kids')}
-              </button>
-              <button 
-                className={`px-6 py-2 text-sm rounded-full border-2 transition-colors ${activeFilter === 'sports' ? 'bg-black text-white border-black' : 'border-gray-300 text-gray-600 hover:border-black'}`}
-                onClick={() => setActiveFilter('sports')}
-              >
-                {t('collection.sports')}
-              </button>
-            </div>
-          </div>
-
-          {/* Products Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {products.map(product => (
-              <ProductCard 
-                key={product.id}
-                id={product.id}
-                name={product.name}
-                price={product.price}
-                image={product.image}
-                category={product.category}
-              />
-            ))}
-          </div>
-
-          {/* View More Button */}
-          <div className="text-center mt-16">
-            <button className="btn-outline">
-              {t('collection.viewmore')}
-            </button>
           </div>
         </div>
       </section>
