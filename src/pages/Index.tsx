@@ -109,18 +109,18 @@ const Index: React.FC = () => {
 
       {/* Shipping Info Banner */}
       <section className="bg-blue-50">
-        <div className="flex justify-between items-center py-2 px-4">
+        <div className="flex justify-between items-center py-4 px-6">
           <div className="text-center flex-1">
-            <p className="text-sm font-medium text-blue-800">270+ retail locations</p>
+            <p className="text-base font-medium text-blue-800">Delivery within all of Morocco</p>
           </div>
           <div className="text-center flex-1">
-            <p className="text-sm font-medium text-blue-800">Free shipping</p>
+            <p className="text-base font-medium text-blue-800">Free shipping</p>
           </div>
           <div className="text-center flex-1">
-            <p className="text-sm font-medium text-blue-800">Free 30-day returns</p>
+            <p className="text-base font-medium text-blue-800">Free 30-day returns</p>
           </div>
           <div className="text-center flex-1">
-            <p className="text-sm font-medium text-blue-800">We also offer contacts!</p>
+            <p className="text-base font-medium text-blue-800">We also offer contacts!</p>
           </div>
         </div>
       </section>
