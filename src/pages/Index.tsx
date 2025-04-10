@@ -300,12 +300,12 @@ const Index: React.FC = () => {
               {/* Color Options */}
               <div className="mb-12">
                 <div className="flex flex-wrap gap-6">
-                  <button className="w-12 h-12 rounded-full bg-eyewear-gold border-2 border-white shadow-lg hover:scale-110 transition-transform"></button>
-                  <button className="w-12 h-12 rounded-full bg-eyewear-silver border-2 border-white shadow-lg hover:scale-110 transition-transform"></button>
-                  <button className="w-12 h-12 rounded-full bg-eyewear-bronze border-2 border-white shadow-lg hover:scale-110 transition-transform"></button>
-                  <button className="w-12 h-12 rounded-full bg-eyewear-pearl border-2 border-white shadow-lg hover:scale-110 transition-transform"></button>
-                  <button className="w-12 h-12 rounded-full bg-eyewear-copper border-2 border-white shadow-lg hover:scale-110 transition-transform"></button>
-                  <button className="w-12 h-12 rounded-full bg-eyewear-platinum border-2 border-white shadow-lg hover:scale-110 transition-transform"></button>
+                  <button className="w-12 h-12 rounded-full bg-rose-400 border-2 border-white shadow-lg hover:scale-110 transition-transform"></button>
+                  <button className="w-12 h-12 rounded-full bg-emerald-500 border-2 border-white shadow-lg hover:scale-110 transition-transform"></button>
+                  <button className="w-12 h-12 rounded-full bg-amber-400 border-2 border-white shadow-lg hover:scale-110 transition-transform"></button>
+                  <button className="w-12 h-12 rounded-full bg-indigo-500 border-2 border-white shadow-lg hover:scale-110 transition-transform"></button>
+                  <button className="w-12 h-12 rounded-full bg-purple-500 border-2 border-white shadow-lg hover:scale-110 transition-transform"></button>
+                  <button className="w-12 h-12 rounded-full bg-teal-500 border-2 border-white shadow-lg hover:scale-110 transition-transform"></button>
                 </div>
               </div>
 
@@ -405,7 +405,7 @@ const Index: React.FC = () => {
             alt="Insurance Benefits" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/10 to-transparent" />
         </div>
 
         <div className="luxury-container relative z-10">
