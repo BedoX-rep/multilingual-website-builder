@@ -24,10 +24,10 @@ const Header: React.FC = () => {
 
   return (
     <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-sm py-4' : 'bg-white py-6'}`}>
-      <div className="luxury-container">
+      <div className="px-0">
         <div className="flex items-center justify-between">
           {/* Logo - adjusted with ml-[5%] for left margin */}
-          <Link to="/" className="ml-[5%] md:ml-[5%] flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <img src="/lovable-uploads/navlogo1.png" alt="Lens Optique" className="h-8 md:h-10" />
             <span className="font-serif text-xl font-medium">Lens Optique</span>
           </Link>
