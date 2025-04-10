@@ -397,50 +397,50 @@ const Index: React.FC = () => {
       </section>
 
       {/* Insurance Benefits Section */}
-      <section className="py-24 bg-white overflow-hidden">
-        <div className="luxury-container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div className="order-2 md:order-1">
-              <img 
-                src="/lovable-uploads/sectionassuranceimage.png" 
-                alt="Insurance Benefits" 
-                className="w-full h-auto rounded-2xl shadow-xl"
-              />
+      <section className="relative min-h-[600px] flex items-center">
+        {/* Background Image */}
+        <div className="absolute inset-0 w-full h-full">
+          <img 
+            src="/lovable-uploads/sectionassuranceimage.png" 
+            alt="Insurance Benefits" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40" />
+        </div>
+
+        <div className="luxury-container relative z-10">
+          <div className="max-w-2xl text-white">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium mb-6">
+              {t('insurance.title', 'Use Your Vision Benefits On The Perfect Pair')}
+            </h2>
+            <p className="text-lg text-gray-200 mb-12 leading-relaxed">
+              {t('insurance.description', 'We accept most insurance plans to help you save on your eyewear purchase. Our experienced team will help you maximize your benefits.')}
+            </p>
+            
+            {/* Insurance Logos */}
+            <div className="grid grid-cols-3 gap-6 mb-12">
+              {[
+                '/lovable-uploads/assurancebrandsmaghreb/allianz-logo.png',
+                '/lovable-uploads/assurancebrandsmaghreb/images.png',
+                '/lovable-uploads/assurancebrandsmaghreb/images (1).png',
+              ].map((logo, index) => (
+                <div key={index} className="bg-white/10 backdrop-blur-sm p-6 rounded-xl">
+                  <img 
+                    src={logo} 
+                    alt="Insurance Provider" 
+                    className="w-full h-12 object-contain brightness-0 invert hover:brightness-100 hover:invert-0 transition-all duration-300"
+                  />
+                </div>
+              ))}
             </div>
             
-            <div className="order-1 md:order-2">
-              <h2 className="section-title mb-6">
-                {t('insurance.title', 'Use Your Vision Benefits On The Perfect Pair')}
-              </h2>
-              <p className="text-lg text-gray-600 mb-8">
-                {t('insurance.description', 'We accept most insurance plans to help you save on your eyewear purchase. Our experienced team will help you maximize your benefits.')}
-              </p>
-              
-              {/* Insurance Logos */}
-              <div className="grid grid-cols-3 gap-4 mb-8">
-                {[
-                  '/lovable-uploads/assurancebrandsmaghreb/allianz-logo.png',
-                  '/lovable-uploads/assurancebrandsmaghreb/images.png',
-                  '/lovable-uploads/assurancebrandsmaghreb/images (1).png',
-                ].map((logo, index) => (
-                  <div key={index} className="bg-white p-4 rounded-lg shadow-sm">
-                    <img 
-                      src={logo} 
-                      alt="Insurance Provider" 
-                      className="w-full h-12 object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                    />
-                  </div>
-                ))}
-              </div>
-              
-              <div className="flex flex-wrap gap-4">
-                <button className="btn-primary bg-blue-600 text-white hover:bg-blue-700">
-                  {t('insurance.browse', 'Browse Glasses')}
-                </button>
-                <button className="btn-outline border-blue-600 text-blue-600 hover:bg-blue-50">
-                  {t('insurance.learn', 'Learn More')}
-                </button>
-              </div>
+            <div className="flex flex-wrap gap-6">
+              <button className="px-8 py-3 bg-white text-black font-medium hover:bg-gray-100 transition-colors">
+                {t('insurance.browse', 'Browse Glasses')}
+              </button>
+              <button className="px-8 py-3 border-2 border-white text-white font-medium hover:bg-white/10 transition-colors">
+                {t('insurance.learn', 'Learn More')}
+              </button>
             </div>
           </div>
         </div>
