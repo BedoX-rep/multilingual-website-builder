@@ -405,45 +405,45 @@ const Index: React.FC = () => {
             alt="Insurance Benefits" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
         </div>
 
         <div className="luxury-container relative z-10">
-          <div className="max-w-2xl text-white">
+          <div className={`max-w-2xl text-white ${dir === 'rtl' ? 'mr-auto' : 'ml-auto'}`}>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium mb-6">
-              {t('insurance.title', 'Use Your Vision Benefits On The Perfect Pair')}
+              {t('insurance.title')}
             </h2>
             <p className="text-lg text-gray-200 mb-12 leading-relaxed">
-              {t('insurance.description', 'We accept most insurance plans to help you save on your eyewear purchase. Our experienced team will help you maximize your benefits.')}
+              {t('insurance.description')}
             </p>
             
             {/* Insurance Logos */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
               {[
                 { src: '/lovable-uploads/assurancebrandsmaghreb/allianz-logo.png', name: 'Allianz' },
-                { src: '/lovable-uploads/assurancebrandsmaghreb/images.png', name: 'MutuelSante' },
-                { src: '/lovable-uploads/assurancebrandsmaghreb/images (1).png', name: 'CNSS' },
-                { src: '/lovable-uploads/assurancebrandsmaghreb/download.jpg', name: 'RMA' },
+                { src: '/lovable-uploads/assurancebrandsmaghreb/cnss.png', name: 'CNSS' },
+                { src: '/lovable-uploads/assurancebrandsmaghreb/rma.png', name: 'RMA' },
+                { src: '/lovable-uploads/assurancebrandsmaghreb/sanlam.png', name: 'Sanlam' },
               ].map((insurance, index) => (
                 <div 
                   key={index} 
-                  className="bg-white/10 backdrop-blur-sm p-4 rounded-xl hover:bg-white/20 transition-all duration-300"
+                  className="bg-white rounded-xl p-4 hover:shadow-lg transition-all duration-300"
                 >
                   <img 
                     src={insurance.src} 
                     alt={insurance.name}
-                    className="w-full h-12 object-contain brightness-0 invert hover:brightness-100 hover:invert-0 transition-all duration-300"
+                    className="w-full h-12 object-contain"
                   />
                 </div>
               ))}
             </div>
             
-            <div className="flex flex-wrap gap-6">
-              <button className="px-8 py-3 bg-white text-black font-medium hover:bg-gray-100 transition-colors">
-                {t('insurance.browse', 'Browse Glasses')}
+            <div className={`flex flex-wrap gap-6 ${dir === 'rtl' ? 'justify-start' : 'justify-start'}`}>
+              <button className="px-8 py-3 bg-white text-black font-medium hover:bg-gray-100 transition-colors rounded-lg">
+                {t('insurance.browse')}
               </button>
-              <button className="px-8 py-3 border-2 border-white text-white font-medium hover:bg-white/10 transition-colors">
-                {t('insurance.learn', 'Learn More')}
+              <button className="px-8 py-3 border-2 border-white text-white font-medium hover:bg-white/10 transition-colors rounded-lg">
+                {t('insurance.learn')}
               </button>
             </div>
           </div>
