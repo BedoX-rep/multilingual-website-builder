@@ -85,21 +85,21 @@ const Index: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="text-gray-800 z-10">
               <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-medium mb-8 leading-[1.1] text-gray-800">
-                Premium Eyewear For Your Lifestyle
+                {t('hero.title')}
               </h1>
               <div className="flex flex-wrap gap-6 mb-8">
                 <button className="btn-primary bg-blue-600 text-white hover:bg-blue-700">
-                  Shop Men
+                  {t('hero.shopmen')}
                 </button>
                 <button className="btn-primary bg-blue-600 text-white hover:bg-blue-700">
-                  Shop Women
+                  {t('hero.shopwomen')}
                 </button>
               </div>
               <a 
                 href="#how-to-pick" 
                 className="text-blue-600 hover:text-blue-700 font-medium transition-colors"
               >
-                Learn more about our process
+                {t('hero.learnmore')}
               </a>
             </div>
             <div className="hidden md:block"> </div>
@@ -110,8 +110,8 @@ const Index: React.FC = () => {
       {/* Frame Shape Section */}
       <section className="py-16 bg-white">
         <div className="luxury-container">
-          <h2 className="text-3xl font-bold text-center mb-4">SHOP BY FRAME SHAPE</h2>
-          <p className="text-center text-gray-600 mb-12">Bloom into new frames with fresh shapes, colors, and patterns.</p>
+          <h2 className="text-3xl font-bold text-center mb-4">{t('frame.title')}</h2>
+          <p className="text-center text-gray-600 mb-12">{t('frame.subtitle')}</p>
           
           <div className="grid grid-cols-3 md:grid-cols-6 gap-6">
             {['Rectangle', 'Square', 'Round', 'Cat-Eye', 'Aviator', 'Browline'].map((shape) => (
@@ -133,11 +133,11 @@ const Index: React.FC = () => {
       {/* Best Sellers Section */}
       <section className="py-16 bg-[#E5F6F8]">
         <div className="luxury-container">
-          <h2 className="text-3xl font-bold text-center mb-8">BEST SELLERS ACROSS CANADA</h2>
+          <h2 className="text-3xl font-bold text-center mb-8">{t('bestsellers.title')}</h2>
           <div className="flex gap-4 justify-center mb-8">
-            <button className="px-4 py-2 bg-black text-white rounded-full text-sm">Eyeglasses</button>
-            <button className="px-4 py-2 text-gray-600 rounded-full text-sm">Sunglasses</button>
-            <button className="px-4 py-2 text-gray-600 rounded-full text-sm">Designer Glasses</button>
+            <button className="px-4 py-2 bg-black text-white rounded-full text-sm">{t('bestsellers.eyeglasses')}</button>
+            <button className="px-4 py-2 text-gray-600 rounded-full text-sm">{t('bestsellers.sunglasses')}</button>
+            <button className="px-4 py-2 text-gray-600 rounded-full text-sm">{t('bestsellers.designer')}</button>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

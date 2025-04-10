@@ -237,6 +237,57 @@ const translations: Translations = {
     fr: 'Nos Partenaires de Marque',
     ar: 'شركاء علامتنا التجارية',
   },
+
+  // Frame Shapes
+  'frame.title': {
+    en: 'SHOP BY FRAME SHAPE',
+    fr: 'ACHETEZ PAR FORME DE MONTURE',
+    ar: 'تسوق حسب شكل الإطار',
+  },
+  'frame.subtitle': {
+    en: 'Bloom into new frames with fresh shapes, colors, and patterns.',
+    fr: 'Épanouissez-vous avec de nouvelles montures aux formes, couleurs et motifs frais.',
+    ar: 'تألق بإطارات جديدة بأشكال وألوان وأنماط عصرية.',
+  },
+
+  // Best Sellers
+  'bestsellers.title': {
+    en: 'BEST SELLERS ACROSS CANADA',
+    fr: 'MEILLEURES VENTES AU CANADA',
+    ar: 'الأكثر مبيعاً في كندا',
+  },
+  'bestsellers.eyeglasses': {
+    en: 'Eyeglasses',
+    fr: 'Lunettes',
+    ar: 'نظارات طبية',
+  },
+  'bestsellers.sunglasses': {
+    en: 'Sunglasses',
+    fr: 'Lunettes de Soleil',
+    ar: 'نظارات شمسية',
+  },
+  'bestsellers.designer': {
+    en: 'Designer Glasses',
+    fr: 'Lunettes de Designer',
+    ar: 'نظارات المصممين',
+  },
+  
+  // Hero Section New
+  'hero.shopmen': {
+    en: 'Shop Men',
+    fr: 'Pour Hommes',
+    ar: 'تسوق للرجال',
+  },
+  'hero.shopwomen': {
+    en: 'Shop Women',
+    fr: 'Pour Femmes',
+    ar: 'تسوق للنساء',
+  },
+  'hero.learnmore': {
+    en: 'Learn more about our process',
+    fr: 'En savoir plus sur notre processus',
+    ar: 'تعرف على المزيد حول عمليتنا',
+  },
   
   // Reviews
   'reviews.title': {
