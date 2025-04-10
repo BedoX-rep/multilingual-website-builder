@@ -7,7 +7,7 @@ import { CheckCircle } from 'lucide-react';
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 
 // Hero section image
-const heroImage = "/lovable-uploads/beautiful-young-woman-with-glasses.jpg";
+const heroImage = "/lovable-uploads/herosectionbg2.jpg";
 
 // Process step icons
 const frameIcon = "/lovable-uploads/5c4c396f-836b-49e7-8833-be31c7cda22e.png";
@@ -84,23 +84,23 @@ const Index: React.FC = () => {
         <div className="luxury-container relative h-screen flex items-center">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="text-gray-800 z-10">
-              <p className="text-sm uppercase tracking-[0.2em] mb-4 text-gray-700 font-medium">
-                {t('hero.subtitle')}
-              </p>
-              <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-medium mb-8 leading-[1.1]">
-                {t('hero.title')}
+              <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-medium mb-8 leading-[1.1] text-gray-800">
+                Premium Eyewear For Your Lifestyle
               </h1>
-              <p className="text-lg mb-10 text-gray-700 leading-relaxed max-w-xl">
-                {t('hero.description')}
-              </p>
-              <div className="flex flex-wrap gap-6">
-                <button className="btn-primary bg-gray-800 text-white hover:bg-gray-700">
-                  {t('hero.cta.shop')}
+              <div className="flex flex-wrap gap-6 mb-8">
+                <button className="btn-primary bg-blue-600 text-white hover:bg-blue-700">
+                  Shop Men
                 </button>
-                <button className="btn-outline border-2 border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white">
-                  {t('hero.cta.learn')}
+                <button className="btn-primary bg-blue-600 text-white hover:bg-blue-700">
+                  Shop Women
                 </button>
               </div>
+              <a 
+                href="#how-to-pick" 
+                className="text-blue-600 hover:text-blue-700 font-medium transition-colors"
+              >
+                Learn more about our process
+              </a>
             </div>
             <div className="hidden md:block"> </div>
           </div>
@@ -197,7 +197,7 @@ const Index: React.FC = () => {
       </section>
       
       {/* How to Pick Section */}
-      <section className="py-24 bg-gray-50">
+      <section id="how-to-pick" className="py-24 bg-gray-50">
         <div className="luxury-container">
           <div className="text-center mb-16">
             <p className="section-subtitle">
