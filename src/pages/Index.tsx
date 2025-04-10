@@ -108,42 +108,59 @@ const Index: React.FC = () => {
       </section>
 
       {/* Shipping Info Banner */}
-      <section className="bg-white border-y border-gray-200">
+      <section className="bg-gradient-to-r from-blue-50 to-purple-50">
         <div className="luxury-container">
-          <div className="grid grid-cols-4 divide-x divide-gray-200">
-            <div className="py-6 text-center">
-              <p className="text-base font-medium">Free shipping</p>
+          <div className="grid grid-cols-4">
+            <div className="py-8 text-center transform hover:scale-105 transition-transform">
+              <div className="bg-blue-100 rounded-lg p-6 mx-2 h-full shadow-sm">
+                <p className="text-base font-medium text-blue-800">Free shipping</p>
+              </div>
             </div>
-            <div className="py-6 text-center">
-              <p className="text-base font-medium">Free 30-day returns</p>
+            <div className="py-8 text-center transform hover:scale-105 transition-transform">
+              <div className="bg-purple-100 rounded-lg p-6 mx-2 h-full shadow-sm">
+                <p className="text-base font-medium text-purple-800">Free 30-day returns</p>
+              </div>
             </div>
-            <div className="py-6 text-center">
-              <p className="text-base font-medium">Free eye tests</p>
+            <div className="py-8 text-center transform hover:scale-105 transition-transform">
+              <div className="bg-pink-100 rounded-lg p-6 mx-2 h-full shadow-sm">
+                <p className="text-base font-medium text-pink-800">Free eye tests</p>
+              </div>
             </div>
-            <div className="py-6 text-center">
-              <p className="text-base font-medium">We also offer contacts!</p>
+            <div className="py-8 text-center transform hover:scale-105 transition-transform">
+              <div className="bg-indigo-100 rounded-lg p-6 mx-2 h-full shadow-sm">
+                <p className="text-base font-medium text-indigo-800">We also offer contacts!</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Frame Shape Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gradient-to-b from-white to-blue-50">
         <div className="luxury-container">
-          <h2 className="text-3xl font-bold text-center mb-4">{t('frame.title')}</h2>
-          <p className="text-center text-gray-600 mb-12">{t('frame.subtitle')}</p>
+          <h2 className="text-4xl font-bold text-center mb-4 text-gray-800">{t('frame.title')}</h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">{t('frame.subtitle')}</p>
 
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-6">
-            {['Rectangle', 'Square', 'Round', 'Cat-eye', 'Aviator', 'Browline'].map((shape) => (
-              <div key={shape} className="text-center group cursor-pointer">
-                <div className="mb-4 transform transition-transform group-hover:scale-110">
-                  <img
-                    src={`/lovable-uploads/frameshapes/frame_shape-${shape}.svg`}
-                    alt={shape}
-                    className="w-20 h-12 mx-auto object-contain"
-                  />
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-8">
+            {[
+              { name: 'Rectangle', color: 'bg-blue-100 text-blue-800' },
+              { name: 'Square', color: 'bg-purple-100 text-purple-800' },
+              { name: 'Round', color: 'bg-pink-100 text-pink-800' },
+              { name: 'Cat-eye', color: 'bg-indigo-100 text-indigo-800' },
+              { name: 'Aviator', color: 'bg-violet-100 text-violet-800' },
+              { name: 'Browline', color: 'bg-cyan-100 text-cyan-800' }
+            ].map((shape) => (
+              <div key={shape.name} className="text-center group cursor-pointer">
+                <div className={`${shape.color} p-6 rounded-xl shadow-sm transform transition-all duration-300 group-hover:scale-110 group-hover:shadow-md`}>
+                  <div className="mb-4">
+                    <img
+                      src={`/lovable-uploads/frameshapes/frame_shape-${shape.name}.svg`}
+                      alt={shape.name}
+                      className="w-20 h-12 mx-auto object-contain"
+                    />
+                  </div>
+                  <p className="text-sm font-medium">{shape.name}</p>
                 </div>
-                <p className="text-sm">{shape}</p>
               </div>
             ))}
           </div>
