@@ -69,8 +69,6 @@ const Index: React.FC = () => {
 
   return (
     <div className={dir === 'rtl' ? 'font-sans rtl' : 'font-sans'}>
-      <Header />
-
       {/* Hero Section */}
       <section className="relative h-[80vh]">
         <div className="absolute inset-0">
@@ -79,10 +77,10 @@ const Index: React.FC = () => {
             alt="Person wearing glasses" 
             className="w-full h-full object-cover object-top"
           />
-          </div>
-
-        <div className="luxury-container relative h-[80vh] flex items-center">
-          <div className="grid md:grid-cols-2 gap-12 items-center" style={{ paddingLeft: '10%' }}>
+        </div>
+        
+        <div className="luxury-container relative h-[80vh]">
+          <div className="absolute top-8 left-[10%] max-w-lg">
             <div className="text-gray-800 z-10">
               <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-medium mb-8 leading-[1.1] text-gray-800">
                 {t('hero.title')}
@@ -102,10 +100,11 @@ const Index: React.FC = () => {
                 {t('hero.learnmore')}
               </a>
             </div>
-            <div className="hidden md:block"> </div>
           </div>
         </div>
       </section>
+
+      <Header />
 
       {/* Shipping Info Banner */}
       <section className="bg-white border-y border-gray-200">
