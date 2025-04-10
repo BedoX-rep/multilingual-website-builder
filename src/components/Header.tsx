@@ -26,7 +26,7 @@ const Header: React.FC = () => {
       <div className="luxury-container">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="font-serif text-2xl font-medium">
+          <Link to="/" className="font-serif text-2xl font-medium pl-12">
             Luxe Optique
           </Link>
 
