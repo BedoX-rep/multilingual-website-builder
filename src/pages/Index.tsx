@@ -72,27 +72,28 @@ const Index: React.FC = () => {
     <div className={dir === 'rtl' ? 'font-sans rtl' : 'font-sans'}>
       <Header />
 
-      {/* Hero Section - Fixed layout and mobile responsiveness */}
-      <section className="relative min-h-screen md:h-[80vh] w-full">
+      {/* Hero Section - Properly aligned with 10% margin */}
+      <section className="relative min-h-[100vh] md:h-[80vh] w-full">
         <div className="absolute inset-0">
           <img 
             src={heroImage} 
             alt="Person wearing glasses" 
-            className="w-full h-full object-cover object-right-top"
+            className="w-full h-full object-cover md:object-right-top"
           />
+          <div className="absolute inset-0 bg-black/5"></div>
         </div>
 
         <div className="relative h-full flex items-center">
-          <div className="container mx-auto px-6">
-            <div className="ml-[10%] max-w-xl">
+          <div className="w-full">
+            <div className="w-full max-w-[90%] ml-[10%] md:max-w-[40%] py-12 md:py-0">
               <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium mb-8 leading-[1.1] text-gray-800">
                 {t('hero.title')}
               </h1>
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <button className="btn-primary bg-blue-600 text-white hover:bg-blue-700">
+                <button className="w-full sm:w-auto px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
                   {t('hero.shopmen')}
                 </button>
-                <button className="btn-primary bg-blue-600 text-white hover:bg-blue-700">
+                <button className="w-full sm:w-auto px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
                   {t('hero.shopwomen')}
                 </button>
               </div>
