@@ -409,11 +409,11 @@ const Index: React.FC = () => {
         </div>
 
         <div className="luxury-container relative z-10">
-          <div className={`max-w-2xl text-white ${dir === 'rtl' ? 'mr-auto' : 'ml-auto'}`}>
+          <div className={`max-w-2xl text-black ${dir === 'rtl' ? 'mr-auto' : 'ml-auto'}`}>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium mb-6">
               {t('insurance.title')}
             </h2>
-            <p className="text-lg text-gray-200 mb-12 leading-relaxed">
+            <p className="text-lg text-gray-800 mb-12 leading-relaxed">
               {t('insurance.description')}
             </p>
             
@@ -439,10 +439,10 @@ const Index: React.FC = () => {
             </div>
             
             <div className={`flex flex-wrap gap-6 ${dir === 'rtl' ? 'justify-start' : 'justify-start'}`}>
-              <button className="px-8 py-3 bg-white text-black font-medium hover:bg-gray-100 transition-colors rounded-lg">
+              <button className="px-8 py-3 bg-black text-white font-medium hover:bg-gray-900 transition-colors rounded-lg">
                 {t('insurance.browse')}
               </button>
-              <button className="px-8 py-3 border-2 border-white text-white font-medium hover:bg-white/10 transition-colors rounded-lg">
+              <button className="px-8 py-3 border-2 border-black bg-black text-white font-medium hover:bg-gray-900 transition-colors rounded-lg">
                 {t('insurance.learn')}
               </button>
             </div>
