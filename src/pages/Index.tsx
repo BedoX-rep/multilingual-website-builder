@@ -134,11 +134,11 @@ const Index: React.FC = () => {
           <p className="text-center text-gray-600 mb-12">{t('frame.subtitle')}</p>
 
           <div className="grid grid-cols-3 md:grid-cols-6 gap-6">
-            {['Rectangle', 'Square', 'Round', 'Cat-Eye', 'Aviator', 'Browline'].map((shape) => (
+            {['Rectangle', 'Square', 'Round', 'Cat-eye', 'Aviator', 'Browline'].map((shape) => (
               <div key={shape} className="text-center group cursor-pointer">
                 <div className="mb-4 transform transition-transform group-hover:scale-110">
                   <img
-                    src={`/lovable-uploads/${shape.toLowerCase()}-frame.png`}
+                    src={`/lovable-uploads/frameshapes/frame_shape-${shape}.svg`}
                     alt={shape}
                     className="w-20 h-12 mx-auto object-contain"
                   />
