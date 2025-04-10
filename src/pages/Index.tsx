@@ -7,7 +7,7 @@ import { CheckCircle } from 'lucide-react';
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 
 // Hero section image
-const heroImage = "/lovable-uploads/herosectionbg2.jpg";
+const heroImage = "/lovable-uploads/herosectionbg4.png";
 
 // Process step icons
 const frameIcon = "/lovable-uploads/5c4c396f-836b-49e7-8833-be31c7cda22e.png";
