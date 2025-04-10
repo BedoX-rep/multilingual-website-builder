@@ -228,48 +228,45 @@ const Index: React.FC = () => {
       <section id="how-to-pick" className="py-24 bg-gray-50">
         <div className="luxury-container">
           <div className="text-center mb-16">
-            <p className="section-subtitle">
-              {t('pick.subtitle')}
-            </p>
-            <h2 className="section-title">
-              {t('pick.title')}
+            <h2 className="text-4xl font-bold mb-4">
+              CUSTOMIZING YOUR GLASSES HAS NEVER BEEN SO EASY
             </h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* Step 1 */}
             <div className="text-center group">
-              <div className="w-32 h-32 flex items-center justify-center bg-white rounded-full mx-auto mb-8 shadow-lg transition-transform duration-300 group-hover:scale-110">
-                <img src={frameIcon} alt="Eyeglass frames" className="w-20 h-20 object-contain" />
+              <div className="w-40 h-40 flex items-center justify-center bg-white rounded-full mx-auto mb-8 shadow-lg transition-transform duration-300 group-hover:scale-110">
+                <img src={frameIcon} alt="Eyeglass frames" className="w-24 h-24 object-contain" />
               </div>
-              <h3 className="font-serif text-xl mb-3">{t('pick.step1.title')}</h3>
+              <h3 className="font-serif text-xl font-bold mb-3">{t('pick.step1.title')}</h3>
               <p className="text-gray-600">{t('pick.step1.desc')}</p>
             </div>
 
             {/* Step 2 */}
             <div className="text-center group">
-              <div className="w-32 h-32 flex items-center justify-center bg-white rounded-full mx-auto mb-8 shadow-lg transition-transform duration-300 group-hover:scale-110">
-                <img src={lensIcon} alt="Eyeglass lenses" className="w-20 h-20 object-contain" />
+              <div className="w-40 h-40 flex items-center justify-center bg-white rounded-full mx-auto mb-8 shadow-lg transition-transform duration-300 group-hover:scale-110">
+                <img src={lensIcon} alt="Eyeglass lenses" className="w-24 h-24 object-contain" />
               </div>
-              <h3 className="font-serif text-xl mb-3">{t('pick.step2.title')}</h3>
+              <h3 className="font-serif text-xl font-bold mb-3">{t('pick.step2.title')}</h3>
               <p className="text-gray-600">{t('pick.step2.desc')}</p>
             </div>
 
             {/* Step 3 */}
             <div className="text-center group">
-              <div className="w-32 h-32 flex items-center justify-center bg-white rounded-full mx-auto mb-8 shadow-lg transition-transform duration-300 group-hover:scale-110">
-                <img src={prescriptionIcon} alt="Prescription" className="w-20 h-20 object-contain" />
+              <div className="w-40 h-40 flex items-center justify-center bg-white rounded-full mx-auto mb-8 shadow-lg transition-transform duration-300 group-hover:scale-110">
+                <img src={prescriptionIcon} alt="Prescription" className="w-24 h-24 object-contain" />
               </div>
-              <h3 className="font-serif text-xl mb-3">{t('pick.step3.title')}</h3>
+              <h3 className="font-serif text-xl font-bold mb-3">{t('pick.step3.title')}</h3>
               <p className="text-gray-600">{t('pick.step3.desc')}</p>
             </div>
 
             {/* Step 4 */}
             <div className="text-center group">
-              <div className="w-32 h-32 flex items-center justify-center bg-white rounded-full mx-auto mb-8 shadow-lg transition-transform duration-300 group-hover:scale-110">
-                <img src={deliveryIcon} alt="Delivery" className="w-20 h-20 object-contain" />
+              <div className="w-40 h-40 flex items-center justify-center bg-white rounded-full mx-auto mb-8 shadow-lg transition-transform duration-300 group-hover:scale-110">
+                <img src={deliveryIcon} alt="Delivery" className="w-24 h-24 object-contain" />
               </div>
-              <h3 className="font-serif text-xl mb-3">{t('pick.step4.title')}</h3>
+              <h3 className="font-serif text-xl font-bold mb-3">{t('pick.step4.title')}</h3>
               <p className="text-gray-600">{t('pick.step4.desc')}</p>
             </div>
           </div>
