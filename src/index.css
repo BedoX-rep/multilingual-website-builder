@@ -82,7 +82,7 @@ html {
 }
 
 .luxury-container {
-  @apply container mx-auto px-6 md:px-8;
+  @apply container mx-auto px-6 md:px-8 ml-[10%] md:ml-[10%] max-w-[90%];
 }
 
 .nav-link {

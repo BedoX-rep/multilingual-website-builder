@@ -72,38 +72,39 @@ const Index: React.FC = () => {
     <div className={dir === 'rtl' ? 'font-sans rtl' : 'font-sans'}>
       <Header />
 
-      {/* Hero Section - Adjusted with ml-[5%] for left/right margin and proper RTL support */}
-      <section className="relative h-[80vh]">
+      {/* Hero Section - Responsive design with consistent margins */}
+      <section className="relative min-h-[60vh] md:h-[80vh] w-full">
         <div className="absolute inset-0">
           <img 
             src={heroImage} 
             alt="Person wearing glasses" 
-            className="w-full h-full object-cover object-top"
+            className="w-full h-full object-cover object-center md:object-top"
           />
+          <div className="absolute inset-0 bg-black/10 md:bg-transparent"></div>
         </div>
 
-        <div className="luxury-container relative h-[80vh] flex items-center">
-          <div className="grid md:grid-cols-2 gap-12 items-center w-full">
-            <div className={`text-gray-800 z-10 ${dir === 'rtl' ? 'mr-[5%] md:mr-[7%]' : 'ml-[5%] md:ml-[7%]'}`}>
-              <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-medium mb-8 leading-[1.1] text-gray-800">
+        <div className="luxury-container relative min-h-[60vh] md:h-[80vh] flex items-center">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center w-full">
+            <div className="text-gray-800 z-10 py-12 md:py-0">
+              <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium mb-6 md:mb-8 leading-[1.1] text-gray-800">
                 {t('hero.title')}
               </h1>
-              <div className="flex flex-wrap gap-6 mb-8">
-                <button className="btn-primary bg-blue-600 text-white hover:bg-blue-700">
+              <div className="flex flex-wrap gap-4 md:gap-6 mb-6 md:mb-8">
+                <button className="w-full sm:w-auto btn-primary bg-blue-600 text-white hover:bg-blue-700">
                   {t('hero.shopmen')}
                 </button>
-                <button className="btn-primary bg-blue-600 text-white hover:bg-blue-700">
+                <button className="w-full sm:w-auto btn-primary bg-blue-600 text-white hover:bg-blue-700">
                   {t('hero.shopwomen')}
                 </button>
               </div>
               <a 
                 href="#how-to-pick" 
-                className="text-blue-600 hover:text-blue-700 font-medium transition-colors"
+                className="inline-block text-blue-600 hover:text-blue-700 font-medium transition-colors"
               >
                 {t('hero.learnmore')}
               </a>
             </div>
-            <div className="hidden md:block"> </div>
+            <div className="hidden md:block"></div>
           </div>
         </div>
       </section>
