@@ -109,28 +109,18 @@ const Index: React.FC = () => {
 
       {/* Shipping Info Banner */}
       <section className="bg-blue-50">
-        <div className="luxury-container">
-          <div className="grid grid-cols-4">
-            <div className="py-8 text-center transform hover:scale-105 transition-transform">
-              <div className="bg-blue-100 rounded-lg p-6 mx-2 h-full shadow-sm">
-                <p className="text-base font-medium text-blue-800">Free shipping</p>
-              </div>
-            </div>
-            <div className="py-8 text-center transform hover:scale-105 transition-transform">
-              <div className="bg-blue-100 rounded-lg p-6 mx-2 h-full shadow-sm">
-                <p className="text-base font-medium text-blue-800">Free 30-day returns</p>
-              </div>
-            </div>
-            <div className="py-8 text-center transform hover:scale-105 transition-transform">
-              <div className="bg-blue-100 rounded-lg p-6 mx-2 h-full shadow-sm">
-                <p className="text-base font-medium text-blue-800">Free eye tests</p>
-              </div>
-            </div>
-            <div className="py-8 text-center transform hover:scale-105 transition-transform">
-              <div className="bg-blue-100 rounded-lg p-6 mx-2 h-full shadow-sm">
-                <p className="text-base font-medium text-blue-800">We also offer contacts!</p>
-              </div>
-            </div>
+        <div className="flex justify-between items-center py-2 px-4">
+          <div className="text-center flex-1">
+            <p className="text-sm font-medium text-blue-800">270+ retail locations</p>
+          </div>
+          <div className="text-center flex-1">
+            <p className="text-sm font-medium text-blue-800">Free shipping</p>
+          </div>
+          <div className="text-center flex-1">
+            <p className="text-sm font-medium text-blue-800">Free 30-day returns</p>
+          </div>
+          <div className="text-center flex-1">
+            <p className="text-sm font-medium text-blue-800">We also offer contacts!</p>
           </div>
         </div>
       </section>
