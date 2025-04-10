@@ -82,7 +82,7 @@ const Index: React.FC = () => {
           </div>
 
         <div className="luxury-container relative h-[80vh] flex items-center">
-          <div className="grid md:grid-cols-2 gap-12 items-center pl-24">
+          <div className="grid md:grid-cols-2 gap-12 items-center" style={{ paddingLeft: '10%' }}>
             <div className="text-gray-800 z-10">
               <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-medium mb-8 leading-[1.1] text-gray-800">
                 {t('hero.title')}
