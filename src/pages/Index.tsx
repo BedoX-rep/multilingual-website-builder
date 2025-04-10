@@ -79,11 +79,11 @@ const Index: React.FC = () => {
             alt="Person wearing glasses" 
             className="w-full h-full object-cover object-top"
           />
-        </div>
+          </div>
 
         <div className="luxury-container relative h-[80vh] flex items-center">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="text-gray-800 z-10 text-left">
+          <div className="grid md:grid-cols-2 gap-12 items-center pl-12">
+            <div className="text-gray-800 z-10">
               <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-medium mb-8 leading-[1.1] text-gray-800">
                 {t('hero.title')}
               </h1>
