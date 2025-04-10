@@ -81,18 +81,31 @@ html {
   @apply font-sans text-xs tracking-[0.2em] uppercase mb-4 text-blue-600;
 }
 
+/* Base container styles */
 .luxury-container {
-  @apply w-[90%] ml-[10%] px-0 relative;
+  @apply w-[90%] mx-auto relative box-border;
+  margin-left: 10%;
 }
 
-/* Add consistent section padding */
-section > div:not(.luxury-container) {
-  @apply ml-[10%] w-[90%];
+/* Section base styles */
+section {
+  @apply w-full relative;
 }
 
-/* Override full-width sections that need it */
+/* Content container */
+.content-wrapper {
+  @apply w-[90%] relative box-border;
+  margin-left: 10%;
+}
+
+/* Full width override */
 .full-width {
-  @apply w-full ml-0 !important;
+  @apply w-full m-0 !important;
+}
+
+/* Full width container */
+.full-width-container {
+  @apply w-full m-0 p-0;
 }
 
 .nav-link {

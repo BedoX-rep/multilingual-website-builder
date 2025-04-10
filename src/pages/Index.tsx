@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import Header from '../components/Header';
@@ -74,16 +73,16 @@ const Index: React.FC = () => {
 
       {/* Hero Section - Properly aligned with 10% margin */}
       <section className="relative min-h-[100vh] md:h-[80vh] w-full">
-        <div className="absolute inset-0 full-width">
+        <div className="absolute inset-0 full-width-container">
           <img 
             src={heroImage} 
             alt="Person wearing glasses" 
-            className="w-full h-full object-cover md:object-right-top"
+            className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/5"></div>
         </div>
 
-        <div className="luxury-container h-full flex items-center">
+        <div className="content-wrapper h-full flex items-center">
           <div className="w-full">
             <div className="w-full md:max-w-[40%] py-12 md:py-0">
               <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium mb-8 leading-[1.1] text-gray-800">
@@ -165,7 +164,7 @@ const Index: React.FC = () => {
             <h2 className="text-4xl font-bold">BEST SELLERS ACROSS MOROCCO</h2>
             <a href="/products" className="text-sm font-medium hover:underline">Shop all</a>
           </div>
-          
+
           <div className="flex flex-wrap gap-4 mb-8 text-sm">
             <button className="hover:underline">Eyeglasses</button>
             <button className="hover:underline">Sunglasses</button>
@@ -337,7 +336,7 @@ const Index: React.FC = () => {
             <p className="text-lg text-gray-800 mb-12 leading-relaxed">
               {t('insurance.description')}
             </p>
-            
+
             {/* Insurance Logos */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
               {[
@@ -358,7 +357,7 @@ const Index: React.FC = () => {
                 </div>
               ))}
             </div>
-            
+
             <div className={`flex flex-wrap gap-6 ${dir === 'rtl' ? 'justify-start' : 'justify-start'}`}>
               <button className="px-8 py-3 bg-black text-white font-medium hover:bg-gray-900 transition-colors rounded-lg">
                 {t('insurance.browse')}
