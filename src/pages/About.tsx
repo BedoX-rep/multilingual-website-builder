@@ -12,8 +12,8 @@ const About: React.FC = () => {
       <Header />
       <main className="flex-grow">
         <div className="container mx-auto px-4 py-16">
-          <h1 className="text-4xl font-bold mb-8">About Us</h1>
-          <p className="mb-4">Content will go here...</p>
+          <h1 className="text-4xl font-bold mb-8">{t('about.title')}</h1>
+          <p className="mb-4">{t('about.content')}</p>
         </div>
       </main>
       <Footer />

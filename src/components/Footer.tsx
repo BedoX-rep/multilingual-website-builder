@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
         {/* Newsletter Section */}
         <div className="max-w-3xl mx-auto mb-16 text-center">
           <h3 className="text-2xl font-medium mb-2">{t('newsletter.title')}</h3>
-          <p className="text-gray-400 mb-6">Stay updated with our latest products, promotions and eyecare tips.</p>
+          <p className="text-gray-400 mb-6">{t('newsletter.description')}</p>
           <form className="flex flex-col sm:flex-row w-full gap-4">
             <input 
               type="email"
@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
               Lens Optique
             </Link>
             <p className="text-gray-400 mb-6 text-sm leading-relaxed">
-              Premium eyewear for the modern lifestyle. Designed for comfort, style, and functionality with cutting-edge lens technology.
+              {t('footer.description')}
             </p>
             <div className="flex space-x-6">
               <a href="#" className="text-gray-400 hover:text-blue-500 transition-colors">

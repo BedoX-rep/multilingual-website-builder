@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Link } from 'react-router-dom';
-import { Menu, X, ShoppingCart, Search, User } from 'lucide-react';
+import { Menu, X, ShoppingCart, Search, User, Globe } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const Header: React.FC = () => {
@@ -23,6 +23,10 @@ const Header: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const toggleLanguage = () => {
+    changeLanguage(language === 'en' ? 'fr' : 'en');
+  };
 
   return (
     <header 
@@ -73,6 +77,16 @@ const Header: React.FC = () => {
 
           {/* Right Icons */}
           <div className="flex items-center space-x-6">
+            <button 
+              className={cn(
+                "hidden md:flex items-center transition-colors gap-1",
+                isScrolled ? "text-gray-800 hover:text-blue-600" : "text-gray-800 hover:text-blue-600"
+              )}
+              onClick={toggleLanguage}
+            >
+              <Globe className="w-4 h-4" />
+              <span className="text-sm font-medium">{language.toUpperCase()}</span>
+            </button>
             <button className={cn(
               "hidden md:block transition-colors",
               isScrolled ? "text-gray-800 hover:text-blue-600" : "text-gray-800 hover:text-blue-600"
@@ -135,6 +149,13 @@ const Header: React.FC = () => {
                 <Link to="/contact" className="block text-2xl font-serif" onClick={toggleMobileMenu}>
                   {t('nav.contact')}
                 </Link>
+                <button 
+                  className="flex items-center gap-2 text-2xl font-serif"
+                  onClick={toggleLanguage}
+                >
+                  <Globe className="w-5 h-5" />
+                  {language === 'en' ? 'Français' : 'English'}
+                </button>
               </div>
             </nav>
           </div>

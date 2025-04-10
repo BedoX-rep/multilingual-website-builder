@@ -73,25 +73,25 @@ const Products: React.FC = () => {
               className={`px-4 py-2 rounded-md ${!category ? 'bg-blue-600 text-white' : 'bg-gray-100 hover:bg-gray-200'} transition-colors`}
               onClick={() => setCategory(null)}
             >
-              All
+              {t('products.all')}
             </button>
             <button 
               className={`px-4 py-2 rounded-md ${category === 'eyeglasses' ? 'bg-blue-600 text-white' : 'bg-gray-100 hover:bg-gray-200'} transition-colors`}
               onClick={() => setCategory('eyeglasses')}
             >
-              Eyeglasses
+              {t('products.eyeglasses')}
             </button>
             <button 
               className={`px-4 py-2 rounded-md ${category === 'sunglasses' ? 'bg-blue-600 text-white' : 'bg-gray-100 hover:bg-gray-200'} transition-colors`}
               onClick={() => setCategory('sunglasses')}
             >
-              Sunglasses
+              {t('products.sunglasses')}
             </button>
             <button 
               className={`px-4 py-2 rounded-md ${category === 'bluelight' ? 'bg-blue-600 text-white' : 'bg-gray-100 hover:bg-gray-200'} transition-colors`}
               onClick={() => setCategory('bluelight')}
             >
-              Blue Light
+              {t('products.bluelight')}
             </button>
           </div>
           
@@ -99,9 +99,11 @@ const Products: React.FC = () => {
             {filteredProducts.map((product) => (
               <ProductCard 
                 key={product.id}
+                id={product.id}
                 name={product.name}
                 price={product.price}
                 image={product.image}
+                category={product.category}
               />
             ))}
           </div>
