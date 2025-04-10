@@ -1,26 +1,30 @@
 
-import { Link } from 'react-router-dom';
+import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-const NotFound = () => {
-  const { t } = useLanguage();
+const NotFound: React.FC = () => {
+  const { dir } = useLanguage();
   
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className={dir === 'rtl' ? 'font-sans rtl' : 'font-sans'}>
       <Header />
-      <main className="flex-grow flex items-center justify-center">
-        <div className="max-w-md w-full text-center p-8">
-          <h1 className="text-9xl font-bold text-gray-200">404</h1>
-          <h2 className="text-2xl font-semibold mt-4">Page Not Found</h2>
-          <p className="text-gray-500 mt-2 mb-8">Sorry, we couldn't find the page you're looking for.</p>
-          <Button asChild>
-            <Link to="/">Go Back Home</Link>
-          </Button>
+      
+      <section className="min-h-[60vh] flex items-center">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="font-serif text-6xl md:text-8xl font-bold mb-6 text-gray-900">404</h1>
+          <h2 className="text-xl md:text-2xl mb-8 text-gray-600">Page Not Found</h2>
+          <p className="mb-8 text-gray-600 max-w-md mx-auto">
+            The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+          </p>
+          <Link to="/" className="btn-primary">
+            Return to Homepage
+          </Link>
         </div>
-      </main>
+      </section>
+      
       <Footer />
     </div>
   );
