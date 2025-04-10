@@ -468,19 +468,18 @@ const Index: React.FC = () => {
                 align: "start",
                 loop: true,
                 dragFree: true,
+                autoPlay: true,
+                interval: 2000,
               }}
               className="w-full"
             >
               <CarouselContent>
                 {[
-                  { name: 'Essilor', logo: '/lovable-uploads/essilor.png' },
-                  { name: 'Indo', logo: '/lovable-uploads/indo.png' },
-                  { name: 'Zeiss', logo: '/lovable-uploads/zeiss.png' },
-                  { name: 'Hoya', logo: '/lovable-uploads/hoya.png' },
-                  { name: 'Rodenstock', logo: '/lovable-uploads/rodenstock.png' },
-                  { name: 'Shamir', logo: '/lovable-uploads/shamir.png' },
-                  { name: 'Seiko', logo: '/lovable-uploads/seiko.png' },
-                  { name: 'Nikon', logo: '/lovable-uploads/nikon.png' }
+                  { name: 'Essilor', logo: '/lovable-uploads/glassbrands/essilor.png' },
+                  { name: 'Indo', logo: '/lovable-uploads/glassbrands/indo.png' },
+                  { name: 'Zeiss', logo: '/lovable-uploads/glassbrands/zeiss.png' },
+                  { name: 'Hoya', logo: '/lovable-uploads/glassbrands/hoya.png' },
+                  { name: 'Ray-Ban', logo: '/lovable-uploads/glassbrands/ray-ban.png' }
                 ].map((brand, index) => (
                   <CarouselItem key={index} className="basis-1/2 md:basis-1/3 lg:basis-1/4">
                     <div className="h-32 p-6 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
