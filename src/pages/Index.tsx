@@ -72,7 +72,7 @@ const Index: React.FC = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative h-[75vh]">
+      <section className="relative h-[85vh]">
         <div className="absolute inset-0">
           <img 
             src={heroImage} 
@@ -81,7 +81,7 @@ const Index: React.FC = () => {
           />
           </div>
 
-        <div className="luxury-container relative h-[75vh] flex items-center">
+        <div className="luxury-container relative h-[85vh] flex items-center">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="text-gray-800 z-10">
               <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-medium mb-8 leading-[1.1] text-gray-800">
