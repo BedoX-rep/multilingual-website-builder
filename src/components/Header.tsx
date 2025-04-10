@@ -2,11 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Link } from 'react-router-dom';
-import { Menu, X, ShoppingCart, Search, User, Globe, ChevronDown } from 'lucide-react';
+import { Menu, X, ShoppingCart, Search, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const Header: React.FC = () => {
-  const { t, language, setLanguage } = useLanguage();
+  const { t, language, changeLanguage } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
@@ -73,34 +73,6 @@ const Header: React.FC = () => {
 
           {/* Right Icons */}
           <div className="flex items-center space-x-6">
-            {/* Language Selector */}
-            <div className="relative group hidden md:flex items-center">
-              <button className={cn(
-                "flex items-center text-sm uppercase tracking-wider font-medium",
-                isScrolled ? "text-gray-800" : "text-gray-800"
-              )}>
-                <Globe className="w-4 h-4 mr-1" />
-                <span>{language.toUpperCase()}</span>
-                <ChevronDown className="ml-1 w-3 h-3" />
-              </button>
-              <div className="absolute z-10 right-0 mt-2 w-40 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform group-hover:translate-y-0 translate-y-1">
-                <div className="py-2">
-                  <button 
-                    className={`block w-full px-4 py-2 text-sm text-left uppercase tracking-wider hover:bg-gray-50 ${language === 'en' ? 'text-blue-600 font-medium' : 'text-gray-600'}`} 
-                    onClick={() => setLanguage('en')}
-                  >
-                    English
-                  </button>
-                  <button 
-                    className={`block w-full px-4 py-2 text-sm text-left uppercase tracking-wider hover:bg-gray-50 ${language === 'fr' ? 'text-blue-600 font-medium' : 'text-gray-600'}`}
-                    onClick={() => setLanguage('fr')}
-                  >
-                    Français
-                  </button>
-                </div>
-              </div>
-            </div>
-            
             <button className={cn(
               "hidden md:block transition-colors",
               isScrolled ? "text-gray-800 hover:text-blue-600" : "text-gray-800 hover:text-blue-600"
@@ -165,22 +137,6 @@ const Header: React.FC = () => {
                 </Link>
               </div>
             </nav>
-            <div className="p-6 border-t">
-              <div className="flex justify-around items-center">
-                <button 
-                  className={`text-sm uppercase tracking-wider ${language === 'en' ? 'text-blue-600 font-bold' : ''}`} 
-                  onClick={() => setLanguage('en')}
-                >
-                  English
-                </button>
-                <button 
-                  className={`text-sm uppercase tracking-wider ${language === 'fr' ? 'text-blue-600 font-bold' : ''}`} 
-                  onClick={() => setLanguage('fr')}
-                >
-                  Français
-                </button>
-              </div>
-            </div>
           </div>
         </div>
       </div>
