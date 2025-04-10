@@ -418,16 +418,20 @@ const Index: React.FC = () => {
             </p>
             
             {/* Insurance Logos */}
-            <div className="grid grid-cols-3 gap-6 mb-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
               {[
-                '/lovable-uploads/assurancebrandsmaghreb/allianz-logo.png',
-                '/lovable-uploads/assurancebrandsmaghreb/images.png',
-                '/lovable-uploads/assurancebrandsmaghreb/images (1).png',
-              ].map((logo, index) => (
-                <div key={index} className="bg-white/10 backdrop-blur-sm p-6 rounded-xl">
+                { src: '/lovable-uploads/assurancebrandsmaghreb/allianz-logo.png', name: 'Allianz' },
+                { src: '/lovable-uploads/assurancebrandsmaghreb/images.png', name: 'MutuelSante' },
+                { src: '/lovable-uploads/assurancebrandsmaghreb/images (1).png', name: 'CNSS' },
+                { src: '/lovable-uploads/assurancebrandsmaghreb/download.jpg', name: 'RMA' },
+              ].map((insurance, index) => (
+                <div 
+                  key={index} 
+                  className="bg-white/10 backdrop-blur-sm p-4 rounded-xl hover:bg-white/20 transition-all duration-300"
+                >
                   <img 
-                    src={logo} 
-                    alt="Insurance Provider" 
+                    src={insurance.src} 
+                    alt={insurance.name}
                     className="w-full h-12 object-contain brightness-0 invert hover:brightness-100 hover:invert-0 transition-all duration-300"
                   />
                 </div>

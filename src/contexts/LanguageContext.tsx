@@ -243,6 +243,27 @@ const translations: Translations = {
     ar: 'شركاء علامتنا التجارية',
   },
 
+  // Insurance Section
+  'insurance.title': {
+    en: 'Use Your Vision Benefits On The Perfect Pair',
+    fr: 'Utilisez Vos Avantages Vision Pour La Paire Parfaite',
+    ar: 'استخدم مزايا الرؤية الخاصة بك للحصول على الزوج المثالي',
+  },
+  'insurance.description': {
+    en: 'We accept most insurance plans to help you save on your eyewear purchase. Our experienced team will help you maximize your benefits.',
+    fr: 'Nous acceptons la plupart des plans d\'assurance pour vous aider à économiser sur vos lunettes. Notre équipe expérimentée vous aidera à maximiser vos avantages.',
+    ar: 'نقبل معظم خطط التأمين لمساعدتك في توفير المال عند شراء نظاراتك. سيساعدك فريقنا ذو الخبرة في تحقيق أقصى استفادة من مزاياك.',
+  },
+  'insurance.browse': {
+    en: 'Browse Glasses',
+    fr: 'Parcourir Les Lunettes',
+    ar: 'تصفح النظارات',
+  },
+  'insurance.learn': {
+    en: 'Learn More',
+    fr: 'En Savoir Plus',
+    ar: 'اعرف المزيد',
+  },
   // Frame Shapes
   'frame.title': {
     en: 'SHOP BY FRAME SHAPE',
