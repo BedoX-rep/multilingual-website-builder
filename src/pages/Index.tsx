@@ -405,7 +405,7 @@ const Index: React.FC = () => {
             alt="Insurance Benefits" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
         </div>
 
         <div className="luxury-container relative z-10">
