@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Link } from 'react-router-dom';
@@ -25,8 +26,8 @@ const Header: React.FC = () => {
     <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-sm py-4' : 'bg-white py-6'}`}>
       <div className="luxury-container">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="font-serif text-2xl font-medium pl-12">
+          {/* Logo - adjusted with ml-[5%] for left margin */}
+          <Link to="/" className="font-serif text-2xl font-medium ml-[5%] md:ml-[5%]">
             Luxe Optique
           </Link>
 

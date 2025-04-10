@@ -196,6 +196,11 @@ const translations: Translations = {
     fr: 'Sports',
     ar: 'رياضة',
   },
+  'collection.viewmore': {
+    en: 'View More',
+    fr: 'Voir Plus',
+    ar: 'عرض المزيد',
+  },
   
   // Products
   'product.from': {
@@ -270,6 +275,48 @@ const translations: Translations = {
     en: 'Designer Glasses',
     fr: 'Lunettes de Designer',
     ar: 'نظارات المصممين',
+  },
+  'bestsellers.delivery': {
+    en: 'Get it as early as Tue, Apr 15',
+    fr: 'Recevez-le dès le mar. 15 avr.',
+    ar: 'احصل عليه في أقرب وقت الثلاثاء، 15 أبريل',
+  },
+  
+  // Style Section
+  'style.title': {
+    en: 'Pick a style, any style:',
+    fr: 'Choisissez un style, n\'importe quel style:',
+    ar: 'اختر أسلوبًا، أي أسلوب:',
+  },
+  'style.classic': {
+    en: 'Classic',
+    fr: 'Classique',
+    ar: 'كلاسيكي',
+  },
+  'style.ecofriendly': {
+    en: 'Eco Friendly',
+    fr: 'Écologique',
+    ar: 'صديق للبيئة',
+  },
+  'style.artsy': {
+    en: 'Artsy',
+    fr: 'Artistique',
+    ar: 'فني',
+  },
+  'style.retro': {
+    en: 'Retro',
+    fr: 'Rétro',
+    ar: 'عتيق',
+  },
+  'style.streetstyle': {
+    en: 'Street Style',
+    fr: 'Style de Rue',
+    ar: 'أسلوب الشارع',
+  },
+  'style.bold': {
+    en: 'Bold',
+    fr: 'Audacieux',
+    ar: 'جريء',
   },
   
   // Hero Section New
@@ -388,6 +435,28 @@ const translations: Translations = {
     en: '© 2025 Luxe Optique. All rights reserved.',
     fr: '© 2025 Luxe Optique. Tous droits réservés.',
     ar: '© 2025 لوكس أوبتيك. جميع الحقوق محفوظة.',
+  },
+  
+  // Shipping Info Banner
+  'shipping.delivery': {
+    en: 'Delivery within all of Morocco',
+    fr: 'Livraison partout au Maroc',
+    ar: 'التوصيل في جميع أنحاء المغرب',
+  },
+  'shipping.free': {
+    en: 'Free shipping',
+    fr: 'Livraison gratuite',
+    ar: 'شحن مجاني',
+  },
+  'shipping.returns': {
+    en: 'Free 30-day returns',
+    fr: 'Retours gratuits sous 30 jours',
+    ar: 'إرجاع مجاني خلال 30 يومًا',
+  },
+  'shipping.contacts': {
+    en: 'We also offer contacts!',
+    fr: 'Nous proposons aussi des lentilles!',
+    ar: 'نقدم أيضًا العدسات اللاصقة!',
   },
 };
 

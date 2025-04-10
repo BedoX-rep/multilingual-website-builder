@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import Header from '../components/Header';
@@ -71,7 +72,7 @@ const Index: React.FC = () => {
     <div className={dir === 'rtl' ? 'font-sans rtl' : 'font-sans'}>
       <Header />
 
-      {/* Hero Section */}
+      {/* Hero Section - Adjusted with ml-[5%] for left/right margin and proper RTL support */}
       <section className="relative h-[80vh]">
         <div className="absolute inset-0">
           <img 
@@ -79,11 +80,11 @@ const Index: React.FC = () => {
             alt="Person wearing glasses" 
             className="w-full h-full object-cover object-top"
           />
-          </div>
+        </div>
 
         <div className="luxury-container relative h-[80vh] flex items-center">
-          <div className="grid md:grid-cols-2 gap-12 items-center pl-12">
-            <div className="text-gray-800 z-10">
+          <div className="grid md:grid-cols-2 gap-12 items-center w-full">
+            <div className={`text-gray-800 z-10 ${dir === 'rtl' ? 'mr-[5%] md:mr-[7%]' : 'ml-[5%] md:ml-[7%]'}`}>
               <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-medium mb-8 leading-[1.1] text-gray-800">
                 {t('hero.title')}
               </h1>
@@ -111,16 +112,16 @@ const Index: React.FC = () => {
       <section className="bg-blue-50">
         <div className="flex justify-between items-center py-4 px-6">
           <div className="text-center flex-1">
-            <p className="text-base font-medium text-blue-800">Delivery within all of Morocco</p>
+            <p className="text-base font-medium text-blue-800">{t('shipping.delivery')}</p>
           </div>
           <div className="text-center flex-1">
-            <p className="text-base font-medium text-blue-800">Free shipping</p>
+            <p className="text-base font-medium text-blue-800">{t('shipping.free')}</p>
           </div>
           <div className="text-center flex-1">
-            <p className="text-base font-medium text-blue-800">Free 30-day returns</p>
+            <p className="text-base font-medium text-blue-800">{t('shipping.returns')}</p>
           </div>
           <div className="text-center flex-1">
-            <p className="text-base font-medium text-blue-800">We also offer contacts!</p>
+            <p className="text-base font-medium text-blue-800">{t('shipping.contacts')}</p>
           </div>
         </div>
       </section>
@@ -187,7 +188,7 @@ const Index: React.FC = () => {
                     <span className="text-sm ml-1">4.8 (2972)</span>
                   </div>
                 </div>
-                <p className="text-sm text-gray-600 mb-4">Get it as early as Tue, Apr 15</p>
+                <p className="text-sm text-gray-600 mb-4">{t('bestsellers.delivery')}</p>
                 <div className="flex gap-2">
                   {['red', 'black', 'blue', 'gray'].map((color) => (
                     <button
@@ -205,7 +206,7 @@ const Index: React.FC = () => {
       {/* Style Selection Section */}
       <section className="py-16 bg-white">
         <div className="luxury-container">
-          <h2 className="text-3xl font-bold text-center mb-12">Pick a style, any style:</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">{t('style.title')}</h2>
           <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
             {['Classic', 'Eco Friendly', 'Artsy', 'Retro', 'Street Style', 'Bold'].map((style) => (
               <div key={style} className="text-center group cursor-pointer">
@@ -216,7 +217,7 @@ const Index: React.FC = () => {
                     className="w-full h-24 object-contain"
                   />
                 </div>
-                <p className="text-sm font-medium">{style}</p>
+                <p className="text-sm font-medium">{t(`style.${style.toLowerCase().replace(' ', '')}`)}</p>
               </div>
             ))}
           </div>
@@ -285,7 +286,7 @@ const Index: React.FC = () => {
       <section className="py-24 bg-white overflow-hidden">
         <div className="luxury-container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div className={`${dir === 'rtl' ? 'order-2' : 'order-1'} max-w-xl`}>
+            <div className={`${dir === 'rtl' ? 'order-2' : 'order-1'} max-w-xl ${dir === 'rtl' ? 'mr-[5%]' : 'ml-[5%]'}`}>
               <p className="section-subtitle">
                 {t('custom.subtitle')}
               </p>
@@ -389,7 +390,7 @@ const Index: React.FC = () => {
           {/* View More Button */}
           <div className="text-center mt-16">
             <button className="btn-outline">
-              View More
+              {t('collection.viewmore')}
             </button>
           </div>
         </div>
