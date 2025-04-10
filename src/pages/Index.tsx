@@ -108,7 +108,7 @@ const Index: React.FC = () => {
       </section>
 
       {/* Shipping Info Banner */}
-      <section className="bg-gradient-to-r from-blue-50 to-purple-50">
+      <section className="bg-blue-50">
         <div className="luxury-container">
           <div className="grid grid-cols-4">
             <div className="py-8 text-center transform hover:scale-105 transition-transform">
@@ -117,18 +117,18 @@ const Index: React.FC = () => {
               </div>
             </div>
             <div className="py-8 text-center transform hover:scale-105 transition-transform">
-              <div className="bg-purple-100 rounded-lg p-6 mx-2 h-full shadow-sm">
-                <p className="text-base font-medium text-purple-800">Free 30-day returns</p>
+              <div className="bg-blue-100 rounded-lg p-6 mx-2 h-full shadow-sm">
+                <p className="text-base font-medium text-blue-800">Free 30-day returns</p>
               </div>
             </div>
             <div className="py-8 text-center transform hover:scale-105 transition-transform">
-              <div className="bg-pink-100 rounded-lg p-6 mx-2 h-full shadow-sm">
-                <p className="text-base font-medium text-pink-800">Free eye tests</p>
+              <div className="bg-blue-100 rounded-lg p-6 mx-2 h-full shadow-sm">
+                <p className="text-base font-medium text-blue-800">Free eye tests</p>
               </div>
             </div>
             <div className="py-8 text-center transform hover:scale-105 transition-transform">
-              <div className="bg-indigo-100 rounded-lg p-6 mx-2 h-full shadow-sm">
-                <p className="text-base font-medium text-indigo-800">We also offer contacts!</p>
+              <div className="bg-blue-100 rounded-lg p-6 mx-2 h-full shadow-sm">
+                <p className="text-base font-medium text-blue-800">We also offer contacts!</p>
               </div>
             </div>
           </div>
