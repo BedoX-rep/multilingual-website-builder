@@ -72,16 +72,16 @@ const Index: React.FC = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative h-[85vh]">
+      <section className="relative h-[75vh]">
         <div className="absolute inset-0">
           <img 
             src={heroImage} 
             alt="Person wearing glasses" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-top"
           />
           </div>
 
-        <div className="luxury-container relative h-[85vh] flex items-center">
+        <div className="luxury-container relative h-[75vh] flex items-center">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="text-gray-800 z-10">
               <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-medium mb-8 leading-[1.1] text-gray-800">
@@ -111,17 +111,17 @@ const Index: React.FC = () => {
       <section className="bg-white border-y border-gray-200">
         <div className="luxury-container">
           <div className="grid grid-cols-4 divide-x divide-gray-200">
-            <div className="py-4 text-center">
-              <p className="text-sm font-medium">Free shipping</p>
+            <div className="py-6 text-center">
+              <p className="text-base font-medium">Free shipping</p>
             </div>
-            <div className="py-4 text-center">
-              <p className="text-sm font-medium">Free 30-day returns</p>
+            <div className="py-6 text-center">
+              <p className="text-base font-medium">Free 30-day returns</p>
             </div>
-            <div className="py-4 text-center">
-              <p className="text-sm font-medium">Free eye tests</p>
+            <div className="py-6 text-center">
+              <p className="text-base font-medium">Free eye tests</p>
             </div>
-            <div className="py-4 text-center">
-              <p className="text-sm font-medium">We also offer contacts!</p>
+            <div className="py-6 text-center">
+              <p className="text-base font-medium">We also offer contacts!</p>
             </div>
           </div>
         </div>
