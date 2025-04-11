@@ -192,73 +192,73 @@ const Index: React.FC = () => {
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           {/* Desktop Version */}
-          <div className="hidden md:grid grid-cols-4 gap-4">
-            {[
-              {
-                title: "CHASE STOKES",
-                subtitle: "DYNAMIC VIEWS",
-                description: "Renew your style with bold looks.",
-                cta: "Shop collection",
-                image: "/lovable-uploads/collectionsectiondesktop/250318_chase_hp_small_2_card_carousel-xl.png",
-                bgColor: "bg-sky-100",
-                ctaStyle: "bg-black"
-              },
-              {
-                title: "BLOKZ",
-                subtitle: "BLUE LIGHT GLASSES",
-                description: "Filter blue-light, anytime, anywhere.",
-                cta: "Shop now",
-                image: "/lovable-uploads/collectionsectiondesktop/250318_blokz_hp_small_2_card_carousel-xl.png",
-                bgColor: "bg-orange-100",
-                ctaStyle: "bg-black"
-              },
-              {
-                title: "SAM CASSELL",
-                subtitle: "SIGNATURE SERIES",
-                description: "Classic style meets modern design.",
-                cta: "Shop collection",
-                image: "/lovable-uploads/collectionsectiondesktop/032525_Sam_Cassell_HP_small_card-xl.png",
-                bgColor: "bg-yellow-100",
-                ctaStyle: "bg-black"
-              },
-              {
-                title: "UNDER 30",
-                subtitle: "AFFORDABLE STYLE",
-                description: "Trendy frames at amazing prices.",
-                cta: "Shop now",
-                image: "/lovable-uploads/collectionsectiondesktop/250327_under_30_hp_small_2_card_carousel-xl.png",
-                bgColor: "bg-green-100",
-                ctaStyle: "bg-black"
-              }
-            ].map((collection, index) => (
-              <div 
-                key={index}
-                className={`${collection.bgColor} rounded-2xl overflow-hidden relative group cursor-pointer h-[460px]`}
-              >
-                <div className="p-6 h-full flex flex-col">
-                  <div className="mb-auto">
-                    <h3 className="text-sm font-bold text-black mb-1">{collection.title}</h3>
-                    <h2 className="text-[28px] leading-tight font-bold text-black mb-2">{collection.subtitle}</h2>
-                    <p className="text-sm text-gray-700">{collection.description}</p>
-                  </div>
-                  <div className="relative z-10">
-                    <button className={`${collection.ctaStyle} text-white text-sm px-4 py-2 rounded-full mt-4 inline-block hover:opacity-90 transition-opacity`}>
-                      {collection.cta}
-                    </button>
-                  </div>
-                  <div className="absolute bottom-0 right-0 w-full">
-                    <img 
-                      src={collection.image} 
-                      alt={collection.title}
-                      className="w-full h-[300px] object-cover object-center transform group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute bottom-4 right-4 bg-black text-white text-xs px-3 py-1 rounded-full">
-                      Frames
+          <div className="hidden md:block">
+            <Carousel className="w-full">
+              <CarouselContent className="-ml-4">
+                {[
+                  {
+                    title: "CHASE STOKES",
+                    subtitle: "DYNAMIC VIEWS",
+                    description: "Renew your style with bold looks.",
+                    cta: "Shop collection",
+                    image: "/lovable-uploads/collectionsectiondesktop/250318_chase_hp_small_2_card_carousel-xl.png",
+                    gradient: "from-sky-100/90",
+                  },
+                  {
+                    title: "BLOKZ",
+                    subtitle: "BLUE LIGHT GLASSES",
+                    description: "Filter blue-light, anytime, anywhere.",
+                    cta: "Shop now",
+                    image: "/lovable-uploads/collectionsectiondesktop/250318_blokz_hp_small_2_card_carousel-xl.png",
+                    gradient: "from-orange-100/90",
+                  },
+                  {
+                    title: "SAM CASSELL",
+                    subtitle: "SIGNATURE SERIES",
+                    description: "Classic style meets modern design.",
+                    cta: "Shop collection",
+                    image: "/lovable-uploads/collectionsectiondesktop/032525_Sam_Cassell_HP_small_card-xl.png",
+                    gradient: "from-yellow-100/90",
+                  },
+                  {
+                    title: "UNDER 30",
+                    subtitle: "AFFORDABLE STYLE",
+                    description: "Trendy frames at amazing prices.",
+                    cta: "Shop now",
+                    image: "/lovable-uploads/collectionsectiondesktop/250327_under_30_hp_small_2_card_carousel-xl.png",
+                    gradient: "from-green-100/90",
+                  }
+                ].map((collection, index) => (
+                  <CarouselItem key={index} className="pl-4 basis-1/2">
+                    <div className="relative h-[460px] rounded-2xl overflow-hidden group cursor-pointer">
+                      <div className="absolute inset-0">
+                        <img 
+                          src={collection.image} 
+                          alt={collection.title}
+                          className="w-full h-full object-cover object-center"
+                        />
+                        <div className={`absolute inset-0 bg-gradient-to-r ${collection.gradient} to-transparent`}></div>
+                      </div>
+                      <div className="relative h-full p-8 flex flex-col justify-center">
+                        <div className="max-w-[50%]">
+                          <h3 className="text-sm font-bold text-black mb-1">{collection.title}</h3>
+                          <h2 className="text-[32px] leading-tight font-bold text-black mb-4">{collection.subtitle}</h2>
+                          <p className="text-base text-gray-800 mb-8">{collection.description}</p>
+                          <button className="bg-black text-white text-sm px-6 py-3 rounded-full hover:opacity-90 transition-opacity">
+                            {collection.cta}
+                          </button>
+                        </div>
+                      </div>
+                      <div className="absolute bottom-4 right-4 bg-black text-white text-xs px-3 py-1 rounded-full">
+                        Frames
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-            ))}
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
           </div>
 
           {/* Mobile Version */}
