@@ -188,162 +188,11 @@ const Index: React.FC = () => {
         </div>
       </section>
 
-      
-
-      {/* How to Pick Section */}
-      <section id="how-to-pick" className="py-8 md:py-12 bg-[#F5F7F9]">
-        <div className="container px-4 mx-auto max-w-7xl">
-          <h2 className="text-2xl md:text-4xl font-sans font-bold text-center mb-8 md:mb-16">
-            CUSTOMIZING YOUR GLASSES HAS NEVER BEEN SO EASY
-          </h2>
-
-          {/* Mobile Design */}
-          <div className="md:hidden space-y-4">
-            <div className="relative">
-              <div className="absolute left-6 top-0 bottom-0 w-[1px] bg-gray-300"></div>
-
-              <div className="space-y-6">
-                {/* Step 1 */}
-                <div className="relative flex items-start">
-                  <div className="absolute left-6 -translate-x-1/2 bg-[#F5F7F9]">
-                    <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm">
-                      <img src="/lovable-uploads/iconspair/X_Frame_icon.png" alt="Find your pair" className="w-6 h-6" />
-                    </div>
-                  </div>
-                  <div className="ml-12">
-                    <h3 className="text-base font-medium mb-1">1 | Find your pair</h3>
-                    <p className="text-sm text-black">Discover our designer eyewear and select your favorite frame.</p>
-                  </div>
-                </div>
-
-                {/* Step 2 */}
-                <div className="relative flex items-start">
-                  <div className="absolute left-6 -translate-x-1/2 bg-[#F5F7F9]">
-                    <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm">
-                      <img src="/lovable-uploads/iconspair/X_Lenses_icon.png" alt="Select your lenses" className="w-6 h-6" />
-                    </div>
-                  </div>
-                  <div className="ml-12">
-                    <h3 className="text-base font-medium mb-1">2 | Select your lenses</h3>
-                    <p className="text-sm text-black">Choose your vision need and add your prescription.</p>
-                  </div>
-                </div>
-
-                {/* Step 3 */}
-                <div className="relative flex items-start">
-                  <div className="absolute left-6 -translate-x-1/2 bg-[#F5F7F9]">
-                    <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm">
-                      <img src="/lovable-uploads/iconspair/X_Personalize_icon.png" alt="Personalize your lenses" className="w-6 h-6" />
-                    </div>
-                  </div>
-                  <div className="ml-12">
-                    <h3 className="text-base font-medium mb-1">3 | Personalize your lenses</h3>
-                    <p className="text-sm text-black">Select lens type and thickness, then add specialized treatments.</p>
-                  </div>
-                </div>
-
-                {/* Step 4 */}
-                <div className="relative flex items-start">
-                  <div className="absolute left-6 -translate-x-1/2 bg-[#F5F7F9]">
-                    <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm">
-                      <img src="/lovable-uploads/iconspair/X_Shipping_icon.png" alt="Complete your purchase" className="w-6 h-6" />
-                    </div>
-                  </div>
-                  <div className="ml-12">
-                    <h3 className="text-base font-medium mb-1">4 | Complete your purchase</h3>
-                    <p className="text-sm text-black">We ensure 100% satisfaction with our 30 day happiness guarantee.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <p className="text-center text-gray-600 text-sm mt-12">
-              Prepare your prescription, and sync your insurance at any point during selection to apply your vision benefits.
-            </p>
-
-            <div className="space-y-3">
-              <button className="w-full py-4 bg-black text-white rounded-md font-medium">
-                SHOP EYEWEAR
-              </button>
-              <button className="w-full py-4 bg-black text-white rounded-md font-medium">
-                DISCOVER LENSES
-              </button>
-            </div>
-          </div>
-
-          {/* Desktop Design */}
-          <div className="hidden md:block">
-            <div className="relative">
-              <div className="absolute left-0 right-0 top-1/2 h-[1px] bg-gray-300"></div>
-
-              <div className="grid grid-cols-4 gap-8">
-                {/* Step 1 */}
-                <div className="text-center relative">
-                  <div className="mb-16">
-                    <div className="w-20 h-20 rounded-full bg-white mx-auto flex items-center justify-center shadow-sm">
-                      <img src="/lovable-uploads/iconspair/X_Frame_icon.png" alt="Find your pair" className="w-10 h-10" />
-                    </div>
-                  </div>
-                  <h3 className="text-lg font-medium mb-2">1 | Find your pair</h3>
-                  <p className="text-gray-600 text-sm">Discover our designer eyewear and select your favorite frame.</p>
-                </div>
-
-                {/* Step 2 */}
-                <div className="text-center relative">
-                  <div className="mb-16">
-                    <div className="w-20 h-20 rounded-full bg-white mx-auto flex items-center justify-center shadow-sm">
-                      <img src="/lovable-uploads/iconspair/X_Lenses_icon.png" alt="Select your lenses" className="w-10 h-10" />
-                    </div>
-                  </div>
-                  <h3 className="text-lg font-medium mb-2">2 | Select your lenses</h3>
-                  <p className="text-gray-600 text-sm">Choose your vision need and add your prescription.</p>
-                </div>
-
-                {/* Step 3 */}
-                <div className="text-center relative">
-                  <div className="mb-16">
-                    <div className="w-20 h-20 rounded-full bg-white mx-auto flex items-center justify-center shadow-sm">
-                      <img src="/lovable-uploads/iconspair/X_Personalize_icon.png" alt="Personalize your lenses" className="w-10 h-10" />
-                    </div>
-                  </div>
-                  <h3 className="text-lg font-medium mb-2">3 | Personalize your lenses</h3>
-                  <p className="text-gray-600 text-sm">Select lens type and thickness, then add specialized treatments.</p>
-                </div>
-
-                {/* Step 4 */}
-                <div className="text-center relative">
-                  <div className="mb-16">
-                    <div className="w-20 h-20 rounded-full bg-white mx-auto flex items-center justify-center shadow-sm">
-                      <img src="/lovable-uploads/iconspair/X_Shipping_icon.png" alt="Complete your purchase" className="w-10 h-10" />
-                    </div>
-                  </div>
-                  <h3 className="text-lg font-medium mb-2">4 | Complete your purchase</h3>
-                  <p className="text-gray-600 text-sm">We ensure 100% satisfaction with our 30 day happiness guarantee.</p>
-                </div>
-              </div>
-            </div>
-
-            <p className="text-center text-gray-600 text-sm mt-12">
-              Prepare your prescription, and sync your insurance at any point during selection to apply your vision benefits.
-            </p>
-
-            <div className="flex justify-center gap-4 mt-8">
-              <button className="px-12 py-3 bg-black text-white rounded-md font-medium">
-                SHOP EYEWEAR
-              </button>
-              <button className="px-12 py-3 bg-black text-white rounded-md font-medium">
-                DISCOVER LENSES
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Collections Section */}
-      <section className="py-16 bg-white">
+      <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           {/* Desktop Version */}
-          <div className="hidden md:grid grid-cols-4 gap-6">
+          <div className="hidden md:grid grid-cols-4 gap-4">
             {[
               {
                 title: "CHASE STOKES",
@@ -384,16 +233,16 @@ const Index: React.FC = () => {
             ].map((collection, index) => (
               <div 
                 key={index}
-                className={`${collection.bgColor} rounded-3xl overflow-hidden relative group cursor-pointer h-[400px]`}
+                className={`${collection.bgColor} rounded-2xl overflow-hidden relative group cursor-pointer h-[460px]`}
               >
                 <div className="p-6 h-full flex flex-col">
-                  <div>
-                    <h3 className="text-xs font-bold text-black uppercase mb-1">{collection.title}</h3>
-                    <h2 className="text-2xl font-bold text-black mb-1">{collection.subtitle}</h2>
+                  <div className="mb-auto">
+                    <h3 className="text-sm font-bold text-black mb-1">{collection.title}</h3>
+                    <h2 className="text-[28px] leading-tight font-bold text-black mb-2">{collection.subtitle}</h2>
                     <p className="text-sm text-gray-700">{collection.description}</p>
                   </div>
-                  <div className="relative z-10 mt-4">
-                    <button className="bg-black text-white text-sm px-4 py-2 rounded-full hover:opacity-90 transition-opacity">
+                  <div className="relative z-10">
+                    <button className={`${collection.ctaStyle} text-white text-sm px-4 py-2 rounded-full mt-4 inline-block hover:opacity-90 transition-opacity`}>
                       {collection.cta}
                     </button>
                   </div>
@@ -401,7 +250,7 @@ const Index: React.FC = () => {
                     <img 
                       src={collection.image} 
                       alt={collection.title}
-                      className="w-full h-[280px] object-cover object-bottom transform group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-[300px] object-cover object-center transform group-hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute bottom-4 right-4 bg-black text-white text-xs px-3 py-1 rounded-full">
                       Frames
