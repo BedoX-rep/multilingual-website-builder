@@ -169,20 +169,19 @@ const Index: React.FC = () => {
       </section>
 
       {/* Best Sellers Section */}
-      <section className="py-16 relative bg-cover bg-center" style={{ backgroundImage: 'url(/lovable-uploads/bestsellersbackground.svg)' }}>
+      <section className="py-16 bg-white">
         <div className="luxury-container">
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="text-4xl font-bold">BEST SELLERS ACROSS MOROCCO</h2>
-            <a href="/products" className="text-sm font-medium hover:underline">Shop all</a>
+          <div className="flex items-center gap-8 mb-8 border-b">
+            <button className="text-lg font-medium pb-4 border-b-2 border-black">Bestsellers</button>
+            <button className="text-lg text-gray-500 pb-4">Trending</button>
+            <button className="text-lg text-gray-500 pb-4">New</button>
+            <button className="text-lg text-gray-500 pb-4">Home Try-On</button>
+            <div className="ml-auto">
+              <button className="text-blue-600 hover:underline">Shop all bestsellers</button>
+            </div>
           </div>
 
-          <div className="flex flex-wrap gap-4 mb-8 text-sm">
-            <button className="hover:underline">Eyeglasses</button>
-            <button className="hover:underline">Sunglasses</button>
-            <button className="hover:underline">Designer Glasses</button>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
             {[
               { name: 'Rectangle', rating: 4.6, reviews: 679, price: 16.95 },
               { name: 'Cat-Eye', rating: 4.5, reviews: 2137, price: 16.95 },

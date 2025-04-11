@@ -9,45 +9,53 @@ import { Sliders } from 'lucide-react';
 const products = [
   {
     id: '1',
-    name: 'Classic Frames',
+    name: 'Esme',
     price: 95,
-    image: '/lovable-uploads/45bb2648-7da7-44ab-bd32-7044f1470203.png',
-    category: 'Optical'
+    image: '/lovable-uploads/productmockup/2b61f335e979f96b25e95b1a527333b8e8cf3da6.png',
+    colors: ['#8B4513', '#CCCCCC', '#2E4F4F', '#4F6F52'],
+    category: 'Optical',
+    rating: 4.8,
+    reviews: 425
   },
   {
     id: '2',
-    name: 'Premium Shades',
-    price: 120,
-    image: '/lovable-uploads/1551cd86-4f1b-4880-afa5-1ac4eaa6aeb0.png',
-    category: 'Sunglasses'
+    name: 'Baird',
+    price: 145,
+    image: '/lovable-uploads/productmockup/3435b33b8f6649ded6fc392bcf9471aa11742d28.png',
+    colors: ['#000000', '#FF0000', '#E6F4F1', '#435334', '#7B66FF'],
+    category: 'Optical',
+    rating: 4.7,
+    reviews: 312
   },
   {
     id: '3',
-    name: 'Sport Glasses',
-    price: 150,
-    image: '/lovable-uploads/29f9550c-ba8d-45fe-8e22-1ffb62de3f75.png',
-    category: 'Sports'
+    name: 'Durand',
+    price: 95,
+    image: '/lovable-uploads/productmockup/9e225f5dc69f0335cf2ff7fd4bbaf15322763546.png',
+    colors: ['#8B4513', '#000000', '#2E4F4F', '#CCCCCC', '#7B66FF'],
+    category: 'Optical',
+    rating: 4.9,
+    reviews: 567
   },
   {
     id: '4',
-    name: 'Fashion Frames',
-    price: 110,
-    image: '/lovable-uploads/45bb2648-7da7-44ab-bd32-7044f1470203.png',
-    category: 'Optical'
+    name: 'Brady',
+    price: 95,
+    image: '/lovable-uploads/productmockup/d29bdfc9-8c61-4bd0-8a10-c0ef0355df3b.png',
+    colors: ['#7B66FF', '#CCCCCC', '#000000'],
+    category: 'Optical',
+    rating: 4.6,
+    reviews: 289
   },
   {
     id: '5',
-    name: 'Beach Shades',
-    price: 135,
-    image: '/lovable-uploads/1551cd86-4f1b-4880-afa5-1ac4eaa6aeb0.png',
-    category: 'Sunglasses'
-  },
-  {
-    id: '6',
-    name: 'Kids Frames',
-    price: 85,
-    image: '/lovable-uploads/29f9550c-ba8d-45fe-8e22-1ffb62de3f75.png',
-    category: 'Kids'
+    name: 'Bodie',
+    price: 95,
+    image: '/lovable-uploads/productmockup/e9e88c5864ae35e00d6400c6e3d07f23b1e05d4b.png',
+    colors: ['#8B4513', '#000000', '#7B66FF'],
+    category: 'Optical',
+    rating: 4.8,
+    reviews: 412
   }
 ];
 
