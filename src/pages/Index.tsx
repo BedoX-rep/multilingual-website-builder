@@ -166,7 +166,6 @@ const Index: React.FC = () => {
                   Marocain
                   <span className="absolute bottom-1 left-0 w-full h-[0.15em] bg-gradient-to-r from-red-500 via-green-500 to-red-500 rounded-full transform skew-x-12 animate-shimmer"></span>
                 </span><br />
-                De Confiance<br />
                 en Ligne
               </h1>
               <div className="flex flex-wrap gap-6 mb-8">
