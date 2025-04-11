@@ -7,8 +7,9 @@ import ProductCard from '../components/ProductCard';
 import { CheckCircle } from 'lucide-react';
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 
-// Hero section image
-const heroImage = "/lovable-uploads/herosectionbg4.png";
+// Hero section images
+const heroImage = "/lovable-uploads/herosectionbg5.jpg";
+const mobileHeroImage = "/lovable-uploads/mobileimg.png";
 
 // Process step icons
 const frameIcon = "/lovable-uploads/5c4c396f-836b-49e7-8833-be31c7cda22e.png";
@@ -75,11 +76,15 @@ const Index: React.FC = () => {
       {/* Hero Section - Adjusted with ml-[5%] for left/right margin and proper RTL support */}
       <section className="relative h-[80vh]">
         <div className="absolute inset-0">
-          <img 
-            src={heroImage} 
-            alt="Person wearing glasses" 
-            className="w-full h-full object-cover object-top"
-          />
+          <picture>
+            <source media="(max-width: 768px)" srcSet={mobileHeroImage} />
+            <source media="(min-width: 769px)" srcSet={heroImage} />
+            <img 
+              src={heroImage}
+              alt="Person wearing glasses" 
+              className="w-full h-full object-cover object-top"
+            />
+          </picture>
         </div>
 
         <div className="relative h-[80vh] flex items-center">
