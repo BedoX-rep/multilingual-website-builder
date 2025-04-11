@@ -119,11 +119,15 @@
   }
 }
 
-@keyframes shimmer {
-  0% {
-    backgroundPosition: "200% 0";
+@layer components {
+  .animate-shimmer {
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
   }
-  100% {
-    backgroundPosition: "-200% 0";
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
   }
 }

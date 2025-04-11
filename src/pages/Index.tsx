@@ -92,7 +92,7 @@ const Index: React.FC = () => {
               <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-[1.1] text-white md:text-gray-800">
                 Your Trusted <span className="relative">
                   Moroccan
-                  <span className="absolute bottom-2 left-0 w-full h-[0.15em] bg-gradient-to-r from-red-500 via-green-500 to-red-500 rounded-full transform skew-x-12 animate-shimmer bg-[length:200%_100%]"></span>
+                  <span className="absolute bottom-2 left-0 w-full h-[0.15em] bg-gradient-to-r from-red-500 via-green-500 to-red-500 rounded-full transform skew-x-12 animate-shimmer"></span>
                 </span> Optician
               </h1>
               <div className="flex flex-wrap gap-6 mb-8">
