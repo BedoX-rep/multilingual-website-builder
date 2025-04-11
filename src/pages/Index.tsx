@@ -189,12 +189,12 @@ const Index: React.FC = () => {
       </section>
 
       {/* Collections Section */}
-      <section className="py-12 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-12 bg-white overflow-hidden">
+        <div className="container mx-auto">
           {/* Desktop Version */}
           <div className="hidden md:block">
             <Carousel className="w-full">
-              <CarouselContent className="-ml-4">
+              <CarouselContent className="-ml-0">
                 {[
                   {
                     title: "CHASE STOKES",
@@ -229,13 +229,13 @@ const Index: React.FC = () => {
                     gradient: "from-green-100/90",
                   }
                 ].map((collection, index) => (
-                  <CarouselItem key={index} className="pl-4 basis-1/2">
-                    <div className="relative h-[460px] rounded-2xl overflow-hidden group cursor-pointer">
-                      <div className="absolute inset-0">
+                  <CarouselItem key={index} className="pl-0 basis-1/2">
+                    <div className="relative h-[600px] rounded-none overflow-visible group cursor-pointer">
+                      <div className="absolute inset-0 overflow-visible">
                         <img 
                           src={collection.image} 
                           alt={collection.title}
-                          className="w-full h-full object-cover object-center"
+                          className="w-[120%] h-full object-cover object-center scale-110"
                         />
                         <div className={`absolute inset-0 bg-gradient-to-r ${collection.gradient} to-transparent`}></div>
                       </div>
