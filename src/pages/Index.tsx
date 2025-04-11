@@ -188,6 +188,27 @@ const Index: React.FC = () => {
         </div>
       </section>
 
+      {/* Shipping Info Banner - Updated for mobile responsiveness */}
+      <section className="bg-blue-50">
+        <div className="flex flex-col md:flex-row justify-between items-center py-4 px-6">
+          <div className="text-center md:hidden w-full">
+            <p className="text-base font-medium text-blue-800">Free shipping within all of Morocco 🇲🇦</p>
+          </div>
+          <div className="hidden md:block text-center flex-1">
+            <p className="text-base font-medium text-blue-800">Delivery within all of Morocco 🇲🇦</p>
+          </div>
+          <div className="hidden md:block text-center flex-1">
+            <p className="text-base font-medium text-blue-800">Free Shipping</p>
+          </div>
+          <div className="hidden md:block text-center flex-1">
+            <p className="text-base font-medium text-blue-800">30-Day Returns</p>
+          </div>
+          <div className="hidden md:block text-center flex-1">
+            <p className="text-base font-medium text-blue-800">Contacts & Support</p>
+          </div>
+        </div>
+      </section>
+
       {/* Collections Section */}
       <section className="py-12 bg-white overflow-hidden w-full">
         <div className="w-full">
@@ -340,28 +361,7 @@ const Index: React.FC = () => {
         </div>
       </section>
 
-      {/* Shipping Info Banner - Updated for mobile responsiveness */}
-      <section className="bg-blue-50">
-        <div className="flex flex-col md:flex-row justify-between items-center py-4 px-6">
-          <div className="text-center md:hidden w-full">
-            <p className="text-base font-medium text-blue-800">Free shipping within all of Morocco 🇲🇦</p>
-          </div>
-          <div className="hidden md:block text-center flex-1">
-            <p className="text-base font-medium text-blue-800">Delivery within all of Morocco 🇲🇦</p>
-          </div>
-          <div className="hidden md:block text-center flex-1">
-            <p className="text-base font-medium text-blue-800">Free Shipping</p>
-          </div>
-          <div className="hidden md:block text-center flex-1">
-            <p className="text-base font-medium text-blue-800">30-Day Returns</p>
-          </div>
-          <div className="hidden md:block text-center flex-1">
-            <p className="text-base font-medium text-blue-800">Contacts & Support</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Best Sellers Section - Moved up below shipping banner */}
+      {/* Best Sellers Section - Moved up below collections */}
       <section className="py-16 bg-white">
         <div className="luxury-container">
           <div className="flex items-center gap-8 mb-8 border-b">
