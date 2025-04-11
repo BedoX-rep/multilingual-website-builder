@@ -235,8 +235,8 @@ const Index: React.FC = () => {
                     alt={shape.name}
                     className="w-[80px] h-[80px]"
                   />
-                  <span className="frame-shape-label">{shape.name}</span>
                 </div>
+                <span className="frame-shape-label">{shape.name}</span>
               </div>
             ))}
             <button className="shop-all-button">

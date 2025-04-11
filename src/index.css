@@ -84,15 +84,14 @@
   }
 
   .frame-shape-icon {
-    padding: 1rem;
+    padding: 3px;
     background-color: transparent;
     border: 1px solid transparent;
     border-radius: 0.5rem;
     transition: all 0.2s ease-in-out;
-    display: flex;
-    flex-direction: column;
+    display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: center;
   }
 
   .frame-shape-icon img {
@@ -112,8 +111,7 @@
     font-size: 0.875rem;
     font-weight: 500;
     color: #111827;
-    text-align: center;
-    display: block;
+    margin-top: 0.25rem;
   }
 
   .shop-all-button {
