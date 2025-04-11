@@ -224,7 +224,7 @@ const Index: React.FC = () => {
               { name: 'Rectangle' },
               { name: 'Square' },
               { name: 'Round' },
-              { name: 'Cat-Eye' },
+              { name: 'Cat-eye' },
               { name: 'Aviator' },
               { name: 'Browline' }
             ].map((shape) => (
