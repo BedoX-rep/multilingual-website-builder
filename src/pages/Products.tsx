@@ -11,7 +11,7 @@ const products = [
     id: '1',
     name: 'Esme',
     price: 95,
-    image: '/lovable-uploads/productmockup/2b61f335e979f96b25e95b1a527333b8e8cf3da6.png',
+    image: '/lovable-uploads/productmockup/2b61f335e979f96b25e95b1a527333b8e8cf3da6 (copy) 1.png',
     colors: ['#8B4513', '#CCCCCC', '#2E4F4F', '#4F6F52'],
     category: 'Optical',
     rating: 4.8,

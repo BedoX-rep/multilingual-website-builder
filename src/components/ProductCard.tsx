@@ -41,7 +41,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             <img 
               src={image} 
               alt={name}
-              className="w-full h-48 object-contain"
+              className="w-full h-48 object-contain bg-white"
             />
             <div className="absolute top-0 left-0">
               <div className="bg-[#E8F7F9] px-3 py-1 rounded-full text-xs">
