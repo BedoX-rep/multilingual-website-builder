@@ -274,37 +274,79 @@ const Index: React.FC = () => {
       </section>
 
       {/* Frame Shape Section */}
-      <section className="py-12 md:py-24 bg-white px-4">
-        <div className="container mx-auto max-w-md md:max-w-7xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">SHOP BY FRAME SHAPE</h2>
-          <p className="text-center text-gray-800 mb-12">
-            Bloom into new frames with fresh shapes, colors, and patterns.
-          </p>
+      <section className="py-12 md:py-24 bg-white">
+        <div className="container mx-auto px-4 md:px-8 max-w-7xl">
+          <div className="max-w-2xl mx-auto text-center mb-12 md:mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">SHOP BY FRAME SHAPE</h2>
+            <p className="text-gray-600">
+              Bloom into new frames with fresh shapes, colors, and patterns.
+            </p>
+          </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-8">
+          {/* Mobile Grid */}
+          <div className="md:hidden grid grid-cols-2 gap-6">
             {[
               { name: 'Rectangle' },
               { name: 'Square' },
               { name: 'Round' },
-              { name: 'Cat-Eye' },
+              { name: 'Cat-eye' },
               { name: 'Aviator' },
               { name: 'Browline' }
             ].map((shape) => (
-              <a href="#" key={shape.name} className="flex flex-col items-center">
-                <div className="w-32 h-32 mb-2">
+              <a 
+                href="#" 
+                key={shape.name} 
+                className="group flex flex-col items-center p-4 rounded-xl transition-all duration-300 hover:bg-gray-50"
+              >
+                <div className="w-24 h-24 mb-3 flex items-center justify-center">
                   <img
                     src={`/lovable-uploads/frameshapes/frame_shape-${shape.name}.svg`}
                     alt={shape.name}
-                    className="w-full h-full"
+                    className="w-20 h-20 group-hover:scale-110 transition-transform duration-300"
                   />
                 </div>
                 <span className="text-sm font-medium text-center">{shape.name}</span>
               </a>
             ))}
           </div>
-          
-          <div className="flex justify-center">
-            <button className="w-full md:w-auto bg-black text-white px-8 py-4 rounded-full flex items-center justify-center gap-2 hover:bg-gray-900 transition-colors">
+
+          {/* Desktop Grid */}
+          <div className="hidden md:grid grid-cols-6 gap-8">
+            {[
+              { name: 'Rectangle' },
+              { name: 'Square' },
+              { name: 'Round' },
+              { name: 'Cat-eye' },
+              { name: 'Aviator' },
+              { name: 'Browline' }
+            ].map((shape) => (
+              <a 
+                href="#" 
+                key={shape.name} 
+                className="group flex flex-col items-center p-6 rounded-xl transition-all duration-300 hover:bg-gray-50"
+              >
+                <div className="w-32 h-32 mb-4 flex items-center justify-center">
+                  <img
+                    src={`/lovable-uploads/frameshapes/frame_shape-${shape.name}.svg`}
+                    alt={shape.name}
+                    className="w-28 h-28 group-hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+                <span className="text-base font-medium text-center">{shape.name}</span>
+              </a>
+            ))}
+          </div>
+
+          {/* Shop All Button - Mobile */}
+          <div className="mt-8 md:hidden">
+            <button className="w-full bg-black text-white py-4 rounded-full font-medium flex items-center justify-center gap-2">
+              Shop all <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* Shop All Button - Desktop */}
+          <div className="hidden md:flex justify-center mt-12">
+            <button className="bg-black text-white px-12 py-4 rounded-full font-medium flex items-center gap-2 hover:bg-gray-900 transition-colors">
               Shop all <ChevronRight className="w-4 h-4" />
             </button>
           </div>
@@ -322,7 +364,7 @@ const Index: React.FC = () => {
           <div className="md:hidden space-y-4">
             <div className="relative">
               <div className="absolute left-6 top-0 bottom-0 w-[1px] bg-gray-300"></div>
-              
+
               <div className="space-y-6">
                 {/* Step 1 */}
                 <div className="relative flex items-start">
@@ -396,7 +438,7 @@ const Index: React.FC = () => {
           <div className="hidden md:block">
             <div className="relative">
               <div className="absolute left-0 right-0 top-1/2 h-[1px] bg-gray-300"></div>
-              
+
               <div className="grid grid-cols-4 gap-8">
                 {/* Step 1 */}
                 <div className="text-center relative">
@@ -553,8 +595,7 @@ const Index: React.FC = () => {
               </button>
               <button className="px-8 py-3 border-2 border-black bg-black text-white font-medium hover:bg-gray-900 transition-colors rounded-lg">
                 Learn More About Coverage
-              </button>
-            </div>
+              </button</div>
           </div>
         </div>
       </section>
