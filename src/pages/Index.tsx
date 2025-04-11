@@ -2,8 +2,11 @@ import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
-import { CheckCircle, ChevronRight } from 'lucide-react';
+import { CheckCircle, ChevronRight, Glasses, Shield, ArrowRight } from 'lucide-react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { useIsMobile } from '@/hooks/use-mobile';
 
 // Hero section images
 const heroImage = "/lovable-uploads/herosectionbg5.jpg";
@@ -64,6 +67,7 @@ const brandLogos = [
 ];
 
 const Index: React.FC = () => {
+  const isMobile = useIsMobile();
   const bestSellers = [
     {
       id: '1',
@@ -305,7 +309,7 @@ const Index: React.FC = () => {
           </div>
 
           {/* Desktop Layout */}
-          <div className="hidden md:flex items-center justify-center gap-4 mb-8">
+          <div className="hidden md:grid md:grid-cols-6 md:gap-4 mb-8 relative">
             {[
               { name: 'Rectangle' },
               { name: 'Square' },
@@ -315,7 +319,7 @@ const Index: React.FC = () => {
               { name: 'Browline' }
             ].map((shape) => (
               <a href="#" key={shape.name} className="flex flex-col items-center group">
-                <div className="w-56 h-56 bg-white rounded-lg p-4 flex flex-col items-center">
+                <div className="w-full aspect-square bg-white rounded-lg p-4 flex flex-col items-center">
                   <img
                     src={`/lovable-uploads/frameshapes/frame_shape-${shape.name}.svg`}
                     alt={shape.name}
@@ -325,11 +329,13 @@ const Index: React.FC = () => {
                 </div>
               </a>
             ))}
-            <a href="#" className="flex items-center justify-center ml-2">
-              <span className="px-4 py-2 bg-black text-white rounded-full text-sm hover:bg-gray-800 transition-colors">
-                Shop all →
-              </span>
-            </a>
+            <div className="absolute -right-16 top-1/2 -translate-y-1/2">
+              <a href="#" className="flex items-center justify-center">
+                <span className="px-4 py-2 bg-black text-white rounded-full text-sm hover:bg-gray-800 transition-colors">
+                  Shop all →
+                </span>
+              </a>
+            </div>
           </div>
 
           {/* Mobile Shop All Button */}
@@ -490,100 +496,160 @@ const Index: React.FC = () => {
         </div>
       </section>
 
-      {/* Custom Sunglasses Section */}
-      <section className="py-24 bg-white overflow-hidden">
-        <div className="luxury-container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div className="max-w-xl ml-[5%]">
-              <p className="section-subtitle">
-                DESIGNED FOR YOU
-              </p>
-              <h2 className="section-title">
-                Custom Sunglasses
-              </h2>
-              <p className="text-gray-600 mb-12 text-lg">
-                Create your own unique pair of sunglasses by choosing from a wide range of frames, lenses, and colors. Express your individuality and stand out from the crowd with custom eyewear.
-              </p>
-
-              {/* Color Options */}
-              <div className="mb-12">
-                <div className="flex flex-wrap gap-6">
-                  <button className="w-12 h-12 rounded-full bg-rose-400 border-2 border-white shadow-lg hover:scale-110 transition-transform"></button>
-                  <button className="w-12 h-12 rounded-full bg-emerald-500 border-2 border-white shadow-lg hover:scale-110 transition-transform"></button>
-                  <button className="w-12 h-12 rounded-full bg-amber-400 border-2 border-white shadow-lg hover:scale-110 transition-transform"></button>
-                  <button className="w-12 h-12 rounded-full bg-indigo-500 border-2 border-white shadow-lg hover:scale-110 transition-transform"></button>
-                  <button className="w-12 h-12 rounded-full bg-purple-500 border-2 border-white shadow-lg hover:scale-110 transition-transform"></button>
-                  <button className="w-12 h-12 rounded-full bg-teal-500 border-2 border-white shadow-lg hover:scale-110 transition-transform"></button>
+      {/* REDESIGNED: Custom Sunglasses Section */}
+      <section className="py-16 md:py-28 bg-gradient-to-r from-gray-50 to-blue-50 overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-center">
+            {/* Left side content */}
+            <div className="w-full md:w-1/2 order-2 md:order-1">
+              <div className="max-w-lg mx-auto md:mx-0">
+                <div className="inline-flex items-center px-4 py-2 mb-6 rounded-full bg-blue-100 text-blue-800">
+                  <Glasses className="h-4 w-4 mr-2" />
+                  <span className="text-sm font-medium">DESIGNED FOR YOU</span>
                 </div>
-              </div>
+                <h2 className="text-4xl md:text-5xl font-bold mb-6">Create Your Own Unique Style</h2>
+                <p className="text-lg text-gray-600 mb-10">
+                  Express your individuality with our custom sunglasses. Select from premium frames, 
+                  choose your lens color, and add personalized details for a look that's uniquely yours.
+                </p>
 
-              <button className="btn-primary">
-                Design Your Own
-              </button>
+                {/* Color Selection */}
+                <div className="mb-10">
+                  <p className="text-sm font-medium text-gray-500 mb-4">CHOOSE YOUR COLOR</p>
+                  <div className="flex flex-wrap gap-4">
+                    {[
+                      { color: 'bg-rose-400', name: 'Rose' },
+                      { color: 'bg-emerald-500', name: 'Emerald' },
+                      { color: 'bg-amber-400', name: 'Amber' },
+                      { color: 'bg-indigo-500', name: 'Indigo' },
+                      { color: 'bg-purple-500', name: 'Purple' },
+                      { color: 'bg-teal-500', name: 'Teal' }
+                    ].map((item, index) => (
+                      <button 
+                        key={index}
+                        className={`w-10 h-10 rounded-full ${item.color} border-2 border-white shadow-lg hover:scale-110 transition-transform relative group`}
+                        aria-label={`Select ${item.name} color`}
+                      >
+                        <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs opacity-0 group-hover:opacity-100 transition-opacity bg-black text-white px-2 py-1 rounded whitespace-nowrap">
+                          {item.name}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <Button variant="default" className="bg-black hover:bg-gray-800 text-white px-8 py-6 rounded-lg flex items-center gap-2">
+                  Design Your Sunglasses
+                  <ArrowRight className="h-4 w-4" />
+                </Button>
+              </div>
             </div>
-            <div className="relative">
-              <div className="relative w-[140%]">
+
+            {/* Right side image */}
+            <div className="w-full md:w-1/2 order-1 md:order-2">
+              <div className="relative w-full md:w-[120%] h-[300px] md:h-[500px] overflow-hidden rounded-2xl">
                 <img 
                   src={customSunglassesImage} 
-                  alt="Custom designed sunglasses" 
-                  className="w-full rounded-lg shadow-2xl"
+                  alt="Custom designer sunglasses" 
+                  className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent rounded-lg"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-black/10 to-transparent rounded-2xl"></div>
+                
+                {/* Feature Highlights */}
+                <div className="absolute bottom-6 left-6 right-6 flex flex-wrap gap-3">
+                  {['UV Protection', 'Polarized Options', 'Prescription Compatible', 'Lightweight'].map((feature, index) => (
+                    <span key={index} className="bg-white/90 backdrop-blur-sm text-black text-sm px-3 py-1 rounded-full">
+                      {feature}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Insurance Benefits Section */}
-      <section className="relative min-h-[600px] flex items-center">
-        {/* Background Image */}
-        <div className="absolute inset-0 w-full h-full">
-          <img 
-            src="/lovable-uploads/sectionassuranceimage.png" 
-            alt="Insurance Benefits" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/10 to-transparent" />
-        </div>
-
-        <div className="luxury-container relative z-10">
-          <div className="max-w-2xl text-black ml-auto">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium mb-6">
-              Unlock Exclusive Benefits with Our Insurance Partners
-            </h2>
-            <p className="text-lg text-gray-800 mb-12 leading-relaxed">
-              We've partnered with leading insurance providers to make quality eyewear more accessible and affordable. Discover how your insurance plan can help cover the cost of your next pair of glasses or contacts.
-            </p>
-
-            {/* Insurance Logos */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-              {[
-                { src: '/lovable-uploads/assurancebrandsmaghreb/allianz-logo.png', name: 'Allianz' },
-                { src: '/lovable-uploads/assurancebrandsmaghreb/cnss.png', name: 'CNSS' },
-                { src: '/lovable-uploads/assurancebrandsmaghreb/rma.png', name: 'RMA' },
-                { src: '/lovable-uploads/assurancebrandsmaghreb/sanlam.png', name: 'Sanlam' },
-              ].map((insurance, index) => (
-                <div 
-                  key={index} 
-                  className="bg-white rounded-xl p-4 hover:shadow-lg transition-all duration-300"
-                >
-                  <img 
-                    src={insurance.src} 
-                    alt={insurance.name}
-                    className="w-full h-12 object-contain"
-                  />
+      {/* REDESIGNED: Insurance Benefits Section */}
+      <section className="py-16 md:py-28 bg-white overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-center">
+            {/* Left side image */}
+            <div className="w-full md:w-1/2">
+              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden">
+                <img 
+                  src="/lovable-uploads/sectionassuranceimage.png" 
+                  alt="Insurance Benefits" 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
+                
+                {/* Badge overlay */}
+                <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 flex items-center gap-2">
+                  <Shield className="h-4 w-4 text-blue-600" />
+                  <span className="text-sm font-medium">Coverage & Benefits</span>
                 </div>
-              ))}
+              </div>
             </div>
 
-            <div className="flex flex-wrap gap-6 justify-start">
-              <button className="px-8 py-3 bg-black text-white font-medium hover:bg-gray-900 transition-colors rounded-lg">
-                Browse Insurance Options
-              </button>
-              <button className="px-8 py-3 border-2 border-black bg-black text-white font-medium hover:bg-gray-900 transition-colors rounded-lg">
-                Learn More About Coverage
-              </button>
+            {/* Right side content */}
+            <div className="w-full md:w-1/2">
+              <div className="max-w-lg">
+                <div className="inline-flex items-center px-4 py-2 mb-6 rounded-full bg-blue-100 text-blue-800">
+                  <Shield className="h-4 w-4 mr-2" />
+                  <span className="text-sm font-medium">INSURANCE COVERAGE</span>
+                </div>
+                <h2 className="text-4xl md:text-5xl font-bold mb-6">Maximize Your Vision Benefits</h2>
+                <p className="text-lg text-gray-600 mb-10">
+                  We work with leading insurance providers to help cover the cost of your eyewear. 
+                  Our team will help you understand your benefits and get the most from your coverage.
+                </p>
+
+                {/* Insurance Partners */}
+                <p className="text-sm font-medium text-gray-500 mb-4">OUR TRUSTED PARTNERS</p>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
+                  {[
+                    { src: '/lovable-uploads/assurancebrandsmaghreb/allianz-logo.png', name: 'Allianz' },
+                    { src: '/lovable-uploads/assurancebrandsmaghreb/cnss.png', name: 'CNSS' },
+                    { src: '/lovable-uploads/assurancebrandsmaghreb/rma.png', name: 'RMA' },
+                    { src: '/lovable-uploads/assurancebrandsmaghreb/sanlam.png', name: 'Sanlam' },
+                  ].map((insurance, index) => (
+                    <Card key={index} className="bg-white hover:shadow-lg transition-all duration-300 overflow-hidden">
+                      <CardContent className="flex items-center justify-center p-4 h-20">
+                        <img 
+                          src={insurance.src} 
+                          alt={insurance.name}
+                          className="max-h-full max-w-full object-contain"
+                        />
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+
+                {/* CTA Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button variant="default" className="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-lg">
+                    Check Your Coverage
+                  </Button>
+                  <Button variant="outline" className="border-2 border-black text-black hover:bg-black hover:text-white transition-colors px-6 py-2 rounded-lg">
+                    Learn More
+                  </Button>
+                </div>
+
+                {/* Benefits List */}
+                <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {[
+                    'In-network with major providers',
+                    'Easy claims processing',
+                    'Out-of-network reimbursement',
+                    'Vision care discounts'
+                  ].map((benefit, index) => (
+                    <div key={index} className="flex items-center gap-2">
+                      <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
+                      <span className="text-sm">{benefit}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -623,7 +689,7 @@ const Index: React.FC = () => {
                       <img 
                         src={brand.logo} 
                         alt={brand.name}
-                        className="max-h-full max-w-full object-contain"
+                        className="w-full h-12 object-contain"
                       />
                     </div>
                   </CarouselItem>
