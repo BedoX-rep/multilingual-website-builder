@@ -56,6 +56,36 @@ const products = [
     category: 'Optical',
     rating: 4.8,
     reviews: 412
+  },
+  {
+    id: '6',
+    name: 'Crane',
+    price: 95,
+    image: '/lovable-uploads/productmockup/2b61f335e979f96b25e95b1a527333b8e8cf3da6 (copy).png',
+    colors: ['#000000', '#8B4513', '#FF4500', '#CCCCCC'],
+    category: 'Optical',
+    rating: 4.7,
+    reviews: 356
+  },
+  {
+    id: '7',
+    name: 'Winston',
+    price: 95,
+    image: '/lovable-uploads/productmockup/9e225f5dc69f0335cf2ff7fd4bbaf15322763546 (copy).png',
+    colors: ['#8B4513', '#000000', '#2E4F4F'],
+    category: 'Optical',
+    rating: 4.9,
+    reviews: 278
+  },
+  {
+    id: '8',
+    name: 'Felix',
+    price: 95,
+    image: '/lovable-uploads/productmockup/e9e88c5864ae35e00d6400c6e3d07f23b1e05d4b (copy).png',
+    colors: ['#000000', '#8B4513', '#7B66FF'],
+    category: 'Optical',
+    rating: 4.8,
+    reviews: 389
   }
 ];
 
@@ -170,18 +200,36 @@ const Products: React.FC = () => {
             </div>
           )}
           
-          {/* Products Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {filteredProducts.map(product => (
-              <ProductCard 
-                key={product.id}
-                id={product.id}
-                name={product.name}
-                price={product.price}
-                image={product.image}
-                category={product.category}
-              />
-            ))}
+          {/* Products Grid with Navigation */}
+          <div className="relative">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+              {filteredProducts.slice(0, 8).map(product => (
+                <ProductCard 
+                  key={product.id}
+                  id={product.id}
+                  name={product.name}
+                  price={product.price}
+                  image={product.image}
+                  colors={product.colors}
+                  rating={product.rating}
+                  reviews={product.reviews}
+                  category={product.category}
+                />
+              ))}
+            </div>
+            
+            {/* Navigation Arrows */}
+            <button 
+              className="absolute -right-12 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-lg hover:bg-gray-50"
+              onClick={() => {
+                // Implement product navigation logic here
+                console.log('Navigate right');
+              }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
           </div>
           
           {/* Pagination */}

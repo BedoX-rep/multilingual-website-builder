@@ -20,9 +20,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
   name, 
   price, 
   image, 
-  colors,
-  rating,
-  reviews
+  colors = [],
+  rating = 0,
+  reviews = 0
 }) => {
   return (
     <div className="relative group">
