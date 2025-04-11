@@ -214,8 +214,8 @@ const Index: React.FC = () => {
       {/* Frame Shape Section */}
       <section className="py-24 bg-white">
         <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-center tracking-tight mb-4">SHOP BY FRAME SHAPE</h2>
-          <p className="text-center mb-16 max-w-2xl mx-auto text-gray-600">
+          <h2 className="frame-shape-title">SHOP BY FRAME SHAPE</h2>
+          <p className="frame-shape-subtitle">
             Bloom into new frames with fresh shapes, colors, and patterns.
           </p>
 
@@ -233,10 +233,10 @@ const Index: React.FC = () => {
                   <img
                     src={`/lovable-uploads/frameshapes/frame_shape-${shape.name}.svg`}
                     alt={shape.name}
-                    className="w-full h-full"
+                    className="w-[80px] h-[80px]"
                   />
                 </div>
-                <p className="frame-shape-label">{shape.name}</p>
+                <span className="frame-shape-label">{shape.name}</span>
               </div>
             ))}
             <button className="shop-all-button">
