@@ -304,7 +304,7 @@ const Index: React.FC = () => {
                 </a>
               ))}
             </div>
-
+            
             {/* Shop all button positioned to the right on desktop */}
             <div className="hidden md:block absolute right-0 bottom-0">
               <button className="shop-all-button">
@@ -312,7 +312,7 @@ const Index: React.FC = () => {
               </button>
             </div>
           </div>
-
+          
           {/* Shop all button displayed below on mobile */}
           <div className="md:hidden mt-8 flex justify-center">
             <button className="shop-all-button">
@@ -333,7 +333,7 @@ const Index: React.FC = () => {
           <div className="md:hidden space-y-8">
             <div className="relative">
               <div className="absolute left-8 top-0 bottom-0 w-[1px] bg-gray-300"></div>
-
+              
               <div className="space-y-12">
                 {/* Step 1 */}
                 <div className="relative flex items-start">
@@ -407,13 +407,13 @@ const Index: React.FC = () => {
           <div className="hidden md:block">
             <div className="relative">
               <div className="absolute left-0 right-0 top-1/2 h-[1px] bg-gray-300"></div>
-
+              
               <div className="grid grid-cols-4 gap-8">
                 {/* Step 1 */}
                 <div className="text-center relative">
                   <div className="mb-16">
                     <div className="w-20 h-20 rounded-full bg-white mx-auto flex items-center justify-center shadow-sm">
-                      <img src="/lovable-uploads/iconspair/X_Frame_icon.png" alt="Find your pair" className="w-10 h-10" />
+                      <img src="/lovable-uploads/X_Frame_icon.png" alt="Find your pair" className="w-10 h-10" />
                     </div>
                   </div>
                   <h3 className="text-lg font-medium mb-2">1 | Find your pair</h3>
@@ -424,7 +424,7 @@ const Index: React.FC = () => {
                 <div className="text-center relative">
                   <div className="mb-16">
                     <div className="w-20 h-20 rounded-full bg-white mx-auto flex items-center justify-center shadow-sm">
-                      <img src="/lovable-uploads/iconspair/X_Lenses_icon.png" alt="Select your lenses" className="w-10 h-10" />
+                      <img src="/lovable-uploads/X_Lenses_icon.png" alt="Select your lenses" className="w-10 h-10" />
                     </div>
                   </div>
                   <h3 className="text-lg font-medium mb-2">2 | Select your lenses</h3>
@@ -435,7 +435,7 @@ const Index: React.FC = () => {
                 <div className="text-center relative">
                   <div className="mb-16">
                     <div className="w-20 h-20 rounded-full bg-white mx-auto flex items-center justify-center shadow-sm">
-                      <img src="/lovable-uploads/iconspair/X_Personalize_icon.png" alt="Personalize your lenses" className="w-10 h-10" />
+                      <img src="/lovable-uploads/X_Personalize_icon.png" alt="Personalize your lenses" className="w-10 h-10" />
                     </div>
                   </div>
                   <h3 className="text-lg font-medium mb-2">3 | Personalize your lenses</h3>
@@ -446,7 +446,7 @@ const Index: React.FC = () => {
                 <div className="text-center relative">
                   <div className="mb-16">
                     <div className="w-20 h-20 rounded-full bg-white mx-auto flex items-center justify-center shadow-sm">
-                      <img src="/lovable-uploads/iconspair/X_Shipping_icon.png" alt="Complete your purchase" className="w-10 h-10" />
+                      <img src="/lovable-uploads/X_Shipping_icon.png" alt="Complete your purchase" className="w-10 h-10" />
                     </div>
                   </div>
                   <h3 className="text-lg font-medium mb-2">4 | Complete your purchase</h3>
@@ -606,7 +606,7 @@ const Index: React.FC = () => {
                         alt={brand.name}
                         className="max-h-full max-w-full object-contain"
                       />
-                    </</div>
+                    </div>
                   </CarouselItem>
                 ))}
               </CarouselContent>
