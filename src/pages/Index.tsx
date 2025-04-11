@@ -91,7 +91,7 @@ const Index: React.FC = () => {
           <div className="grid md:grid-cols-2 items-center w-full">
             <div className="text-white md:text-gray-800 z-10 pl-[5%]">
               <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-[1.1] text-white md:text-gray-800">
-                Your Trusted <span className="underline decoration-2">Moroccan</span> Optician
+                Your Trusted <span className="underline decoration-2 decoration-red-500">Moroccan</span> Optician
               </h1>
               <div className="flex flex-wrap gap-6 mb-8">
                 <button className="btn-primary bg-blue-600 text-white hover:bg-blue-700">
@@ -103,7 +103,7 @@ const Index: React.FC = () => {
               </div>
               <a 
                 href="#how-to-pick" 
-                className="text-blue-600 hover:text-blue-700 font-medium transition-colors"
+                className="inline-block text-blue-600 hover:text-blue-700 font-medium transition-all px-4 py-2 border-2 border-blue-600 hover:border-blue-700 rounded-lg hover:-translate-y-1"
               >
                 {t('hero.learnmore')}
               </a>
@@ -117,7 +117,7 @@ const Index: React.FC = () => {
       <section className="bg-blue-50">
         <div className="flex justify-between items-center py-4 px-6">
           <div className="text-center flex-1">
-            <p className="text-base font-medium text-blue-800">{t('shipping.delivery')}</p>
+            <p className="text-base font-medium text-blue-800">Delivery within all of Morocco 🇲🇦</p>
           </div>
           <div className="text-center flex-1">
             <p className="text-base font-medium text-blue-800">{t('shipping.free')}</p>
