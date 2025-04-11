@@ -342,9 +342,9 @@ const Index: React.FC = () => {
       </section>
 
       {/* How to Pick Section */}
-      <section id="how-to-pick" className="py-8 md:py-24 bg-[#F5F7F9]">
+      <section id="how-to-pick" className="py-8 md:py-12 bg-[#F5F7F9]">
         <div className="container px-4 mx-auto max-w-7xl">
-          <h2 className="text-2xl md:text-4xl font-serif text-center mb-8 md:mb-16">
+          <h2 className="text-2xl md:text-4xl font-sans font-bold text-center mb-8 md:mb-16">
             CUSTOMIZING YOUR GLASSES HAS NEVER BEEN SO EASY
           </h2>
 
@@ -363,7 +363,7 @@ const Index: React.FC = () => {
                   </div>
                   <div className="ml-12">
                     <h3 className="text-base font-medium mb-1">1 | Find your pair</h3>
-                    <p className="text-sm text-gray-600">Discover our designer eyewear and select your favorite frame.</p>
+                    <p className="text-sm text-black">Discover our designer eyewear and select your favorite frame.</p>
                   </div>
                 </div>
 
@@ -376,7 +376,7 @@ const Index: React.FC = () => {
                   </div>
                   <div className="ml-12">
                     <h3 className="text-base font-medium mb-1">2 | Select your lenses</h3>
-                    <p className="text-sm text-gray-600">Choose your vision need and add your prescription.</p>
+                    <p className="text-sm text-black">Choose your vision need and add your prescription.</p>
                   </div>
                 </div>
 
@@ -389,7 +389,7 @@ const Index: React.FC = () => {
                   </div>
                   <div className="ml-12">
                     <h3 className="text-base font-medium mb-1">3 | Personalize your lenses</h3>
-                    <p className="text-sm text-gray-600">Select lens type and thickness, then add specialized treatments.</p>
+                    <p className="text-sm text-black">Select lens type and thickness, then add specialized treatments.</p>
                   </div>
                 </div>
 
@@ -402,7 +402,7 @@ const Index: React.FC = () => {
                   </div>
                   <div className="ml-12">
                     <h3 className="text-base font-medium mb-1">4 | Complete your purchase</h3>
-                    <p className="text-sm text-gray-600">We ensure 100% satisfaction with our 30 day happiness guarantee.</p>
+                    <p className="text-sm text-black">We ensure 100% satisfaction with our 30 day happiness guarantee.</p>
                   </div>
                 </div>
               </div>
