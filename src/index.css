@@ -84,9 +84,9 @@
   }
 
   .frame-shape-icon {
-    width: 140px;
-    height: 140px;
-    padding: 2rem;
+    width: 280px;
+    height: 280px;
+    padding: 3px;
     background-color: white;
     border: 1px solid #e5e7eb;
     border-radius: 0.5rem;
