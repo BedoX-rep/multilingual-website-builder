@@ -262,10 +262,10 @@ const Index: React.FC = () => {
           </div>
 
           {/* Mobile Version */}
-          <div className="md:hidden">
+          <div className="md:hidden px-4">
             <div className="relative">
               <div className="overflow-hidden">
-                <div className="flex snap-x snap-mandatory overflow-x-auto hide-scrollbar">
+                <div className="flex snap-x snap-mandatory overflow-x-auto hide-scrollbar pb-6">
                   {[
                     {
                       title: "CHASE STOKES",
@@ -273,7 +273,7 @@ const Index: React.FC = () => {
                       description: "Renew your style with bold looks.",
                       cta: "Shop collection",
                       image: "/lovable-uploads/collectionsectionmobile/250318_chase_hp_small_2_card_carousel-sm.png",
-                      bgColor: "bg-sky-200"
+                      bgColor: "bg-sky-100"
                     },
                     {
                       title: "BLOKZ",
@@ -281,7 +281,7 @@ const Index: React.FC = () => {
                       description: "Filter blue-light, anytime, anywhere.",
                       cta: "Shop now",
                       image: "/lovable-uploads/collectionsectionmobile/250318_blokz_hp_small_2_card_carousel-md.png",
-                      bgColor: "bg-orange-300"
+                      bgColor: "bg-orange-100"
                     },
                     {
                       title: "SAM CASSELL",
@@ -289,7 +289,7 @@ const Index: React.FC = () => {
                       description: "Classic style meets modern design.",
                       cta: "Shop collection",
                       image: "/lovable-uploads/collectionsectionmobile/032525_Sam_Cassell_HP_small_card-sm.png",
-                      bgColor: "bg-yellow-200"
+                      bgColor: "bg-yellow-100"
                     },
                     {
                       title: "UNDER 30",
@@ -297,27 +297,27 @@ const Index: React.FC = () => {
                       description: "Trendy frames at amazing prices.",
                       cta: "Shop now",
                       image: "/lovable-uploads/collectionsectionmobile/250327_under_30_hp_small_2_card_carousel-md.png",
-                      bgColor: "bg-green-200"
+                      bgColor: "bg-green-100"
                     }
                   ].map((collection, index) => (
                     <div 
                       key={index}
-                      className={`${collection.bgColor} min-w-[280px] w-[80vw] mr-4 rounded-2xl overflow-hidden snap-center`}
+                      className={`${collection.bgColor} min-w-[300px] w-[85vw] mr-4 rounded-2xl overflow-hidden snap-center shadow-sm`}
                     >
-                      <div className="p-6 h-full flex flex-col relative">
+                      <div className="p-6 h-[420px] flex flex-col relative">
                         <div className="mb-auto">
-                          <h3 className="text-sm font-bold mb-1">{collection.title}</h3>
-                          <h2 className="text-xl font-bold mb-2">{collection.subtitle}</h2>
-                          <p className="text-sm">{collection.description}</p>
+                          <h3 className="text-sm font-bold mb-2 text-gray-800">{collection.title}</h3>
+                          <h2 className="text-2xl font-bold mb-3 leading-tight">{collection.subtitle}</h2>
+                          <p className="text-sm text-gray-600">{collection.description}</p>
                         </div>
-                        <button className="bg-black text-white text-sm px-4 py-2 rounded-full mt-4 inline-block w-fit">
+                        <button className="bg-black text-white text-sm px-6 py-3 rounded-full mt-4 inline-block w-fit hover:bg-gray-900 transition-colors z-10">
                           {collection.cta}
                         </button>
-                        <div className="absolute bottom-0 right-0 w-full">
+                        <div className="absolute bottom-0 right-0 w-full h-[250px]">
                           <img 
                             src={collection.image} 
                             alt={collection.title}
-                            className="w-full object-cover"
+                            className="w-full h-full object-cover object-center"
                           />
                         </div>
                       </div>
