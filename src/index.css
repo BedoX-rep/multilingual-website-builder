@@ -84,16 +84,20 @@
   }
 
   .frame-shape-icon {
-    width: 280px;
-    height: 280px;
     padding: 3px;
     background-color: white;
     border: 1px solid #e5e7eb;
     border-radius: 0.5rem;
     transition: all 0.2s ease-in-out;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .frame-shape-icon img {
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
   }
 
   .frame-shape-item:hover .frame-shape-icon {
