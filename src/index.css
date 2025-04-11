@@ -65,6 +65,26 @@
 }
 
 @layer components {
+  .frame-shape-container {
+    @apply relative flex items-center justify-between gap-6 max-w-7xl mx-auto px-4;
+  }
+
+  .frame-shape-item {
+    @apply flex flex-col items-center gap-4 group cursor-pointer;
+  }
+
+  .frame-shape-icon {
+    @apply w-32 h-32 p-6 bg-white rounded-2xl transition-all duration-300 group-hover:scale-110;
+  }
+
+  .frame-shape-label {
+    @apply text-sm font-medium text-gray-900;
+  }
+
+  .shop-all-button {
+    @apply bg-black text-white text-sm px-6 py-3 rounded-full flex items-center gap-2 hover:bg-gray-900 transition-all duration-300;
+  }
+
   .btn-primary {
     @apply bg-black hover:bg-gray-900 text-white font-medium py-3 px-8 transition-colors tracking-wider uppercase text-sm;
   }

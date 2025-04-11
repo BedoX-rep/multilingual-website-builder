@@ -212,12 +212,14 @@ const Index: React.FC = () => {
       </section>
 
       {/* Frame Shape Section */}
-      <section className="py-16 bg-white">
-        <div className="luxury-container">
-          <h2 className="text-[40px] font-bold text-center mb-4">SHOP BY FRAME SHAPE</h2>
-          <p className="text-center mb-12 max-w-2xl mx-auto text-gray-600">Bloom into new frames with fresh shapes, colors, and patterns.</p>
+      <section className="py-24 bg-white">
+        <div className="container mx-auto">
+          <h2 className="text-4xl font-bold text-center tracking-tight mb-4">SHOP BY FRAME SHAPE</h2>
+          <p className="text-center mb-16 max-w-2xl mx-auto text-gray-600">
+            Bloom into new frames with fresh shapes, colors, and patterns.
+          </p>
 
-          <div className="flex justify-center items-end gap-12">
+          <div className="frame-shape-container">
             {[
               { name: 'Rectangle' },
               { name: 'Square' },
@@ -226,18 +228,18 @@ const Index: React.FC = () => {
               { name: 'Aviator' },
               { name: 'Browline' }
             ].map((shape) => (
-              <div key={shape.name} className="text-center">
-                <div className="mb-4">
+              <div key={shape.name} className="frame-shape-item">
+                <div className="frame-shape-icon">
                   <img
                     src={`/lovable-uploads/frameshapes/frame_shape-${shape.name}.svg`}
                     alt={shape.name}
-                    className="w-20 h-20 mx-auto object-contain"
+                    className="w-full h-full"
                   />
                 </div>
-                <p className="text-sm font-medium">{shape.name}</p>
+                <p className="frame-shape-label">{shape.name}</p>
               </div>
             ))}
-            <button className="bg-black text-white text-sm px-4 py-2 rounded-full flex items-center gap-2 ml-4">
+            <button className="shop-all-button">
               Shop all <ChevronRight className="w-4 h-4" />
             </button>
           </div>
