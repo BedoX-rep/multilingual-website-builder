@@ -181,13 +181,46 @@ const Index: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { name: 'Rectangle', rating: 4.6, reviews: 679, price: 16.95 },
-              { name: 'Cat-Eye', rating: 4.5, reviews: 2137, price: 16.95 },
-              { name: 'Square', rating: 4.5, reviews: 722, price: 16.95 }
-            ].map((item, index) => (
-              <div key={index} className="bg-white rounded-xl p-4 relative group">
+              {
+                id: '1',
+                name: 'Esme',
+                price: 95,
+                image: '/lovable-uploads/productmockup/2b61f335e979f96b25e95b1a527333b8e8cf3da6 (copy) 1.png',
+                rating: 4.8,
+                reviews: 425,
+                colors: ['#8B4513', '#CCCCCC', '#2E4F4F', '#4F6F52']
+              },
+              {
+                id: '2',
+                name: 'Baird',
+                price: 145,
+                image: '/lovable-uploads/productmockup/3435b33b8f6649ded6fc392bcf9471aa11742d28.png',
+                rating: 4.7,
+                reviews: 312,
+                colors: ['#000000', '#FF0000', '#E6F4F1', '#435334']
+              },
+              {
+                id: '3',
+                name: 'Durand',
+                price: 95,
+                image: '/lovable-uploads/productmockup/9e225f5dc69f0335cf2ff7fd4bbaf15322763546.png',
+                rating: 4.9,
+                reviews: 567,
+                colors: ['#8B4513', '#000000', '#2E4F4F', '#CCCCCC']
+              },
+              {
+                id: '4',
+                name: 'Brady',
+                price: 95,
+                image: '/lovable-uploads/productmockup/d29bdfc9-8c61-4bd0-8a10-c0ef0355df3b.png',
+                rating: 4.6,
+                reviews: 289,
+                colors: ['#7B66FF', '#CCCCCC', '#000000']
+              }
+            ].map((item) => (
+              <div key={item.id} className="bg-white rounded-xl p-4 relative group">
                 <div className="absolute top-3 right-3 z-10">
                   <button className="p-2 hover:bg-gray-100 rounded-full">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -195,14 +228,31 @@ const Index: React.FC = () => {
                     </svg>
                   </button>
                 </div>
-                <div className="bg-[#E8F7F9] px-2 py-1 rounded-full text-xs inline-block mb-4">Top rated</div>
+                <div className="bg-[#E8F7F9] px-2 py-1 rounded-full text-xs inline-block mb-4">Try on virtually</div>
                 <img
-                  src={`/lovable-uploads/45bb2648-7da7-44ab-bd32-7044f1470203.png`}
-                  alt={`${item.name} glasses`}
-                  className="w-full h-48 object-contain mb-4"
+                  src={item.image}
+                  alt={item.name}
+                  className="w-full h-48 object-contain mb-4 bg-white"
                 />
                 <div className="space-y-2">
                   <div className="flex justify-between items-center">
+                    <span className="font-medium">${item.price}</span>
+                    <div className="flex items-center gap-1">
+                      <span className="text-yellow-400">★</span>
+                      <span className="text-sm">{item.rating} ({item.reviews})</span>
+                    </div>
+                  </div>
+                  <h3 className="text-lg font-medium">{item.name}</h3>
+                  <p className="text-sm text-green-600">Get it as early as Wed, Apr 16</p>
+                  <div className="flex gap-2 pt-2">
+                    {item.colors.map((color, index) => (
+                      <button
+                        key={index}
+                        className="w-6 h-6 rounded-full hover:scale-110 transition-transform border border-gray-200"
+                        style={{ backgroundColor: color }}
+                      />
+                    ))}
+                  </div>nter">
                     <span className="font-medium">CAD${item.price}</span>
                     <div className="flex items-center gap-1">
                       <span className="text-yellow-400">★</span>
