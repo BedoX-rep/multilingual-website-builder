@@ -315,7 +315,7 @@ const Index: React.FC = () => {
               { name: 'Browline' }
             ].map((shape) => (
               <a href="#" key={shape.name} className="flex flex-col items-center group">
-                <div className="w-45 h-45 mb-2">
+                <div className="w-56 h-56 mb-2">
                   <img
                     src={`/lovable-uploads/frameshapes/frame_shape-${shape.name}.svg`}
                     alt={shape.name}
