@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
+import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
-import { CheckCircle, ChevronRight, ChevronLeft } from 'lucide-react';
+import { CheckCircle, ChevronRight } from 'lucide-react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 // Hero section images
@@ -65,9 +64,6 @@ const brandLogos = [
 ];
 
 const Index: React.FC = () => {
-  const { t, dir } = useLanguage();
-  const [activeFilter, setActiveFilter] = useState('all');
-
   const bestSellers = [
     {
       id: '1',
@@ -144,10 +140,10 @@ const Index: React.FC = () => {
   ];
 
   return (
-    <div className={dir === 'rtl' ? 'font-sans rtl' : 'font-sans'}>
+    <div className="font-sans">
       <Header />
 
-      {/* Hero Section - Adjusted with ml-[5%] for left/right margin and proper RTL support */}
+      {/* Hero Section */}
       <section className="relative h-[80vh]">
         <div className="absolute inset-0">
           <picture>
@@ -175,17 +171,17 @@ const Index: React.FC = () => {
               </h1>
               <div className="flex flex-wrap gap-6 mb-8">
                 <button className="btn-primary bg-blue-600 text-white hover:bg-blue-700">
-                  {t('hero.shopmen')}
+                  Shop Men
                 </button>
                 <button className="btn-primary bg-blue-600 text-white hover:bg-blue-700">
-                  {t('hero.shopwomen')}
+                  Shop Women
                 </button>
               </div>
               <a 
                 href="#how-to-pick" 
                 className="inline-block text-white md:text-blue-600 hover:text-blue-700 font-medium transition-all px-4 py-2 border-2 border-white md:border-blue-600 hover:border-blue-700 rounded-lg hover:-translate-y-1"
               >
-                {t('hero.learnmore')}
+                Learn More
               </a>
             </div>
             <div className="hidden md:block"> </div>
@@ -193,62 +189,28 @@ const Index: React.FC = () => {
         </div>
       </section>
 
-      {/* Shipping Info Banner */}
+      {/* Shipping Info Banner - Updated for mobile responsiveness */}
       <section className="bg-blue-50">
-        <div className="flex justify-between items-center py-4 px-6">
-          <div className="text-center flex-1">
+        <div className="flex flex-col md:flex-row justify-between items-center py-4 px-6">
+          <div className="text-center md:hidden w-full">
+            <p className="text-base font-medium text-blue-800">Free shipping within all of Morocco 🇲🇦</p>
+          </div>
+          <div className="hidden md:block text-center flex-1">
             <p className="text-base font-medium text-blue-800">Delivery within all of Morocco 🇲🇦</p>
           </div>
-          <div className="text-center flex-1">
-            <p className="text-base font-medium text-blue-800">{t('shipping.free')}</p>
+          <div className="hidden md:block text-center flex-1">
+            <p className="text-base font-medium text-blue-800">Free Shipping</p>
           </div>
-          <div className="text-center flex-1">
-            <p className="text-base font-medium text-blue-800">{t('shipping.returns')}</p>
+          <div className="hidden md:block text-center flex-1">
+            <p className="text-base font-medium text-blue-800">30-Day Returns</p>
           </div>
-          <div className="text-center flex-1">
-            <p className="text-base font-medium text-blue-800">{t('shipping.contacts')}</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Frame Shape Section */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto">
-          <h2 className="frame-shape-title">SHOP BY FRAME SHAPE</h2>
-          <p className="frame-shape-subtitle text-black">
-            Bloom into new frames with fresh shapes, colors, and patterns.
-          </p>
-
-          <div className="frame-shape-container">
-            {[
-              { name: 'Rectangle' },
-              { name: 'Square' },
-              { name: 'Round' },
-              { name: 'Cat-eye' },
-              { name: 'Aviator' },
-              { name: 'Browline' }
-            ].map((shape) => (
-              <a href="#" key={shape.name} className="frame-shape-item group">
-                <div className="frame-shape-icon">
-                  <img
-                    src={`/lovable-uploads/frameshapes/frame_shape-${shape.name}.svg`}
-                    alt={shape.name}
-                    className="w-[80px] h-[80px]"
-                  />
-                  <span className="frame-shape-label text-center text-black transition-opacity duration-300">{shape.name}</span>
-                </div>
-              </a>
-            ))}
-          </div>
-          <div className="mt-8 flex justify-center">
-            <button className="shop-all-button">
-              Shop all <ChevronRight className="w-4 h-4" />
-            </button>
+          <div className="hidden md:block text-center flex-1">
+            <p className="text-base font-medium text-blue-800">Contacts & Support</p>
           </div>
         </div>
       </section>
 
-      {/* Best Sellers Section */}
+      {/* Best Sellers Section - Moved up below shipping banner */}
       <section className="py-16 bg-white">
         <div className="luxury-container">
           <div className="flex items-center gap-8 mb-8 border-b">
@@ -308,6 +270,55 @@ const Index: React.FC = () => {
         </div>
       </section>
 
+      {/* Frame Shape Section - Updated 'Shop all' button positioning for desktop/mobile */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto">
+          <h2 className="frame-shape-title">SHOP BY FRAME SHAPE</h2>
+          <p className="frame-shape-subtitle text-black">
+            Bloom into new frames with fresh shapes, colors, and patterns.
+          </p>
+
+          <div className="relative">
+            {/* Frame shape grid */}
+            <div className="frame-shape-container mb-8 md:mb-0">
+              {[
+                { name: 'Rectangle' },
+                { name: 'Square' },
+                { name: 'Round' },
+                { name: 'Cat-eye' },
+                { name: 'Aviator' },
+                { name: 'Browline' }
+              ].map((shape) => (
+                <a href="#" key={shape.name} className="frame-shape-item group">
+                  <div className="frame-shape-icon">
+                    <img
+                      src={`/lovable-uploads/frameshapes/frame_shape-${shape.name}.svg`}
+                      alt={shape.name}
+                      className="w-[80px] h-[80px]"
+                    />
+                    <span className="frame-shape-label text-center text-black transition-opacity duration-300">{shape.name}</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+            
+            {/* Shop all button positioned to the right on desktop */}
+            <div className="hidden md:block absolute right-0 bottom-0">
+              <button className="shop-all-button">
+                Shop all <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+          
+          {/* Shop all button displayed below on mobile */}
+          <div className="md:hidden mt-8 flex justify-center">
+            <button className="shop-all-button">
+              Shop all <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* How to Pick Section */}
       <section id="how-to-pick" className="py-24 bg-gray-50">
         <div className="luxury-container">
@@ -323,8 +334,8 @@ const Index: React.FC = () => {
               <div className="w-40 h-40 flex items-center justify-center bg-white rounded-full mx-auto mb-8 shadow-lg transition-transform duration-300 group-hover:scale-110">
                 <img src={frameIcon} alt="Eyeglass frames" className="w-24 h-24 object-contain" />
               </div>
-              <h3 className="font-serif text-xl font-bold mb-3">{t('pick.step1.title')}</h3>
-              <p className="text-gray-600">{t('pick.step1.desc')}</p>
+              <h3 className="font-serif text-xl font-bold mb-3">Choose Your Frames</h3>
+              <p className="text-gray-600">Browse our wide selection of designer frames to find the perfect style for your face shape.</p>
             </div>
 
             {/* Step 2 */}
@@ -332,8 +343,8 @@ const Index: React.FC = () => {
               <div className="w-40 h-40 flex items-center justify-center bg-white rounded-full mx-auto mb-8 shadow-lg transition-transform duration-300 group-hover:scale-110">
                 <img src={lensIcon} alt="Eyeglass lenses" className="w-24 h-24 object-contain" />
               </div>
-              <h3 className="font-serif text-xl font-bold mb-3">{t('pick.step2.title')}</h3>
-              <p className="text-gray-600">{t('pick.step2.desc')}</p>
+              <h3 className="font-serif text-xl font-bold mb-3">Select Your Lenses</h3>
+              <p className="text-gray-600">Choose from our high-quality lens options, including blue light filtering, transitions, and more.</p>
             </div>
 
             {/* Step 3 */}
@@ -341,8 +352,8 @@ const Index: React.FC = () => {
               <div className="w-40 h-40 flex items-center justify-center bg-white rounded-full mx-auto mb-8 shadow-lg transition-transform duration-300 group-hover:scale-110">
                 <img src={prescriptionIcon} alt="Prescription" className="w-24 h-24 object-contain" />
               </div>
-              <h3 className="font-serif text-xl font-bold mb-3">{t('pick.step3.title')}</h3>
-              <p className="text-gray-600">{t('pick.step3.desc')}</p>
+              <h3 className="font-serif text-xl font-bold mb-3">Upload Prescription</h3>
+              <p className="text-gray-600">Easily upload your prescription or opt for non-prescription glasses for style only.</p>
             </div>
 
             {/* Step 4 */}
@@ -350,14 +361,14 @@ const Index: React.FC = () => {
               <div className="w-40 h-40 flex items-center justify-center bg-white rounded-full mx-auto mb-8 shadow-lg transition-transform duration-300 group-hover:scale-110">
                 <img src={deliveryIcon} alt="Delivery" className="w-24 h-24 object-contain" />
               </div>
-              <h3 className="font-serif text-xl font-bold mb-3">{t('pick.step4.title')}</h3>
-              <p className="text-gray-600">{t('pick.step4.desc')}</p>
+              <h3 className="font-serif text-xl font-bold mb-3">Get It Delivered</h3>
+              <p className="text-gray-600">We'll craft your custom glasses and ship them directly to your door with our free delivery service.</p>
             </div>
           </div>
 
           <div className="text-center mt-16">
             <button className="btn-primary">
-              {t('pick.button')}
+              Start Shopping
             </button>
           </div>
         </div>
@@ -367,15 +378,15 @@ const Index: React.FC = () => {
       <section className="py-24 bg-white overflow-hidden">
         <div className="luxury-container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div className={`${dir === 'rtl' ? 'order-2' : 'order-1'} max-w-xl ${dir === 'rtl' ? 'mr-[5%]' : 'ml-[5%]'}`}>
+            <div className="max-w-xl ml-[5%]">
               <p className="section-subtitle">
-                {t('custom.subtitle')}
+                DESIGNED FOR YOU
               </p>
               <h2 className="section-title">
-                {t('custom.title')}
+                Custom Sunglasses
               </h2>
               <p className="text-gray-600 mb-12 text-lg">
-                {t('custom.desc')}
+                Create your own unique pair of sunglasses by choosing from a wide range of frames, lenses, and colors. Express your individuality and stand out from the crowd with custom eyewear.
               </p>
 
               {/* Color Options */}
@@ -391,10 +402,10 @@ const Index: React.FC = () => {
               </div>
 
               <button className="btn-primary">
-                {t('custom.button')}
+                Design Your Own
               </button>
             </div>
-            <div className={`${dir === 'rtl' ? 'order-1' : 'order-2'} relative`}>
+            <div className="relative">
               <div className="relative w-[140%]">
                 <img 
                   src={customSunglassesImage} 
@@ -421,12 +432,12 @@ const Index: React.FC = () => {
         </div>
 
         <div className="luxury-container relative z-10">
-          <div className={`max-w-2xl text-black ${dir === 'rtl' ? 'mr-auto' : 'ml-auto'}`}>
+          <div className="max-w-2xl text-black ml-auto">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium mb-6">
-              {t('insurance.title')}
+              Unlock Exclusive Benefits with Our Insurance Partners
             </h2>
             <p className="text-lg text-gray-800 mb-12 leading-relaxed">
-              {t('insurance.description')}
+              We've partnered with leading insurance providers to make quality eyewear more accessible and affordable. Discover how your insurance plan can help cover the cost of your next pair of glasses or contacts.
             </p>
 
             {/* Insurance Logos */}
@@ -450,12 +461,12 @@ const Index: React.FC = () => {
               ))}
             </div>
 
-            <div className={`flex flex-wrap gap-6 ${dir === 'rtl' ? 'justify-start' : 'justify-start'}`}>
+            <div className="flex flex-wrap gap-6 justify-start">
               <button className="px-8 py-3 bg-black text-white font-medium hover:bg-gray-900 transition-colors rounded-lg">
-                {t('insurance.browse')}
+                Browse Insurance Options
               </button>
               <button className="px-8 py-3 border-2 border-black bg-black text-white font-medium hover:bg-gray-900 transition-colors rounded-lg">
-                {t('insurance.learn')}
+                Learn More About Coverage
               </button>
             </div>
           </div>
@@ -467,10 +478,10 @@ const Index: React.FC = () => {
         <div className="luxury-container">
           <div className="text-center mb-16">
             <p className="section-subtitle">
-              {t('partners.subtitle')}
+              OUR TRUSTED PARTNERS
             </p>
             <h2 className="section-title">
-              {t('partners.title')}
+              Premium Lens Brands
             </h2>
           </div>
 
@@ -480,7 +491,6 @@ const Index: React.FC = () => {
                 align: "start",
                 loop: true,
                 dragFree: true,
-                autoPlay: true,
                 interval: 2000,
               }}
               className="w-full"
@@ -513,13 +523,13 @@ const Index: React.FC = () => {
       <section className="py-24">
         <div className="luxury-container">
           <h2 className="section-title text-center">
-            {t('reviews.title')}
+            What Our Clients Say
           </h2>
 
           <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-xl p-12 mt-16">
             <div className="text-center">
               <p className="text-xl text-gray-600 italic mb-8 font-serif">
-                "{t('reviews.content')}"
+                "I'm so happy with my new glasses! The quality is excellent, and the customer service was outstanding. I highly recommend this store to anyone looking for stylish and affordable eyewear."
               </p>
               <div className="flex items-center justify-center">
                 <div className="w-16 h-16 rounded-full overflow-hidden mr-4 border-2 border-gray-100">
@@ -530,7 +540,7 @@ const Index: React.FC = () => {
                   />
                 </div>
                 <div className="text-left">
-                  <p className="font-serif text-lg">{t('reviews.name')}</p>
+                  <p className="font-serif text-lg">Sarah Kaufman</p>
                 </div>
               </div>
             </div>
