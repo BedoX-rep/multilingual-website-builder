@@ -250,7 +250,6 @@ const Index: React.FC = () => {
             <button className="text-lg font-medium pb-4 border-b-2 border-black">Bestsellers</button>
             <button className="text-lg text-gray-500 pb-4">Trending</button>
             <button className="text-lg text-gray-500 pb-4">New</button>
-            <button className="text-lg text-gray-500 pb-4">Home Try-On</button>
             <div className="ml-auto">
               <button className="text-blue-600 hover:underline">Shop all bestsellers</button>
             </div>
