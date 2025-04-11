@@ -287,7 +287,7 @@ const Index: React.FC = () => {
               { name: 'Rectangle' },
               { name: 'Square' },
               { name: 'Round' },
-              { name: 'Cat-Eye' },
+              { name: 'Cat-eye' },
               { name: 'Aviator' },
               { name: 'Browline' }
             ].map((shape) => (
@@ -310,12 +310,12 @@ const Index: React.FC = () => {
               { name: 'Rectangle' },
               { name: 'Square' },
               { name: 'Round' },
-              { name: 'Cat-Eye' },
+              { name: 'Cat-eye' },
               { name: 'Aviator' },
               { name: 'Browline' }
             ].map((shape) => (
               <a href="#" key={shape.name} className="flex flex-col items-center group">
-                <div className="w-28 h-28 mb-2">
+                <div className="w-32 h-32 mb-2">
                   <img
                     src={`/lovable-uploads/frameshapes/frame_shape-${shape.name}.svg`}
                     alt={shape.name}
