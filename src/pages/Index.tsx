@@ -200,7 +200,8 @@ const Index: React.FC = () => {
                 description: "Renew your style with bold looks.",
                 cta: "Shop collection",
                 image: "/lovable-uploads/collectionsectiondesktop/250318_chase_hp_small_2_card_carousel-xl.png",
-                bgColor: "bg-sky-200"
+                bgColor: "bg-sky-100",
+                ctaStyle: "bg-black"
               },
               {
                 title: "BLOKZ",
@@ -208,7 +209,8 @@ const Index: React.FC = () => {
                 description: "Filter blue-light, anytime, anywhere.",
                 cta: "Shop now",
                 image: "/lovable-uploads/collectionsectiondesktop/250318_blokz_hp_small_2_card_carousel-xl.png",
-                bgColor: "bg-orange-300"
+                bgColor: "bg-orange-100",
+                ctaStyle: "bg-black"
               },
               {
                 title: "SAM CASSELL",
@@ -216,7 +218,8 @@ const Index: React.FC = () => {
                 description: "Classic style meets modern design.",
                 cta: "Shop collection",
                 image: "/lovable-uploads/collectionsectiondesktop/032525_Sam_Cassell_HP_small_card-xl.png",
-                bgColor: "bg-yellow-200"
+                bgColor: "bg-yellow-100",
+                ctaStyle: "bg-black"
               },
               {
                 title: "UNDER 30",
@@ -224,28 +227,34 @@ const Index: React.FC = () => {
                 description: "Trendy frames at amazing prices.",
                 cta: "Shop now",
                 image: "/lovable-uploads/collectionsectiondesktop/250327_under_30_hp_small_2_card_carousel-xl.png",
-                bgColor: "bg-green-200"
+                bgColor: "bg-green-100",
+                ctaStyle: "bg-black"
               }
             ].map((collection, index) => (
               <div 
                 key={index}
-                className={`${collection.bgColor} rounded-2xl overflow-hidden relative group cursor-pointer`}
+                className={`${collection.bgColor} rounded-2xl overflow-hidden relative group cursor-pointer h-[460px]`}
               >
                 <div className="p-6 h-full flex flex-col">
                   <div className="mb-auto">
-                    <h3 className="text-sm font-bold mb-1">{collection.title}</h3>
-                    <h2 className="text-2xl font-bold mb-2">{collection.subtitle}</h2>
-                    <p className="text-sm">{collection.description}</p>
+                    <h3 className="text-sm font-bold text-black mb-1">{collection.title}</h3>
+                    <h2 className="text-[28px] leading-tight font-bold text-black mb-2">{collection.subtitle}</h2>
+                    <p className="text-sm text-gray-700">{collection.description}</p>
                   </div>
-                  <button className="bg-black text-white text-sm px-4 py-2 rounded-full mt-4 inline-block w-fit">
-                    {collection.cta}
-                  </button>
+                  <div className="relative z-10">
+                    <button className={`${collection.ctaStyle} text-white text-sm px-4 py-2 rounded-full mt-4 inline-block hover:opacity-90 transition-opacity`}>
+                      {collection.cta}
+                    </button>
+                  </div>
                   <div className="absolute bottom-0 right-0 w-full">
                     <img 
                       src={collection.image} 
                       alt={collection.title}
-                      className="w-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-[300px] object-cover object-center transform group-hover:scale-105 transition-transform duration-300"
                     />
+                    <div className="absolute bottom-4 right-4 bg-black text-white text-xs px-3 py-1 rounded-full">
+                      Frames
+                    </div>
                   </div>
                 </div>
               </div>
