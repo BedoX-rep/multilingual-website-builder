@@ -188,11 +188,18 @@ const Index: React.FC = () => {
         </div>
       </section>
 
+      {/* How to Pick Section */}
+      <section id="how-to-pick" className="py-8 md:py-12 bg-[#F5F7F9]">
+
+[... existing How to Pick section code ...]
+
+      </section>
+
       {/* Collections Section */}
-      <section className="py-12 bg-white">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           {/* Desktop Version */}
-          <div className="hidden md:grid grid-cols-4 gap-4">
+          <div className="hidden md:grid grid-cols-4 gap-6">
             {[
               {
                 title: "CHASE STOKES",
@@ -233,16 +240,16 @@ const Index: React.FC = () => {
             ].map((collection, index) => (
               <div 
                 key={index}
-                className={`${collection.bgColor} rounded-2xl overflow-hidden relative group cursor-pointer h-[460px]`}
+                className={`${collection.bgColor} rounded-3xl overflow-hidden relative group cursor-pointer h-[400px]`}
               >
                 <div className="p-6 h-full flex flex-col">
-                  <div className="mb-auto">
-                    <h3 className="text-sm font-bold text-black mb-1">{collection.title}</h3>
-                    <h2 className="text-[28px] leading-tight font-bold text-black mb-2">{collection.subtitle}</h2>
+                  <div>
+                    <h3 className="text-xs font-bold text-black uppercase mb-1">{collection.title}</h3>
+                    <h2 className="text-2xl font-bold text-black mb-1">{collection.subtitle}</h2>
                     <p className="text-sm text-gray-700">{collection.description}</p>
                   </div>
-                  <div className="relative z-10">
-                    <button className={`${collection.ctaStyle} text-white text-sm px-4 py-2 rounded-full mt-4 inline-block hover:opacity-90 transition-opacity`}>
+                  <div className="relative z-10 mt-4">
+                    <button className="bg-black text-white text-sm px-4 py-2 rounded-full hover:opacity-90 transition-opacity">
                       {collection.cta}
                     </button>
                   </div>
@@ -250,7 +257,7 @@ const Index: React.FC = () => {
                     <img 
                       src={collection.image} 
                       alt={collection.title}
-                      className="w-full h-[300px] object-cover object-center transform group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-[280px] object-cover object-bottom transform group-hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute bottom-4 right-4 bg-black text-white text-xs px-3 py-1 rounded-full">
                       Frames
