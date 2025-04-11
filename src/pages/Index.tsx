@@ -298,8 +298,8 @@ const Index: React.FC = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="absolute -left-12 top-1/2 -translate-y-1/2 bg-blue-600 text-white hover:bg-blue-700" />
-            <CarouselNext className="absolute -right-12 top-1/2 -translate-y-1/2 bg-blue-600 text-white hover:bg-blue-700" />
+            <CarouselPrevious className="absolute -left-12 top-1/2 -translate-y-1/2 bg-white text-blue-600 hover:bg-gray-50 h-12 w-12" />
+            <CarouselNext className="absolute -right-12 top-1/2 -translate-y-1/2 bg-white text-blue-600 hover:bg-gray-50 h-12 w-12" />
           </Carousel>
         </div>
       </section>
