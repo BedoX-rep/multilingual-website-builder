@@ -287,7 +287,7 @@ const Index: React.FC = () => {
               { name: 'Rectangle' },
               { name: 'Square' },
               { name: 'Round' },
-              { name: 'Cat-Eye' },
+              { name: 'Cat-eye' },
               { name: 'Aviator' },
               { name: 'Browline' }
             ].map((shape) => (
@@ -310,7 +310,7 @@ const Index: React.FC = () => {
               { name: 'Rectangle' },
               { name: 'Square' },
               { name: 'Round' },
-              { name: 'Cat-Eye' },
+              { name: 'Cat-eye' },
               { name: 'Aviator' },
               { name: 'Browline' }
             ].map((shape) => (
@@ -352,7 +352,7 @@ const Index: React.FC = () => {
           <div className="md:hidden space-y-4">
             <div className="relative">
               <div className="absolute left-6 top-0 bottom-0 w-[1px] bg-gray-300"></div>
-              
+
               <div className="space-y-6">
                 {/* Step 1 */}
                 <div className="relative flex items-start">
@@ -426,7 +426,7 @@ const Index: React.FC = () => {
           <div className="hidden md:block">
             <div className="relative">
               <div className="absolute left-0 right-0 top-1/2 h-[1px] bg-gray-300"></div>
-              
+
               <div className="grid grid-cols-4 gap-8">
                 {/* Step 1 */}
                 <div className="text-center relative">
