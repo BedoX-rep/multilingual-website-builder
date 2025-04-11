@@ -1,18 +1,21 @@
 
 import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const About: React.FC = () => {
+  const { t, dir } = useLanguage();
+  
   return (
-    <div className="font-sans">
+    <div className={dir === 'rtl' ? 'font-sans rtl' : 'font-sans'}>
       <Header />
       
       {/* About Hero */}
       <section className="bg-gray-100 py-12">
         <div className="container mx-auto px-4">
           <h1 className="font-serif text-3xl md:text-4xl font-bold text-center">
-            About Us
+            {t('nav.about')}
           </h1>
         </div>
       </section>

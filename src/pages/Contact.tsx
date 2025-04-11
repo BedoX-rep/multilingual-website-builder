@@ -1,19 +1,22 @@
 
 import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
 const Contact: React.FC = () => {
+  const { t, dir } = useLanguage();
+  
   return (
-    <div className="font-sans">
+    <div className={dir === 'rtl' ? 'font-sans rtl' : 'font-sans'}>
       <Header />
       
       {/* Contact Hero */}
       <section className="bg-gray-100 py-12">
         <div className="container mx-auto px-4">
           <h1 className="font-serif text-3xl md:text-4xl font-bold text-center">
-            Contact Us
+            {t('nav.contact')}
           </h1>
         </div>
       </section>

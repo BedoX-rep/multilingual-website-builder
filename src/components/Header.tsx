@@ -1,157 +1,141 @@
 
-import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ShoppingCart, User } from "lucide-react";
-import { Button } from "./ui/button";
+import React, { useState, useEffect } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { Link } from 'react-router-dom';
+import { Menu, X, ShoppingCart, Search, User, Globe } from 'lucide-react';
 
 const Header: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
+  const { t, language, setLanguage } = useLanguage();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
 
-  const isActiveLink = (path: string) => {
-    return location.pathname === path;
-  };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-sm">
-      <div className="container mx-auto px-4 py-4">
+    <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-sm py-4' : 'bg-white py-6'}`}>
+      <div className="px-0">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <img
-              src="/lovable-uploads/navlogo.png"
-              alt="Lovable Eyewear"
-              className="h-8"
-            />
+          {/* Logo - adjusted with ml-[5%] for left margin */}
+          <Link to="/" className="flex items-center gap-2 pl-[5%]">
+            <img src="/lovable-uploads/navlogo1.png" alt="Lens Optique" className="h-8 md:h-10" />
+            <span className="font-serif text-xl font-medium">Lens Optique</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex md:space-x-6">
-            <Link
-              to="/"
-              className={`text-sm font-medium ${
-                isActiveLink("/") ? "text-primary" : "text-gray-600 hover:text-gray-900"
-              }`}
-            >
-              Home
+          <nav className="hidden md:flex items-center space-x-8">
+            <Link to="/" className="nav-link">
+              {t('nav.home')}
             </Link>
-            <Link
-              to="/products"
-              className={`text-sm font-medium ${
-                isActiveLink("/products") ? "text-primary" : "text-gray-600 hover:text-gray-900"
-              }`}
-            >
-              Products
+            <Link to="/products" className="nav-link">
+              {t('nav.products')}
             </Link>
-            <Link
-              to="/about"
-              className={`text-sm font-medium ${
-                isActiveLink("/about") ? "text-primary" : "text-gray-600 hover:text-gray-900"
-              }`}
-            >
-              About
+            <Link to="/about" className="nav-link">
+              {t('nav.about')}
             </Link>
-            <Link
-              to="/contact"
-              className={`text-sm font-medium ${
-                isActiveLink("/contact") ? "text-primary" : "text-gray-600 hover:text-gray-900"
-              }`}
-            >
-              Contact
+            <Link to="/contact" className="nav-link">
+              {t('nav.contact')}
             </Link>
           </nav>
 
-          {/* Desktop Actions */}
-          <div className="hidden md:flex md:items-center md:space-x-4">
-            <Button variant="ghost" size="icon" asChild>
-              <Link to="/account">
-                <User className="h-5 w-5" />
-              </Link>
-            </Button>
-            <Button variant="ghost" size="icon" asChild>
-              <Link to="/cart">
-                <ShoppingCart className="h-5 w-5" />
-              </Link>
-            </Button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center space-x-4">
-            <Button variant="ghost" size="icon" asChild>
-              <Link to="/cart">
-                <ShoppingCart className="h-5 w-5" />
-              </Link>
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleMenu}
-              aria-label="Toggle menu"
+          {/* Right Icons */}
+          <div className="flex items-center space-x-6">
+            {/* Language Selector */}
+            <div className="relative group hidden md:block">
+              <button className="flex items-center text-sm uppercase tracking-wider">
+                <Globe className="w-4 h-4 mr-1" />
+                <span>{language}</span>
+              </button>
+              <div className="absolute z-10 right-0 mt-2 w-32 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                <div className="py-1">
+                  <button 
+                    className={`block w-full px-4 py-2 text-sm text-left uppercase tracking-wider hover:bg-gray-50 ${language === 'en' ? 'text-black' : 'text-gray-600'}`} 
+                    onClick={() => setLanguage('en')}
+                  >
+                    English
+                  </button>
+                  <button 
+                    className={`block w-full px-4 py-2 text-sm text-left uppercase tracking-wider hover:bg-gray-50 ${language === 'fr' ? 'text-black' : 'text-gray-600'}`}
+                    onClick={() => setLanguage('fr')}
+                  >
+                    Français
+                  </button>
+                  <button 
+                    className={`block w-full px-4 py-2 text-sm text-left uppercase tracking-wider hover:bg-gray-50 ${language === 'ar' ? 'text-black' : 'text-gray-600'}`}
+                    onClick={() => setLanguage('ar')}
+                  >
+                    العربية
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <button className="hidden md:block">
+              <Search className="w-5 h-5" />
+            </button>
+            <button className="hidden md:block">
+              <User className="w-5 h-5" />
+            </button>
+            <button className="relative">
+              <ShoppingCart className="w-5 h-5" />
+              <span className="absolute -top-1 -right-1 w-4 h-4 bg-black text-white text-xs flex items-center justify-center rounded-full">0</span>
+            </button>
+            
+            {/* Mobile Menu Button */}
+            <button 
+              className="md:hidden"
+              onClick={toggleMobileMenu}
             >
-              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        <div className={`fixed inset-0 bg-white z-50 transition-transform duration-300 ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+          <div className="h-full flex flex-col">
+            <div className="flex justify-between items-center p-6 border-b">
+              <span className="font-serif text-2xl">Menu</span>
+              <button onClick={toggleMobileMenu}>
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+            <nav className="flex-1 p-6">
+              <div className="space-y-6">
+                <Link to="/" className="block text-2xl font-serif" onClick={toggleMobileMenu}>
+                  {t('nav.home')}
+                </Link>
+                <Link to="/products" className="block text-2xl font-serif" onClick={toggleMobileMenu}>
+                  {t('nav.products')}
+                </Link>
+                <Link to="/about" className="block text-2xl font-serif" onClick={toggleMobileMenu}>
+                  {t('nav.about')}
+                </Link>
+                <Link to="/contact" className="block text-2xl font-serif" onClick={toggleMobileMenu}>
+                  {t('nav.contact')}
+                </Link>
+              </div>
+            </nav>
+            <div className="p-6 border-t">
+              <div className="flex justify-between items-center">
+                <button className="text-sm uppercase tracking-wider" onClick={() => setLanguage('en')}>EN</button>
+                <button className="text-sm uppercase tracking-wider" onClick={() => setLanguage('fr')}>FR</button>
+                <button className="text-sm uppercase tracking-wider" onClick={() => setLanguage('ar')}>AR</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200">
-          <div className="container mx-auto py-4 px-4 space-y-3">
-            <Link
-              to="/"
-              className={`block py-2 px-3 rounded-md ${
-                isActiveLink("/") ? "bg-primary/10 text-primary" : "text-gray-600 hover:bg-gray-100"
-              }`}
-              onClick={closeMenu}
-            >
-              Home
-            </Link>
-            <Link
-              to="/products"
-              className={`block py-2 px-3 rounded-md ${
-                isActiveLink("/products") ? "bg-primary/10 text-primary" : "text-gray-600 hover:bg-gray-100"
-              }`}
-              onClick={closeMenu}
-            >
-              Products
-            </Link>
-            <Link
-              to="/about"
-              className={`block py-2 px-3 rounded-md ${
-                isActiveLink("/about") ? "bg-primary/10 text-primary" : "text-gray-600 hover:bg-gray-100"
-              }`}
-              onClick={closeMenu}
-            >
-              About
-            </Link>
-            <Link
-              to="/contact"
-              className={`block py-2 px-3 rounded-md ${
-                isActiveLink("/contact") ? "bg-primary/10 text-primary" : "text-gray-600 hover:bg-gray-100"
-              }`}
-              onClick={closeMenu}
-            >
-              Contact
-            </Link>
-            <Link
-              to="/account"
-              className="block py-2 px-3 rounded-md text-gray-600 hover:bg-gray-100"
-              onClick={closeMenu}
-            >
-              Account
-            </Link>
-          </div>
-        </div>
-      )}
     </header>
   );
 };

@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
@@ -89,6 +90,7 @@ const products = [
 ];
 
 const Products: React.FC = () => {
+  const { t, dir } = useLanguage();
   const [activeFilter, setActiveFilter] = useState('all');
   const [showFilters, setShowFilters] = useState(false);
   
@@ -97,14 +99,14 @@ const Products: React.FC = () => {
     : products.filter(product => product.category.toLowerCase() === activeFilter);
   
   return (
-    <div className="font-sans">
+    <div className={dir === 'rtl' ? 'font-sans rtl' : 'font-sans'}>
       <Header />
       
       {/* Products Hero */}
       <section className="bg-gray-100 py-12">
         <div className="container mx-auto px-4">
           <h1 className="font-serif text-3xl md:text-4xl font-bold text-center">
-            Our Collection
+            {t('collection.title')}
           </h1>
         </div>
       </section>
@@ -119,25 +121,25 @@ const Products: React.FC = () => {
                 className={`px-4 py-1 text-sm rounded-full border transition-colors ${activeFilter === 'all' ? 'bg-blue-600 text-white border-blue-600' : 'border-gray-300 text-gray-600 hover:border-blue-600'}`}
                 onClick={() => setActiveFilter('all')}
               >
-                All
+                {t('collection.all')}
               </button>
               <button 
                 className={`px-4 py-1 text-sm rounded-full border transition-colors ${activeFilter === 'optical' ? 'bg-blue-600 text-white border-blue-600' : 'border-gray-300 text-gray-600 hover:border-blue-600'}`}
                 onClick={() => setActiveFilter('optical')}
               >
-                Optical
+                {t('collection.optical')}
               </button>
               <button 
                 className={`px-4 py-1 text-sm rounded-full border transition-colors ${activeFilter === 'sunglasses' ? 'bg-blue-600 text-white border-blue-600' : 'border-gray-300 text-gray-600 hover:border-blue-600'}`}
                 onClick={() => setActiveFilter('sunglasses')}
               >
-                Sunglasses
+                {t('collection.sun')}
               </button>
               <button 
                 className={`px-4 py-1 text-sm rounded-full border transition-colors ${activeFilter === 'kids' ? 'bg-blue-600 text-white border-blue-600' : 'border-gray-300 text-gray-600 hover:border-blue-600'}`}
                 onClick={() => setActiveFilter('kids')}
               >
-                Kids
+                {t('collection.kids')}
               </button>
             </div>
             
