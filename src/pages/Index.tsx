@@ -3,7 +3,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, ChevronRight } from 'lucide-react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 // Hero section images
@@ -214,34 +214,35 @@ const Index: React.FC = () => {
       {/* Frame Shape Section */}
       <section className="py-16 bg-white">
         <div className="luxury-container">
-          <h2 className="text-4xl font-bold text-center mb-4 tracking-tight">SHOP BY FRAME SHAPE</h2>
-          <p className="text-center mb-12 max-w-2xl mx-auto">Bloom into new frames with fresh shapes, colors, and patterns.</p>
+          <h2 className="text-[40px] font-bold text-center mb-4">SHOP BY FRAME SHAPE</h2>
+          <p className="text-center mb-12 max-w-2xl mx-auto text-gray-600">Bloom into new frames with fresh shapes, colors, and patterns.</p>
 
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-8 items-center">
+          <div className="flex justify-center items-end gap-12">
             {[
               { name: 'Rectangle' },
               { name: 'Square' },
               { name: 'Round' },
-              { name: 'Cat-eye' },
+              { name: 'Cat-Eye' },
               { name: 'Aviator' },
               { name: 'Browline' }
             ].map((shape) => (
               <div key={shape.name} className="text-center">
-                <div className="mb-2">
+                <div className="mb-4">
                   <img
                     src={`/lovable-uploads/frameshapes/frame_shape-${shape.name}.svg`}
                     alt={shape.name}
-                    className="w-16 h-16 mx-auto object-contain"
+                    className="w-20 h-20 mx-auto object-contain"
                   />
                 </div>
-                <p className="text-sm">{shape.name}</p>
+                <p className="text-sm font-medium">{shape.name}</p>
               </div>
             ))}
-            <div className="text-center">
-              <button className="bg-black text-white text-sm px-4 py-2 rounded">Shop all →</button>
-            </div>
+            <button className="bg-black text-white text-sm px-4 py-2 rounded-full flex items-center gap-2 ml-4">
+              Shop all <ChevronRight className="w-4 h-4" />
+            </button>
           </div>
         </div>
+      </section>
       </section>
 
       {/* Best Sellers Section */}
