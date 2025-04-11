@@ -90,10 +90,12 @@ const Index: React.FC = () => {
           <div className="grid md:grid-cols-2 items-center w-full">
             <div className="text-white md:text-gray-800 z-10 pl-[5%]">
               <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-[1.1] text-white md:text-gray-800">
-                Votre <span className="relative">
-                  marocain
+                Votre Opticien<br />
+                <span className="relative">
+                  Marocain
                   <span className="absolute bottom-1 left-0 w-full h-[0.15em] bg-gradient-to-r from-red-500 via-green-500 to-red-500 rounded-full transform skew-x-12 animate-shimmer"></span>
-                </span> opticien de confiance
+                </span><br />
+                De Confiance
               </h1>
               <div className="flex flex-wrap gap-6 mb-8">
                 <button className="btn-primary bg-blue-600 text-white hover:bg-blue-700">
