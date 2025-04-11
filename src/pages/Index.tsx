@@ -188,6 +188,149 @@ const Index: React.FC = () => {
         </div>
       </section>
 
+      {/* Collections Section */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4">
+          {/* Desktop Version */}
+          <div className="hidden md:grid grid-cols-4 gap-4">
+            {[
+              {
+                title: "CHASE STOKES",
+                subtitle: "DYNAMIC VIEWS",
+                description: "Renew your style with bold looks.",
+                cta: "Shop collection",
+                image: "/lovable-uploads/collectionsectiondesktop/250318_chase_hp_small_2_card_carousel-xl.png",
+                bgColor: "bg-sky-200"
+              },
+              {
+                title: "BLOKZ",
+                subtitle: "BLUE LIGHT GLASSES",
+                description: "Filter blue-light, anytime, anywhere.",
+                cta: "Shop now",
+                image: "/lovable-uploads/collectionsectiondesktop/250318_blokz_hp_small_2_card_carousel-xl.png",
+                bgColor: "bg-orange-300"
+              },
+              {
+                title: "SAM CASSELL",
+                subtitle: "SIGNATURE SERIES",
+                description: "Classic style meets modern design.",
+                cta: "Shop collection",
+                image: "/lovable-uploads/collectionsectiondesktop/032525_Sam_Cassell_HP_small_card-xl.png",
+                bgColor: "bg-yellow-200"
+              },
+              {
+                title: "UNDER 30",
+                subtitle: "AFFORDABLE STYLE",
+                description: "Trendy frames at amazing prices.",
+                cta: "Shop now",
+                image: "/lovable-uploads/collectionsectiondesktop/250327_under_30_hp_small_2_card_carousel-xl.png",
+                bgColor: "bg-green-200"
+              }
+            ].map((collection, index) => (
+              <div 
+                key={index}
+                className={`${collection.bgColor} rounded-2xl overflow-hidden relative group cursor-pointer`}
+              >
+                <div className="p-6 h-full flex flex-col">
+                  <div className="mb-auto">
+                    <h3 className="text-sm font-bold mb-1">{collection.title}</h3>
+                    <h2 className="text-2xl font-bold mb-2">{collection.subtitle}</h2>
+                    <p className="text-sm">{collection.description}</p>
+                  </div>
+                  <button className="bg-black text-white text-sm px-4 py-2 rounded-full mt-4 inline-block w-fit">
+                    {collection.cta}
+                  </button>
+                  <div className="absolute bottom-0 right-0 w-full">
+                    <img 
+                      src={collection.image} 
+                      alt={collection.title}
+                      className="w-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile Version */}
+          <div className="md:hidden">
+            <div className="relative">
+              <div className="overflow-hidden">
+                <div className="flex snap-x snap-mandatory overflow-x-auto hide-scrollbar">
+                  {[
+                    {
+                      title: "CHASE STOKES",
+                      subtitle: "DYNAMIC VIEWS",
+                      description: "Renew your style with bold looks.",
+                      cta: "Shop collection",
+                      image: "/lovable-uploads/collectionsectionmobile/250318_chase_hp_small_2_card_carousel-sm.png",
+                      bgColor: "bg-sky-200"
+                    },
+                    {
+                      title: "BLOKZ",
+                      subtitle: "BLUE LIGHT GLASSES",
+                      description: "Filter blue-light, anytime, anywhere.",
+                      cta: "Shop now",
+                      image: "/lovable-uploads/collectionsectionmobile/250318_blokz_hp_small_2_card_carousel-md.png",
+                      bgColor: "bg-orange-300"
+                    },
+                    {
+                      title: "SAM CASSELL",
+                      subtitle: "SIGNATURE SERIES",
+                      description: "Classic style meets modern design.",
+                      cta: "Shop collection",
+                      image: "/lovable-uploads/collectionsectionmobile/032525_Sam_Cassell_HP_small_card-sm.png",
+                      bgColor: "bg-yellow-200"
+                    },
+                    {
+                      title: "UNDER 30",
+                      subtitle: "AFFORDABLE STYLE",
+                      description: "Trendy frames at amazing prices.",
+                      cta: "Shop now",
+                      image: "/lovable-uploads/collectionsectionmobile/250327_under_30_hp_small_2_card_carousel-md.png",
+                      bgColor: "bg-green-200"
+                    }
+                  ].map((collection, index) => (
+                    <div 
+                      key={index}
+                      className={`${collection.bgColor} min-w-[280px] w-[80vw] mr-4 rounded-2xl overflow-hidden snap-center`}
+                    >
+                      <div className="p-6 h-full flex flex-col relative">
+                        <div className="mb-auto">
+                          <h3 className="text-sm font-bold mb-1">{collection.title}</h3>
+                          <h2 className="text-xl font-bold mb-2">{collection.subtitle}</h2>
+                          <p className="text-sm">{collection.description}</p>
+                        </div>
+                        <button className="bg-black text-white text-sm px-4 py-2 rounded-full mt-4 inline-block w-fit">
+                          {collection.cta}
+                        </button>
+                        <div className="absolute bottom-0 right-0 w-full">
+                          <img 
+                            src={collection.image} 
+                            alt={collection.title}
+                            className="w-full object-cover"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="flex justify-center mt-4 gap-2">
+                <button className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center">
+                  <span className="sr-only">Previous</span>
+                  ←
+                </button>
+                <button className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center">
+                  <span className="sr-only">Next</span>
+                  →
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Shipping Info Banner - Updated for mobile responsiveness */}
       <section className="bg-blue-50">
         <div className="flex flex-col md:flex-row justify-between items-center py-4 px-6">
