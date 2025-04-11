@@ -98,6 +98,7 @@
     width: 160px;
     height: 160px;
     object-fit: contain;
+    display: block;
   }
 
   .frame-shape-item:hover .frame-shape-icon {

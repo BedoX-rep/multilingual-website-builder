@@ -229,7 +229,7 @@ const Index: React.FC = () => {
               { name: 'Browline' }
             ].map((shape) => (
               <div key={shape.name} className="frame-shape-item group">
-                <div className="frame-shape-icon group-hover:block hidden"> {/* Added group-hover:block hidden */}
+                <div className="frame-shape-icon">
                   <img
                     src={`/lovable-uploads/frameshapes/frame_shape-${shape.name}.svg`}
                     alt={shape.name}
