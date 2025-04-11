@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
 import { CheckCircle } from 'lucide-react';
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 // Hero section images
 const heroImage = "/lovable-uploads/herosectionbg5.jpg";
@@ -256,7 +256,7 @@ const Index: React.FC = () => {
             </div>
           </div>
 
-          <Carousel className="w-full">
+          <Carousel className="w-full relative">
             <CarouselContent>
               {bestSellers.map((item) => (
                 <CarouselItem key={item.id} className="md:basis-1/2 lg:basis-1/4">
@@ -298,6 +298,8 @@ const Index: React.FC = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
+            <CarouselPrevious className="absolute -left-12 top-1/2 -translate-y-1/2 bg-blue-600 text-white hover:bg-blue-700" />
+            <CarouselNext className="absolute -right-12 top-1/2 -translate-y-1/2 bg-blue-600 text-white hover:bg-blue-700" />
           </Carousel>
         </div>
       </section>
