@@ -217,28 +217,32 @@ const Index: React.FC = () => {
           <h2 className="text-4xl font-bold text-center mb-4 tracking-tight">SHOP BY FRAME SHAPE</h2>
           <p className="text-center mb-12 max-w-2xl mx-auto">Bloom into new frames with fresh shapes, colors, and patterns.</p>
 
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-8 items-center">
-            {[
-              { name: 'Rectangle' },
-              { name: 'Square' },
-              { name: 'Round' },
-              { name: 'Cat-eye' },
-              { name: 'Aviator' },
-              { name: 'Browline' }
-            ].map((shape) => (
-              <div key={shape.name} className="text-center">
-                <div className="mb-2">
-                  <img
-                    src={`/lovable-uploads/frameshapes/frame_shape-${shape.name}.svg`}
-                    alt={shape.name}
-                    className="w-16 h-16 mx-auto object-contain"
-                  />
+          <div className="relative">
+            <div className="grid grid-cols-3 md:grid-cols-6 gap-8 items-center">
+              {[
+                { name: 'Rectangle' },
+                { name: 'Square' },
+                { name: 'Round' },
+                { name: 'Cat-eye' },
+                { name: 'Aviator' },
+                { name: 'Browline' }
+              ].map((shape) => (
+                <div key={shape.name} className="text-center">
+                  <div className="mb-3">
+                    <img
+                      src={`/lovable-uploads/frameshapes/frame_shape-${shape.name}.svg`}
+                      alt={shape.name}
+                      className="w-24 h-24 mx-auto object-contain"
+                    />
+                  </div>
+                  <p className="text-sm font-medium">{shape.name}</p>
                 </div>
-                <p className="text-sm">{shape.name}</p>
-              </div>
-            ))}
-            <div className="text-center">
-              <button className="bg-black text-white text-sm px-4 py-2 rounded">Shop all →</button>
+              ))}
+            </div>
+            <div className="absolute top-1/2 -right-4 -translate-y-1/2">
+              <button className="bg-black text-white text-sm px-6 py-3 rounded-full flex items-center gap-2">
+                Shop all <ChevronRight className="w-4 h-4" />
+              </button>
             </div>
           </div>
         </div>
