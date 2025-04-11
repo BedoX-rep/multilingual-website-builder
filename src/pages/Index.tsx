@@ -256,9 +256,8 @@ const Index: React.FC = () => {
             </div>
           </div>
 
-          <div className="relative">
-            <Carousel className="w-full">
-              <CarouselContent>
+          <Carousel className="w-full">
+            <CarouselContent>
               {bestSellers.map((item) => (
                 <CarouselItem key={item.id} className="md:basis-1/2 lg:basis-1/4">
                   <div className="bg-white rounded-xl p-4 relative group">
@@ -269,7 +268,7 @@ const Index: React.FC = () => {
                         </svg>
                       </button>
                     </div>
-                    
+                    <div className="bg-[#E8F7F9] px-2 py-1 rounded-full text-xs inline-block mb-4">Try on virtually</div>
                     <img
                       src={item.image}
                       alt={item.name}
@@ -299,13 +298,7 @@ const Index: React.FC = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-              <div className="absolute -right-12 top-1/2 transform -translate-y-1/2">
-                <button className="p-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors">
-                  <ChevronRight className="h-6 w-6" />
-                </button>
-              </div>
-            </Carousel>
-          </div>
+          </Carousel>
         </div>
       </section>
 
