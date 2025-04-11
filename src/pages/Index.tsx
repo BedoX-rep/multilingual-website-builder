@@ -87,10 +87,10 @@ const Index: React.FC = () => {
           </picture>
         </div>
 
-        <div className="relative h-[80vh] flex items-center">
+        <div className="relative h-[80vh] flex items-end md:items-center pb-20 md:pb-0">
           <div className="grid md:grid-cols-2 items-center w-full">
-            <div className="text-gray-800 z-10 pl-[5%]">
-              <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-[1.1] text-gray-800">
+            <div className="text-white md:text-gray-800 z-10 pl-[5%]">
+              <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-[1.1] text-white md:text-gray-800">
                 Your Trusted <span className="underline decoration-2">Moroccan</span> Optician
               </h1>
               <div className="flex flex-wrap gap-6 mb-8">
