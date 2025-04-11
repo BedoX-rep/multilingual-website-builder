@@ -351,39 +351,39 @@ const Index: React.FC = () => {
                 {/* Step 2 */}
                 <div className="relative flex items-start">
                   <div className="absolute left-6 -translate-x-1/2 bg-[#F5F7F9]">
-                    <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm">
-                      <img src="/lovable-uploads/iconspair/X_Lenses_icon.png" alt="Select your lenses" className="w-8 h-8" />
+                    <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm">
+                      <img src="/lovable-uploads/iconspair/X_Lenses_icon.png" alt="Select your lenses" className="w-6 h-6" />
                     </div>
                   </div>
-                  <div className="ml-20">
-                    <h3 className="text-lg font-medium mb-2">2 | Select your lenses</h3>
-                    <p className="text-gray-600">Choose your vision need and add your prescription.</p>
+                  <div className="ml-12">
+                    <h3 className="text-base font-medium mb-1">2 | Select your lenses</h3>
+                    <p className="text-sm text-gray-600">Choose your vision need and add your prescription.</p>
                   </div>
                 </div>
 
                 {/* Step 3 */}
                 <div className="relative flex items-start">
                   <div className="absolute left-6 -translate-x-1/2 bg-[#F5F7F9]">
-                    <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm">
-                      <img src="/lovable-uploads/iconspair/X_Personalize_icon.png" alt="Personalize your lenses" className="w-8 h-8" />
+                    <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm">
+                      <img src="/lovable-uploads/iconspair/X_Personalize_icon.png" alt="Personalize your lenses" className="w-6 h-6" />
                     </div>
                   </div>
-                  <div className="ml-20">
-                    <h3 className="text-lg font-medium mb-2">3 | Personalize your lenses</h3>
-                    <p className="text-gray-600">Select lens type and thickness, then add specialized treatments.</p>
+                  <div className="ml-12">
+                    <h3 className="text-base font-medium mb-1">3 | Personalize your lenses</h3>
+                    <p className="text-sm text-gray-600">Select lens type and thickness, then add specialized treatments.</p>
                   </div>
                 </div>
 
                 {/* Step 4 */}
                 <div className="relative flex items-start">
                   <div className="absolute left-6 -translate-x-1/2 bg-[#F5F7F9]">
-                    <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm">
-                      <img src="/lovable-uploads/iconspair/X_Shipping_icon.png" alt="Complete your purchase" className="w-8 h-8" />
+                    <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm">
+                      <img src="/lovable-uploads/iconspair/X_Shipping_icon.png" alt="Complete your purchase" className="w-6 h-6" />
                     </div>
                   </div>
-                  <div className="ml-20">
-                    <h3 className="text-lg font-medium mb-2">4 | Complete your purchase</h3>
-                    <p className="text-gray-600">We ensure 100% satisfaction with our 30 day happiness guarantee.</p>
+                  <div className="ml-12">
+                    <h3 className="text-base font-medium mb-1">4 | Complete your purchase</h3>
+                    <p className="text-sm text-gray-600">We ensure 100% satisfaction with our 30 day happiness guarantee.</p>
                   </div>
                 </div>
               </div>
