@@ -339,7 +339,7 @@ const Index: React.FC = () => {
                 <div className="relative flex items-start">
                   <div className="absolute left-6 -translate-x-1/2 bg-[#F5F7F9]">
                     <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm">
-                      <img src="/lovable-uploads/X_Frame_icon.png" alt="Find your pair" className="w-8 h-8" />
+                      <img src="/lovable-uploads/5c4c396f-836b-49e7-8833-be31c7cda22e.png" alt="Find your pair" className="w-8 h-8" />
                     </div>
                   </div>
                   <div className="ml-20">
@@ -352,7 +352,7 @@ const Index: React.FC = () => {
                 <div className="relative flex items-start">
                   <div className="absolute left-6 -translate-x-1/2 bg-[#F5F7F9]">
                     <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm">
-                      <img src="/lovable-uploads/X_Lenses_icon.png" alt="Select your lenses" className="w-8 h-8" />
+                      <img src="/lovable-uploads/45bb2648-7da7-44ab-bd32-7044f1470203.png" alt="Select your lenses" className="w-8 h-8" />
                     </div>
                   </div>
                   <div className="ml-20">
@@ -365,7 +365,7 @@ const Index: React.FC = () => {
                 <div className="relative flex items-start">
                   <div className="absolute left-6 -translate-x-1/2 bg-[#F5F7F9]">
                     <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm">
-                      <img src="/lovable-uploads/X_Personalize_icon.png" alt="Personalize your lenses" className="w-8 h-8" />
+                      <img src="/lovable-uploads/af178ea4-8b63-422a-9dba-cd74c382cd99.png" alt="Personalize your lenses" className="w-8 h-8" />
                     </div>
                   </div>
                   <div className="ml-20">
@@ -378,7 +378,7 @@ const Index: React.FC = () => {
                 <div className="relative flex items-start">
                   <div className="absolute left-6 -translate-x-1/2 bg-[#F5F7F9]">
                     <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm">
-                      <img src="/lovable-uploads/X_Shipping_icon.png" alt="Complete your purchase" className="w-8 h-8" />
+                      <img src="/lovable-uploads/29f9550c-ba8d-45fe-8e22-1ffb62de3f75.png" alt="Complete your purchase" className="w-8 h-8" />
                     </div>
                   </div>
                   <div className="ml-20">
