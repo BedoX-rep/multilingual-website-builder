@@ -115,8 +115,9 @@
     font-weight: 500;
     color: #111827;
     text-align: center;
-    margin-top: 1rem;
+    margin-top: -1.5rem;
     transition: all 0.3s ease-in-out;
+    display: block !important;
   }
 
   .frame-shape-item:hover .frame-shape-label {

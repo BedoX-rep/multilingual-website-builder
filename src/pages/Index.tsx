@@ -235,7 +235,7 @@ const Index: React.FC = () => {
                     alt={shape.name}
                     className="w-[80px] h-[80px]"
                   />
-                  <span className="frame-shape-label hidden group-hover:block text-center text-black underline transition-opacity duration-300"> {shape.name}</span>
+                  <span className="frame-shape-label text-center text-black transition-opacity duration-300">{shape.name}</span>
                 </div>
               </a>
             ))}
