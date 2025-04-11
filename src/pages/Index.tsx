@@ -228,16 +228,16 @@ const Index: React.FC = () => {
               { name: 'Aviator' },
               { name: 'Browline' }
             ].map((shape) => (
-              <div key={shape.name} className="frame-shape-item group">
+              <a href="#" key={shape.name} className="frame-shape-item group">
                 <div className="frame-shape-icon">
                   <img
                     src={`/lovable-uploads/frameshapes/frame_shape-${shape.name}.svg`}
                     alt={shape.name}
                     className="w-[80px] h-[80px]"
                   />
+                  <span className="frame-shape-label hidden group-hover:block text-center text-black underline transition-opacity duration-300"> {shape.name}</span>
                 </div>
-                <span className="frame-shape-label">{shape.name}</span>
-              </div>
+              </a>
             ))}
             <button className="shop-all-button">
               Shop all <ChevronRight className="w-4 h-4" />
