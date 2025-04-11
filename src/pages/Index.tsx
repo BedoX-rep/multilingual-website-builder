@@ -168,12 +168,12 @@ const Index: React.FC = () => {
                 </span><br />
                 en Ligne
               </h1>
-              <div className="flex flex-wrap gap-6 mb-8">
-                <button className="btn-primary bg-blue-600 text-white hover:bg-blue-700">
-                  Shop Men
+              <div className="flex flex-wrap gap-4 mb-8">
+                <button className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2">
+                  Shop Men <ChevronRight className="w-4 h-4" />
                 </button>
-                <button className="btn-primary bg-blue-600 text-white hover:bg-blue-700">
-                  Shop Women
+                <button className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2">
+                  Shop Women <ChevronRight className="w-4 h-4" />
                 </button>
               </div>
               <a 
@@ -332,22 +332,43 @@ const Index: React.FC = () => {
       </section>
 
       {/* Shipping Info Banner - Updated for mobile responsiveness */}
-      <section className="bg-blue-50">
-        <div className="flex flex-col md:flex-row justify-between items-center py-4 px-6">
+      <section className="bg-blue-50 border-y border-blue-100">
+        <div className="flex flex-col md:flex-row justify-between items-center py-4 px-6 container mx-auto">
           <div className="text-center md:hidden w-full">
-            <p className="text-base font-medium text-blue-800">Free shipping within all of Morocco 🇲🇦</p>
+            <p className="text-base font-medium text-blue-800 flex items-center justify-center gap-2">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 8.5V16.5C20 17.3284 19.3284 18 18.5 18H5.5C4.67157 18 4 17.3284 4 16.5V8.5C4 7.67157 4.67157 7 5.5 7H18.5C19.3284 7 20 7.67157 20 8.5Z" stroke="currentColor" strokeWidth="1.5"/>
+                <path d="M4 9L12 13L20 9" stroke="currentColor" strokeWidth="1.5"/>
+              </svg>
+              Free shipping within all of Morocco 🇲🇦
+            </p>
           </div>
-          <div className="hidden md:block text-center flex-1">
-            <p className="text-base font-medium text-blue-800">Delivery within all of Morocco 🇲🇦</p>
-          </div>
-          <div className="hidden md:block text-center flex-1">
-            <p className="text-base font-medium text-blue-800">Free Shipping</p>
-          </div>
-          <div className="hidden md:block text-center flex-1">
-            <p className="text-base font-medium text-blue-800">30-Day Returns</p>
-          </div>
-          <div className="hidden md:block text-center flex-1">
-            <p className="text-base font-medium text-blue-800">Contacts & Support</p>
+          <div className="hidden md:flex justify-between w-full max-w-4xl mx-auto">
+            <div className="text-center flex items-center gap-2">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 12H21M3 12L7 8M3 12L7 16" stroke="currentColor" strokeWidth="1.5"/>
+              </svg>
+              <p className="text-base font-medium text-blue-800">Delivery within all of Morocco 🇲🇦</p>
+            </div>
+            <div className="text-center flex items-center gap-2">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 12L4 12M20 12L16 16M20 12L16 8" stroke="currentColor" strokeWidth="1.5"/>
+              </svg>
+              <p className="text-base font-medium text-blue-800">Free Shipping</p>
+            </div>
+            <div className="text-center flex items-center gap-2">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 5V19M12 5L7 10M12 5L17 10" stroke="currentColor" strokeWidth="1.5"/>
+              </svg>
+              <p className="text-base font-medium text-blue-800">30-Day Returns</p>
+            </div>
+            <div className="text-center flex items-center gap-2">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 4.5C7 4.5 2.73 7.61 1 12C2.73 16.39 7 19.5 12 19.5C17 19.5 21.27 16.39 23 12C21.27 7.61 17 4.5 12 4.5Z" stroke="currentColor" strokeWidth="1.5"/>
+                <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="currentColor" strokeWidth="1.5"/>
+              </svg>
+              <p className="text-base font-medium text-blue-800">Contacts & Support</p>
+            </div>
           </div>
         </div>
       </section>
