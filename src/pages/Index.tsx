@@ -315,14 +315,14 @@ const Index: React.FC = () => {
               { name: 'Browline' }
             ].map((shape) => (
               <a href="#" key={shape.name} className="flex flex-col items-center group">
-                <div className="w-56 h-56 mb-2">
+                <div className="w-56 h-56 bg-white rounded-lg p-4 flex flex-col items-center">
                   <img
                     src={`/lovable-uploads/frameshapes/frame_shape-${shape.name}.svg`}
                     alt={shape.name}
-                    className="w-full h-full transition-transform group-hover:scale-110"
+                    className="w-full h-full transition-transform group-hover:scale-110 mb-4"
                   />
+                  <span className="text-sm font-medium text-center group-hover:underline">{shape.name}</span>
                 </div>
-                <span className="text-sm font-medium text-center">{shape.name}</span>
               </a>
             ))}
             <a href="#" className="flex items-center justify-center ml-2">
