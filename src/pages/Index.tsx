@@ -490,8 +490,7 @@ const Index: React.FC = () => {
               opts={{
                 align: "start",
                 loop: true,
-                dragFree: true,
-                interval: 2000,
+                dragFree: true
               }}
               className="w-full"
             >
