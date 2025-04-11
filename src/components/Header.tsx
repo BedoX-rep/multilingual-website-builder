@@ -1,13 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
-import { Link } from 'react-router-dom';
-import { Menu, X, ShoppingCart, Search, User, Globe } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X, ShoppingCart, Search, User } from 'lucide-react';
 
 const Header: React.FC = () => {
-  const { t, language, setLanguage } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -22,6 +21,11 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile menu when changing routes
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location]);
+
   return (
     <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-sm py-4' : 'bg-white py-6'}`}>
       <div className="px-0">
@@ -35,51 +39,21 @@ const Header: React.FC = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <Link to="/" className="nav-link">
-              {t('nav.home')}
+              Home
             </Link>
             <Link to="/products" className="nav-link">
-              {t('nav.products')}
+              Products
             </Link>
             <Link to="/about" className="nav-link">
-              {t('nav.about')}
+              About Us
             </Link>
             <Link to="/contact" className="nav-link">
-              {t('nav.contact')}
+              Contact
             </Link>
           </nav>
 
           {/* Right Icons */}
-          <div className="flex items-center space-x-6">
-            {/* Language Selector */}
-            <div className="relative group hidden md:block">
-              <button className="flex items-center text-sm uppercase tracking-wider">
-                <Globe className="w-4 h-4 mr-1" />
-                <span>{language}</span>
-              </button>
-              <div className="absolute z-10 right-0 mt-2 w-32 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <div className="py-1">
-                  <button 
-                    className={`block w-full px-4 py-2 text-sm text-left uppercase tracking-wider hover:bg-gray-50 ${language === 'en' ? 'text-black' : 'text-gray-600'}`} 
-                    onClick={() => setLanguage('en')}
-                  >
-                    English
-                  </button>
-                  <button 
-                    className={`block w-full px-4 py-2 text-sm text-left uppercase tracking-wider hover:bg-gray-50 ${language === 'fr' ? 'text-black' : 'text-gray-600'}`}
-                    onClick={() => setLanguage('fr')}
-                  >
-                    Français
-                  </button>
-                  <button 
-                    className={`block w-full px-4 py-2 text-sm text-left uppercase tracking-wider hover:bg-gray-50 ${language === 'ar' ? 'text-black' : 'text-gray-600'}`}
-                    onClick={() => setLanguage('ar')}
-                  >
-                    العربية
-                  </button>
-                </div>
-              </div>
-            </div>
-            
+          <div className="flex items-center space-x-6 pr-[5%]">
             <button className="hidden md:block">
               <Search className="w-5 h-5" />
             </button>
@@ -113,26 +87,19 @@ const Header: React.FC = () => {
             <nav className="flex-1 p-6">
               <div className="space-y-6">
                 <Link to="/" className="block text-2xl font-serif" onClick={toggleMobileMenu}>
-                  {t('nav.home')}
+                  Home
                 </Link>
                 <Link to="/products" className="block text-2xl font-serif" onClick={toggleMobileMenu}>
-                  {t('nav.products')}
+                  Products
                 </Link>
                 <Link to="/about" className="block text-2xl font-serif" onClick={toggleMobileMenu}>
-                  {t('nav.about')}
+                  About Us
                 </Link>
                 <Link to="/contact" className="block text-2xl font-serif" onClick={toggleMobileMenu}>
-                  {t('nav.contact')}
+                  Contact
                 </Link>
               </div>
             </nav>
-            <div className="p-6 border-t">
-              <div className="flex justify-between items-center">
-                <button className="text-sm uppercase tracking-wider" onClick={() => setLanguage('en')}>EN</button>
-                <button className="text-sm uppercase tracking-wider" onClick={() => setLanguage('fr')}>FR</button>
-                <button className="text-sm uppercase tracking-wider" onClick={() => setLanguage('ar')}>AR</button>
-              </div>
-            </div>
           </div>
         </div>
       </div>
