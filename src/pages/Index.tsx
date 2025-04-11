@@ -3,7 +3,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
-import { CheckCircle, ChevronRight } from 'lucide-react';
+import { CheckCircle, ChevronRight, ChevronLeft } from 'lucide-react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 // Hero section images
@@ -242,7 +242,6 @@ const Index: React.FC = () => {
             </button>
           </div>
         </div>
-      </section>
       </section>
 
       {/* Best Sellers Section */}
