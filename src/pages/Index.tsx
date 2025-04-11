@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import Header from '../components/Header';
@@ -91,7 +90,10 @@ const Index: React.FC = () => {
           <div className="grid md:grid-cols-2 items-center w-full">
             <div className="text-white md:text-gray-800 z-10 pl-[5%]">
               <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-[1.1] text-white md:text-gray-800">
-                Your Trusted <span className="underline decoration-2 decoration-red-500">Moroccan</span> Optician
+                Your Trusted <span className="relative">
+                  Moroccan
+                  <span className="absolute bottom-2 left-0 w-full h-[0.15em] bg-red-500 rounded-full transform skew-x-12"></span>
+                </span> Optician
               </h1>
               <div className="flex flex-wrap gap-6 mb-8">
                 <button className="btn-primary bg-blue-600 text-white hover:bg-blue-700">
@@ -170,7 +172,7 @@ const Index: React.FC = () => {
             <h2 className="text-4xl font-bold">BEST SELLERS ACROSS MOROCCO</h2>
             <a href="/products" className="text-sm font-medium hover:underline">Shop all</a>
           </div>
-          
+
           <div className="flex flex-wrap gap-4 mb-8 text-sm">
             <button className="hover:underline">Eyeglasses</button>
             <button className="hover:underline">Sunglasses</button>
@@ -342,7 +344,7 @@ const Index: React.FC = () => {
             <p className="text-lg text-gray-800 mb-12 leading-relaxed">
               {t('insurance.description')}
             </p>
-            
+
             {/* Insurance Logos */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
               {[
@@ -363,7 +365,7 @@ const Index: React.FC = () => {
                 </div>
               ))}
             </div>
-            
+
             <div className={`flex flex-wrap gap-6 ${dir === 'rtl' ? 'justify-start' : 'justify-start'}`}>
               <button className="px-8 py-3 bg-black text-white font-medium hover:bg-gray-900 transition-colors rounded-lg">
                 {t('insurance.browse')}
