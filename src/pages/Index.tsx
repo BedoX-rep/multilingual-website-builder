@@ -323,56 +323,150 @@ const Index: React.FC = () => {
       </section>
 
       {/* How to Pick Section */}
-      <section id="how-to-pick" className="py-24 bg-gray-50">
-        <div className="luxury-container">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">
-              CUSTOMIZING YOUR GLASSES HAS NEVER BEEN SO EASY
-            </h2>
+      <section id="how-to-pick" className="py-12 md:py-24 bg-[#F5F7F9]">
+        <div className="container px-4 mx-auto max-w-7xl">
+          <h2 className="text-3xl md:text-4xl font-serif text-center mb-12 md:mb-16">
+            CUSTOMIZING YOUR GLASSES HAS NEVER BEEN SO EASY
+          </h2>
+
+          {/* Mobile Design */}
+          <div className="md:hidden space-y-8">
+            <div className="relative">
+              <div className="absolute left-8 top-0 bottom-0 w-[1px] bg-gray-300"></div>
+              
+              <div className="space-y-12">
+                {/* Step 1 */}
+                <div className="relative flex items-start">
+                  <div className="absolute left-6 -translate-x-1/2 bg-[#F5F7F9]">
+                    <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm">
+                      <img src="/lovable-uploads/X_Frame_icon.png" alt="Find your pair" className="w-8 h-8" />
+                    </div>
+                  </div>
+                  <div className="ml-20">
+                    <h3 className="text-lg font-medium mb-2">1 | Find your pair</h3>
+                    <p className="text-gray-600">Discover our designer eyewear and select your favorite frame.</p>
+                  </div>
+                </div>
+
+                {/* Step 2 */}
+                <div className="relative flex items-start">
+                  <div className="absolute left-6 -translate-x-1/2 bg-[#F5F7F9]">
+                    <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm">
+                      <img src="/lovable-uploads/X_Lenses_icon.png" alt="Select your lenses" className="w-8 h-8" />
+                    </div>
+                  </div>
+                  <div className="ml-20">
+                    <h3 className="text-lg font-medium mb-2">2 | Select your lenses</h3>
+                    <p className="text-gray-600">Choose your vision need and add your prescription.</p>
+                  </div>
+                </div>
+
+                {/* Step 3 */}
+                <div className="relative flex items-start">
+                  <div className="absolute left-6 -translate-x-1/2 bg-[#F5F7F9]">
+                    <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm">
+                      <img src="/lovable-uploads/X_Personalize_icon.png" alt="Personalize your lenses" className="w-8 h-8" />
+                    </div>
+                  </div>
+                  <div className="ml-20">
+                    <h3 className="text-lg font-medium mb-2">3 | Personalize your lenses</h3>
+                    <p className="text-gray-600">Select lens type and thickness, then add specialized treatments.</p>
+                  </div>
+                </div>
+
+                {/* Step 4 */}
+                <div className="relative flex items-start">
+                  <div className="absolute left-6 -translate-x-1/2 bg-[#F5F7F9]">
+                    <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm">
+                      <img src="/lovable-uploads/X_Shipping_icon.png" alt="Complete your purchase" className="w-8 h-8" />
+                    </div>
+                  </div>
+                  <div className="ml-20">
+                    <h3 className="text-lg font-medium mb-2">4 | Complete your purchase</h3>
+                    <p className="text-gray-600">We ensure 100% satisfaction with our 30 day happiness guarantee.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p className="text-center text-gray-600 text-sm mt-12">
+              Prepare your prescription, and sync your insurance at any point during selection to apply your vision benefits.
+            </p>
+
+            <div className="space-y-3">
+              <button className="w-full py-4 bg-black text-white rounded-md font-medium">
+                SHOP EYEWEAR
+              </button>
+              <button className="w-full py-4 bg-black text-white rounded-md font-medium">
+                DISCOVER LENSES
+              </button>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
-            {/* Step 1 */}
-            <div className="text-center group">
-              <div className="w-40 h-40 flex items-center justify-center bg-white rounded-full mx-auto mb-8 shadow-lg transition-transform duration-300 group-hover:scale-110">
-                <img src={frameIcon} alt="Eyeglass frames" className="w-24 h-24 object-contain" />
+          {/* Desktop Design */}
+          <div className="hidden md:block">
+            <div className="relative">
+              <div className="absolute left-0 right-0 top-1/2 h-[1px] bg-gray-300"></div>
+              
+              <div className="grid grid-cols-4 gap-8">
+                {/* Step 1 */}
+                <div className="text-center relative">
+                  <div className="mb-16">
+                    <div className="w-20 h-20 rounded-full bg-white mx-auto flex items-center justify-center shadow-sm">
+                      <img src="/lovable-uploads/X_Frame_icon.png" alt="Find your pair" className="w-10 h-10" />
+                    </div>
+                  </div>
+                  <h3 className="text-lg font-medium mb-2">1 | Find your pair</h3>
+                  <p className="text-gray-600 text-sm">Discover our designer eyewear and select your favorite frame.</p>
+                </div>
+
+                {/* Step 2 */}
+                <div className="text-center relative">
+                  <div className="mb-16">
+                    <div className="w-20 h-20 rounded-full bg-white mx-auto flex items-center justify-center shadow-sm">
+                      <img src="/lovable-uploads/X_Lenses_icon.png" alt="Select your lenses" className="w-10 h-10" />
+                    </div>
+                  </div>
+                  <h3 className="text-lg font-medium mb-2">2 | Select your lenses</h3>
+                  <p className="text-gray-600 text-sm">Choose your vision need and add your prescription.</p>
+                </div>
+
+                {/* Step 3 */}
+                <div className="text-center relative">
+                  <div className="mb-16">
+                    <div className="w-20 h-20 rounded-full bg-white mx-auto flex items-center justify-center shadow-sm">
+                      <img src="/lovable-uploads/X_Personalize_icon.png" alt="Personalize your lenses" className="w-10 h-10" />
+                    </div>
+                  </div>
+                  <h3 className="text-lg font-medium mb-2">3 | Personalize your lenses</h3>
+                  <p className="text-gray-600 text-sm">Select lens type and thickness, then add specialized treatments.</p>
+                </div>
+
+                {/* Step 4 */}
+                <div className="text-center relative">
+                  <div className="mb-16">
+                    <div className="w-20 h-20 rounded-full bg-white mx-auto flex items-center justify-center shadow-sm">
+                      <img src="/lovable-uploads/X_Shipping_icon.png" alt="Complete your purchase" className="w-10 h-10" />
+                    </div>
+                  </div>
+                  <h3 className="text-lg font-medium mb-2">4 | Complete your purchase</h3>
+                  <p className="text-gray-600 text-sm">We ensure 100% satisfaction with our 30 day happiness guarantee.</p>
+                </div>
               </div>
-              <h3 className="font-serif text-xl font-bold mb-3">Choose Your Frames</h3>
-              <p className="text-gray-600">Browse our wide selection of designer frames to find the perfect style for your face shape.</p>
             </div>
 
-            {/* Step 2 */}
-            <div className="text-center group">
-              <div className="w-40 h-40 flex items-center justify-center bg-white rounded-full mx-auto mb-8 shadow-lg transition-transform duration-300 group-hover:scale-110">
-                <img src={lensIcon} alt="Eyeglass lenses" className="w-24 h-24 object-contain" />
-              </div>
-              <h3 className="font-serif text-xl font-bold mb-3">Select Your Lenses</h3>
-              <p className="text-gray-600">Choose from our high-quality lens options, including blue light filtering, transitions, and more.</p>
-            </div>
+            <p className="text-center text-gray-600 text-sm mt-12">
+              Prepare your prescription, and sync your insurance at any point during selection to apply your vision benefits.
+            </p>
 
-            {/* Step 3 */}
-            <div className="text-center group">
-              <div className="w-40 h-40 flex items-center justify-center bg-white rounded-full mx-auto mb-8 shadow-lg transition-transform duration-300 group-hover:scale-110">
-                <img src={prescriptionIcon} alt="Prescription" className="w-24 h-24 object-contain" />
-              </div>
-              <h3 className="font-serif text-xl font-bold mb-3">Upload Prescription</h3>
-              <p className="text-gray-600">Easily upload your prescription or opt for non-prescription glasses for style only.</p>
+            <div className="flex justify-center gap-4 mt-8">
+              <button className="px-12 py-3 bg-black text-white rounded-md font-medium">
+                SHOP EYEWEAR
+              </button>
+              <button className="px-12 py-3 bg-black text-white rounded-md font-medium">
+                DISCOVER LENSES
+              </button>
             </div>
-
-            {/* Step 4 */}
-            <div className="text-center group">
-              <div className="w-40 h-40 flex items-center justify-center bg-white rounded-full mx-auto mb-8 shadow-lg transition-transform duration-300 group-hover:scale-110">
-                <img src={deliveryIcon} alt="Delivery" className="w-24 h-24 object-contain" />
-              </div>
-              <h3 className="font-serif text-xl font-bold mb-3">Get It Delivered</h3>
-              <p className="text-gray-600">We'll craft your custom glasses and ship them directly to your door with our free delivery service.</p>
-            </div>
-          </div>
-
-          <div className="text-center mt-16">
-            <button className="btn-primary">
-              Start Shopping
-            </button>
           </div>
         </div>
       </section>
