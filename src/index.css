@@ -89,9 +89,10 @@
     border: 1px solid transparent;
     border-radius: 0.5rem;
     transition: all 0.2s ease-in-out;
-    display: inline-flex;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    position: relative;
   }
 
   .frame-shape-icon img {
@@ -111,9 +112,13 @@
     font-size: 0.875rem;
     font-weight: 500;
     color: #111827;
-    margin-top: 1rem;
     text-align: center;
     display: block;
+    position: absolute;
+    bottom: -2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
   }
 
   .shop-all-button {
