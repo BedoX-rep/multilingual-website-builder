@@ -273,49 +273,38 @@ const Index: React.FC = () => {
         </div>
       </section>
 
-      {/* Frame Shape Section - Updated 'Shop all' button positioning for desktop/mobile */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto">
-          <h2 className="frame-shape-title">SHOP BY FRAME SHAPE</h2>
-          <p className="frame-shape-subtitle text-black">
+      {/* Frame Shape Section */}
+      <section className="py-12 md:py-24 bg-white px-4">
+        <div className="container mx-auto max-w-md md:max-w-7xl">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-3">SHOP BY FRAME SHAPE</h2>
+          <p className="text-center text-gray-800 mb-12">
             Bloom into new frames with fresh shapes, colors, and patterns.
           </p>
 
-          <div className="relative">
-            {/* Frame shape grid */}
-            <div className="frame-shape-container mb-8 md:mb-0">
-              {[
-                { name: 'Rectangle' },
-                { name: 'Square' },
-                { name: 'Round' },
-                { name: 'Cat-eye' },
-                { name: 'Aviator' },
-                { name: 'Browline' }
-              ].map((shape) => (
-                <a href="#" key={shape.name} className="frame-shape-item group">
-                  <div className="frame-shape-icon">
-                    <img
-                      src={`/lovable-uploads/frameshapes/frame_shape-${shape.name}.svg`}
-                      alt={shape.name}
-                      className="w-[80px] h-[80px]"
-                    />
-                    <span className="frame-shape-label text-center text-black transition-opacity duration-300">{shape.name}</span>
-                  </div>
-                </a>
-              ))}
-            </div>
-            
-            {/* Shop all button positioned to the right on desktop */}
-            <div className="hidden md:block absolute right-0 bottom-0">
-              <button className="shop-all-button">
-                Shop all <ChevronRight className="w-4 h-4" />
-              </button>
-            </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-8">
+            {[
+              { name: 'Rectangle' },
+              { name: 'Square' },
+              { name: 'Round' },
+              { name: 'Cat-Eye' },
+              { name: 'Aviator' },
+              { name: 'Browline' }
+            ].map((shape) => (
+              <a href="#" key={shape.name} className="flex flex-col items-center">
+                <div className="w-32 h-32 mb-2">
+                  <img
+                    src={`/lovable-uploads/frameshapes/frame_shape-${shape.name}.svg`}
+                    alt={shape.name}
+                    className="w-full h-full"
+                  />
+                </div>
+                <span className="text-sm font-medium text-center">{shape.name}</span>
+              </a>
+            ))}
           </div>
           
-          {/* Shop all button displayed below on mobile */}
-          <div className="md:hidden mt-8 flex justify-center">
-            <button className="shop-all-button">
+          <div className="flex justify-center">
+            <button className="w-full md:w-auto bg-black text-white px-8 py-4 rounded-full flex items-center justify-center gap-2 hover:bg-gray-900 transition-colors">
               Shop all <ChevronRight className="w-4 h-4" />
             </button>
           </div>
