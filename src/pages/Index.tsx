@@ -216,19 +216,9 @@ const Index: React.FC = () => {
             <button className="text-lg font-medium pb-4 border-b-2 border-black">Bestsellers</button>
             <button className="text-lg text-gray-500 pb-4">Trending</button>
             <button className="text-lg text-gray-500 pb-4">New</button>
-            <div className="ml-auto hidden md:block">
-              <button className="text-blue-600 hover:underline">Shop all bestsellers</button>
-            </div>
           </div>
 
-          {/* Mobile Shop All Button */}
-          <div className="md:hidden mt-8 text-center">
-            <button className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-              Shop all bestsellers
-            </button>
-          </div>
-
-          <Carousel className="w-full relative">
+          <Carousel className="w-full relative mb-8">
             <CarouselContent>
               {bestSellers.map((item) => (
                 <CarouselItem key={item.id} className="md:basis-1/2 lg:basis-1/4">
@@ -273,6 +263,13 @@ const Index: React.FC = () => {
             <CarouselPrevious className="absolute -left-12 top-1/2 -translate-y-1/2 bg-white text-blue-600 hover:bg-gray-50 h-12 w-12" />
             <CarouselNext className="absolute -right-12 top-1/2 -translate-y-1/2 bg-white text-blue-600 hover:bg-gray-50 h-12 w-12" />
           </Carousel>
+
+          {/* Shop All Button - Desktop & Mobile */}
+          <div className="flex justify-center mt-8">
+            <button className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+              Shop all bestsellers
+            </button>
+          </div>
         </div>
       </section>
 
