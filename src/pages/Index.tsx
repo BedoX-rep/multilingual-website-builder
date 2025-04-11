@@ -92,7 +92,7 @@ const Index: React.FC = () => {
               <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-[1.1] text-white md:text-gray-800">
                 Your Trusted <span className="relative">
                   Moroccan
-                  <span className="absolute bottom-2 left-0 w-full h-[0.15em] bg-gradient-to-r from-red-500 via-green-500 to-red-500 rounded-full transform skew-x-12 animate-shimmer"></span>
+                  <span className="absolute bottom-1 left-0 w-full h-[0.15em] bg-gradient-to-r from-red-500 via-green-500 to-red-500 rounded-full transform skew-x-12 animate-shimmer"></span>
                 </span> Optician
               </h1>
               <div className="flex flex-wrap gap-6 mb-8">
@@ -105,7 +105,7 @@ const Index: React.FC = () => {
               </div>
               <a 
                 href="#how-to-pick" 
-                className="inline-block text-blue-600 hover:text-blue-700 font-medium transition-all px-4 py-2 border-2 border-blue-600 hover:border-blue-700 rounded-lg hover:-translate-y-1"
+                className="inline-block text-white md:text-blue-600 hover:text-blue-700 font-medium transition-all px-4 py-2 border-2 border-white md:border-blue-600 hover:border-blue-700 rounded-lg hover:-translate-y-1"
               >
                 {t('hero.learnmore')}
               </a>
