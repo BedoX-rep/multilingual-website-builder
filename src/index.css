@@ -66,13 +66,20 @@
 
 @layer components {
   .frame-shape-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
     gap: 1rem;
     max-width: 90rem;
     margin: 0 auto;
     padding: 0 1rem;
+    position: relative;
+  }
+
+  @media (max-width: 768px) {
+    .frame-shape-container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
   }
 
   .frame-shape-item {
@@ -134,6 +141,16 @@
     align-items: center;
     gap: 0.5rem;
     transition: background-color 0.2s;
+    grid-column: 6; /*added this*/
+    align-self: end; /*added this*/
+  }
+
+  @media (max-width: 768px) {
+    .shop-all-button {
+      grid-column: auto; /*added this*/
+      align-self: auto; /*added this*/
+      margin-top: 2rem; /*added this*/
+    }
   }
 
   .shop-all-button:hover {
@@ -147,6 +164,12 @@
     text-align: center;
     color: #000;
     margin-bottom: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .frame-shape-title {
+      font-size: 2.5rem;
+    }
   }
 
   .frame-shape-subtitle {

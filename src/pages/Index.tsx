@@ -239,6 +239,8 @@ const Index: React.FC = () => {
                 </div>
               </a>
             ))}
+          </div>
+          <div className="mt-8 flex justify-center">
             <button className="shop-all-button">
               Shop all <ChevronRight className="w-4 h-4" />
             </button>
