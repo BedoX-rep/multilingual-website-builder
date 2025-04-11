@@ -212,33 +212,34 @@ const Index: React.FC = () => {
       </section>
 
       {/* Frame Shape Section */}
-      <section className="py-16 bg-gradient-to-b from-white to-blue-50">
+      <section className="py-16 bg-white">
         <div className="luxury-container">
-          <h2 className="text-4xl font-bold text-center mb-4 text-gray-800">{t('frame.title')}</h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">{t('frame.subtitle')}</p>
+          <h2 className="text-4xl font-bold text-center mb-4 tracking-tight">SHOP BY FRAME SHAPE</h2>
+          <p className="text-center mb-12 max-w-2xl mx-auto">Bloom into new frames with fresh shapes, colors, and patterns.</p>
 
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-8">
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-8 items-center">
             {[
-              { name: 'Rectangle', color: 'bg-blue-100 text-blue-800' },
-              { name: 'Square', color: 'bg-purple-100 text-purple-800' },
-              { name: 'Round', color: 'bg-pink-100 text-pink-800' },
-              { name: 'Cat-eye', color: 'bg-indigo-100 text-indigo-800' },
-              { name: 'Aviator', color: 'bg-violet-100 text-violet-800' },
-              { name: 'Browline', color: 'bg-cyan-100 text-cyan-800' }
+              { name: 'Rectangle' },
+              { name: 'Square' },
+              { name: 'Round' },
+              { name: 'Cat-eye' },
+              { name: 'Aviator' },
+              { name: 'Browline' }
             ].map((shape) => (
-              <div key={shape.name} className="text-center group cursor-pointer">
-                <div className={`${shape.color} p-6 rounded-xl shadow-sm transform transition-all duration-300 group-hover:scale-110 group-hover:shadow-md`}>
-                  <div className="mb-4">
-                    <img
-                      src={`/lovable-uploads/frameshapes/frame_shape-${shape.name}.svg`}
-                      alt={shape.name}
-                      className="w-20 h-12 mx-auto object-contain"
-                    />
-                  </div>
-                  <p className="text-sm font-medium">{shape.name}</p>
+              <div key={shape.name} className="text-center">
+                <div className="mb-2">
+                  <img
+                    src={`/lovable-uploads/frameshapes/frame_shape-${shape.name}.svg`}
+                    alt={shape.name}
+                    className="w-16 h-16 mx-auto object-contain"
+                  />
                 </div>
+                <p className="text-sm">{shape.name}</p>
               </div>
             ))}
+            <div className="text-center">
+              <button className="bg-black text-white text-sm px-4 py-2 rounded">Shop all →</button>
+            </div>
           </div>
         </div>
       </section>
