@@ -215,7 +215,7 @@ const Index: React.FC = () => {
       <section className="py-24 bg-white">
         <div className="container mx-auto">
           <h2 className="frame-shape-title">SHOP BY FRAME SHAPE</h2>
-          <p className="frame-shape-subtitle">
+          <p className="frame-shape-subtitle text-black">
             Bloom into new frames with fresh shapes, colors, and patterns.
           </p>
 
@@ -228,8 +228,8 @@ const Index: React.FC = () => {
               { name: 'Aviator' },
               { name: 'Browline' }
             ].map((shape) => (
-              <div key={shape.name} className="frame-shape-item">
-                <div className="frame-shape-icon">
+              <div key={shape.name} className="frame-shape-item group">
+                <div className="frame-shape-icon group-hover:block hidden"> {/* Added group-hover:block hidden */}
                   <img
                     src={`/lovable-uploads/frameshapes/frame_shape-${shape.name}.svg`}
                     alt={shape.name}
