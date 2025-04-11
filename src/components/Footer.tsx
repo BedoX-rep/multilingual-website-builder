@@ -1,11 +1,9 @@
+
 import React from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
 import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
-  const { t, dir } = useLanguage();
-  
   return (
     <footer className="bg-black text-white pt-16 pb-8">
       <div className="luxury-container">
@@ -15,9 +13,9 @@ const Footer: React.FC = () => {
               Luxe Optique
             </Link>
             <p className="text-gray-400 mb-6 text-sm">
-              {t('footer.copyright')}
+              Quality eyewear for every style
             </p>
-            <div className="flex space-x-6 rtl:space-x-reverse">
+            <div className="flex space-x-6">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>
@@ -34,63 +32,63 @@ const Footer: React.FC = () => {
           </div>
           
           <div>
-            <h3 className="text-sm uppercase tracking-wider mb-6">{t('footer.shop')}</h3>
+            <h3 className="text-sm uppercase tracking-wider mb-6">Shop</h3>
             <ul className="space-y-4">
               <li>
                 <Link to="/products" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  {t('footer.eyeglasses')}
+                  Eyeglasses
                 </Link>
               </li>
               <li>
                 <Link to="/products" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  {t('footer.sunglasses')}
+                  Sunglasses
                 </Link>
               </li>
               <li>
                 <Link to="/products" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  {t('footer.bluelight')}
+                  Blue Light Glasses
                 </Link>
               </li>
             </ul>
           </div>
           
           <div>
-            <h3 className="text-sm uppercase tracking-wider mb-6">{t('footer.help')}</h3>
+            <h3 className="text-sm uppercase tracking-wider mb-6">Help</h3>
             <ul className="space-y-4">
               <li>
                 <Link to="/faq" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  {t('footer.faq')}
+                  FAQ
                 </Link>
               </li>
               <li>
                 <Link to="/shipping" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  {t('footer.shipping')}
+                  Shipping
                 </Link>
               </li>
               <li>
                 <Link to="/returns" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  {t('footer.returns')}
+                  Returns
                 </Link>
               </li>
             </ul>
           </div>
           
           <div>
-            <h3 className="text-sm uppercase tracking-wider mb-6">{t('footer.about')}</h3>
+            <h3 className="text-sm uppercase tracking-wider mb-6">About</h3>
             <ul className="space-y-4">
               <li>
                 <Link to="/about" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  {t('footer.story')}
+                  Our Story
                 </Link>
               </li>
               <li>
                 <Link to="/press" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  {t('footer.press')}
+                  Press
                 </Link>
               </li>
               <li>
                 <Link to="/careers" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  {t('footer.careers')}
+                  Careers
                 </Link>
               </li>
             </ul>
@@ -100,11 +98,11 @@ const Footer: React.FC = () => {
         {/* Newsletter */}
         <div className="border-t border-gray-800 pt-8">
           <div className="max-w-md mx-auto text-center">
-            <h3 className="text-lg font-serif mb-4">{t('newsletter.title')}</h3>
+            <h3 className="text-lg font-serif mb-4">Newsletter</h3>
             <form className="flex">
               <input 
                 type="email"
-                placeholder={t('newsletter.placeholder')}
+                placeholder="Enter your email"
                 className="flex-1 min-w-0 px-4 py-3 bg-gray-900 border border-gray-800 focus:border-white transition-colors outline-none text-sm"
                 required
               />
@@ -112,7 +110,7 @@ const Footer: React.FC = () => {
                 type="submit"
                 className="bg-white text-black px-6 py-3 font-medium text-sm uppercase tracking-wider hover:bg-gray-100 transition-colors"
               >
-                {t('newsletter.button')}
+                Subscribe
               </button>
             </form>
           </div>

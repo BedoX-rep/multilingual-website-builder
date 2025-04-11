@@ -9,36 +9,44 @@ import FrameShapesSection from '../components/FrameShapesSection';
 // Dummy products data
 const featuredProducts = [
   {
-    id: 1,
+    id: '1',
     name: 'Classic Aviator',
     price: 129,
     image: '/lovable-uploads/productmockup/2b61f335e979f96b25e95b1a527333b8e8cf3da6.png',
     category: 'sunglasses',
-    bestseller: true,
+    colors: ['#8B4513', '#000000', '#2E4F4F'],
+    rating: 4.8,
+    reviews: 425
   },
   {
-    id: 2,
+    id: '2',
     name: 'Modern Round',
     price: 149,
     image: '/lovable-uploads/productmockup/9e225f5dc69f0335cf2ff7fd4bbaf15322763546.png',
     category: 'eyeglasses',
-    bestseller: false,
+    colors: ['#000000', '#7B66FF', '#CCCCCC'],
+    rating: 4.7,
+    reviews: 312
   },
   {
-    id: 3,
+    id: '3',
     name: 'Sporty Rectangle',
     price: 159,
     image: '/lovable-uploads/productmockup/3435b33b8f6649ded6fc392bcf9471aa11742d28.png',
     category: 'sunglasses',
-    bestseller: true,
+    colors: ['#8B4513', '#000000', '#7B66FF'],
+    rating: 4.9,
+    reviews: 567
   },
   {
-    id: 4,
+    id: '4',
     name: 'Premium Cat-Eye',
     price: 179,
     image: '/lovable-uploads/productmockup/e9e88c5864ae35e00d6400c6e3d07f23b1e05d4b.png',
     category: 'eyeglasses',
-    bestseller: false,
+    colors: ['#000000', '#8B4513', '#CCCCCC'],
+    rating: 4.6,
+    reviews: 289
   },
 ];
 
@@ -84,7 +92,17 @@ const Index = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {featuredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard 
+                key={product.id}
+                id={product.id}
+                name={product.name}
+                price={product.price}
+                image={product.image}
+                colors={product.colors}
+                rating={product.rating}
+                reviews={product.reviews}
+                category={product.category}
+              />
             ))}
           </div>
         </div>

@@ -62,7 +62,7 @@ const FrameShapesSection = () => {
             ))}
           </div>
           
-          <div className="w-full flex md:justify-end">
+          <div className="w-full flex md:justify-end justify-center">
             <Button
               variant="outline"
               asChild

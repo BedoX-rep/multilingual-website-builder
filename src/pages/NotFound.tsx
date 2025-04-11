@@ -1,15 +1,12 @@
 
 import React from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const NotFound: React.FC = () => {
-  const { dir } = useLanguage();
-  
   return (
-    <div className={dir === 'rtl' ? 'font-sans rtl' : 'font-sans'}>
+    <div className="font-sans">
       <Header />
       
       <section className="min-h-[60vh] flex items-center">
