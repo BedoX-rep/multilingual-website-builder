@@ -1,10 +1,11 @@
+
 import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
-  const { t, dir } = useLanguage();
+  const { t } = useLanguage();
   
   return (
     <footer className="bg-black text-white pt-16 pb-8">
@@ -17,7 +18,7 @@ const Footer: React.FC = () => {
             <p className="text-gray-400 mb-6 text-sm">
               {t('footer.copyright')}
             </p>
-            <div className="flex space-x-6 rtl:space-x-reverse">
+            <div className="flex space-x-6">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>

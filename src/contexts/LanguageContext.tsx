@@ -74,10 +74,41 @@ const translations: Record<Language, Record<string, string>> = {
     "footer.terms": "Terms of Use",
     "footer.privacy": "Privacy Policy",
     "footer.copyright": "© 2025 EyeWear. All rights reserved.",
+    "footer.shop": "Shop",
+    "footer.eyeglasses": "Eyeglasses",
+    "footer.sunglasses": "Sunglasses",
+    "footer.bluelight": "Blue Light",
+    "footer.shipping": "Shipping",
+    "footer.story": "Our Story",
+    "footer.press": "Press",
+    
+    // Newsletter
+    "newsletter.title": "Subscribe to our newsletter",
+    "newsletter.placeholder": "Enter your email",
+    "newsletter.button": "Subscribe",
     
     // Common
     "viewProduct": "View Product",
-    "addToCart": "Add to Cart"
+    "addToCart": "Add to Cart",
+    
+    // Not Found
+    "notFound.title": "404",
+    "notFound.subtitle": "Page Not Found",
+    "notFound.description": "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.",
+    "notFound.button": "Return to Homepage",
+    
+    // Contact
+    "contact.title": "Get in Touch",
+    "contact.firstName": "First Name",
+    "contact.lastName": "Last Name",
+    "contact.email": "Email",
+    "contact.subject": "Subject",
+    "contact.message": "Message",
+    "contact.send": "Send Message",
+    "contact.info": "Contact Information",
+    "contact.store": "Our Store",
+    "contact.phone": "Phone",
+    "contact.workingHours": "Working Hours"
   },
   fr: {
     // Header
@@ -142,10 +173,41 @@ const translations: Record<Language, Record<string, string>> = {
     "footer.terms": "Conditions d'Utilisation",
     "footer.privacy": "Politique de Confidentialité",
     "footer.copyright": "© 2025 EyeWear. Tous droits réservés.",
+    "footer.shop": "Boutique",
+    "footer.eyeglasses": "Lunettes",
+    "footer.sunglasses": "Lunettes de Soleil",
+    "footer.bluelight": "Lumière Bleue",
+    "footer.shipping": "Livraison",
+    "footer.story": "Notre Histoire",
+    "footer.press": "Presse",
+    
+    // Newsletter
+    "newsletter.title": "Abonnez-vous à notre newsletter",
+    "newsletter.placeholder": "Entrez votre email",
+    "newsletter.button": "S'abonner",
     
     // Common
     "viewProduct": "Voir le Produit",
-    "addToCart": "Ajouter au Panier"
+    "addToCart": "Ajouter au Panier",
+    
+    // Not Found
+    "notFound.title": "404",
+    "notFound.subtitle": "Page Non Trouvée",
+    "notFound.description": "La page que vous recherchez a peut-être été supprimée, son nom a été modifié ou est temporairement indisponible.",
+    "notFound.button": "Retourner à l'Accueil",
+    
+    // Contact
+    "contact.title": "Contactez-Nous",
+    "contact.firstName": "Prénom",
+    "contact.lastName": "Nom",
+    "contact.email": "Email",
+    "contact.subject": "Sujet",
+    "contact.message": "Message",
+    "contact.send": "Envoyer le Message",
+    "contact.info": "Informations de Contact",
+    "contact.store": "Notre Magasin",
+    "contact.phone": "Téléphone",
+    "contact.workingHours": "Heures d'Ouverture"
   }
 };
 

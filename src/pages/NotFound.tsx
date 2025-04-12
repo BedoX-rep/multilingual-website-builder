@@ -14,13 +14,13 @@ const NotFound: React.FC = () => {
       
       <section className="min-h-[60vh] flex items-center">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="font-serif text-6xl md:text-8xl font-bold mb-6 text-gray-900">404</h1>
-          <h2 className="text-xl md:text-2xl mb-8 text-gray-600">Page Not Found</h2>
+          <h1 className="font-serif text-6xl md:text-8xl font-bold mb-6 text-gray-900">{t('notFound.title')}</h1>
+          <h2 className="text-xl md:text-2xl mb-8 text-gray-600">{t('notFound.subtitle')}</h2>
           <p className="mb-8 text-gray-600 max-w-md mx-auto">
-            The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+            {t('notFound.description')}
           </p>
           <Link to="/" className="btn-primary">
-            Return to Homepage
+            {t('notFound.button')}
           </Link>
         </div>
       </section>
