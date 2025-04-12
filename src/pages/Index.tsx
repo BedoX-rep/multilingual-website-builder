@@ -162,11 +162,12 @@ const Index: React.FC = () => {
     <div className="font-sans">
       <Header />
       
-      {/* Render all sections with uniform 8px spacing */}
+      {/* Render all sections with custom spacing */}
       <div>
-        <section>{sections[0].component}</section>
-        {sections.slice(1).map(section => (
-          <section key={section.id} className="py-2">
+        <section className="mb-0">{sections[0].component}</section>
+        <section className="mb-0">{sections[1].component}</section>
+        {sections.slice(2).map(section => (
+          <section key={section.id} className="py-[5px]">
             {section.component}
           </section>
         ))}
