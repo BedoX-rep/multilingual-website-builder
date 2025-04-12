@@ -31,8 +31,7 @@ const Header: React.FC = () => {
         <div className="flex items-center justify-between">
           {/* Logo - adjusted with ml-[5%] for left margin */}
           <Link to="/" className="flex items-center gap-2 pl-[5%]">
-            <img src="/lovable-uploads/navlogo1.png" alt="Lens Optique" className="h-8 md:h-10" />
-            <span className="font-serif text-xl font-medium">Lens Optique</span>
+            <span className="font-serif text-2xl font-medium">Lens Optique</span>
           </Link>
 
           {/* Desktop Navigation */}

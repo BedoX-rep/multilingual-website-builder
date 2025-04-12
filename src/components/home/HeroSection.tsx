@@ -33,10 +33,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({ heroImage, mobileHeroImage })
               en Ligne
             </h1>
             <div className="flex flex-wrap gap-6 mb-8">
-              <button className="px-8 py-3 bg-blue-600 text-white font-medium hover:bg-blue-700 transition-all">
+              <button className="px-8 py-3 bg-blue-600 text-white font-medium hover:bg-blue-700 transition-all rounded-full">
                 Shop Men
               </button>
-              <button className="px-8 py-3 bg-blue-600 text-white font-medium hover:bg-blue-700 transition-all">
+              <button className="px-8 py-3 bg-blue-600 text-white font-medium hover:bg-blue-700 transition-all rounded-full">
                 Shop Women
               </button>
             </div>
