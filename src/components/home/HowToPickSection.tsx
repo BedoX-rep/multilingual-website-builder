@@ -92,7 +92,7 @@ const HowToPickSection: React.FC = () => {
               {/* Step 1 */}
               <div className="text-center relative">
                 <div className="mb-8">
-                  <div className="w-20 h-20 rounded-full bg-white mx-auto flex items-center justify-center relative z-10">
+                  <div className="w-20 h-20 rounded-full bg-white mx-auto flex items-center justify-center">
                     <img src="/lovable-uploads/iconspair/X_Frame_icon.png" alt="Find your pair" className="w-10 h-10" />
                   </div>
                 </div>
