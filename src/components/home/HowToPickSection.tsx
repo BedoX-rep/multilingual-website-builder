@@ -86,13 +86,13 @@ const HowToPickSection: React.FC = () => {
         {/* Desktop Design */}
         <div className="hidden md:block">
           <div className="relative">
-            <div className="absolute left-0 right-0 top-1/2 border-t-2 border-dashed border-gray-300 w-full"></div>
+            <div className="absolute left-0 right-0 top-[60px] border-t-2 border-dashed border-gray-300 w-full"></div>
 
             <div className="grid grid-cols-4 gap-8">
               {/* Step 1 */}
               <div className="text-center relative">
                 <div className="mb-16">
-                  <div className="w-20 h-20 rounded-full bg-white mx-auto flex items-center justify-center shadow-sm">
+                  <div className="w-20 h-20 rounded-full bg-white mx-auto flex items-center justify-center shadow-sm relative z-10">
                     <img src="/lovable-uploads/iconspair/X_Frame_icon.png" alt="Find your pair" className="w-10 h-10" />
                   </div>
                 </div>
