@@ -9,7 +9,6 @@ import {
   BestSellersSection,
   FrameShapeSection,
   HowToPickSection,
-  CustomSunglassesSection,
   InsuranceBenefitsSection,
   BrandPartnersSection,
   ClientReviewsSection
@@ -24,9 +23,6 @@ const frameIcon = "/lovable-uploads/5c4c396f-836b-49e7-8833-be31c7cda22e.png";
 const lensIcon = "/lovable-uploads/45bb2648-7da7-44ab-bd32-7044f1470203.png";
 const prescriptionIcon = "/lovable-uploads/af178ea4-8b63-422a-9dba-cd74c382cd99.png";
 const deliveryIcon = "/lovable-uploads/29f9550c-ba8d-45fe-8e22-1ffb62de3f75.png";
-
-// Custom sunglasses image
-const customSunglassesImage = "/lovable-uploads/4e0855d7-4ceb-4a1d-b74a-736f6b127820.png";
 
 // Product images
 const products = [
@@ -157,7 +153,6 @@ const Index: React.FC = () => {
     { component: <BestSellersSection bestSellers={bestSellers} />, id: 'bestsellers' },
     { component: <FrameShapeSection />, id: 'frame-shapes' },
     { component: <HowToPickSection />, id: 'how-to-pick' },
-    { component: <CustomSunglassesSection customSunglassesImage={customSunglassesImage} />, id: 'custom-sunglasses' },
     { component: <InsuranceBenefitsSection />, id: 'insurance-benefits' },
     { component: <BrandPartnersSection />, id: 'brand-partners' },
     { component: <ClientReviewsSection />, id: 'client-reviews' }
