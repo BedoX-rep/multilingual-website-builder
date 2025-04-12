@@ -18,8 +18,8 @@ interface BestSellersSectionProps {
 
 const BestSellersSection: React.FC<BestSellersSectionProps> = ({ bestSellers }) => {
   return (
-    <section className="bg-white">
-      <div className="luxury-container">
+    <section className="bg-white w-full">
+      <div className="container mx-auto max-w-[100%] w-full">
         <div className="flex items-center gap-8 mb-8 border-b">
           <button className="text-lg font-medium pb-4 border-b-2 border-black">Bestsellers</button>
           <button className="text-lg text-gray-500 pb-4">Trending</button>
@@ -30,7 +30,7 @@ const BestSellersSection: React.FC<BestSellersSectionProps> = ({ bestSellers }) 
           <CarouselContent>
             {bestSellers.map((item) => (
               <CarouselItem key={item.id} className="md:basis-1/2 lg:basis-1/4">
-                <div className="bg-white rounded-xl p-4 relative group">
+                <div className="bg-white rounded-xl p-2 relative group">
                   <div className="absolute top-3 right-3 z-10">
                     <button className="p-2 hover:bg-gray-100 rounded-full">
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
