@@ -20,13 +20,13 @@ const BestSellersSection: React.FC<BestSellersSectionProps> = ({ bestSellers }) 
   return (
     <section className="bg-white w-full">
       <div className="container mx-auto max-w-[100%] w-full">
-        <div className="flex items-center justify-between mb-8 border-b">
+        <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-8">
-            <button className="text-lg font-medium pb-4 border-b-2 border-black">Bestsellers</button>
-            <button className="text-lg text-gray-500 pb-4">Trending</button>
-            <button className="text-lg text-gray-500 pb-4">New</button>
+            <button className="text-lg font-medium">Bestsellers</button>
+            <button className="text-lg text-gray-500">Trending</button>
+            <button className="text-lg text-gray-500">New</button>
           </div>
-          <button className="hidden md:block px-8 py-3 border-2 border-blue-600 text-blue-600 font-medium hover:bg-blue-50 transition-all rounded-full">
+          <button className="hidden md:block px-6 py-2.5 border-2 border-blue-600 text-blue-600 font-bold hover:bg-blue-50 transition-all rounded-full">
             Shop all bestsellers
           </button>
         </div>
@@ -79,7 +79,7 @@ const BestSellersSection: React.FC<BestSellersSectionProps> = ({ bestSellers }) 
 
         {/* Shop All Button - Mobile Only */}
         <div className="flex md:hidden justify-center mt-8">
-          <button className="px-8 py-3 border-2 border-blue-600 text-blue-600 font-medium hover:bg-blue-50 transition-all rounded-full">
+          <button className="px-6 py-2.5 border-2 border-blue-600 text-blue-600 font-bold hover:bg-blue-50 transition-all rounded-full">
             Shop all bestsellers
           </button>
         </div>
