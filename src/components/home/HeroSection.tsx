@@ -22,8 +22,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ heroImage, mobileHeroImage })
         </picture>
       </div>
 
-      <div className="relative h-[80vh] flex items-end md:items-center pb-20 md:pb-0">
-        <div className="grid md:grid-cols-2 items-center w-full">
+      <div className="relative h-[80vh] flex items-end md:items-center pb-10 md:pb-0">
+        <div className="grid md:grid-cols-2 items-end md:items-center w-full">
           <div className="text-white md:text-gray-800 z-10 pl-[5%]">
             <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-[1.1] text-white md:text-gray-800">
               Votre Opticien<br />
@@ -33,18 +33,19 @@ const HeroSection: React.FC<HeroSectionProps> = ({ heroImage, mobileHeroImage })
               en Ligne
             </h1>
             <div className="flex flex-wrap gap-6 mb-8">
-              <button className="btn-primary bg-blue-600 text-white hover:bg-blue-700">
+              <button className="px-8 py-3 bg-blue-600 text-white font-medium hover:bg-blue-700 transition-all">
                 Shop Men
               </button>
-              <button className="btn-primary bg-blue-600 text-white hover:bg-blue-700">
+              <button className="px-8 py-3 bg-blue-600 text-white font-medium hover:bg-blue-700 transition-all">
                 Shop Women
               </button>
             </div>
             <a 
               href="#how-to-pick" 
-              className="inline-block text-white md:text-blue-600 hover:text-blue-700 font-medium transition-all px-4 py-2 border-2 border-white md:border-blue-600 hover:border-blue-700 rounded-lg hover:-translate-y-1"
+              className="inline-flex items-center text-white md:text-blue-600 hover:text-blue-700 font-medium transition-all group"
             >
-              Learn More
+              Learn more about the process 
+              <ChevronRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
           </div>
           <div className="hidden md:block"> </div>
