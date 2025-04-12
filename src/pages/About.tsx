@@ -1,14 +1,14 @@
 
 import React from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useTranslation } from 'react-i18next';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const About: React.FC = () => {
-  const { t, dir } = useLanguage();
+  const { t } = useTranslation();
   
   return (
-    <div className={dir === 'rtl' ? 'font-sans rtl' : 'font-sans'}>
+    <div className="font-sans">
       <Header />
       
       {/* About Hero */}

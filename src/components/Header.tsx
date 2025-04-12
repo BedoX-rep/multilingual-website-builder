@@ -2,10 +2,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, ShoppingCart, Search, User } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import LanguageSelector from './LanguageSelector';
 
 const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { t } = useTranslation();
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -37,21 +40,24 @@ const Header: React.FC = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <Link to="/" className="nav-link">
-              Home
+              {t('nav.home')}
             </Link>
             <Link to="/products" className="nav-link">
-              Products
+              {t('nav.products')}
             </Link>
             <Link to="/about" className="nav-link">
-              About Us
+              {t('nav.about')}
             </Link>
             <Link to="/contact" className="nav-link">
-              Contact
+              {t('nav.contact')}
             </Link>
           </nav>
 
           {/* Right Icons */}
           <div className="flex items-center space-x-6 pr-[5%]">
+            <div className="hidden md:block">
+              <LanguageSelector />
+            </div>
             <button className="hidden md:block">
               <Search className="w-5 h-5" />
             </button>
@@ -85,17 +91,20 @@ const Header: React.FC = () => {
             <nav className="flex-1 p-6">
               <div className="space-y-6">
                 <Link to="/" className="block text-2xl font-serif" onClick={toggleMobileMenu}>
-                  Home
+                  {t('nav.home')}
                 </Link>
                 <Link to="/products" className="block text-2xl font-serif" onClick={toggleMobileMenu}>
-                  Products
+                  {t('nav.products')}
                 </Link>
                 <Link to="/about" className="block text-2xl font-serif" onClick={toggleMobileMenu}>
-                  About Us
+                  {t('nav.about')}
                 </Link>
                 <Link to="/contact" className="block text-2xl font-serif" onClick={toggleMobileMenu}>
-                  Contact
+                  {t('nav.contact')}
                 </Link>
+                <div className="pt-4 border-t border-gray-100">
+                  <LanguageSelector />
+                </div>
               </div>
             </nav>
           </div>

@@ -1,12 +1,23 @@
 
 import React, { useState } from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useTranslation } from 'react-i18next';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
 import { Sliders } from 'lucide-react';
 
-const products = [
+interface Product {
+  id: string;
+  name: string;
+  price: number;
+  image: string;
+  colors: string[];
+  category: string;
+  rating: number;
+  reviews: number;
+}
+
+const products: Product[] = [
   {
     id: '1',
     name: 'Esme',
@@ -90,7 +101,7 @@ const products = [
 ];
 
 const Products: React.FC = () => {
-  const { t, dir } = useLanguage();
+  const { t } = useTranslation();
   const [activeFilter, setActiveFilter] = useState('all');
   const [showFilters, setShowFilters] = useState(false);
   
@@ -99,7 +110,7 @@ const Products: React.FC = () => {
     : products.filter(product => product.category.toLowerCase() === activeFilter);
   
   return (
-    <div className={dir === 'rtl' ? 'font-sans rtl' : 'font-sans'}>
+    <div className="font-sans">
       <Header />
       
       {/* Products Hero */}
