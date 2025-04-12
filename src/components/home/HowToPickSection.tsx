@@ -92,7 +92,7 @@ const HowToPickSection: React.FC = () => {
               {/* Step 1 */}
               <div className="text-center relative">
                 <div className="mb-8">
-                  <div className="w-16 h-16 rounded-full bg-white mx-auto flex items-center justify-center">
+                  <div className="w-20 h-20 rounded-full bg-white mx-auto flex items-center justify-center relative z-10">
                     <img src="/lovable-uploads/iconspair/X_Frame_icon.png" alt="Find your pair" className="w-10 h-10" />
                   </div>
                 </div>
@@ -103,7 +103,7 @@ const HowToPickSection: React.FC = () => {
               {/* Step 2 */}
               <div className="text-center relative">
                 <div className="mb-8">
-                  <div className="w-16 h-16 rounded-full bg-white mx-auto flex items-center justify-center">
+                  <div className="w-20 h-20 rounded-full bg-white mx-auto flex items-center justify-center">
                     <img src="/lovable-uploads/iconspair/X_Lenses_icon.png" alt="Select your lenses" className="w-10 h-10" />
                   </div>
                 </div>
@@ -114,7 +114,7 @@ const HowToPickSection: React.FC = () => {
               {/* Step 3 */}
               <div className="text-center relative">
                 <div className="mb-8">
-                  <div className="w-16 h-16 rounded-full bg-white mx-auto flex items-center justify-center">
+                  <div className="w-20 h-20 rounded-full bg-white mx-auto flex items-center justify-center">
                     <img src="/lovable-uploads/iconspair/X_Personalize_icon.png" alt="Personalize your lenses" className="w-10 h-10" />
                   </div>
                 </div>
@@ -125,7 +125,7 @@ const HowToPickSection: React.FC = () => {
               {/* Step 4 */}
               <div className="text-center relative">
                 <div className="mb-8">
-                  <div className="w-16 h-16 rounded-full bg-white mx-auto flex items-center justify-center">
+                  <div className="w-20 h-20 rounded-full bg-white mx-auto flex items-center justify-center">
                     <img src="/lovable-uploads/iconspair/X_Shipping_icon.png" alt="Complete your purchase" className="w-10 h-10" />
                   </div>
                 </div>
