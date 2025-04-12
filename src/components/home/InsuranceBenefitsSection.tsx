@@ -55,7 +55,7 @@ const InsuranceBenefitsSection: React.FC = () => {
       ) : (
         /* Desktop Design */
         <div className="relative z-10">
-          <div className="max-w-2xl text-black ml-auto mr-8 pr-16">
+          <div className="max-w-2xl text-black ml-8 pl-16">
             <h2 className="text-2xl md:text-4xl font-sans font-bold text-center md:text-left mb-8">
               USE YOUR ASSURANCE ON THE PERFECT PAIR
             </h2>
