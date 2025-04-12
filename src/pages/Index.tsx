@@ -162,12 +162,19 @@ const Index: React.FC = () => {
     <div className="font-sans">
       <Header />
       
-      {/* Render all sections in the order specified in the sections array */}
-      {sections.map(section => (
-        <div key={section.id} className="relative">
-          {section.component}
-        </div>
-      ))}
+      {/* Render all sections with controlled spacing */}
+      <div>
+        <section>{sections[0].component}</section>
+        <section className="pb-4">{sections[1].component}</section>
+        <section className="pb-8">{sections[2].component}</section>
+        <section className="py-16">{sections[3].component}</section>
+        <section className="pb-8">{sections[4].component}</section>
+        {sections.slice(5).map(section => (
+          <section key={section.id} className="py-12">
+            {section.component}
+          </section>
+        ))}
+      </div>
 
       <Footer />
     </div>

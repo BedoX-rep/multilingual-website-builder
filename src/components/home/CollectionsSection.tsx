@@ -77,7 +77,7 @@ const CollectionsSection: React.FC = () => {
         </div>
 
         {/* Mobile Version */}
-        <div className="md:hidden px-4">
+        <div className="md:hidden px-4 pt-8">
           <div className="relative">
             <div className="overflow-hidden">
               <div className="flex snap-x snap-mandatory overflow-x-auto hide-scrollbar pb-6">
