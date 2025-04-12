@@ -149,10 +149,10 @@ const Index: React.FC = () => {
   const sections = [
     { component: <HeroSection heroImage={heroImage} mobileHeroImage={mobileHeroImage} />, id: 'hero' },
     { component: <ShippingBanner />, id: 'shipping-banner' },
-    { component: <CollectionsSection />, id: 'collections' },
     { component: <BestSellersSection bestSellers={bestSellers} />, id: 'bestsellers' },
-    { component: <FrameShapeSection />, id: 'frame-shapes' },
+    { component: <CollectionsSection />, id: 'collections' },
     { component: <HowToPickSection />, id: 'how-to-pick' },
+    { component: <FrameShapeSection />, id: 'frame-shapes' },
     { component: <InsuranceBenefitsSection />, id: 'insurance-benefits' },
     { component: <BrandPartnersSection />, id: 'brand-partners' },
     { component: <ClientReviewsSection />, id: 'client-reviews' }
