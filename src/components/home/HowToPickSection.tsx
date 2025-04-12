@@ -12,7 +12,7 @@ const HowToPickSection: React.FC = () => {
         {/* Mobile Design */}
         <div className="md:hidden space-y-4">
           <div className="relative">
-            <div className="absolute left-6 top-0 bottom-0 w-[1px] bg-gray-300"></div>
+            <div className="absolute left-6 top-0 bottom-0 border-l-2 border-dashed border-gray-300 h-full"></div>
 
             <div className="space-y-6">
               {/* Step 1 */}
@@ -86,7 +86,7 @@ const HowToPickSection: React.FC = () => {
         {/* Desktop Design */}
         <div className="hidden md:block">
           <div className="relative">
-            <div className="absolute left-0 right-0 top-1/2 h-[1px] bg-gray-300"></div>
+            <div className="absolute left-0 right-0 top-1/2 border-t-2 border-dashed border-gray-300 w-full"></div>
 
             <div className="grid grid-cols-4 gap-8">
               {/* Step 1 */}
