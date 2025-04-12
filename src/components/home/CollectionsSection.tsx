@@ -4,7 +4,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 
 const CollectionsSection: React.FC = () => {
   return (
-    <section className="pt-20 pb-12 bg-white overflow-hidden w-full">
+    <section className="pt-32 pb-20 bg-white overflow-hidden w-full">
       <div className="w-full">
         {/* Desktop Version */}
         <div className="hidden md:block">
