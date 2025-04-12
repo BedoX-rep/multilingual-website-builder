@@ -1,91 +1,104 @@
 
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useLanguage } from "../contexts/LanguageContext";
-import { Button } from "./ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
-import { Menu, X, ShoppingCart, Search } from "lucide-react";
-import LanguageSelector from "./LanguageSelector";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Menu, X, ShoppingCart, Search, User } from 'lucide-react';
 
 const Header: React.FC = () => {
-  const { t } = useLanguage();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  const closeMenu = () => setIsMenuOpen(false);
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
 
-  const navItems = [
-    { text: t("home"), href: "/" },
-    { text: t("products"), href: "/products" },
-    { text: t("about"), href: "/about" },
-    { text: t("contact"), href: "/contact" },
-  ];
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close mobile menu when changing routes
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white border-b border-gray-200">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        {/* Logo */}
-        <Link to="/" className="flex items-center">
-          <img
-            src="/lovable-uploads/navlogo.png"
-            alt="EyeWear Logo"
-            className="h-8"
-          />
-        </Link>
+    <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-sm py-4' : 'bg-white py-6'}`}>
+      <div className="px-0">
+        <div className="flex items-center justify-between">
+          {/* Logo - adjusted with ml-[5%] for left margin */}
+          <Link to="/" className="flex items-center gap-2 pl-[4%]">
+            <span className="font-['Playfair_Display'] text-2xl font-medium tracking-wider">Lens Optique</span>
+          </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              to={item.href}
-              className="text-gray-700 hover:text-primary font-medium"
-            >
-              {item.text}
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-8">
+            <Link to="/" className="nav-link">
+              Home
             </Link>
-          ))}
-        </nav>
+            <Link to="/products" className="nav-link">
+              Products
+            </Link>
+            <Link to="/about" className="nav-link">
+              About Us
+            </Link>
+            <Link to="/contact" className="nav-link">
+              Contact
+            </Link>
+          </nav>
 
-        {/* Actions */}
-        <div className="flex items-center space-x-4">
-          {/* Language Selector */}
-          <LanguageSelector />
+          {/* Right Icons */}
+          <div className="flex items-center space-x-6 pr-[5%]">
+            <button className="hidden md:block">
+              <Search className="w-5 h-5" />
+            </button>
+            <button className="hidden md:block">
+              <User className="w-5 h-5" />
+            </button>
+            <button className="relative">
+              <ShoppingCart className="w-5 h-5" />
+              <span className="absolute -top-1 -right-1 w-4 h-4 bg-black text-white text-xs flex items-center justify-center rounded-full">0</span>
+            </button>
+            
+            {/* Mobile Menu Button */}
+            <button 
+              className="md:hidden"
+              onClick={toggleMobileMenu}
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+        </div>
 
-          {/* Search */}
-          <Button variant="ghost" size="icon" aria-label="Search">
-            <Search className="h-5 w-5" />
-          </Button>
-
-          {/* Cart */}
-          <Button variant="ghost" size="icon" aria-label="Cart">
-            <ShoppingCart className="h-5 w-5" />
-          </Button>
-
-          {/* Mobile Menu Button */}
-          <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
-            <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon">
-                {isMenuOpen ? (
-                  <X className="h-6 w-6" />
-                ) : (
-                  <Menu className="h-6 w-6" />
-                )}
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-full max-w-xs">
-              <nav className="flex flex-col space-y-6 mt-8">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    to={item.href}
-                    className="text-xl font-medium"
-                    onClick={closeMenu}
-                  >
-                    {item.text}
-                  </Link>
-                ))}
-              </nav>
-            </SheetContent>
-          </Sheet>
+        {/* Mobile Menu */}
+        <div className={`fixed inset-0 bg-white z-50 transition-transform duration-300 ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+          <div className="h-full flex flex-col">
+            <div className="flex justify-between items-center p-6 border-b">
+              <span className="font-serif text-2xl">Menu</span>
+              <button onClick={toggleMobileMenu}>
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+            <nav className="flex-1 p-6">
+              <div className="space-y-6">
+                <Link to="/" className="block text-2xl font-serif" onClick={toggleMobileMenu}>
+                  Home
+                </Link>
+                <Link to="/products" className="block text-2xl font-serif" onClick={toggleMobileMenu}>
+                  Products
+                </Link>
+                <Link to="/about" className="block text-2xl font-serif" onClick={toggleMobileMenu}>
+                  About Us
+                </Link>
+                <Link to="/contact" className="block text-2xl font-serif" onClick={toggleMobileMenu}>
+                  Contact
+                </Link>
+              </div>
+            </nav>
+          </div>
         </div>
       </div>
     </header>
