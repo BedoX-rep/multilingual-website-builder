@@ -1,8 +1,10 @@
 
 import React from 'react';
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { useEffect, useState } from 'react';
 
 const BrandPartnersSection: React.FC = () => {
+  const [api, setApi] = useState<any>();
   const brands = [
     { name: 'Essilor', logo: '/lovable-uploads/glassbrands/essilor.png' },
     { name: 'Indo', logo: '/lovable-uploads/glassbrands/indo.png' },
@@ -11,6 +13,16 @@ const BrandPartnersSection: React.FC = () => {
     { name: 'Ray-Ban', logo: '/lovable-uploads/glassbrands/ray-ban.png' }
   ];
 
+  useEffect(() => {
+    if (!api) return;
+
+    const interval = setInterval(() => {
+      api.scrollNext();
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [api]);
+
   return (
     <section className="py-24 bg-gray-50 overflow-hidden">
       <div className="luxury-container">
@@ -18,9 +30,6 @@ const BrandPartnersSection: React.FC = () => {
           <p className="section-subtitle">
             OUR TRUSTED PARTNERS
           </p>
-          <h2 className="section-title">
-            Premium Lens Brands
-          </h2>
         </div>
 
         <div className="w-full">
@@ -31,6 +40,7 @@ const BrandPartnersSection: React.FC = () => {
               dragFree: true
             }}
             className="w-full"
+            setApi={setApi}
           >
             <CarouselContent>
               {brands.map((brand, index) => (
