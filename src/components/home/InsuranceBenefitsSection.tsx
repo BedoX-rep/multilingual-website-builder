@@ -54,12 +54,12 @@ const InsuranceBenefitsSection: React.FC = () => {
         </div>
       ) : (
         /* Desktop Design */
-        <div className="relative z-10">
-          <div className="max-w-2xl text-black ml-auto">
-            <h2 className="text-2xl md:text-4xl font-sans font-bold text-center md:text-left mb-8">
+        <div className="relative z-10 container mx-auto px-4">
+          <div className="max-w-2xl text-black ml-auto mr-[5%]">
+            <h2 className="text-2xl md:text-4xl font-sans font-bold text-center md:text-right mb-8">
               USE YOUR ASSURANCE ON THE PERFECT PAIR
             </h2>
-            <p className="text-lg mb-12 leading-relaxed">
+            <p className="text-lg mb-12 leading-relaxed text-right">
               At Lens Optique we accept most insurance plans, including:
             </p>
 
@@ -83,9 +83,11 @@ const InsuranceBenefitsSection: React.FC = () => {
               ))}
             </div>
 
-            <button className="px-12 py-4 bg-black text-white font-medium text-base uppercase tracking-wider rounded-lg hover:bg-gray-900 transition-colors">
-              Find Out More
-            </button>
+            <div className="flex justify-end">
+              <button className="px-12 py-4 bg-black text-white font-medium text-base uppercase tracking-wider rounded-lg hover:bg-gray-900 transition-colors">
+                Find Out More
+              </button>
+            </div>
           </div>
         </div>
       )}
