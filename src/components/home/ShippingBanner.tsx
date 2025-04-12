@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Separator } from "@/components/ui/separator";
 
 const ShippingBanner: React.FC = () => {
   return (
@@ -9,19 +8,16 @@ const ShippingBanner: React.FC = () => {
         <div className="text-center md:hidden w-full">
           <p className="text-base font-medium text-blue-800">Free shipping within all of Morocco 🇲🇦</p>
         </div>
-        <div className="hidden md:flex text-center flex-1 justify-center items-center">
+        <div className="hidden md:block text-center flex-1">
           <p className="text-base font-medium text-blue-800">Delivery within all of Morocco 🇲🇦</p>
         </div>
-        <div className="hidden md:flex text-center flex-1 justify-center items-center">
-          <Separator orientation="vertical" className="h-6 mx-4 bg-blue-200" />
+        <div className="hidden md:block text-center flex-1">
           <p className="text-base font-medium text-blue-800">Free Shipping</p>
         </div>
-        <div className="hidden md:flex text-center flex-1 justify-center items-center">
-          <Separator orientation="vertical" className="h-6 mx-4 bg-blue-200" />
+        <div className="hidden md:block text-center flex-1">
           <p className="text-base font-medium text-blue-800">30-Day Returns</p>
         </div>
-        <div className="hidden md:flex text-center flex-1 justify-center items-center">
-          <Separator orientation="vertical" className="h-6 mx-4 bg-blue-200" />
+        <div className="hidden md:block text-center flex-1">
           <p className="text-base font-medium text-blue-800">Contacts & Support</p>
         </div>
       </div>
