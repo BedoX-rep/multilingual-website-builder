@@ -18,7 +18,7 @@ interface BestSellersSectionProps {
 
 const BestSellersSection: React.FC<BestSellersSectionProps> = ({ bestSellers }) => {
   return (
-    <section className="py-16 bg-white">
+    <section className="bg-white">
       <div className="luxury-container">
         <div className="flex items-center gap-8 mb-8 border-b">
           <button className="text-lg font-medium pb-4 border-b-2 border-black">Bestsellers</button>
