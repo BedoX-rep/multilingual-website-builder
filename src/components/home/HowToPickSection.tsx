@@ -92,8 +92,10 @@ const HowToPickSection: React.FC = () => {
               {/* Step 1 */}
               <div className="text-center relative">
                 <div className="mb-8">
-                  <div className="w-20 h-20 rounded-full bg-white mx-auto flex items-center justify-center">
-                    <img src="/lovable-uploads/iconspair/X_Frame_icon.png" alt="Find your pair" className="w-10 h-10" />
+                  <div className="w-20 h-20 rounded-full bg-white mx-auto flex items-center justify-center" style={{ backgroundColor: '#F5F7F9' }}>
+                    <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center">
+                      <img src="/lovable-uploads/iconspair/X_Frame_icon.png" alt="Find your pair" className="w-10 h-10" />
+                    </div>
                   </div>
                 </div>
                 <h3 className="text-lg font-medium mb-2">1 | Find your pair</h3>
@@ -103,8 +105,10 @@ const HowToPickSection: React.FC = () => {
               {/* Step 2 */}
               <div className="text-center relative">
                 <div className="mb-8">
-                  <div className="w-20 h-20 rounded-full bg-white mx-auto flex items-center justify-center">
-                    <img src="/lovable-uploads/iconspair/X_Lenses_icon.png" alt="Select your lenses" className="w-10 h-10" />
+                  <div className="w-20 h-20 rounded-full bg-white mx-auto flex items-center justify-center" style={{ backgroundColor: '#F5F7F9' }}>
+                    <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center">
+                      <img src="/lovable-uploads/iconspair/X_Lenses_icon.png" alt="Select your lenses" className="w-10 h-10" />
+                    </div>
                   </div>
                 </div>
                 <h3 className="text-lg font-medium mb-2">2 | Select your lenses</h3>
@@ -114,8 +118,10 @@ const HowToPickSection: React.FC = () => {
               {/* Step 3 */}
               <div className="text-center relative">
                 <div className="mb-8">
-                  <div className="w-20 h-20 rounded-full bg-white mx-auto flex items-center justify-center">
-                    <img src="/lovable-uploads/iconspair/X_Personalize_icon.png" alt="Personalize your lenses" className="w-10 h-10" />
+                  <div className="w-20 h-20 rounded-full bg-white mx-auto flex items-center justify-center" style={{ backgroundColor: '#F5F7F9' }}>
+                    <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center">
+                      <img src="/lovable-uploads/iconspair/X_Personalize_icon.png" alt="Personalize your lenses" className="w-10 h-10" />
+                    </div>
                   </div>
                 </div>
                 <h3 className="text-lg font-medium mb-2">3 | Personalize your lenses</h3>
@@ -125,8 +131,10 @@ const HowToPickSection: React.FC = () => {
               {/* Step 4 */}
               <div className="text-center relative">
                 <div className="mb-8">
-                  <div className="w-20 h-20 rounded-full bg-white mx-auto flex items-center justify-center">
-                    <img src="/lovable-uploads/iconspair/X_Shipping_icon.png" alt="Complete your purchase" className="w-10 h-10" />
+                  <div className="w-20 h-20 rounded-full bg-white mx-auto flex items-center justify-center" style={{ backgroundColor: '#F5F7F9' }}>
+                    <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center">
+                      <img src="/lovable-uploads/iconspair/X_Shipping_icon.png" alt="Complete your purchase" className="w-10 h-10" />
+                    </div>
                   </div>
                 </div>
                 <h3 className="text-lg font-medium mb-2">4 | Complete your purchase</h3>
