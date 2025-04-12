@@ -20,10 +20,15 @@ const BestSellersSection: React.FC<BestSellersSectionProps> = ({ bestSellers }) 
   return (
     <section className="bg-white w-full">
       <div className="container mx-auto max-w-[100%] w-full">
-        <div className="flex items-center gap-8 mb-8 border-b">
-          <button className="text-lg font-medium pb-4 border-b-2 border-black">Bestsellers</button>
-          <button className="text-lg text-gray-500 pb-4">Trending</button>
-          <button className="text-lg text-gray-500 pb-4">New</button>
+        <div className="flex items-center justify-between mb-8 border-b">
+          <div className="flex items-center gap-8">
+            <button className="text-lg font-medium pb-4 border-b-2 border-black">Bestsellers</button>
+            <button className="text-lg text-gray-500 pb-4">Trending</button>
+            <button className="text-lg text-gray-500 pb-4">New</button>
+          </div>
+          <button className="hidden md:block px-8 py-3 border-2 border-blue-600 text-blue-600 font-medium hover:bg-blue-50 transition-all rounded-full">
+            Shop all bestsellers
+          </button>
         </div>
 
         <Carousel className="w-full relative mb-8">
@@ -72,8 +77,8 @@ const BestSellersSection: React.FC<BestSellersSectionProps> = ({ bestSellers }) 
           <CarouselNext className="absolute -right-12 top-1/2 -translate-y-1/2 bg-white text-blue-600 hover:bg-gray-50 h-12 w-12" />
         </Carousel>
 
-        {/* Shop All Button - Desktop & Mobile */}
-        <div className="flex justify-center mt-8">
+        {/* Shop All Button - Mobile Only */}
+        <div className="flex md:hidden justify-center mt-8">
           <button className="px-8 py-3 border-2 border-blue-600 text-blue-600 font-medium hover:bg-blue-50 transition-all rounded-full">
             Shop all bestsellers
           </button>
