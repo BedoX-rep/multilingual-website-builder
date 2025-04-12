@@ -2,7 +2,7 @@ import React from 'react';
 
 const HowToPickSection: React.FC = () => {
   return (
-    <section id="how-to-pick" className="py-8 md:py-8 bg-[#F5F7F9]">
+    <section id="how-to-pick" className="py-4 md:py-4 bg-[#F5F7F9]">
       <div className="container px-4 mx-auto max-w-7xl">
         <h2 className="text-2xl md:text-4xl font-sans font-bold text-center mb-8 md:mb-16">
           CUSTOMIZING YOUR GLASSES HAS NEVER BEEN SO EASY
