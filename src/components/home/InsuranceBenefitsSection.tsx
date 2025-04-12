@@ -8,11 +8,11 @@ const InsuranceBenefitsSection: React.FC = () => {
   return (
     <section className="relative min-h-[600px] flex items-center">
       {/* Background Image */}
-      <div className="absolute inset-0 w-full h-full">
+      <div className="absolute inset-0 w-full h-full bg-white/50">
         <img 
           src="/lovable-uploads/sectionassuranceimage.png" 
           alt="Insurance Benefits" 
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover mix-blend-overlay"
         />
       </div>
 
