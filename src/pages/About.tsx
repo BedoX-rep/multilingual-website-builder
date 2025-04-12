@@ -5,10 +5,10 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const About: React.FC = () => {
-  const { t, dir } = useLanguage();
+  const { t } = useLanguage();
   
   return (
-    <div className={dir === 'rtl' ? 'font-sans rtl' : 'font-sans'}>
+    <div className="font-sans">
       <Header />
       
       {/* About Hero */}

@@ -6,10 +6,10 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const NotFound: React.FC = () => {
-  const { dir } = useLanguage();
+  const { t } = useLanguage();
   
   return (
-    <div className={dir === 'rtl' ? 'font-sans rtl' : 'font-sans'}>
+    <div className="font-sans">
       <Header />
       
       <section className="min-h-[60vh] flex items-center">
