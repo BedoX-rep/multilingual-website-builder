@@ -164,9 +164,9 @@ const Index: React.FC = () => {
       
       {/* Render all sections in the order specified in the sections array */}
       {sections.map(section => (
-        <React.Fragment key={section.id}>
+        <div key={section.id} className="relative">
           {section.component}
-        </React.Fragment>
+        </div>
       ))}
 
       <Footer />
