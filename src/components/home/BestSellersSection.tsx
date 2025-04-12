@@ -74,7 +74,7 @@ const BestSellersSection: React.FC<BestSellersSectionProps> = ({ bestSellers }) 
 
         {/* Shop All Button - Desktop & Mobile */}
         <div className="flex justify-center mt-8">
-          <button className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+          <button className="px-8 py-3 border-2 border-blue-600 text-blue-600 font-medium hover:bg-blue-50 transition-all rounded-full">
             Shop all bestsellers
           </button>
         </div>
