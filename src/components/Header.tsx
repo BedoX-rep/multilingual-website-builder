@@ -30,7 +30,7 @@ const Header: React.FC = () => {
       <div className="px-0">
         <div className="flex items-center justify-between">
           {/* Logo - adjusted with ml-[5%] for left margin */}
-          <Link to="/" className="flex items-center gap-2 pl-[5%]">
+          <Link to="/" className="flex items-center gap-2 pl-[4%]">
             <span className="font-['Playfair_Display'] text-2xl font-medium tracking-wider">Lens Optique</span>
           </Link>
 
