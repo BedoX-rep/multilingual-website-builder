@@ -7,7 +7,7 @@ export const useFormattedTranslation = () => {
   
   // Return a wrapped version of the t function that handles string params correctly
   const formattedT = (key: string) => {
-    // Using t function without array syntax to fix type error
+    // Call t function directly with the key string, not as an array
     return t(key);
   };
   
