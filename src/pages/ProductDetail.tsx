@@ -90,11 +90,18 @@ const ProductDetail: React.FC = () => {
     navigate(`/select-lenses/${id}`);
   };
 
+  const handleLearnMore = () => {
+    toast({
+      title: "Insurance Info",
+      description: "Learn more about insurance and FSA coverage",
+    });
+  };
+
   return (
-    <div className="font-sans">
+    <div className="font-sans bg-gray-50">
       <Header />
       
-      <div className="container mx-auto px-4 py-4 md:py-8">
+      <div className="container mx-auto px-4 py-4 md:py-8 max-w-7xl">
         {/* Breadcrumb */}
         <Breadcrumb className="mb-6">
           <BreadcrumbItem>
@@ -118,10 +125,24 @@ const ProductDetail: React.FC = () => {
           </div>
           
           {/* Right Column - Product Info */}
-          <div>
-            <div className="mb-4">
-              <h1 className="text-2xl sm:text-3xl font-bold mb-1">{product.name}</h1>
-              <p className="text-gray-500 mb-2">{product.code}</p>
+          <div className="bg-white p-6 rounded-lg shadow-sm">
+            <div className="mb-6">
+              <h1 className="text-2xl font-bold mb-1">{product.name}</h1>
+              <p className="text-gray-600 text-sm">{product.code}</p>
+              
+              <div className="flex items-center mt-2 mb-4">
+                <span className="text-sm mr-2">REVIEWS ({product.reviewCount})</span>
+                <div className="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className={`text-sm ${i < Math.floor(product.rating) ? 'text-yellow-400' : 'text-gray-300'}`}>★</span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4 mb-4">
+                <span className="text-sm">Adult Medium</span>
+                <a href="#" className="text-sm text-blue-600 underline">Size Chart</a>
+              </div>
               
               <div className="flex items-center mb-4">
                 <div className="flex items-center">

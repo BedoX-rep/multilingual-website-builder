@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, RotateCw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface ProductImageGalleryProps {
@@ -25,14 +25,20 @@ const ProductImageGallery: React.FC<ProductImageGalleryProps> = ({ images }) => 
   return (
     <div className="space-y-4">
       {/* Main image */}
-      <div className="relative aspect-square bg-gray-100 rounded-lg overflow-hidden">
+      <div className="relative aspect-square bg-white rounded-lg overflow-hidden">
         <img
           src={images[currentIndex]}
           alt="Product"
           className="w-full h-full object-contain"
         />
         
-        {/* Navigation arrows for desktop */}
+        {/* Try On Button */}
+        <button className="absolute top-4 right-4 bg-white px-4 py-2 rounded-full shadow-md flex items-center gap-2">
+          <RotateCw className="w-4 h-4" />
+          Try On
+        </button>
+        
+        {/* Navigation arrows */}
         <div className="hidden sm:block">
           <Button
             variant="outline"
@@ -59,9 +65,9 @@ const ProductImageGallery: React.FC<ProductImageGalleryProps> = ({ images }) => 
         {images.map((image, index) => (
           <button
             key={index}
-            className={`relative border-2 flex-shrink-0 w-16 h-16 rounded-md overflow-hidden transition-all ${
+            className={`relative flex-shrink-0 w-16 h-16 rounded-md overflow-hidden transition-all border-2 ${
               currentIndex === index 
-                ? 'border-black' 
+                ? 'border-teal-600' 
                 : 'border-transparent hover:border-gray-300'
             }`}
             onClick={() => handleThumbnailClick(index)}
