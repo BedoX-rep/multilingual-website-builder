@@ -46,7 +46,8 @@ const mockProducts = [
       '/lovable-uploads/productmockup/3435b33b8f6649ded6fc392bcf9471aa11742d28.png',
       '/lovable-uploads/productmockup/9e225f5dc69f0335cf2ff7fd4bbaf15322763546.png',
       '/lovable-uploads/productmockup/e9e88c5864ae35e00d6400c6e3d07f23b1e05d4b.png',
-    ]
+    ],
+    colors: ['Black', 'Gold', 'Silver', 'Rose Gold', 'Blue', 'Green']
   }
 ];
 
