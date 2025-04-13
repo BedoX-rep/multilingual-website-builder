@@ -172,18 +172,20 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
     onComplete(orderDetails);
   };
   
-  // Next step handler
+  // Next step handler with fix for frameOnly flow
   const handleNext = () => {
-    // Special case for frameOnly which skips to the review step
-    if (visionNeed === 'frameOnly' && currentStep === 0) {
-      setCurrentStep(getMaxSteps() - 1);
-      return;
-    }
-    
-    // Special case for nonPrescription which skips the prescription form step
-    if (visionNeed === 'nonPrescription' && currentStep === 0) {
-      setCurrentStep(2);
-      return;
+    if (currentStep === 0) {
+      // Special case for frameOnly which now properly jumps to the review step
+      if (visionNeed === 'frameOnly') {
+        setCurrentStep(4); // Skip directly to the review step (index 4)
+        return;
+      }
+      
+      // Special case for nonPrescription which skips the prescription form step
+      if (visionNeed === 'nonPrescription') {
+        setCurrentStep(2); // Skip to lens type selection
+        return;
+      }
     }
     
     if (currentStep < getMaxSteps() - 1) {
@@ -191,18 +193,23 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
     }
   };
   
-  // Back step handler
+  // Back step handler with fixes for special flows
   const handleBack = () => {
     // Special case for frameOnly which jumps back to vision need selection
-    if (visionNeed === 'frameOnly' && currentStep === getMaxSteps() - 1) {
+    if (visionNeed === 'frameOnly' && currentStep === 4) {
       setCurrentStep(0);
       return;
     }
     
     // Special case for nonPrescription which skips the prescription form step
-    if (visionNeed === 'nonPrescription' && currentStep === 2) {
-      setCurrentStep(0);
-      return;
+    if (visionNeed === 'nonPrescription' && currentStep > 0) {
+      if (currentStep === 2) {
+        setCurrentStep(0); // From lens type back to vision need
+        return;
+      } else if (currentStep === 4) {
+        setCurrentStep(2); // From review back to lens type
+        return;
+      }
     }
     
     if (currentStep > 0) {
@@ -212,13 +219,7 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
   
   // Get maximum steps based on vision need
   const getMaxSteps = () => {
-    if (visionNeed === 'frameOnly') {
-      return 2; // Just vision need selection and review
-    } else if (visionNeed === 'nonPrescription') {
-      return 3; // Vision need, lens type, and review
-    } else {
-      return 5; // All steps
-    }
+    return 5; // We always keep 5 steps total, but navigate through them differently
   };
   
   // Determine if we can proceed to the next step
@@ -305,6 +306,25 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
     }
   };
   
+  // Calculate progress based on vision need and current step
+  const calculateProgress = () => {
+    // For frame only, we only have 2 meaningful steps (selection and review)
+    if (visionNeed === 'frameOnly') {
+      return currentStep === 0 ? 0 : 1;
+    }
+    
+    // For non-prescription, we have 3 steps (selection, lens type, review)
+    if (visionNeed === 'nonPrescription') {
+      if (currentStep === 0) return 0;
+      if (currentStep === 2) return 0.5;
+      if (currentStep === 4) return 1;
+      return 0;
+    }
+    
+    // For single vision, we have all 5 steps
+    return currentStep / 4; // Divide by (steps-1) to get proportion
+  };
+  
   return (
     <div className="flex flex-col h-full">
       <div className="mb-6">
@@ -312,14 +332,14 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
         
         {/* Progress indicator */}
         <div className="flex justify-between mb-6">
-          {Array.from({ length: getMaxSteps() }).map((_, index) => (
-            <div 
-              key={index} 
-              className={`flex-1 h-1 mx-1 rounded-full ${
-                index <= currentStep ? 'bg-blue-600' : 'bg-gray-200'
-              }`}
-            />
-          ))}
+          <div 
+            className="flex-1 h-1 rounded-full bg-blue-600"
+            style={{ width: `${calculateProgress() * 100}%` }}
+          />
+          <div 
+            className="flex-1 h-1 rounded-full bg-gray-200"
+            style={{ width: `${(1 - calculateProgress()) * 100}%` }}
+          />
         </div>
       </div>
       
@@ -328,7 +348,7 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
       </div>
       
       <div className="flex justify-between mt-auto">
-        {currentStep > 0 ? (
+        {currentStep > 0 && (
           <Button 
             variant="outline" 
             onClick={handleBack}
@@ -337,11 +357,13 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
             <ArrowLeft className="mr-2 h-4 w-4" />
             {t('common.back')}
           </Button>
-        ) : (
-          <div></div> // Empty div to maintain layout
         )}
         
-        {currentStep < getMaxSteps() - 1 ? (
+        {currentStep === 0 && (
+          <div></div> // Empty div to maintain layout when there's no back button
+        )}
+        
+        {currentStep < 4 ? (
           <Button 
             disabled={!canProceed()}
             onClick={handleNext}

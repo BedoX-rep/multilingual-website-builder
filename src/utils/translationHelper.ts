@@ -7,7 +7,7 @@ export const useFormattedTranslation = () => {
   
   // Return a wrapped version of the t function that handles string params correctly
   const formattedT = (key: string) => {
-    // Call t function directly with the key string
+    // Call t function with the string parameter
     return t(key);
   };
   
