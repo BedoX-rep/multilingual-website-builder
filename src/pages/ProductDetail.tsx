@@ -63,6 +63,7 @@ const ProductDetail: React.FC = () => {
   const navigate = useNavigate();
   const product = mockProducts.find(p => p.id === id) || mockProducts[0];
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
+  const [activeTab, setActiveTab] = useState('details');
 
 
   const handleAddToFavorites = () => {
@@ -110,18 +111,27 @@ const ProductDetail: React.FC = () => {
 
           {/* Right Column - Product Info */}
           <div>
-            <div className="mb-4">
+            <div className="mb-6">
               <h1 className="text-2xl font-bold">{product.name}</h1>
-              <p className="text-gray-600">{product.code}</p>
+              <p className="text-gray-600 text-sm">{product.code}</p>
+              
+              <div className="flex items-center gap-2 mt-2">
+                <div className="text-sm font-medium">REVIEWS ({product.reviewCount})</div>
+                <div className="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className={`text-sm ${i < Math.floor(product.rating) ? 'text-blue-500' : 'text-gray-300'}`}>★</span>
+                  ))}
+                </div>
+              </div>
             </div>
 
-            <div className="flex items-center mb-4">
-              <span className="text-sm">REVIEWS ({product.reviewCount})</span>
-              <div className="flex ml-2">
-                {[...Array(5)].map((_, i) => (
-                  <span key={i} className={`text-sm ${i < Math.floor(product.rating) ? 'text-blue-500' : 'text-gray-300'}`}>★</span>
-                ))}
-              </div>
+            <div className="flex items-center gap-4 mb-6">
+              <span className="text-sm">Adult Medium</span>
+              <button className="text-blue-600 hover:text-blue-800 text-sm underline">Size Chart</button>
+            </div>
+
+            <div className="text-xl font-bold mb-6">
+              ${product.price.toFixed(2)}
             </div>
 
             <div className="flex items-center gap-4 mb-4">
