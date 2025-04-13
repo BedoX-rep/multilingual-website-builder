@@ -29,7 +29,7 @@ const ProductImageGallery: React.FC<ProductImageGalleryProps> = ({ images }) => 
         {images.map((image, index) => (
           <button
             key={index}
-            className={`relative border-2 flex-shrink-0 w-20 h-20 rounded-md overflow-hidden transition-all ${
+            className={`relative border-2 flex-shrink-0 w-16 h-16 rounded-md overflow-hidden transition-all ${
               currentIndex === index 
                 ? 'border-black' 
                 : 'border-transparent hover:border-gray-300'
@@ -39,10 +39,19 @@ const ProductImageGallery: React.FC<ProductImageGalleryProps> = ({ images }) => 
             <img
               src={image}
               alt={`Thumbnail ${index + 1}`}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
             />
           </button>
         ))}
+      </div>
+      
+      {/* Main image */}
+      <div className="relative h-[600px] w-full overflow-hidden">
+        <img
+          src={images[currentIndex]}
+          alt="Product"
+          className="w-full h-full object-contain"
+        />
       </div>
     </div>
   );
