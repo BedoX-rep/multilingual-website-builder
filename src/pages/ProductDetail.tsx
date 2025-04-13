@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import { useFormattedTranslation } from '../utils/translationHelper';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@/components/ui/breadcrumb';
@@ -71,7 +71,7 @@ const mockProducts = [
 
 const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const { t } = useTranslation();
+  const { formattedT: t } = useFormattedTranslation();
   const { toast } = useToast();
   
   // In a real app, fetch product by ID from API
@@ -81,15 +81,15 @@ const ProductDetail: React.FC = () => {
 
   const handleAddToFavorites = () => {
     toast({
-      title: t('product.addedToFavorites'),
-      description: `${product.name} ${t('product.hasBeenAddedToFavorites')}`,
+      title: t("product.addedToFavorites"),
+      description: `${product.name} ${t("product.hasBeenAddedToFavorites")}`,
     });
   };
 
   const handleSelectLenses = () => {
     toast({
-      title: t('product.lensSelection'),
-      description: t('product.pleaseSelectLenses'),
+      title: t("product.lensSelection"),
+      description: t("product.pleaseSelectLenses"),
     });
   };
 
@@ -101,10 +101,10 @@ const ProductDetail: React.FC = () => {
         {/* Breadcrumb */}
         <Breadcrumb className="mb-6">
           <BreadcrumbItem>
-            <BreadcrumbLink href="/">{t('nav.home')}</BreadcrumbLink>
+            <BreadcrumbLink href="/">{t("nav.home")}</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbItem>
-            <BreadcrumbLink href="/products">{t('nav.products')}</BreadcrumbLink>
+            <BreadcrumbLink href="/products">{t("nav.products")}</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbItem>
             <BreadcrumbLink href="#" className="font-medium">
@@ -138,7 +138,7 @@ const ProductDetail: React.FC = () => {
                   ))}
                 </div>
                 <span className="text-sm text-gray-500 ml-2">
-                  {product.reviewCount} {t('product.reviews')}
+                  {product.reviewCount} {t("product.reviews")}
                 </span>
               </div>
               
@@ -147,7 +147,7 @@ const ProductDetail: React.FC = () => {
               </div>
               
               <div className="mb-6">
-                <h3 className="font-medium mb-2">{t('product.includes')}:</h3>
+                <h3 className="font-medium mb-2">{t("product.includes")}:</h3>
                 <ul className="space-y-1">
                   {product.features.map((feature, index) => (
                     <li key={index} className="flex items-center">
@@ -159,7 +159,7 @@ const ProductDetail: React.FC = () => {
               </div>
               
               <div className="mb-6">
-                <h3 className="font-medium mb-2">{t('product.selectColor')}:</h3>
+                <h3 className="font-medium mb-2">{t("product.selectColor")}:</h3>
                 <div className="flex space-x-3">
                   {product.colors.map((color) => (
                     <button
@@ -182,7 +182,7 @@ const ProductDetail: React.FC = () => {
                   className="w-full bg-primary hover:bg-primary/90 text-white py-2 rounded-md"
                   onClick={handleSelectLenses}
                 >
-                  {t('product.selectLenses')}
+                  {t("product.selectLenses")}
                 </Button>
                 
                 <Button 
@@ -191,38 +191,38 @@ const ProductDetail: React.FC = () => {
                   onClick={handleAddToFavorites}
                 >
                   <Heart className="mr-2 h-4 w-4" />
-                  {t('product.addToFavorites')}
+                  {t("product.addToFavorites")}
                 </Button>
               </div>
               
               <div className="border-t border-gray-200 pt-6 mb-6">
                 <Tabs defaultValue="details">
                   <TabsList className="grid w-full grid-cols-3">
-                    <TabsTrigger value="details">{t('product.details')}</TabsTrigger>
-                    <TabsTrigger value="measurements">{t('product.measurements')}</TabsTrigger>
-                    <TabsTrigger value="prescription">{t('product.prescription')}</TabsTrigger>
+                    <TabsTrigger value="details">{t("product.details")}</TabsTrigger>
+                    <TabsTrigger value="measurements">{t("product.measurements")}</TabsTrigger>
+                    <TabsTrigger value="prescription">{t("product.prescription")}</TabsTrigger>
                   </TabsList>
                   
                   <TabsContent value="details" className="pt-4">
                     <div className="space-y-3">
                       <div className="grid grid-cols-2 gap-2">
-                        <p className="text-sm text-gray-500">{t('product.size')}:</p>
+                        <p className="text-sm text-gray-500">{t("product.size")}:</p>
                         <p className="text-sm">{product.details.size}</p>
                       </div>
                       <div className="grid grid-cols-2 gap-2">
-                        <p className="text-sm text-gray-500">{t('product.material')}:</p>
+                        <p className="text-sm text-gray-500">{t("product.material")}:</p>
                         <p className="text-sm">{product.details.material}</p>
                       </div>
                       <div className="grid grid-cols-2 gap-2">
-                        <p className="text-sm text-gray-500">{t('product.weight')}:</p>
+                        <p className="text-sm text-gray-500">{t("product.weight")}:</p>
                         <p className="text-sm">{product.details.weight}</p>
                       </div>
                       <div className="grid grid-cols-2 gap-2">
-                        <p className="text-sm text-gray-500">{t('product.rim')}:</p>
+                        <p className="text-sm text-gray-500">{t("product.rim")}:</p>
                         <p className="text-sm">{product.details.rim}</p>
                       </div>
                       <div className="grid grid-cols-2 gap-2">
-                        <p className="text-sm text-gray-500">{t('product.shape')}:</p>
+                        <p className="text-sm text-gray-500">{t("product.shape")}:</p>
                         <p className="text-sm">{product.details.shape}</p>
                       </div>
                     </div>
@@ -242,23 +242,23 @@ const ProductDetail: React.FC = () => {
                   <TabsContent value="prescription" className="pt-4">
                     <div className="space-y-3">
                       <div className="grid grid-cols-2 gap-2">
-                        <p className="text-sm text-gray-500">PD {t('product.range')}:</p>
+                        <p className="text-sm text-gray-500">PD {t("product.range")}:</p>
                         <p className="text-sm">{product.prescription.pdRange}</p>
                       </div>
                       <div className="grid grid-cols-2 gap-2">
-                        <p className="text-sm text-gray-500">{t('product.prescriptionRange')}:</p>
+                        <p className="text-sm text-gray-500">{t("product.prescriptionRange")}:</p>
                         <p className="text-sm">{product.prescription.range}</p>
                       </div>
                       <div className="grid grid-cols-2 gap-2">
-                        <p className="text-sm text-gray-500">{t('product.progressive')}:</p>
+                        <p className="text-sm text-gray-500">{t("product.progressive")}:</p>
                         <p className="text-sm">{product.prescription.progressive ? '✓' : '✗'}</p>
                       </div>
                       <div className="grid grid-cols-2 gap-2">
-                        <p className="text-sm text-gray-500">{t('product.bifocal')}:</p>
+                        <p className="text-sm text-gray-500">{t("product.bifocal")}:</p>
                         <p className="text-sm">{product.prescription.bifocal ? '✓' : '✗'}</p>
                       </div>
                       <div className="grid grid-cols-2 gap-2">
-                        <p className="text-sm text-gray-500">{t('product.readers')}:</p>
+                        <p className="text-sm text-gray-500">{t("product.readers")}:</p>
                         <p className="text-sm">{product.prescription.readers ? '✓' : '✗'}</p>
                       </div>
                     </div>
@@ -267,7 +267,7 @@ const ProductDetail: React.FC = () => {
               </div>
               
               <div className="flex items-center space-x-4">
-                <p className="text-sm text-gray-500">{t('product.share')}:</p>
+                <p className="text-sm text-gray-500">{t("product.share")}:</p>
                 <button className="text-gray-500 hover:text-gray-700">
                   <Share2 className="w-5 h-5" />
                 </button>

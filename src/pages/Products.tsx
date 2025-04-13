@@ -1,262 +1,175 @@
 
 import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
-import { Sliders } from 'lucide-react';
+import { useFormattedTranslation } from '../utils/translationHelper';
+import { TooltipWrapper } from '../components/TooltipWrapper';
 
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
-  colors: string[];
-  category: string;
-  rating: number;
-  reviews: number;
-}
-
-const products: Product[] = [
+// Mock products data
+const products = [
   {
     id: '1',
-    name: 'Esme',
-    price: 95,
-    image: '/lovable-uploads/productmockup/2b61f335e979f96b25e95b1a527333b8e8cf3da6 (copy) 1.png',
-    colors: ['#8B4513', '#CCCCCC', '#2E4F4F', '#4F6F52'],
-    category: 'Optical',
-    rating: 4.8,
-    reviews: 425
+    name: 'Bravo Browline',
+    price: 159.95,
+    image: '/lovable-uploads/productmockup/2b61f335e979f96b25e95b1a527333b8e8cf3da6.png',
+    category: 'optical',
+    colors: ['#000000', '#8B4513', '#0047AB'],
+    rating: 4.5,
+    reviews: 380
   },
   {
     id: '2',
-    name: 'Baird',
-    price: 145,
+    name: 'Atlas Round',
+    price: 139.95,
     image: '/lovable-uploads/productmockup/3435b33b8f6649ded6fc392bcf9471aa11742d28.png',
-    colors: ['#000000', '#FF0000', '#E6F4F1', '#435334', '#7B66FF'],
-    category: 'Optical',
-    rating: 4.7,
-    reviews: 312
+    category: 'optical',
+    colors: ['#000000', '#8B4513', '#F5F5F5'],
+    rating: 4.2,
+    reviews: 215
   },
   {
     id: '3',
-    name: 'Durand',
-    price: 95,
+    name: 'Dawn Aviator',
+    price: 179.95,
     image: '/lovable-uploads/productmockup/9e225f5dc69f0335cf2ff7fd4bbaf15322763546.png',
-    colors: ['#8B4513', '#000000', '#2E4F4F', '#CCCCCC', '#7B66FF'],
-    category: 'Optical',
-    rating: 4.9,
-    reviews: 567
+    category: 'sun',
+    colors: ['#000000', '#8B4513', '#0047AB'],
+    rating: 4.7,
+    reviews: 102
   },
   {
     id: '4',
-    name: 'Brady',
-    price: 95,
-    image: '/lovable-uploads/productmockup/d29bdfc9-8c61-4bd0-8a10-c0ef0355df3b.png',
-    colors: ['#7B66FF', '#CCCCCC', '#000000'],
-    category: 'Optical',
-    rating: 4.6,
-    reviews: 289
+    name: 'Horizon Cat-Eye',
+    price: 149.95,
+    image: '/lovable-uploads/productmockup/e9e88c5864ae35e00d6400c6e3d07f23b1e05d4b.png',
+    category: 'sun',
+    colors: ['#000000', '#8B4513', '#F5F5F5'],
+    rating: 4.0,
+    reviews: 178
   },
   {
     id: '5',
-    name: 'Bodie',
-    price: 95,
-    image: '/lovable-uploads/productmockup/e9e88c5864ae35e00d6400c6e3d07f23b1e05d4b.png',
-    colors: ['#8B4513', '#000000', '#7B66FF'],
-    category: 'Optical',
-    rating: 4.8,
-    reviews: 412
+    name: 'Neo Rectangle',
+    price: 129.95,
+    image: '/lovable-uploads/productmockup/2b61f335e979f96b25e95b1a527333b8e8cf3da6.png',
+    category: 'optical',
+    colors: ['#000000', '#8B4513', '#0047AB'],
+    rating: 4.3,
+    reviews: 95
   },
   {
     id: '6',
-    name: 'Crane',
-    price: 95,
-    image: '/lovable-uploads/productmockup/2b61f335e979f96b25e95b1a527333b8e8cf3da6 (copy).png',
-    colors: ['#000000', '#8B4513', '#FF4500', '#CCCCCC'],
-    category: 'Optical',
-    rating: 4.7,
-    reviews: 356
+    name: 'Pixel Square',
+    price: 139.95,
+    image: '/lovable-uploads/productmockup/3435b33b8f6649ded6fc392bcf9471aa11742d28.png',
+    category: 'optical',
+    colors: ['#000000', '#8B4513', '#F5F5F5'],
+    rating: 4.6,
+    reviews: 230
   },
   {
     id: '7',
-    name: 'Winston',
-    price: 95,
-    image: '/lovable-uploads/productmockup/9e225f5dc69f0335cf2ff7fd4bbaf15322763546 (copy).png',
-    colors: ['#8B4513', '#000000', '#2E4F4F'],
-    category: 'Optical',
-    rating: 4.9,
-    reviews: 278
+    name: 'Junior Round',
+    price: 119.95,
+    image: '/lovable-uploads/productmockup/9e225f5dc69f0335cf2ff7fd4bbaf15322763546.png',
+    category: 'kids',
+    colors: ['#000000', '#8B4513', '#0047AB'],
+    rating: 4.1,
+    reviews: 42
   },
   {
     id: '8',
-    name: 'Felix',
-    price: 95,
-    image: '/lovable-uploads/productmockup/e9e88c5864ae35e00d6400c6e3d07f23b1e05d4b (copy).png',
-    colors: ['#000000', '#8B4513', '#7B66FF'],
-    category: 'Optical',
-    rating: 4.8,
-    reviews: 389
+    name: 'Youth Rectangle',
+    price: 109.95,
+    image: '/lovable-uploads/productmockup/e9e88c5864ae35e00d6400c6e3d07f23b1e05d4b.png',
+    category: 'kids',
+    colors: ['#000000', '#8B4513', '#F5F5F5'],
+    rating: 4.4,
+    reviews: 67
   }
 ];
 
+type Category = 'all' | 'optical' | 'sun' | 'kids';
+
 const Products: React.FC = () => {
-  const { t } = useTranslation();
-  const [activeFilter, setActiveFilter] = useState('all');
-  const [showFilters, setShowFilters] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<Category>('all');
+  const { formattedT: t } = useFormattedTranslation();
   
-  const filteredProducts = activeFilter === 'all' 
+  const filteredProducts = activeCategory === 'all' 
     ? products 
-    : products.filter(product => product.category.toLowerCase() === activeFilter);
-  
+    : products.filter(product => product.category === activeCategory);
+    
   return (
-    <div className="font-sans">
-      <Header />
-      
-      {/* Products Hero */}
-      <section className="bg-gray-100 py-12">
-        <div className="container mx-auto px-4">
-          <h1 className="font-serif text-3xl md:text-4xl font-bold text-center">
-            {t('collection.title')}
-          </h1>
-        </div>
-      </section>
-      
-      {/* Products Section */}
-      <section className="py-12">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap items-center justify-between mb-8">
-            {/* Collection Filters */}
-            <div className="flex flex-wrap gap-4 mb-4 md:mb-0">
-              <button 
-                className={`px-4 py-1 text-sm rounded-full border transition-colors ${activeFilter === 'all' ? 'bg-blue-600 text-white border-blue-600' : 'border-gray-300 text-gray-600 hover:border-blue-600'}`}
-                onClick={() => setActiveFilter('all')}
-              >
-                {t('collection.all')}
-              </button>
-              <button 
-                className={`px-4 py-1 text-sm rounded-full border transition-colors ${activeFilter === 'optical' ? 'bg-blue-600 text-white border-blue-600' : 'border-gray-300 text-gray-600 hover:border-blue-600'}`}
-                onClick={() => setActiveFilter('optical')}
-              >
-                {t('collection.optical')}
-              </button>
-              <button 
-                className={`px-4 py-1 text-sm rounded-full border transition-colors ${activeFilter === 'sunglasses' ? 'bg-blue-600 text-white border-blue-600' : 'border-gray-300 text-gray-600 hover:border-blue-600'}`}
-                onClick={() => setActiveFilter('sunglasses')}
-              >
-                {t('collection.sun')}
-              </button>
-              <button 
-                className={`px-4 py-1 text-sm rounded-full border transition-colors ${activeFilter === 'kids' ? 'bg-blue-600 text-white border-blue-600' : 'border-gray-300 text-gray-600 hover:border-blue-600'}`}
-                onClick={() => setActiveFilter('kids')}
-              >
-                {t('collection.kids')}
-              </button>
-            </div>
+    <TooltipWrapper>
+      <div>
+        <Header />
+        
+        <main className="container mx-auto px-4 py-16 mt-16">
+          <div className="text-center mb-8">
+            <h1 className="text-3xl font-bold mb-6">{t("collection.title")}</h1>
             
-            {/* Additional Filters Toggle */}
-            <button 
-              className="flex items-center gap-2 text-gray-600 hover:text-blue-600"
-              onClick={() => setShowFilters(!showFilters)}
-            >
-              <Sliders className="w-4 h-4" />
-              <span className="text-sm font-medium">Filters</span>
-            </button>
-          </div>
-          
-          {/* Advanced Filters */}
-          {showFilters && (
-            <div className="bg-gray-50 p-4 rounded-lg mb-8 animate-fade-in">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {/* Price Range */}
-                <div>
-                  <h3 className="font-medium mb-2">Price Range</h3>
-                  <div className="flex items-center gap-4">
-                    <input 
-                      type="range" 
-                      min="0" 
-                      max="300" 
-                      className="w-full accent-blue-600" 
-                    />
-                  </div>
-                  <div className="flex justify-between mt-2 text-sm text-gray-600">
-                    <span>$0</span>
-                    <span>$300+</span>
-                  </div>
-                </div>
-                
-                {/* Frame Shape */}
-                <div>
-                  <h3 className="font-medium mb-2">Frame Shape</h3>
-                  <div className="flex flex-wrap gap-2">
-                    <button className="px-3 py-1 text-xs border border-gray-200 rounded-full hover:border-blue-600">Rectangle</button>
-                    <button className="px-3 py-1 text-xs border border-gray-200 rounded-full hover:border-blue-600">Square</button>
-                    <button className="px-3 py-1 text-xs border border-gray-200 rounded-full hover:border-blue-600">Round</button>
-                    <button className="px-3 py-1 text-xs border border-gray-200 rounded-full hover:border-blue-600">Cat Eye</button>
-                    <button className="px-3 py-1 text-xs border border-gray-200 rounded-full hover:border-blue-600">Aviator</button>
-                  </div>
-                </div>
-                
-                {/* Frame Material */}
-                <div>
-                  <h3 className="font-medium mb-2">Frame Material</h3>
-                  <div className="flex flex-wrap gap-2">
-                    <button className="px-3 py-1 text-xs border border-gray-200 rounded-full hover:border-blue-600">Acetate</button>
-                    <button className="px-3 py-1 text-xs border border-gray-200 rounded-full hover:border-blue-600">Metal</button>
-                    <button className="px-3 py-1 text-xs border border-gray-200 rounded-full hover:border-blue-600">Titanium</button>
-                    <button className="px-3 py-1 text-xs border border-gray-200 rounded-full hover:border-blue-600">Mixed</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-          
-          {/* Products Grid with Navigation */}
-          <div className="relative">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-              {filteredProducts.slice(0, 8).map(product => (
-                <ProductCard 
-                  key={product.id}
-                  id={product.id}
-                  name={product.name}
-                  price={product.price}
-                  image={product.image}
-                  colors={product.colors}
-                  rating={product.rating}
-                  reviews={product.reviews}
-                  category={product.category}
-                />
-              ))}
-            </div>
-            
-            {/* Navigation Arrows */}
-            <button 
-              className="absolute -right-12 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-lg hover:bg-gray-50"
-              onClick={() => {
-                // Implement product navigation logic here
-                console.log('Navigate right');
-              }}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
-          
-          {/* Pagination */}
-          <div className="flex justify-center mt-12">
-            <div className="flex space-x-1">
-              <button className="px-4 py-2 border border-gray-300 rounded-md text-gray-600 hover:bg-gray-50">1</button>
-              <button className="px-4 py-2 border border-gray-300 rounded-md text-gray-600 hover:bg-gray-50">2</button>
-              <button className="px-4 py-2 border border-gray-300 rounded-md text-gray-600 hover:bg-gray-50">3</button>
-              <button className="px-4 py-2 border border-gray-300 rounded-md text-gray-600 hover:bg-gray-50">...</button>
+            {/* Category filter */}
+            <div className="inline-flex space-x-2 p-1 bg-gray-100 rounded-full">
+              <button 
+                className={`py-2 px-6 rounded-full transition-colors ${
+                  activeCategory === 'all' ? 'bg-white shadow-md' : 'hover:bg-gray-200'
+                }`}
+                onClick={() => setActiveCategory('all')}
+              >
+                {t("collection.all")}
+              </button>
+              
+              <button 
+                className={`py-2 px-6 rounded-full transition-colors ${
+                  activeCategory === 'optical' ? 'bg-white shadow-md' : 'hover:bg-gray-200'
+                }`}
+                onClick={() => setActiveCategory('optical')}
+              >
+                {t("collection.optical")}
+              </button>
+              
+              <button 
+                className={`py-2 px-6 rounded-full transition-colors ${
+                  activeCategory === 'sun' ? 'bg-white shadow-md' : 'hover:bg-gray-200'
+                }`}
+                onClick={() => setActiveCategory('sun')}
+              >
+                {t("collection.sun")}
+              </button>
+              
+              <button 
+                className={`py-2 px-6 rounded-full transition-colors ${
+                  activeCategory === 'kids' ? 'bg-white shadow-md' : 'hover:bg-gray-200'
+                }`}
+                onClick={() => setActiveCategory('kids')}
+              >
+                {t("collection.kids")}
+              </button>
             </div>
           </div>
-        </div>
-      </section>
-      
-      <Footer />
-    </div>
+          
+          {/* Products grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {filteredProducts.map(product => (
+              <ProductCard 
+                key={product.id}
+                id={product.id}
+                name={product.name}
+                price={product.price}
+                image={product.image}
+                category={product.category}
+                colors={product.colors}
+                rating={product.rating}
+                reviews={product.reviews}
+              />
+            ))}
+          </div>
+        </main>
+        
+        <Footer />
+      </div>
+    </TooltipWrapper>
   );
 };
 

@@ -1,57 +1,39 @@
 
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { useFormattedTranslation } from '../utils/translationHelper';
+import { TooltipWrapper } from '../components/TooltipWrapper';
 
 const About: React.FC = () => {
-  const { t } = useTranslation();
+  const { formattedT: t } = useFormattedTranslation();
   
   return (
-    <div className="font-sans">
-      <Header />
-      
-      {/* About Hero */}
-      <section className="bg-gray-100 py-12">
-        <div className="container mx-auto px-4">
-          <h1 className="font-serif text-3xl md:text-4xl font-bold text-center">
-            {t('nav.about')}
-          </h1>
-        </div>
-      </section>
-      
-      {/* About Content */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="font-serif text-2xl font-bold mb-6">Our Story</h2>
-            <p className="text-gray-600 mb-6">
-              Founded in 2015, Luxe Optique was born out of a passion for quality eyewear and a desire to make premium frames accessible to everyone. Our founder, a longtime glasses wearer, was frustrated by the lack of stylish, affordable options in the market.
-            </p>
-            <p className="text-gray-600 mb-6">
-              Today, we're proud to offer a curated collection of eyeglasses and sunglasses that combine style, quality, and affordability. Each pair is crafted with attention to detail and a commitment to excellence.
-            </p>
+    <TooltipWrapper>
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-1 py-24 mt-10">
+          <div className="container mx-auto px-4">
+            <h1 className="text-4xl font-bold text-center mb-12">{t("nav.about")}</h1>
             
-            <h2 className="font-serif text-2xl font-bold mb-6 mt-12">Our Mission</h2>
-            <p className="text-gray-600 mb-6">
-              At Luxe Optique, our mission is to help people see better, look better, and feel better. We believe that great eyewear should be accessible to everyone, and we're committed to providing exceptional products at fair prices.
-            </p>
-            
-            <h2 className="font-serif text-2xl font-bold mb-6 mt-12">Quality Commitment</h2>
-            <p className="text-gray-600 mb-6">
-              We never compromise on quality. Every pair of Luxe Optique glasses is made from premium materials and undergoes rigorous quality testing. We stand behind our products with a satisfaction guarantee and comprehensive warranty.
-            </p>
-            
-            <h2 className="font-serif text-2xl font-bold mb-6 mt-12">Our Team</h2>
-            <p className="text-gray-600 mb-6">
-              Our team includes experienced opticians, fashion designers, and customer service professionals who are passionate about helping you find the perfect pair of glasses. We're dedicated to providing exceptional service at every step of your journey with us.
-            </p>
+            {/* Content goes here */}
+            <div className="prose prose-lg mx-auto">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. 
+                Praesent non justo at nisi tincidunt luctus. Phasellus vel risus eget 
+                nulla tristique laoreet.
+              </p>
+              <p>
+                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere 
+                cubilia curae; Aenean at velit nibh. Maecenas vel mauris vitae libero 
+                tempor euismod.
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
-      
-      <Footer />
-    </div>
+        </main>
+        <Footer />
+      </div>
+    </TooltipWrapper>
   );
 };
 

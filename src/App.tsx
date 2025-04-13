@@ -15,13 +15,11 @@ import i18n from "./i18n"; // Import i18n configuration
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    {/* Wrap all components with I18nextProvider to fix type issues */}
-    <I18nextProvider i18n={i18n}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
+const App = () => {
+  return (
+    <QueryClientProvider client={queryClient}>
+      {/* Wrap all components with I18nextProvider to fix type issues */}
+      <I18nextProvider i18n={i18n}>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/products" element={<Products />} />
@@ -30,9 +28,11 @@ const App = () => (
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </TooltipProvider>
-    </I18nextProvider>
-  </QueryClientProvider>
-);
+        <Toaster />
+        <Sonner />
+      </I18nextProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;
