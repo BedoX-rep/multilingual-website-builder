@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useFormattedTranslation } from '../utils/translationHelper';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -73,6 +72,7 @@ const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { formattedT: t } = useFormattedTranslation();
   const { toast } = useToast();
+  const navigate = useNavigate();
   
   // In a real app, fetch product by ID from API
   const product = mockProducts.find(p => p.id === id) || mockProducts[0];
@@ -87,10 +87,7 @@ const ProductDetail: React.FC = () => {
   };
 
   const handleSelectLenses = () => {
-    toast({
-      title: t("product.lensSelection"),
-      description: t("product.pleaseSelectLenses"),
-    });
+    navigate(`/select-lenses/${id}`);
   };
 
   return (

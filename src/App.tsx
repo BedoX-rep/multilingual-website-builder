@@ -10,6 +10,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import ProductDetail from "./pages/ProductDetail";
+import SelectLenses from "./pages/SelectLenses";
 import { I18nextProvider } from "react-i18next";
 import i18n from "./i18n"; // Import i18n configuration
 
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/select-lenses/:id" element={<SelectLenses />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Toaster />
