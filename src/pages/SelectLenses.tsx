@@ -8,6 +8,8 @@ import { X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 import { SelectLensesWizard } from '../components/lensSelector/SelectLensesWizard';
+import { useCart } from '../contexts/CartContext';
+import { ProductOrder } from '../components/lensSelector/types';
 
 // Mock product data (this would normally come from an API)
 const mockProducts = [
@@ -31,6 +33,7 @@ const SelectLenses: React.FC = () => {
   const { formattedT: t } = useFormattedTranslation();
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { addToCart } = useCart();
   
   // Find product by ID
   const product = mockProducts.find(p => p.id === id) || mockProducts[0];
@@ -44,13 +47,8 @@ const SelectLenses: React.FC = () => {
   };
 
   // This function will be called when the user adds the product to cart
-  const handleAddToCart = (orderDetails: any) => {
-    // Here you would typically dispatch to a cart context or call an API
-    toast({
-      title: t("cart.itemAdded"),
-      description: `${product.name} ${t("cart.hasBeenAddedToCart")}`,
-    });
-    
+  const handleAddToCart = (orderDetails: ProductOrder) => {
+    // Already handled by the cart context in the wizard
     navigate('/product/' + id);
   };
 

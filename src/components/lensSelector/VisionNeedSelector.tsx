@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useFormattedTranslation } from '../../utils/translationHelper';
-import { VisionNeed } from './SelectLensesWizard';
+import { VisionNeed } from './types';
 import { Glasses, Eye, Frame } from 'lucide-react';
 
 interface VisionNeedSelectorProps {

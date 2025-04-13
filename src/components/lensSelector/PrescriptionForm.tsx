@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useFormattedTranslation } from '../../utils/translationHelper';
-import { PrescriptionData } from './SelectLensesWizard';
+import { PrescriptionData } from './types';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';

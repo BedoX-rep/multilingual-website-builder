@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useFormattedTranslation } from '../../utils/translationHelper';
-import { LensThicknessOption } from './SelectLensesWizard';
+import { LensThicknessOption } from './types';
 import { Check } from 'lucide-react';
 
 interface LensThicknessSelectorProps {

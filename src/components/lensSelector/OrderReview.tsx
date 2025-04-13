@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useFormattedTranslation } from '../../utils/translationHelper';
-import { VisionNeed, LensTypeOption, LensThicknessOption, PrescriptionData } from './SelectLensesWizard';
+import { VisionNeed, LensTypeOption, LensThicknessOption, PrescriptionData } from './types';
 import { Check } from 'lucide-react';
 
 interface OrderReviewProps {
