@@ -1,126 +1,64 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Search, ShoppingCart, Heart, User } from 'lucide-react';
 
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useFormattedTranslation } from "../utils/translationHelper";
-import { Menu, X, User, ShoppingCart } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import LanguageSelector from "./LanguageSelector";
-import { useCart } from "../contexts/CartContext";
-
-const Header: React.FC = () => {
-  const { formattedT: t } = useFormattedTranslation();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { cartCount } = useCart();
-
-  // Close mobile menu on window resize
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
+const Header = () => {
   return (
-    <header className="sticky top-0 z-40 w-full bg-white border-b border-gray-200">
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        {/* Logo */}
-        <Link to="/" className="flex-shrink-0">
-          <img
-            src="/lovable-uploads/navlogo1.png"
-            alt="Logo"
-            className="h-8 w-auto"
-          />
-        </Link>
+    <header className="border-b border-gray-200">
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <Link to="/" className="flex-shrink-0">
+            <img src="/lovable-uploads/navlogo.png" alt="Logo" className="h-8" />
+          </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          <Link to="/" className="text-gray-600 hover:text-blue-600 transition-colors">
-            {t("nav.home")}
-          </Link>
-          <Link to="/products" className="text-gray-600 hover:text-blue-600 transition-colors">
-            {t("nav.products")}
-          </Link>
-          <Link to="/about" className="text-gray-600 hover:text-blue-600 transition-colors">
-            {t("nav.about")}
-          </Link>
-          <Link to="/contact" className="text-gray-600 hover:text-blue-600 transition-colors">
-            {t("nav.contact")}
-          </Link>
-        </nav>
+          {/* Search */}
+          <div className="flex-1 max-w-2xl mx-8">
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search glasses and contacts"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-black"
+              />
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center">
+                <Search className="h-5 w-5 text-gray-400" />
+              </div>
+              <button className="absolute inset-y-0 right-0 px-4 text-sm font-medium text-gray-600 hover:text-gray-900">
+                Visual Search
+              </button>
+            </div>
+          </div>
 
-        {/* Right side items (Language, Cart, Account) */}
-        <div className="flex items-center space-x-2 md:space-x-4">
-          <LanguageSelector />
-          <div className="relative">
-            <Button variant="outline" size="icon" aria-label="Shopping Cart">
+          {/* Navigation */}
+          <nav className="flex items-center space-x-6">
+            <Link to="/account" className="text-sm hover:text-gray-600 flex flex-col items-center">
+              <User className="h-5 w-5" />
+              <span>Login</span>
+            </Link>
+            <Link to="/favorites" className="text-sm hover:text-gray-600 flex flex-col items-center">
+              <Heart className="h-5 w-5" />
+              <span>Favorites</span>
+            </Link>
+            <Link to="/help" className="text-sm hover:text-gray-600 flex flex-col items-center">
+              <span className="h-5 w-5 text-xl">?</span>
+              <span>Help</span>
+            </Link>
+            <Link to="/cart" className="text-sm hover:text-gray-600 flex flex-col items-center">
               <ShoppingCart className="h-5 w-5" />
-              {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
-                  {cartCount}
-                </span>
-              )}
-            </Button>
-          </div>
-          <Button variant="outline" size="icon" aria-label="Account">
-            <User className="h-5 w-5" />
-          </Button>
-
-          {/* Mobile menu button */}
-          <Button
-            variant="outline"
-            size="icon"
-            className="md:hidden"
-            onClick={toggleMenu}
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          >
-            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </Button>
+              <span>Cart</span>
+            </Link>
+          </nav>
         </div>
+
+        {/* Categories */}
+        <nav className="flex justify-center space-x-8 py-4">
+          <Link to="/eyeglasses" className="text-sm font-medium hover:text-gray-600">Eyeglasses</Link>
+          <Link to="/sunglasses" className="text-sm font-medium hover:text-gray-600">Sunglasses</Link>
+          <Link to="/lenses" className="text-sm font-medium hover:text-gray-600">Lenses</Link>
+          <Link to="/sports" className="text-sm font-medium hover:text-gray-600">Sports</Link>
+          <Link to="/discover" className="text-sm font-medium hover:text-gray-600">Discover</Link>
+        </nav>
       </div>
-
-      {/* Mobile menu */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200">
-          <div className="container mx-auto px-4 py-3 space-y-2">
-            <Link 
-              to="/" 
-              className="block py-2 text-gray-600 hover:text-blue-600 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {t("nav.home")}
-            </Link>
-            <Link 
-              to="/products" 
-              className="block py-2 text-gray-600 hover:text-blue-600 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {t("nav.products")}
-            </Link>
-            <Link 
-              to="/about" 
-              className="block py-2 text-gray-600 hover:text-blue-600 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {t("nav.about")}
-            </Link>
-            <Link 
-              to="/contact" 
-              className="block py-2 text-gray-600 hover:text-blue-600 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {t("nav.contact")}
-            </Link>
-          </div>
-        </div>
-      )}
     </header>
   );
 };

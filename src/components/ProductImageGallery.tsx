@@ -23,46 +23,52 @@ const ProductImageGallery: React.FC<ProductImageGalleryProps> = ({ images }) => 
   };
 
   return (
-    <div className="space-y-4">
+    <div className="relative">
+      {/* Try On Button */}
+      <div className="absolute top-4 left-4 z-10">
+        <button className="bg-white px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 shadow-sm">
+          <img src="/lovable-uploads/try-on-icon.png" alt="Try On" className="w-4 h-4" />
+          Try On
+        </button>
+      </div>
+
       {/* Main image */}
-      <div className="relative aspect-square bg-gray-100 rounded-lg overflow-hidden">
+      <div className="relative aspect-[4/3] bg-gray-50">
         <img
           src={images[currentIndex]}
           alt="Product"
           className="w-full h-full object-contain"
         />
         
-        {/* Navigation arrows for desktop */}
-        <div className="hidden sm:block">
-          <Button
-            variant="outline"
-            size="icon"
-            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full"
-            onClick={handlePrevious}
-          >
-            <ChevronLeft className="h-4 w-4" />
-          </Button>
-          
-          <Button
-            variant="outline"
-            size="icon"
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full"
-            onClick={handleNext}
-          >
-            <ChevronRight className="h-4 w-4" />
-          </Button>
-        </div>
+        {/* Navigation arrows */}
+        <Button
+          variant="ghost"
+          size="icon"
+          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full"
+          onClick={handlePrevious}
+        >
+          <ChevronLeft className="h-4 w-4" />
+        </Button>
+        
+        <Button
+          variant="ghost"
+          size="icon"
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full"
+          onClick={handleNext}
+        >
+          <ChevronRight className="h-4 w-4" />
+        </Button>
       </div>
       
       {/* Thumbnails */}
-      <div className="flex space-x-2 overflow-x-auto pb-2">
+      <div className="grid grid-cols-6 gap-2 mt-4">
         {images.map((image, index) => (
           <button
             key={index}
-            className={`relative border-2 flex-shrink-0 w-16 h-16 rounded-md overflow-hidden transition-all ${
+            className={`relative aspect-square border ${
               currentIndex === index 
                 ? 'border-black' 
-                : 'border-transparent hover:border-gray-300'
+                : 'border-gray-200 hover:border-gray-300'
             }`}
             onClick={() => handleThumbnailClick(index)}
           >
