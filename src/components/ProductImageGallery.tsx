@@ -18,28 +18,46 @@ const ProductImageGallery: React.FC<ProductImageGalleryProps> = ({ images }) => 
     setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
 
-  const handleThumbnailClick = (index: number) => {
-    setCurrentIndex(index);
-  };
-
   return (
     <div className="space-y-4">
-      {/* Main image */}
-      <div className="relative aspect-square bg-white rounded-lg overflow-hidden">
-        <img
-          src={images[currentIndex]}
-          alt="Product"
-          className="w-full h-full object-contain"
-        />
-        
-        {/* Try On Button */}
-        <button className="absolute top-4 right-4 bg-white px-4 py-2 rounded-full shadow-md flex items-center gap-2">
-          <RotateCw className="w-4 h-4" />
-          Try On
-        </button>
-        
-        {/* Navigation arrows */}
-        <div className="hidden sm:block">
+      {/* Side thumbnails */}
+      <div className="flex">
+        <div className="w-16 space-y-2 mr-4">
+          {images.map((image, index) => (
+            <button
+              key={index}
+              className={`w-16 h-16 border rounded overflow-hidden ${
+                currentIndex === index ? 'border-black' : 'border-gray-200'
+              }`}
+              onClick={() => setCurrentIndex(index)}
+            >
+              <img
+                src={image}
+                alt={`View ${index + 1}`}
+                className="w-full h-full object-contain"
+              />
+            </button>
+          ))}
+          <button className="w-16 h-16 border rounded-full border-gray-200 flex items-center justify-center">
+            <RotateCw className="w-6 h-6 text-gray-600" />
+          </button>
+        </div>
+
+        {/* Main image */}
+        <div className="flex-1 relative">
+          <div className="aspect-square bg-white rounded-lg overflow-hidden">
+            <img
+              src={images[currentIndex]}
+              alt="Product view"
+              className="w-full h-full object-contain"
+            />
+          </div>
+          
+          <button className="absolute top-4 right-4 bg-white px-4 py-2 rounded-full shadow-md flex items-center gap-2 text-sm">
+            <RotateCw className="w-4 h-4" />
+            Try On
+          </button>
+
           <Button
             variant="outline"
             size="icon"
@@ -59,27 +77,25 @@ const ProductImageGallery: React.FC<ProductImageGalleryProps> = ({ images }) => 
           </Button>
         </div>
       </div>
-      
-      {/* Thumbnails */}
-      <div className="flex space-x-2 overflow-x-auto pb-2">
-        {images.map((image, index) => (
+
+      {/* Color variants */}
+      <div className="flex justify-center space-x-4 mt-4">
+        {Array.from({ length: 6 }).map((_, index) => (
           <button
             key={index}
-            className={`relative flex-shrink-0 w-16 h-16 rounded-md overflow-hidden transition-all border-2 ${
-              currentIndex === index 
-                ? 'border-teal-600' 
-                : 'border-transparent hover:border-gray-300'
+            className={`w-16 h-16 border rounded-md overflow-hidden ${
+              index === 0 ? 'border-black' : 'border-gray-200'
             }`}
-            onClick={() => handleThumbnailClick(index)}
           >
             <img
-              src={image}
-              alt={`Thumbnail ${index + 1}`}
-              className="w-full h-full object-cover"
+              src={images[0]}
+              alt={`Color variant ${index + 1}`}
+              className="w-full h-full object-contain"
             />
           </button>
         ))}
       </div>
+      <div className="text-center text-sm text-gray-600">Black</div>
     </div>
   );
 };
