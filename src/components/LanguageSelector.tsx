@@ -19,6 +19,7 @@ const LanguageSelector: React.FC = () => {
         <button 
           onClick={() => changeLanguage('en')} 
           className={`text-xs font-medium px-1 py-0.5 ${currentLanguage === 'en' ? 'text-black underline' : 'text-gray-500 hover:text-black'}`}
+          aria-label="Switch to English"
         >
           EN
         </button>
@@ -26,6 +27,7 @@ const LanguageSelector: React.FC = () => {
         <button 
           onClick={() => changeLanguage('fr')} 
           className={`text-xs font-medium px-1 py-0.5 ${currentLanguage === 'fr' ? 'text-black underline' : 'text-gray-500 hover:text-black'}`}
+          aria-label="Switch to French"
         >
           FR
         </button>

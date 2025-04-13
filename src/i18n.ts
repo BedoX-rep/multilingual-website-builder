@@ -157,6 +157,16 @@ const frTranslations = {
   }
 };
 
+// Define resources type to help TypeScript
+declare module 'i18next' {
+  interface CustomTypeOptions {
+    resources: {
+      en: typeof enTranslations;
+      fr: typeof frTranslations;
+    };
+  }
+}
+
 i18n
   // detect user language
   .use(LanguageDetector)
