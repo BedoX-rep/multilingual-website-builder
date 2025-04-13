@@ -111,14 +111,14 @@ const ProductDetail: React.FC = () => {
         </Breadcrumb>
         
         {/* Product Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
           {/* Left Column - Product Images */}
-          <div className="sticky top-24">
+          <div className="md:col-span-7 sticky top-24">
             <ProductImageGallery images={product.images} />
           </div>
           
           {/* Right Column - Product Info */}
-          <div>
+          <div className="md:col-span-5">
             <div className="mb-4">
               <h1 className="text-2xl sm:text-3xl font-bold mb-1">{product.name}</h1>
               <p className="text-gray-500 mb-2">{product.code}</p>

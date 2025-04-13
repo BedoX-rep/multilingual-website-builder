@@ -23,43 +23,13 @@ const ProductImageGallery: React.FC<ProductImageGalleryProps> = ({ images }) => 
   };
 
   return (
-    <div className="space-y-4">
-      {/* Main image */}
-      <div className="relative h-[600px] overflow-hidden">
-        <img
-          src={images[currentIndex]}
-          alt="Product"
-          className="w-full h-full object-contain"
-        />
-        
-        {/* Navigation arrows for desktop */}
-        <div className="hidden sm:block">
-          <Button
-            variant="outline"
-            size="icon"
-            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full"
-            onClick={handlePrevious}
-          >
-            <ChevronLeft className="h-4 w-4" />
-          </Button>
-          
-          <Button
-            variant="outline"
-            size="icon"
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full"
-            onClick={handleNext}
-          >
-            <ChevronRight className="h-4 w-4" />
-          </Button>
-        </div>
-      </div>
-      
+    <div className="flex gap-4">
       {/* Thumbnails */}
-      <div className="flex space-x-2 overflow-x-auto pb-2">
+      <div className="flex flex-col space-y-2">
         {images.map((image, index) => (
           <button
             key={index}
-            className={`relative border-2 flex-shrink-0 w-16 h-16 rounded-md overflow-hidden transition-all ${
+            className={`relative border-2 flex-shrink-0 w-20 h-20 rounded-md overflow-hidden transition-all ${
               currentIndex === index 
                 ? 'border-black' 
                 : 'border-transparent hover:border-gray-300'
