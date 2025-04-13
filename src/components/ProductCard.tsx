@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
 import { Link } from 'react-router-dom';
 import { Heart, X } from 'lucide-react';
 

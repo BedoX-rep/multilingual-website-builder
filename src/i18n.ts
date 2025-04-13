@@ -52,6 +52,31 @@ const enTranslations = {
     subtitle: "Page Not Found",
     description: "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.",
     button: "Return to Homepage"
+  },
+  product: {
+    details: "Details",
+    measurements: "Measurements",
+    prescription: "Prescription",
+    selectLenses: "Select Lenses",
+    selectColor: "Select Color",
+    addToFavorites: "Add to Favorites",
+    addedToFavorites: "Added to Favorites",
+    hasBeenAddedToFavorites: "has been added to your favorites",
+    lensSelection: "Lens Selection",
+    pleaseSelectLenses: "Please choose your lens options",
+    reviews: "Reviews",
+    includes: "Includes",
+    size: "Size",
+    material: "Material",
+    weight: "Weight",
+    rim: "Rim",
+    shape: "Shape",
+    range: "Range",
+    prescriptionRange: "Prescription Range",
+    progressive: "Progressive",
+    bifocal: "Bifocal",
+    readers: "Readers",
+    share: "Share"
   }
 };
 
@@ -104,6 +129,31 @@ const frTranslations = {
     subtitle: "Page Non Trouvée",
     description: "La page que vous cherchez a peut-être été supprimée, renommée ou est temporairement indisponible.",
     button: "Retour à l'Accueil"
+  },
+  product: {
+    details: "Détails",
+    measurements: "Dimensions",
+    prescription: "Prescription",
+    selectLenses: "Choisir les Verres",
+    selectColor: "Sélectionner la Couleur",
+    addToFavorites: "Ajouter aux Favoris",
+    addedToFavorites: "Ajouté aux Favoris",
+    hasBeenAddedToFavorites: "a été ajouté à vos favoris",
+    lensSelection: "Sélection de Verres",
+    pleaseSelectLenses: "Veuillez choisir vos options de verres",
+    reviews: "Avis",
+    includes: "Inclus",
+    size: "Taille",
+    material: "Matériau",
+    weight: "Poids",
+    rim: "Monture",
+    shape: "Forme",
+    range: "Gamme",
+    prescriptionRange: "Gamme de Prescription",
+    progressive: "Progressif",
+    bifocal: "Bifocal",
+    readers: "Loupes",
+    share: "Partager"
   }
 };
 
