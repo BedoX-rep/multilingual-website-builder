@@ -79,25 +79,22 @@ const ProductImageGallery: React.FC<ProductImageGalleryProps> = ({ images }) => 
       </div>
 
       {/* Color variants */}
-      <div className="flex flex-wrap justify-center gap-4 mt-4">
+      <div className="flex justify-center space-x-4 mt-4">
         {images.map((image, index) => (
           <button
             key={index}
-            className={`w-20 h-16 border ${
+            className={`w-16 h-16 border rounded-md overflow-hidden ${
               index === currentIndex ? 'border-black' : 'border-gray-200'
-            } rounded-lg overflow-hidden bg-white hover:border-gray-400 transition-colors`}
+            }`}
             onClick={() => setCurrentIndex(index)}
           >
             <img
               src={image}
               alt={`Color variant ${index + 1}`}
-              className="w-full h-full object-contain p-1"
+              className="w-full h-full object-contain"
             />
           </button>
         ))}
-      </div>
-      <div className="text-center text-sm text-gray-600 mt-2">
-        {currentIndex === 0 ? 'Black' : `Color ${currentIndex + 1}`}
       </div>
       <div className="text-center text-sm text-gray-600">
         {images.length > currentIndex ? `View ${currentIndex + 1}` : ''}
