@@ -25,7 +25,7 @@ const ProductImageGallery: React.FC<ProductImageGalleryProps> = ({ images }) => 
   return (
     <div className="space-y-4">
       {/* Main image */}
-      <div className="relative aspect-square bg-gray-100 rounded-lg overflow-hidden">
+      <div className="relative h-[600px] overflow-hidden">
         <img
           src={images[currentIndex]}
           alt="Product"

@@ -143,17 +143,7 @@ const ProductDetail: React.FC = () => {
                 ${product.price.toFixed(2)}
               </div>
               
-              <div className="mb-6">
-                <h3 className="font-medium mb-2">{t("product.includes")}:</h3>
-                <ul className="space-y-1">
-                  {product.features.map((feature, index) => (
-                    <li key={index} className="flex items-center">
-                      <span className="text-green-500 mr-2">✓</span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              
               
               <div className="mb-6">
                 <h3 className="font-medium mb-2">{t("product.selectColor")}:</h3>
