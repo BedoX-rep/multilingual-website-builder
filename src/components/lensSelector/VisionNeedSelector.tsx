@@ -2,7 +2,7 @@
 import React from 'react';
 import { useFormattedTranslation } from '../../utils/translationHelper';
 import { VisionNeed } from './SelectLensesWizard';
-import { Glasses, Eye, CreditCard } from 'lucide-react';
+import { Glasses, Eye, Frame } from 'lucide-react';
 
 interface VisionNeedSelectorProps {
   selected: VisionNeed | null;
@@ -17,7 +17,7 @@ export const VisionNeedSelector: React.FC<VisionNeedSelectorProps> = ({ selected
       id: 'singleVision' as VisionNeed,
       title: t('lenses.singleVisionLenses'),
       description: t('lenses.singleVisionDescription'),
-      icon: <Glasses className="h-10 w-10 text-blue-500" />
+      icon: <img src="/lovable-uploads/4e9518da-6945-4bfb-b417-e85e94b64c19.png" alt="Single Vision" className="h-16 w-16 object-contain" />
     },
     {
       id: 'nonPrescription' as VisionNeed,
@@ -29,15 +29,18 @@ export const VisionNeedSelector: React.FC<VisionNeedSelectorProps> = ({ selected
       id: 'frameOnly' as VisionNeed,
       title: t('lenses.frameOnly'),
       description: t('lenses.frameOnlyDescription'),
-      icon: <CreditCard className="h-10 w-10 text-blue-500" />
+      icon: <Frame className="h-10 w-10 text-blue-500" />
     }
   ];
   
   return (
     <div>
-      <p className="text-gray-600 mb-6">
+      <h2 className="text-2xl font-semibold mb-4">{t('lenses.chooseVisionNeed')}</h2>
+      
+      <p className="text-gray-600 mb-3">
         {t('lenses.visionNeedExplanation')}
       </p>
+      
       <p className="text-sm text-blue-600 mb-6 underline cursor-pointer">
         {t('lenses.learnMoreAboutLensDifferences')}
       </p>

@@ -27,6 +27,56 @@ const enTranslations = {
     title: "Best Sellers",
     viewAll: "View All"
   },
+  lenses: {
+    selectLenses: "Select Lenses",
+    chooseVisionNeed: "Choose your vision need",
+    enterPrescription: "Enter your prescription",
+    selectLensType: "Select lens type",
+    selectLensThickness: "Select lens thickness",
+    reviewOrder: "Review your order",
+    visionNeedExplanation: "Based on your prescription, choose your lens from the options below or choose non-prescription if you want visual comfort without vision correction.",
+    learnMoreAboutLensDifferences: "Learn more about lens differences",
+    singleVisionLenses: "Single vision lenses",
+    singleVisionDescription: "Corrects one field of vision (near or distance).",
+    nonPrescriptionLenses: "Non-prescription lenses",
+    nonPrescriptionDescription: "Add premium and protective lens treatments, without vision correction.",
+    frameOnly: "Frame only",
+    frameOnlyDescription: "Buy your frame now, add prescription lenses in store.",
+    selectLensTypeExplanation: "Choose the type of lens that best suits your needs.",
+    selectLensThicknessExplanation: "Choose the thickness of your lenses based on your prescription strength.",
+    reviewOrderExplanation: "Please review your selections before adding to cart.",
+    clearLens: "Clear lenses",
+    clearLensDescription: "Standard lenses with no additional features.",
+    blueLightLens: "Blue light filtering",
+    blueLightLensDescription: "Reduces eye strain from digital screens.",
+    transitionLens: "Transition lenses",
+    transitionLensDescription: "Darkens in sunlight, clear indoors.",
+    standardThickness: "Standard thickness",
+    standardThicknessDescription: "Recommended for light prescriptions.",
+    thinLens: "Thin lenses",
+    thinLensDescription: "Thinner and lighter, good for medium prescriptions.",
+    ultraThinLens: "Ultra-thin lenses",
+    ultraThinLensDescription: "Our thinnest, lightest lenses for strong prescriptions.",
+    orderSummary: "Order Summary",
+    frame: "Frame",
+    visionNeed: "Vision Need",
+    prescription: "Prescription",
+    lensType: "Lens Type",
+    lensThickness: "Lens Thickness",
+    totalPrice: "Total Price",
+    rightEye: "Right Eye",
+    leftEye: "Left Eye",
+    usingSavedPrescription: "Using your saved prescription"
+  },
+  common: {
+    back: "Back",
+    continue: "Continue"
+  },
+  cart: {
+    addToCart: "Add to Cart",
+    itemAdded: "Item Added",
+    hasBeenAddedToCart: "has been added to your cart"
+  },
   footer: {
     copyright: "© 2025 Lens Optique. All rights reserved.",
     shop: "Shop",
@@ -76,7 +126,8 @@ const enTranslations = {
     progressive: "Progressive",
     bifocal: "Bifocal",
     readers: "Readers",
-    share: "Share"
+    share: "Share",
+    code: "Product Code"
   }
 };
 
@@ -103,6 +154,56 @@ const frTranslations = {
   bestsellers: {
     title: "Meilleures Ventes",
     viewAll: "Voir Tout"
+  },
+  lenses: {
+    selectLenses: "Choisir les Verres",
+    chooseVisionNeed: "Choisissez votre besoin de vision",
+    enterPrescription: "Entrez votre prescription",
+    selectLensType: "Sélectionnez le type de verre",
+    selectLensThickness: "Sélectionnez l'épaisseur des verres",
+    reviewOrder: "Vérifiez votre commande",
+    visionNeedExplanation: "En fonction de votre prescription, choisissez vos verres parmi les options ci-dessous ou choisissez des verres sans prescription si vous souhaitez un confort visuel sans correction de la vision.",
+    learnMoreAboutLensDifferences: "En savoir plus sur les différences entre les verres",
+    singleVisionLenses: "Verres unifocaux",
+    singleVisionDescription: "Corrige un champ de vision (près ou loin).",
+    nonPrescriptionLenses: "Verres sans prescription",
+    nonPrescriptionDescription: "Ajoutez des traitements de verres premium et protecteurs, sans correction de la vision.",
+    frameOnly: "Monture seule",
+    frameOnlyDescription: "Achetez votre monture maintenant, ajoutez des verres de prescription en magasin.",
+    selectLensTypeExplanation: "Choisissez le type de verre qui convient le mieux à vos besoins.",
+    selectLensThicknessExplanation: "Choisissez l'épaisseur de vos verres en fonction de la force de votre prescription.",
+    reviewOrderExplanation: "Veuillez vérifier vos sélections avant d'ajouter au panier.",
+    clearLens: "Verres transparents",
+    clearLensDescription: "Verres standard sans fonctionnalités supplémentaires.",
+    blueLightLens: "Filtrage de lumière bleue",
+    blueLightLensDescription: "Réduit la fatigue oculaire des écrans numériques.",
+    transitionLens: "Verres photochromiques",
+    transitionLensDescription: "S'assombrissent au soleil, transparents à l'intérieur.",
+    standardThickness: "Épaisseur standard",
+    standardThicknessDescription: "Recommandé pour les prescriptions légères.",
+    thinLens: "Verres fins",
+    thinLensDescription: "Plus fins et plus légers, bons pour les prescriptions moyennes.",
+    ultraThinLens: "Verres ultra-fins",
+    ultraThinLensDescription: "Nos verres les plus fins et légers pour les prescriptions fortes.",
+    orderSummary: "Résumé de Commande",
+    frame: "Monture",
+    visionNeed: "Besoin Visuel",
+    prescription: "Prescription",
+    lensType: "Type de Verre",
+    lensThickness: "Épaisseur des Verres",
+    totalPrice: "Prix Total",
+    rightEye: "Œil Droit",
+    leftEye: "Œil Gauche",
+    usingSavedPrescription: "Utilisation de votre prescription enregistrée"
+  },
+  common: {
+    back: "Retour",
+    continue: "Continuer"
+  },
+  cart: {
+    addToCart: "Ajouter au Panier",
+    itemAdded: "Article Ajouté",
+    hasBeenAddedToCart: "a été ajouté à votre panier"
   },
   footer: {
     copyright: "© 2025 Lens Optique. Tous droits réservés.",
@@ -153,7 +254,8 @@ const frTranslations = {
     progressive: "Progressif",
     bifocal: "Bifocal",
     readers: "Loupes",
-    share: "Partager"
+    share: "Partager",
+    code: "Code Produit"
   }
 };
 
