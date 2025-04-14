@@ -79,7 +79,14 @@ export const PrescriptionForm: React.FC<PrescriptionFormProps> = ({ prescription
   );
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 relative">
+      {/* Progress bar */}
+      <div className="absolute -top-12 left-0 right-0 h-1 bg-gray-100">
+        <div 
+          className="h-full bg-blue-600 transition-all duration-300" 
+          style={{ width: '40%' }}
+        />
+      </div>
       <div className="flex items-center justify-between">
         <div>
           <h4 className="font-medium">{t('lenses.useSavedPrescription')}</h4>
