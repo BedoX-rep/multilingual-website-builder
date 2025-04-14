@@ -55,11 +55,8 @@ export const VisionNeedSelector: React.FC<VisionNeedSelectorProps> = ({ selected
                 : 'border-gray-200'
             }`}
             onClick={() => {
-              onChange(option);
-              if (option.id !== 'singleVision') {
-                // Auto navigate if not single vision
-                handleNext();
-              }
+              onChange(option.id);
+              handleNext();
             }}
           >
             <div className="flex items-center gap-6">

@@ -34,6 +34,10 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
 
   // User selections state
   const [visionNeed, setVisionNeed] = useState<VisionNeed | null>(null);
+  
+  const handleVisionNeedChange = (need: VisionNeed) => {
+    setVisionNeed(need);
+  };
   const [prescription, setPrescription] = useState<PrescriptionData>({
     rightSphere: '',
     rightCylinder: '',
@@ -139,7 +143,7 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
         {currentStep === 0 && (
           <VisionNeedSelector
             selected={visionNeed}
-            onChange={setVisionNeed}
+            onChange={handleVisionNeedChange}
             handleNext={handleNext}
           />
         )}
