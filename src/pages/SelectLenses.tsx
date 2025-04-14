@@ -41,7 +41,6 @@ const SelectLenses: React.FC = () => {
       <Header />
 
       <main className="flex-1 grid grid-cols-1 md:grid-cols-2 min-h-[calc(100vh-4rem)]">
-        <LensProvider>
         {/* Product Image Section */}
         <div className="bg-gray-50 p-8 flex items-center justify-center">
           <div className="max-w-md">
@@ -65,7 +64,6 @@ const SelectLenses: React.FC = () => {
             onComplete={handleAddToCart}
           />
         </div>
-      </LensProvider>
       </main>
 
       <Footer />
