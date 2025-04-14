@@ -11,6 +11,7 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import ProductDetail from "./pages/ProductDetail";
 import SelectLenses from "./pages/SelectLenses";
+import Cart from "./pages/Cart";
 import { I18nextProvider } from "react-i18next";
 import i18n from "./i18n"; // Import i18n configuration
 import { CartProvider } from "./contexts/CartContext";
