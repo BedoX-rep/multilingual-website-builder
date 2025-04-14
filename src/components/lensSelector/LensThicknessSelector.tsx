@@ -8,9 +8,10 @@ interface LensThicknessSelectorProps {
   options: LensThicknessOption[];
   selected: LensThicknessOption | null;
   onChange: (selected: LensThicknessOption) => void;
+  handleNext: () => void;
 }
 
-export const LensThicknessSelector: React.FC<LensThicknessSelectorProps> = ({ options, selected, onChange }) => {
+export const LensThicknessSelector: React.FC<LensThicknessSelectorProps> = ({ options, selected, onChange, handleNext }) => {
   const { formattedT: t } = useFormattedTranslation();
   
   return (

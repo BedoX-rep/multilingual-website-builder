@@ -8,9 +8,10 @@ interface LensTypeSelectorProps {
   options: LensTypeOption[];
   selected: LensTypeOption | null;
   onChange: (selected: LensTypeOption) => void;
+  handleNext: () => void;
 }
 
-export const LensTypeSelector: React.FC<LensTypeSelectorProps> = ({ options, selected, onChange }) => {
+export const LensTypeSelector: React.FC<LensTypeSelectorProps> = ({ options, selected, onChange, handleNext }) => {
   const { formattedT: t } = useFormattedTranslation();
   
   return (

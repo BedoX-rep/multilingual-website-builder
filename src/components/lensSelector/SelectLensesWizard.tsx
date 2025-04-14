@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useFormattedTranslation } from '../../utils/translationHelper';
 import { Button } from '@/components/ui/button';
@@ -32,7 +31,7 @@ interface SelectLensesWizardProps {
 export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product, onComplete }) => {
   const { formattedT: t } = useFormattedTranslation();
   const { addToCart } = useCart();
-  
+
   // User selections state
   const [visionNeed, setVisionNeed] = useState<VisionNeed | null>(null);
   const [prescription, setPrescription] = useState<PrescriptionData>({
@@ -47,10 +46,10 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
   });
   const [selectedLensType, setSelectedLensType] = useState<LensTypeOption | null>(null);
   const [selectedLensThickness, setSelectedLensThickness] = useState<LensThicknessOption | null>(null);
-  
+
   // Get lens options from the hook
   const { lensTypeOptions, lensThicknessOptions } = useLensOptions();
-  
+
   // Get wizard navigation from the hook
   const { 
     currentStep, 
@@ -73,26 +72,26 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
     setSelectedLensThickness,
     product
   });
-  
+
   // Calculate total price based on selections
   const calculateTotalPrice = () => {
     let total = product.price;
-    
+
     if (visionNeed === 'frameOnly') {
       return total;
     }
-    
+
     if (selectedLensType) {
       total += selectedLensType.priceAdditional;
     }
-    
+
     if (visionNeed === 'singleVision' && selectedLensThickness) {
       total += selectedLensThickness.priceAdditional;
     }
-    
+
     return total;
   };
-  
+
   // Handle form submission
   const handleSubmit = () => {
     const orderDetails: ProductOrder = {
@@ -102,7 +101,7 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
       visionNeed: visionNeed!,
       totalPrice: calculateTotalPrice()
     };
-    
+
     if (visionNeed === 'singleVision') {
       orderDetails.prescription = prescription;
       orderDetails.lensType = selectedLensType!;
@@ -110,19 +109,19 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
     } else if (visionNeed === 'nonPrescription') {
       orderDetails.lensType = selectedLensType!;
     }
-    
+
     // Add to cart
     addToCart(orderDetails);
-    
+
     // Call the onComplete callback
     onComplete(orderDetails);
   };
-  
+
   return (
     <div className="flex flex-col h-full">
       <div className="mb-6">
         <h3 className="font-bold text-xl mb-3">{getStepTitle()}</h3>
-        
+
         {/* Progress indicator */}
         <div className="flex justify-between mb-6">
           <div 
@@ -135,13 +134,53 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
           />
         </div>
       </div>
-      
+
       <div className="flex-1 mb-6">
-        {renderStepContent()}
+        {currentStep === 0 && (
+          <VisionNeedSelector
+            selected={visionNeed}
+            onChange={setVisionNeed}
+            handleNext={handleNext}
+          />
+        )}
+        {currentStep === 1 && (
+          <PrescriptionForm
+            prescription={prescription}
+            onChange={setPrescription}
+            handleNext={handleNext}
+          />
+        )}
+        {currentStep === 2 && (
+          <LensTypeSelector
+            options={lensTypeOptions}
+            selected={selectedLensType}
+            onChange={setSelectedLensType}
+            handleNext={handleNext}
+          />
+        )}
+        {currentStep === 3 && (
+          <LensThicknessSelector
+            options={lensThicknessOptions}
+            selected={selectedLensThickness}
+            onChange={setSelectedLensThickness}
+            handleNext={handleNext}
+          />
+        )}
+        {currentStep === 4 && (
+          <OrderReview 
+            orderDetails={{
+              productId: product.id,
+              productName: product.name,
+              productPrice: product.price,
+              visionNeed: visionNeed!,
+              totalPrice: calculateTotalPrice()
+            }}
+          />
+        )}
       </div>
-      
+
       <div className="flex justify-between mt-auto">
-        {currentStep === 1 ? (
+        {currentStep === 1 || currentStep === 2 || currentStep === 3 ? (
           <Button 
             disabled={!canProceed()}
             onClick={handleNext}
@@ -159,6 +198,12 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
             <Check className="ml-2 h-4 w-4" />
           </Button>
         ) : null}
+        {currentStep > 0 && (
+          <Button onClick={handleBack} className="flex items-center">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            {t('common.back')}
+          </Button>
+        )}
       </div>
     </div>
   );
