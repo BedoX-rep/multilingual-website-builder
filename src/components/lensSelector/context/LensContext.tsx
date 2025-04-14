@@ -1,35 +1,29 @@
-
 import React, { createContext, useContext, useState } from 'react';
-import { VisionNeed, PrescriptionData, LensTypeOption, LensThicknessOption, ProductOrder } from '../types';
+import { VisionNeed, PrescriptionData, LensTypeOption, LensThicknessOption } from '../types';
 import { useLensOptions } from '../hooks/useLensOptions';
 
-interface LensContextType {
+interface LensState {
   currentStep: number;
   visionNeed: VisionNeed | null;
   prescription: PrescriptionData;
   selectedLensType: LensTypeOption | null;
   selectedLensThickness: LensThicknessOption | null;
+}
+
+interface LensContextType extends LensState {
   setCurrentStep: (step: number) => void;
-  setVisionNeed: (need: VisionNeed) => void;
-  setPrescription: (data: PrescriptionData) => void;
-  setSelectedLensType: (type: LensTypeOption | null) => void;
-  setSelectedLensThickness: (thickness: LensThicknessOption | null) => void;
+  updateSelection: (updates: Partial<LensState>) => void;
+  resetSelections: () => void;
   canProceedToNextStep: () => boolean;
   calculateTotalPrice: () => number;
   navigateToNextStep: () => void;
   navigateToPreviousStep: () => void;
-  resetSelections: () => void;
 }
 
-const LensContext = createContext<LensContextType | undefined>(undefined);
-
-export const LensProvider: React.FC<{
-  children: React.ReactNode;
-  product: { id: string; name: string; price: number; };
-}> = ({ children, product }) => {
-  const [currentStep, setCurrentStep] = useState(0);
-  const [visionNeed, setVisionNeed] = useState<VisionNeed | null>(null);
-  const [prescription, setPrescription] = useState<PrescriptionData>({
+const initialState: LensState = {
+  currentStep: 0,
+  visionNeed: null,
+  prescription: {
     rightSphere: '',
     rightCylinder: '',
     rightAxis: '',
@@ -38,89 +32,77 @@ export const LensProvider: React.FC<{
     leftAxis: '',
     pupillaryDistance: '',
     useSavedPrescription: false
-  });
-  const [selectedLensType, setSelectedLensType] = useState<LensTypeOption | null>(null);
-  const [selectedLensThickness, setSelectedLensThickness] = useState<LensThicknessOption | null>(null);
+  },
+  selectedLensType: null,
+  selectedLensThickness: null
+};
 
-  const resetSelections = () => {
-    setPrescription({
-      rightSphere: '',
-      rightCylinder: '',
-      rightAxis: '',
-      leftSphere: '',
-      leftCylinder: '',
-      leftAxis: '',
-      pupillaryDistance: '',
-      useSavedPrescription: false
-    });
-    setSelectedLensType(null);
-    setSelectedLensThickness(null);
+const LensContext = createContext<LensContextType | undefined>(undefined);
+
+export const LensProvider: React.FC<{
+  children: React.ReactNode;
+  product: { id: string; name: string; price: number; };
+}> = ({ children, product }) => {
+  const [state, setState] = useState<LensState>(initialState);
+
+  const updateSelection = (updates: Partial<LensState>) => {
+    setState(prev => ({ ...prev, ...updates }));
   };
 
+  const resetSelections = () => setState(initialState);
+
   const canProceedToNextStep = () => {
-    switch (currentStep) {
-      case 0:
-        return visionNeed !== null;
-      case 1:
-        return prescription.useSavedPrescription || 
-          (prescription.rightSphere && prescription.leftSphere && prescription.pupillaryDistance);
-      case 2:
-        return selectedLensType !== null;
-      case 3:
-        return selectedLensThickness !== null;
-      default:
-        return true;
+    switch (state.currentStep) {
+      case 0: return state.visionNeed !== null;
+      case 1: return state.prescription.useSavedPrescription || 
+        (state.prescription.rightSphere && state.prescription.leftSphere && state.prescription.pupillaryDistance);
+      case 2: return state.selectedLensType !== null;
+      case 3: return state.selectedLensThickness !== null;
+      default: return true;
     }
   };
 
   const calculateTotalPrice = () => {
     let total = product.price;
-    if (selectedLensType) total += selectedLensType.priceAdditional;
-    if (selectedLensThickness) total += selectedLensThickness.priceAdditional;
+    if (state.selectedLensType) total += state.selectedLensType.priceAdditional;
+    if (state.selectedLensThickness) total += state.selectedLensThickness.priceAdditional;
     return total;
   };
 
   const navigateToNextStep = () => {
-    if (currentStep === 0) {
-      switch(visionNeed) {
+    if (state.currentStep === 0) {
+      switch(state.visionNeed) {
         case 'frameOnly':
-          setCurrentStep(4);
+          updateSelection({ currentStep: 4 });
           break;
         case 'nonPrescription':
-          setCurrentStep(2);
+          updateSelection({ currentStep: 2 });
           break;
         case 'singleVision':
-          setCurrentStep(1);
+          updateSelection({ currentStep: 1 });
           break;
       }
-    } else if (currentStep < 4) {
-      setCurrentStep(currentStep + 1);
+    } else if (state.currentStep < 4) {
+      updateSelection({ currentStep: state.currentStep + 1 });
     }
   };
 
   const navigateToPreviousStep = () => {
-    if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
+    if (state.currentStep > 0) {
+      updateSelection({ currentStep: state.currentStep - 1 });
     }
   };
 
   return (
     <LensContext.Provider value={{
-      currentStep,
-      visionNeed,
-      prescription,
-      selectedLensType,
-      selectedLensThickness,
-      setCurrentStep,
-      setVisionNeed,
-      setPrescription,
-      setSelectedLensType,
-      setSelectedLensThickness,
+      ...state,
+      setCurrentStep: (step) => updateSelection({ currentStep: step }),
+      updateSelection,
+      resetSelections,
       canProceedToNextStep,
       calculateTotalPrice,
       navigateToNextStep,
-      navigateToPreviousStep,
-      resetSelections
+      navigateToPreviousStep
     }}>
       {children}
     </LensContext.Provider>

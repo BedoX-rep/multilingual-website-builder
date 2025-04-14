@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useFormattedTranslation } from '../../utils/translationHelper';
 import { Button } from '@/components/ui/button';
@@ -7,7 +8,6 @@ import { PrescriptionForm } from './PrescriptionForm';
 import { LensTypeSelector } from './LensTypeSelector';
 import { LensThicknessSelector } from './LensThicknessSelector';
 import { OrderReview } from './OrderReview';
-import { useCart } from '../../contexts/CartContext';
 import { ProductOrder } from './types';
 import { useLensContext } from './context/LensContext';
 import { useLensOptions } from './hooks/useLensOptions';
@@ -22,9 +22,11 @@ interface SelectLensesWizardProps {
   onComplete: (orderDetails: ProductOrder) => void;
 }
 
-export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product, onComplete }) => {
+export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ 
+  product, 
+  onComplete 
+}) => {
   const { formattedT: t } = useFormattedTranslation();
-  const { addToCart } = useCart();
   const { lensTypeOptions, lensThicknessOptions } = useLensOptions();
   const {
     currentStep,
@@ -32,14 +34,11 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
     prescription,
     selectedLensType,
     selectedLensThickness,
+    updateSelection,
     canProceedToNextStep,
     calculateTotalPrice,
     navigateToNextStep,
-    navigateToPreviousStep,
-    setVisionNeed,
-    setPrescription,
-    setSelectedLensType,
-    setSelectedLensThickness
+    navigateToPreviousStep
   } = useLensContext();
 
   const handleSubmit = () => {
@@ -59,7 +58,6 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
       orderDetails.lensType = selectedLensType!;
     }
 
-    addToCart(orderDetails);
     onComplete(orderDetails);
   };
 
@@ -78,14 +76,10 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
     <div className="flex flex-col h-full">
       <div className="mb-6">
         <h3 className="font-bold text-xl mb-3">{getStepTitle()}</h3>
-        <div className="flex justify-between mb-6">
+        <div className="h-1 w-full bg-gray-200 rounded-full">
           <div 
-            className="flex-1 h-1 rounded-full bg-blue-600"
+            className="h-full bg-blue-600 rounded-full transition-all"
             style={{ width: `${(currentStep / 4) * 100}%` }}
-          />
-          <div 
-            className="flex-1 h-1 rounded-full bg-gray-200"
-            style={{ width: `${(1 - currentStep / 4) * 100}%` }}
           />
         </div>
       </div>
@@ -94,28 +88,42 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
         {currentStep === 0 && (
           <VisionNeedSelector
             selected={visionNeed}
-            onChange={setVisionNeed}
-            onNext={navigateToNextStep}
+            onChange={(need) => {
+              updateSelection({ 
+                visionNeed: need,
+                currentStep: 0,
+                prescription: initialState.prescription,
+                selectedLensType: null,
+                selectedLensThickness: null
+              });
+              navigateToNextStep();
+            }}
           />
         )}
         {currentStep === 1 && (
           <PrescriptionForm
             prescription={prescription}
-            onChange={setPrescription}
+            onChange={(data) => updateSelection({ prescription: data })}
           />
         )}
         {currentStep === 2 && (
           <LensTypeSelector
             options={lensTypeOptions}
             selected={selectedLensType}
-            onChange={setSelectedLensType}
+            onChange={(type) => {
+              updateSelection({ selectedLensType: type });
+              navigateToNextStep();
+            }}
           />
         )}
         {currentStep === 3 && (
           <LensThicknessSelector
             options={lensThicknessOptions}
             selected={selectedLensThickness}
-            onChange={setSelectedLensThickness}
+            onChange={(thickness) => {
+              updateSelection({ selectedLensThickness: thickness });
+              navigateToNextStep();
+            }}
           />
         )}
         {currentStep === 4 && (
@@ -132,7 +140,7 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
 
       <div className="flex justify-between mt-auto">
         {currentStep > 0 && (
-          <Button onClick={navigateToPreviousStep} className="flex items-center">
+          <Button onClick={navigateToPreviousStep} variant="outline">
             <ArrowLeft className="mr-2 h-4 w-4" />
             {t('common.back')}
           </Button>
@@ -141,7 +149,7 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
           <Button 
             disabled={!canProceedToNextStep()}
             onClick={navigateToNextStep}
-            className="flex items-center ml-auto"
+            className="ml-auto"
           >
             {t('common.continue')}
             <ArrowRight className="ml-2 h-4 w-4" />
@@ -149,7 +157,7 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
         ) : (
           <Button 
             onClick={handleSubmit}
-            className="flex items-center ml-auto"
+            className="ml-auto"
           >
             {t('cart.addToCart')}
             <Check className="ml-2 h-4 w-4" />
