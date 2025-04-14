@@ -17,25 +17,44 @@ import {
 } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
+interface FieldOption {
+  value: string;
+  label: string;
+}
+
 interface PrescriptionFormProps {
   prescription: PrescriptionData;
   onChange: (prescription: PrescriptionData) => void;
 }
 
+const generateOptions = (start: number, end: number, step: number, format: (val: number) => string): FieldOption[] => {
+  const options = [];
+  for (let i = start; i <= end; i += step) {
+    const value = format(i);
+    options.push({ value, label: value });
+  }
+  return options;
+};
+
 export const PrescriptionForm: React.FC<PrescriptionFormProps> = ({ prescription, onChange }) => {
   const { formattedT: t } = useFormattedTranslation();
 
-  const handleInputChange = (field: keyof PrescriptionData, value: string) => {
+  const sphereOptions = useMemo(() => generateOptions(-10, 10, 0.25, 
+    (val) => (val >= 0 ? `+${val.toFixed(2)}` : val.toFixed(2))), []);
+  
+  const cylinderOptions = useMemo(() => generateOptions(-6, 6, 0.25,
+    (val) => (val >= 0 ? `+${val.toFixed(2)}` : val.toFixed(2))), []);
+    
+  const axisOptions = useMemo(() => generateOptions(1, 180, 1,
+    (val) => val.toString()), []);
+    
+  const pdOptions = useMemo(() => generateOptions(50, 76, 0.5,
+    (val) => val.toFixed(1)), []);
+
+  const updateField = (field: keyof PrescriptionData) => (value: string) => {
     onChange({
       ...prescription,
       [field]: value
-    });
-  };
-
-  const handleSwitchChange = (checked: boolean) => {
-    onChange({
-      ...prescription,
-      useSavedPrescription: checked
     });
   };
 
@@ -68,6 +87,29 @@ export const PrescriptionForm: React.FC<PrescriptionFormProps> = ({ prescription
     pdOptions.push({ value, label: value });
   }
 
+  const PrescriptionField = ({ label, options, value, onChange }: {
+    label: string;
+    options: FieldOption[];
+    value: string;
+    onChange: (value: string) => void;
+  }) => (
+    <div>
+      <Label>{label}</Label>
+      <Select value={value} onValueChange={onChange}>
+        <SelectTrigger>
+          <SelectValue placeholder={t('lenses.select')} />
+        </SelectTrigger>
+        <SelectContent>
+          {options.map(option => (
+            <SelectItem key={option.value} value={option.value}>
+              {option.label}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
+  );
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -77,7 +119,7 @@ export const PrescriptionForm: React.FC<PrescriptionFormProps> = ({ prescription
         </div>
         <Switch 
           checked={prescription.useSavedPrescription}
-          onCheckedChange={handleSwitchChange}
+          onCheckedChange={(checked) => onChange({ ...prescription, useSavedPrescription: checked })}
         />
       </div>
 
@@ -89,24 +131,62 @@ export const PrescriptionForm: React.FC<PrescriptionFormProps> = ({ prescription
           <div className="mb-6">
             <h5 className="font-medium mb-2">{t('lenses.rightEye')} (OD)</h5>
             <div className="grid grid-cols-3 gap-4">
-              <div>
-                <Label htmlFor="rightSphere">{t('lenses.sphere')}</Label>
-                <Select 
-                  value={prescription.rightSphere} 
-                  onValueChange={(value) => handleInputChange('rightSphere', value)}
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder={t('lenses.select')} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {sphereOptions.map(option => (
-                      <SelectItem key={`rs-${option.value}`} value={option.value}>
-                        {option.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
+              <PrescriptionField
+                label={t('lenses.sphere')}
+                options={sphereOptions}
+                value={prescription.rightSphere}
+                onChange={updateField('rightSphere')}
+              />
+              <PrescriptionField
+                label={t('lenses.cylinder')}
+                options={cylinderOptions}
+                value={prescription.rightCylinder}
+                onChange={updateField('rightCylinder')}
+              />
+              <PrescriptionField
+                label={t('lenses.axis')}
+                options={axisOptions}
+                value={prescription.rightAxis}
+                onChange={updateField('rightAxis')}
+              />
+            </div>
+          </div>
+          
+          <div className="mb-6">
+            <h5 className="font-medium mb-2">{t('lenses.leftEye')} (OS)</h5>
+            <div className="grid grid-cols-3 gap-4">
+              <PrescriptionField
+                label={t('lenses.sphere')}
+                options={sphereOptions}
+                value={prescription.leftSphere}
+                onChange={updateField('leftSphere')}
+              />
+              <PrescriptionField
+                label={t('lenses.cylinder')}
+                options={cylinderOptions}
+                value={prescription.leftCylinder}
+                onChange={updateField('leftCylinder')}
+              />
+              <PrescriptionField
+                label={t('lenses.axis')}
+                options={axisOptions}
+                value={prescription.leftAxis}
+                onChange={updateField('leftAxis')}
+              />
+            </div>
+          </div>
+          
+          <div>
+            <h5 className="font-medium mb-2">{t('lenses.pupillaryDistance')} (PD)</h5>
+            <div className="grid grid-cols-2 gap-4">
+              <PrescriptionField
+                label={t('lenses.pupillaryDistance')}
+                options={pdOptions}
+                value={prescription.pupillaryDistance}
+                onChange={updateField('pupillaryDistance')}
+              />
+            </div>
+          </div>
               <div>
                 <Label htmlFor="rightCylinder">{t('lenses.cylinder')}</Label>
                 <Select 
