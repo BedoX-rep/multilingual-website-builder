@@ -38,7 +38,9 @@ export const LensTypeSelector: React.FC<OptionSelectorProps<LensTypeOption>> = (
             }`}
             onClick={() => {
               onChange(option);
-              handleNext();
+              if (!isPrescriptionPage) {
+                handleNext();
+              }
             }}
           >
             <div className="flex items-center justify-between">

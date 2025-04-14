@@ -34,7 +34,10 @@ export const LensThicknessSelector: React.FC<OptionSelectorProps<LensThicknessOp
                 ? 'border-blue-500 bg-blue-50' 
                 : 'border-gray-200'
             }`}
-            onClick={() => onChange(option)} // Removed handleNext() call
+            onClick={() => {
+              onChange(option);
+              handleNext();
+            }} // Removed handleNext() call
           >
             <div className="flex items-center justify-between">
               <div className="flex items-start gap-4">

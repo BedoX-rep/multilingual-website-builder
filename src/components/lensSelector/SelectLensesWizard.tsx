@@ -94,11 +94,29 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({
     updateSelection({ visionNeed: need });
   };
 
+  const getStepTitle = () => {
+    switch (currentStep) {
+      case 0:
+        return t('lenses.selectVisionType');
+      case 1:
+        return t('lenses.enterPrescription');
+      case 2:
+        return t('lenses.selectLensType');
+      case 3:
+        return t('lenses.selectLensThickness');
+      case 4:
+        return t('lenses.reviewOrder');
+      default:
+        return '';
+    }
+  };
+
   return (
     <div className="max-w-2xl mx-auto">
       {/* Progress Steps */}
       <div className="mb-8">
-        <h2 className="text-2xl font-bold mb-4">{t('lenses.customizeLenses')}</h2>
+        <h2 className="text-2xl font-bold mb-2">{t('lenses.customizeLenses')}</h2>
+        <p className="text-gray-600 mb-4">{getStepTitle()}</p>
         <div className="flex items-center space-x-2">
           {Array.from({ length: 5 }).map((_, index) => (
             <div
