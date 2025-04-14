@@ -2,14 +2,18 @@ import React from 'react';
 import { useFormattedTranslation } from '../../utils/translationHelper';
 import { VisionNeed } from './types';
 import { Glasses, Eye, Frame } from 'lucide-react';
+import { Check } from 'lucide-react'; // Added import for Check icon
 
 interface VisionNeedSelectorProps {
   selected: VisionNeed | null;
   onChange: (selected: VisionNeed) => void;
-  handleNext: () => void; // Added handleNext function
+  handleNext: () => void; 
+  totalSteps: number; // Added totalSteps prop for progress tracker
+  currentStep: number; // Added currentStep prop for progress tracker
+
 }
 
-export const VisionNeedSelector: React.FC<VisionNeedSelectorProps> = ({ selected, onChange, handleNext }) => { // Added handleNext prop
+export const VisionNeedSelector: React.FC<VisionNeedSelectorProps> = ({ selected, onChange, handleNext, totalSteps, currentStep }) => { 
   const { formattedT: t } = useFormattedTranslation();
 
   const options = [
@@ -34,39 +38,44 @@ export const VisionNeedSelector: React.FC<VisionNeedSelectorProps> = ({ selected
   ];
 
   return (
-    <div>
-      <h2 className="text-xl font-medium mb-2">{t('lenses.chooseVisionNeed')}</h2>
-
-      <p className="text-sm text-gray-600 mb-4">
-        Based on your prescription, choose your lens from the options below or choose non-prescription if you want visual comfort without vision correction.
-      </p>
-
-      <p className="text-sm text-blue-600 mb-6 hover:underline cursor-pointer">
-        Learn more about lens differences
-      </p>
+    <div className="space-y-8">
+      <div className="flex flex-col gap-2">
+        <h2 className="text-2xl font-medium">Choose your vision need</h2>
+        <p className="text-gray-600 text-sm">
+          Based on your prescription, choose your lens from the options below or choose non-prescription if you want visual comfort without vision correction.
+        </p>
+        <a href="#" className="text-blue-600 text-sm hover:underline">Learn more about lens differences</a>
+      </div>
 
       <div className="space-y-3">
         {options.map((option) => (
           <div 
             key={option.id}
-            className={`border rounded-lg p-4 cursor-pointer transition-all hover:border-blue-500 ${
+            className={`border rounded-lg p-6 cursor-pointer transition-all hover:border-blue-500 ${
               selected?.id === option.id 
-                ? 'border-blue-500 bg-white shadow-sm' 
-                : 'border-gray-200 bg-white'
+                ? 'border-blue-600 shadow-sm' 
+                : 'border-gray-200'
             }`}
             onClick={() => onChange(option.id)}
           >
             <div className="flex items-start gap-4">
-              <div className="shrink-0 w-12 h-12 flex items-center justify-center">
+              <div className="shrink-0 w-14 h-14 flex items-center justify-center">
                 {option.icon}
               </div>
               <div className="flex-1">
-                <h4 className="font-medium text-base mb-1">{option.title}</h4>
+                <h4 className="font-medium text-lg mb-1">{option.title}</h4>
                 <p className="text-gray-500 text-sm">{option.description}</p>
               </div>
+              {selected?.id === option.id && (
+                <Check className="w-5 h-5 text-blue-600 ml-auto" />
+              )}
             </div>
           </div>
         ))}
+      </div>
+      <div className="mt-6"> {/* Added progress tracker */}
+        <p>Step {currentStep} of {totalSteps}</p> {/* Simple progress tracker */}
+        <button onClick={handleNext} className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Next</button>
       </div>
     </div>
   );

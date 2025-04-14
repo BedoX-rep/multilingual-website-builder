@@ -202,8 +202,19 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
     }
   };
 
+  const totalSteps = 4;
+  const currentStepNumber = currentStep + 1;
+
   return (
     <div className="fixed inset-0 bg-white z-50 flex">
+      {/* Progress bar */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gray-100">
+        <div 
+          className="h-full bg-blue-600 transition-all duration-300" 
+          style={{ width: `${(currentStepNumber / totalSteps) * 100}%` }}
+        />
+      </div>
+
       {/* Left side - Product Image */}
       <div className="w-1/2 bg-gray-50 p-8 flex items-center justify-center relative">
         <img 
