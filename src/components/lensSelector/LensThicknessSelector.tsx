@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useFormattedTranslation } from '../../utils/translationHelper';
 import { LensThicknessOption } from './types';
@@ -19,13 +18,13 @@ export const LensThicknessSelector: React.FC<OptionSelectorProps<LensThicknessOp
   handleNext 
 }) => {
   const { formattedT: t } = useFormattedTranslation();
-  
+
   return (
     <div>
       <p className="text-gray-600 mb-6">
         {t('lenses.selectLensThicknessExplanation')}
       </p>
-      
+
       <div className="space-y-4">
         {options.map((option) => (
           <Card 
@@ -35,10 +34,7 @@ export const LensThicknessSelector: React.FC<OptionSelectorProps<LensThicknessOp
                 ? 'border-blue-500 bg-blue-50' 
                 : 'border-gray-200'
             }`}
-            onClick={() => {
-              onChange(option);
-              handleNext();
-            }}
+            onClick={() => onChange(option)} // Removed handleNext() call
           >
             <div className="flex items-center justify-between">
               <div className="flex items-start gap-4">
@@ -61,7 +57,7 @@ export const LensThicknessSelector: React.FC<OptionSelectorProps<LensThicknessOp
                   <p className="text-gray-600">{option.description}</p>
                 </div>
               </div>
-              
+
               {selected?.id === option.id && (
                 <div className="shrink-0 ml-4 text-blue-500">
                   <Check className="h-6 w-6" />
@@ -71,6 +67,7 @@ export const LensThicknessSelector: React.FC<OptionSelectorProps<LensThicknessOp
           </Card>
         ))}
       </div>
+      <button onClick={handleNext} className="mt-4">Next</button> {/* Added Next button */}
     </div>
   );
 };

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useFormattedTranslation } from '../../utils/translationHelper';
 import { LensTypeOption } from './types';
@@ -10,22 +9,24 @@ interface OptionSelectorProps<T> {
   selected: T | null;
   onChange: (selected: T) => void;
   handleNext: () => void;
+  isPrescriptionPage: boolean; // Added prop to indicate page type
 }
 
 export const LensTypeSelector: React.FC<OptionSelectorProps<LensTypeOption>> = ({ 
   options, 
   selected, 
   onChange, 
-  handleNext 
+  handleNext,
+  isPrescriptionPage
 }) => {
   const { formattedT: t } = useFormattedTranslation();
-  
+
   return (
     <div>
       <p className="text-gray-600 mb-6">
         {t('lenses.selectLensTypeExplanation')}
       </p>
-      
+
       <div className="space-y-4">
         {options.map((option) => (
           <Card 
@@ -61,7 +62,7 @@ export const LensTypeSelector: React.FC<OptionSelectorProps<LensTypeOption>> = (
                   <p className="text-gray-600">{option.description}</p>
                 </div>
               </div>
-              
+
               {selected?.id === option.id && (
                 <div className="shrink-0 ml-4 text-blue-500">
                   <Check className="h-6 w-6" />
@@ -71,6 +72,7 @@ export const LensTypeSelector: React.FC<OptionSelectorProps<LensTypeOption>> = (
           </Card>
         ))}
       </div>
+      {isPrescriptionPage && <button>{t('common.next')}</button>} {/*Conditional rendering of the button*/}
     </div>
   );
 };

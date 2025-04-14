@@ -167,7 +167,7 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({
 
       {/* Navigation Buttons */}
       <div className="flex justify-between">
-        {currentStep < 4 && (
+        {currentStep === 1 && (
           <Button
             onClick={handleNext}
             disabled={!canProceedToNextStep()}
