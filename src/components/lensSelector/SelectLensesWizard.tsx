@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useFormattedTranslation } from '../../utils/translationHelper';
 import { Button } from '@/components/ui/button';
@@ -6,6 +7,7 @@ import { ProductOrder, VisionNeed, PrescriptionData, LensTypeOption, LensThickne
 import { VisionNeedSelector } from './VisionNeedSelector';
 import { LensTypeSelector } from './LensTypeSelector';
 import { LensThicknessSelector } from './LensThicknessSelector';
+import { PrescriptionForm } from './PrescriptionForm';
 import { useLensOptions } from './hooks/useLensOptions';
 
 interface SelectLensesWizardProps {
@@ -39,25 +41,41 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
   });
 
   const handleNext = () => {
-    setCurrentStep(currentStep + 1);
+    setCurrentStep(prev => prev + 1);
   };
 
   const handleBack = () => {
-    setCurrentStep(currentStep - 1);
+    setCurrentStep(prev => prev - 1);
   };
 
-  const handleSelection = (key: keyof typeof selections, value: any) => {
-    setSelections(prev => ({ ...prev, [key]: value }));
-
-    if (key === 'visionNeed') {
-      if (value === 'frameOnly') {
-        setCurrentStep(4);
-      } else if (value === 'nonPrescription') {
-        setCurrentStep(2);
-      } else {
-        setCurrentStep(1);
-      }
+  const handleVisionNeedSelect = (need: VisionNeed) => {
+    setSelections(prev => ({ ...prev, visionNeed: need }));
+    if (need === 'frameOnly') {
+      setCurrentStep(4); // Go to review
+    } else if (need === 'nonPrescription') {
+      setCurrentStep(2); // Skip prescription, go to lens type
+    } else {
+      setCurrentStep(1); // Go to prescription
     }
+  };
+
+  const handleLensTypeSelect = (type: LensTypeOption) => {
+    setSelections(prev => ({ ...prev, selectedLensType: type }));
+    if (selections.visionNeed === 'singleVision') {
+      setCurrentStep(3); // Go to thickness
+    } else {
+      setCurrentStep(4); // Go to review
+    }
+  };
+
+  const handleLensThicknessSelect = (thickness: LensThicknessOption) => {
+    setSelections(prev => ({ ...prev, selectedLensThickness: thickness }));
+    setCurrentStep(4); // Go to review
+  };
+
+  const handlePrescriptionSubmit = (prescriptionData: PrescriptionData) => {
+    setSelections(prev => ({ ...prev, prescription: prescriptionData }));
+    setCurrentStep(2); // Go to lens type
   };
 
   const calculateTotalPrice = () => {
@@ -87,23 +105,22 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
         return (
           <VisionNeedSelector
             selected={selections.visionNeed}
-            onChange={(value) => handleSelection('visionNeed', value)}
+            onChange={handleVisionNeedSelect}
           />
         );
       case 1:
         return (
-          <div>
-            <p className="text-gray-600 mb-6">{t('lenses.prescriptionExplanation')}</p>
-            {/* Prescription form placeholder */}
-          </div>
+          <PrescriptionForm
+            prescription={selections.prescription}
+            onChange={handlePrescriptionSubmit}
+          />
         );
       case 2:
         return (
           <LensTypeSelector
             options={lensTypeOptions}
             selected={selections.selectedLensType}
-            onChange={(value) => setSelections(prev => ({ ...prev, selectedLensType: value }))}
-            onNext={handleNext}
+            onChange={handleLensTypeSelect}
           />
         );
       case 3:
@@ -111,8 +128,7 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
           <LensThicknessSelector
             options={lensThicknessOptions}
             selected={selections.selectedLensThickness}
-            onChange={(value) => setSelections(prev => ({ ...prev, selectedLensThickness: value }))}
-            onNext={handleNext}
+            onChange={handleLensThicknessSelect}
           />
         );
       case 4:
