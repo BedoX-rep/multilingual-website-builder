@@ -2,13 +2,13 @@
 import React from 'react';
 import { useFormattedTranslation } from '../../utils/translationHelper';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, ArrowRight, Check } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { VisionNeedSelector } from './VisionNeedSelector';
 import { PrescriptionForm } from './PrescriptionForm';
 import { LensTypeSelector } from './LensTypeSelector';
 import { LensThicknessSelector } from './LensThicknessSelector';
 import { OrderReview } from './OrderReview';
-import { ProductOrder } from './types';
+import { ProductOrder, VisionNeed } from './types';
 import { useLensContext } from './context/LensContext';
 import { useLensOptions } from './hooks/useLensOptions';
 
@@ -35,11 +35,31 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({
     selectedLensType,
     selectedLensThickness,
     updateSelection,
-    canProceedToNextStep,
-    calculateTotalPrice,
-    navigateToNextStep,
-    navigateToPreviousStep
+    calculateTotalPrice
   } = useLensContext();
+
+  const canProceedToNextStep = () => {
+    switch (currentStep) {
+      case 0: return visionNeed !== null;
+      case 1: return prescription.useSavedPrescription || 
+        (prescription.rightSphere && prescription.leftSphere && prescription.pupillaryDistance);
+      case 2: return selectedLensType !== null;
+      case 3: return selectedLensThickness !== null;
+      default: return true;
+    }
+  };
+
+  const handleNext = () => {
+    if (canProceedToNextStep()) {
+      updateSelection({ currentStep: currentStep + 1 });
+    }
+  };
+
+  const handleBack = () => {
+    if (currentStep > 0) {
+      updateSelection({ currentStep: currentStep - 1 });
+    }
+  };
 
   const handleSubmit = () => {
     const orderDetails: ProductOrder = {
@@ -61,106 +81,100 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({
     onComplete(orderDetails);
   };
 
-  const getStepTitle = () => {
-    switch (currentStep) {
-      case 0: return t('lenses.chooseVisionNeed');
-      case 1: return t('lenses.enterPrescription');
-      case 2: return t('lenses.selectLensType');
-      case 3: return t('lenses.selectLensThickness');
-      case 4: return t('lenses.reviewOrder');
-      default: return '';
-    }
+  const handleVisionNeedChange = (need: VisionNeed) => {
+    updateSelection({ visionNeed: need });
   };
 
   return (
-    <div className="flex flex-col h-full">
-      <div className="mb-6">
-        <h3 className="font-bold text-xl mb-3">{getStepTitle()}</h3>
-        <div className="h-1 w-full bg-gray-200 rounded-full">
-          <div 
-            className="h-full bg-blue-600 rounded-full transition-all"
-            style={{ width: `${(currentStep / 4) * 100}%` }}
-          />
+    <div className="max-w-2xl mx-auto">
+      {/* Progress Steps */}
+      <div className="mb-8">
+        <h2 className="text-2xl font-bold mb-4">{t('lenses.customizeLenses')}</h2>
+        <div className="flex items-center space-x-2">
+          {Array.from({ length: 5 }).map((_, index) => (
+            <div
+              key={index}
+              className={`h-2 flex-1 rounded ${
+                index <= currentStep ? 'bg-blue-500' : 'bg-gray-200'
+              }`}
+            />
+          ))}
         </div>
       </div>
 
-      <div className="flex-1 mb-6">
+      {/* Back Button */}
+      {currentStep > 0 && (
+        <button
+          onClick={handleBack}
+          className="flex items-center text-gray-600 mb-4 hover:text-gray-800"
+        >
+          <ArrowLeft className="w-4 h-4 mr-2" />
+          {t('common.back')}
+        </button>
+      )}
+
+      {/* Step Content */}
+      <div className="mb-8">
         {currentStep === 0 && (
           <VisionNeedSelector
             selected={visionNeed}
-            onChange={(need) => {
-              updateSelection({ 
-                visionNeed: need,
-                currentStep: 0,
-                prescription: initialState.prescription,
-                selectedLensType: null,
-                selectedLensThickness: null
-              });
-              navigateToNextStep();
-            }}
+            onChange={handleVisionNeedChange}
+            handleNext={handleNext}
           />
         )}
-        {currentStep === 1 && (
+        
+        {currentStep === 1 && visionNeed === 'singleVision' && (
           <PrescriptionForm
             prescription={prescription}
-            onChange={(data) => updateSelection({ prescription: data })}
+            onChange={(newPrescription) => updateSelection({ prescription: newPrescription })}
           />
         )}
-        {currentStep === 2 && (
+        
+        {currentStep === 2 && visionNeed !== 'frameOnly' && (
           <LensTypeSelector
             options={lensTypeOptions}
             selected={selectedLensType}
-            onChange={(type) => {
-              updateSelection({ selectedLensType: type });
-              navigateToNextStep();
-            }}
+            onChange={(type) => updateSelection({ selectedLensType: type })}
+            handleNext={handleNext}
           />
         )}
-        {currentStep === 3 && (
+        
+        {currentStep === 3 && visionNeed === 'singleVision' && (
           <LensThicknessSelector
             options={lensThicknessOptions}
             selected={selectedLensThickness}
-            onChange={(thickness) => {
-              updateSelection({ selectedLensThickness: thickness });
-              navigateToNextStep();
-            }}
+            onChange={(thickness) => updateSelection({ selectedLensThickness: thickness })}
+            handleNext={handleNext}
           />
         )}
+        
         {currentStep === 4 && (
           <OrderReview
             product={product}
             visionNeed={visionNeed!}
-            prescription={visionNeed === 'singleVision' ? prescription : undefined}
-            lensType={visionNeed !== 'frameOnly' ? selectedLensType : undefined}
-            lensThickness={visionNeed === 'singleVision' ? selectedLensThickness : undefined}
+            prescription={prescription}
+            lensType={selectedLensType}
+            lensThickness={selectedLensThickness}
             totalPrice={calculateTotalPrice()}
           />
         )}
       </div>
 
-      <div className="flex justify-between mt-auto">
-        {currentStep > 0 && (
-          <Button onClick={navigateToPreviousStep} variant="outline">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            {t('common.back')}
+      {/* Navigation Buttons */}
+      <div className="flex justify-between">
+        {currentStep < 4 && (
+          <Button
+            onClick={handleNext}
+            disabled={!canProceedToNextStep()}
+            className="ml-auto"
+          >
+            {t('common.next')}
           </Button>
         )}
-        {currentStep < 4 ? (
-          <Button 
-            disabled={!canProceedToNextStep()}
-            onClick={navigateToNextStep}
-            className="ml-auto"
-          >
-            {t('common.continue')}
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
-        ) : (
-          <Button 
-            onClick={handleSubmit}
-            className="ml-auto"
-          >
-            {t('cart.addToCart')}
-            <Check className="ml-2 h-4 w-4" />
+        
+        {currentStep === 4 && (
+          <Button onClick={handleSubmit} className="ml-auto">
+            {t('common.addToCart')}
           </Button>
         )}
       </div>
