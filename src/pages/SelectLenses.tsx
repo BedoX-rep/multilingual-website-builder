@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useFormattedTranslation } from '../utils/translationHelper';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { X } from 'lucide-react';
 import { useCart } from '../contexts/CartContext';
 import { SelectLensesWizard } from '../components/lensSelector/SelectLensesWizard';
 import { ProductOrder } from '../components/lensSelector/types';
+import { LensProvider } from '../components/lensSelector/context/LensContext';
 
 const mockProducts = [
   {
@@ -59,10 +59,12 @@ const SelectLenses: React.FC = () => {
 
         {/* Lens Selection Section */}
         <div className="p-8 overflow-y-auto">
-          <SelectLensesWizard 
-            product={product} 
-            onComplete={handleAddToCart}
-          />
+          <LensProvider product={product}>
+            <SelectLensesWizard 
+              product={product} 
+              onComplete={handleAddToCart}
+            />
+          </LensProvider>
         </div>
       </main>
 
