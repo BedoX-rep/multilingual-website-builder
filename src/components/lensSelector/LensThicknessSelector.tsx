@@ -23,10 +23,10 @@ export const LensThicknessSelector: React.FC<LensThicknessSelectorProps> = ({ op
         {options.map((option) => (
           <div 
             key={option.id}
-            className={`border rounded-lg p-4 cursor-pointer transition-all ${
+            className={`border rounded-lg p-6 cursor-pointer transition-all hover:border-blue-500 ${
               selected?.id === option.id 
                 ? 'border-blue-500 bg-blue-50' 
-                : 'border-gray-200 hover:border-gray-300'
+                : 'border-gray-200'
             }`}
             onClick={() => onChange(option)}
           >

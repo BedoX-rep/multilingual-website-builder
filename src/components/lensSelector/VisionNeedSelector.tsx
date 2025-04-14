@@ -49,20 +49,20 @@ export const VisionNeedSelector: React.FC<VisionNeedSelectorProps> = ({ selected
         {options.map((option) => (
           <div 
             key={option.id}
-            className={`border rounded-lg p-4 cursor-pointer transition-all ${
+            className={`border rounded-lg p-6 cursor-pointer transition-all hover:border-blue-500 ${
               selected === option.id 
                 ? 'border-blue-500 bg-blue-50' 
-                : 'border-gray-200 hover:border-gray-300'
+                : 'border-gray-200'
             }`}
             onClick={() => onChange(option.id)}
           >
-            <div className="flex items-start gap-4">
-              <div className="shrink-0">
+            <div className="flex items-center gap-6">
+              <div className="shrink-0 w-16 h-16 flex items-center justify-center">
                 {option.icon}
               </div>
-              <div>
-                <h4 className="font-semibold text-lg">{option.title}</h4>
-                <p className="text-gray-600">{option.description}</p>
+              <div className="flex-1">
+                <h4 className="font-semibold text-lg mb-1">{option.title}</h4>
+                <p className="text-gray-600 text-sm">{option.description}</p>
               </div>
             </div>
           </div>
