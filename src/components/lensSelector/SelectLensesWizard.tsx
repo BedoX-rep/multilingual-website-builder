@@ -1,14 +1,15 @@
-
-import React, { useState } from 'react';
+import React from 'react';
 import { useFormattedTranslation } from '../../utils/translationHelper';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Check } from 'lucide-react';
-import { ProductOrder, VisionNeed, PrescriptionData, LensTypeOption, LensThicknessOption } from './types';
+import { ArrowLeft } from 'lucide-react';
+import { ProductOrder } from './types';
 import { VisionNeedSelector } from './VisionNeedSelector';
 import { LensTypeSelector } from './LensTypeSelector';
 import { LensThicknessSelector } from './LensThicknessSelector';
 import { PrescriptionForm } from './PrescriptionForm';
 import { useLensOptions } from './hooks/useLensOptions';
+import { useLensSelection } from './hooks/useLensSelection';
+import { useWizardNavigation } from './hooks/useWizardNavigation';
 
 interface SelectLensesWizardProps {
   product: {
@@ -23,60 +24,10 @@ interface SelectLensesWizardProps {
 export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product, onComplete }) => {
   const { formattedT: t } = useFormattedTranslation();
   const { lensTypeOptions, lensThicknessOptions } = useLensOptions();
-  const [currentStep, setCurrentStep] = useState(0);
-  const [selections, setSelections] = useState({
-    visionNeed: null as VisionNeed | null,
-    prescription: {
-      rightSphere: '',
-      rightCylinder: '',
-      rightAxis: '',
-      leftSphere: '',
-      leftCylinder: '',
-      leftAxis: '',
-      pupillaryDistance: '',
-      useSavedPrescription: false
-    } as PrescriptionData,
-    selectedLensType: null as LensTypeOption | null,
-    selectedLensThickness: null as LensThicknessOption | null
+  const { selections, updateVisionNeed, updatePrescription, updateLensType, updateLensThickness } = useLensSelection();
+  const { currentStep, handleNext, handleBack } = useWizardNavigation({ 
+    visionNeed: selections.visionNeed 
   });
-
-  const handleNext = () => {
-    setCurrentStep(prev => prev + 1);
-  };
-
-  const handleBack = () => {
-    setCurrentStep(prev => prev - 1);
-  };
-
-  const handleVisionNeedSelect = (need: VisionNeed) => {
-    setSelections(prev => ({ ...prev, visionNeed: need }));
-    if (need === 'frameOnly') {
-      setCurrentStep(4); // Go to review
-    } else if (need === 'nonPrescription') {
-      setCurrentStep(2); // Skip prescription, go to lens type
-    } else {
-      setCurrentStep(1); // Go to prescription
-    }
-  };
-
-  const handleLensTypeSelect = (type: LensTypeOption) => {
-    setSelections(prev => ({ ...prev, selectedLensType: type }));
-    if (selections.visionNeed === 'singleVision') {
-      setCurrentStep(3); // Go to thickness
-    } else {
-      setCurrentStep(4); // Go to review
-    }
-  };
-
-  const handleLensThicknessSelect = (thickness: LensThicknessOption) => {
-    setSelections(prev => ({ ...prev, selectedLensThickness: thickness }));
-    setCurrentStep(4); // Go to review
-  };
-
-  const handlePrescriptionSubmit = (prescriptionData: PrescriptionData) => {
-    setSelections(prev => ({ ...prev, prescription: prescriptionData }));
-    setCurrentStep(2); // Go to lens type
-  };
 
   const calculateTotalPrice = () => {
     let total = product.price;
@@ -86,7 +37,7 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
   };
 
   const handleComplete = () => {
-    const orderDetails: ProductOrder = {
+    onComplete({
       productId: product.id,
       productName: product.name,
       productPrice: product.price,
@@ -95,45 +46,57 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
       lensType: selections.visionNeed !== 'frameOnly' ? selections.selectedLensType : undefined,
       lensThickness: selections.visionNeed === 'singleVision' ? selections.selectedLensThickness : undefined,
       totalPrice: calculateTotalPrice()
-    };
-    onComplete(orderDetails);
+    });
   };
 
-  const getStepContent = () => {
+  const renderStepContent = () => {
     switch (currentStep) {
       case 0:
         return (
           <VisionNeedSelector
             selected={selections.visionNeed}
-            onChange={handleVisionNeedSelect}
+            onChange={(need) => {
+              updateVisionNeed(need);
+              handleNext();
+            }}
           />
         );
       case 1:
-        return (
+        return selections.visionNeed === 'singleVision' ? (
           <PrescriptionForm
             prescription={selections.prescription}
-            onChange={handlePrescriptionSubmit}
+            onChange={(prescription) => {
+              updatePrescription(prescription);
+              if (prescription.isCompleted) handleNext();
+            }}
           />
-        );
+        ) : null;
       case 2:
-        return (
+        return selections.visionNeed !== 'frameOnly' ? (
           <LensTypeSelector
             options={lensTypeOptions}
             selected={selections.selectedLensType}
-            onChange={handleLensTypeSelect}
+            onChange={(type) => {
+              updateLensType(type);
+              handleNext();
+            }}
           />
-        );
+        ) : null;
       case 3:
-        return (
+        return selections.visionNeed === 'singleVision' ? (
           <LensThicknessSelector
             options={lensThicknessOptions}
             selected={selections.selectedLensThickness}
-            onChange={handleLensThicknessSelect}
+            onChange={(thickness) => {
+              updateLensThickness(thickness);
+              handleNext();
+            }}
           />
-        );
+        ) : null;
       case 4:
         return (
           <div className="space-y-6">
+            {/* Order summary */}
             <div className="border rounded-lg p-6">
               <h3 className="font-semibold text-xl mb-4">{t('lenses.orderSummary')}</h3>
               <div className="space-y-4">
@@ -171,28 +134,10 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
     }
   };
 
-  const getStepTitle = () => {
-    switch (currentStep) {
-      case 0:
-        return t('lenses.selectVisionType');
-      case 1:
-        return t('lenses.enterPrescription');
-      case 2:
-        return t('lenses.selectLensType');
-      case 3:
-        return t('lenses.selectLensThickness');
-      case 4:
-        return t('lenses.reviewOrder');
-      default:
-        return '';
-    }
-  };
-
   return (
     <div className="max-w-2xl mx-auto">
       <div className="mb-8">
         <h2 className="text-2xl font-bold mb-2">{t('lenses.customizeLenses')}</h2>
-        <p className="text-gray-600 mb-4">{getStepTitle()}</p>
         <div className="flex items-center space-x-2">
           {Array.from({ length: 5 }).map((_, index) => (
             <div
@@ -216,7 +161,7 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
       )}
 
       <div className="mb-8">
-        {getStepContent()}
+        {renderStepContent()}
       </div>
     </div>
   );
