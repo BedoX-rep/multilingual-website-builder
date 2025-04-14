@@ -40,17 +40,22 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
     selectedLensThickness: null as LensThicknessOption | null
   });
 
+  const calculateTotalPrice = () => {
+    let total = product.price;
+    if (selections.selectedLensType) total += selections.selectedLensType.priceAdditional;
+    if (selections.selectedLensThickness) total += selections.selectedLensThickness.priceAdditional;
+    return total;
+  };
+
   const handleNext = () => {
     setCurrentStep(prev => prev + 1);
   };
 
   const handleBack = () => {
     setCurrentStep(prev => {
-      // For non-prescription in review step, go back to lens type
       if (selections.visionNeed === 'nonPrescription' && prev === 4) {
         return 2;
       }
-      // For frame only or going back from lens type, return to vision need
       if ((selections.visionNeed === 'frameOnly') || 
           (prev === 2 && selections.visionNeed !== 'singleVision')) {
         setSelections(prevSelections => ({
@@ -71,7 +76,6 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
         }));
         return 0;
       }
-      // Regular back navigation for single vision
       return prev - 1;
     });
   };
@@ -79,45 +83,36 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
   const handleVisionNeedSelect = (need: VisionNeed) => {
     setSelections(prev => ({ ...prev, visionNeed: need }));
     if (need === 'frameOnly') {
-      setCurrentStep(4); // Go to review
+      setCurrentStep(4);
     } else if (need === 'nonPrescription') {
-      setCurrentStep(2); // Skip prescription, go to lens type
+      setCurrentStep(2);
     } else {
-      setCurrentStep(1); // Go to prescription
+      setCurrentStep(1);
     }
   };
 
   const handleLensTypeSelect = (type: LensTypeOption) => {
     setSelections(prev => ({ ...prev, selectedLensType: type }));
     if (selections.visionNeed === 'singleVision') {
-      setCurrentStep(3); // Go to thickness
+      setCurrentStep(3);
     } else {
-      setCurrentStep(4); // Go to review
+      setCurrentStep(4);
     }
   };
 
   const handleLensThicknessSelect = (thickness: LensThicknessOption) => {
     setSelections(prev => ({ ...prev, selectedLensThickness: thickness }));
-    setCurrentStep(4); // Go to review
+    setCurrentStep(4);
   };
 
   const handlePrescriptionSubmit = (prescriptionData: PrescriptionData) => {
-    // Only navigate if it's not an automatic update
     if (!('preventNavigation' in prescriptionData)) {
       setSelections(prev => ({ ...prev, prescription: prescriptionData }));
-      setCurrentStep(2); // Go to lens type
+      setCurrentStep(2);
     } else {
-      // Just update the prescription without navigation
       const { preventNavigation, ...prescription } = prescriptionData;
       setSelections(prev => ({ ...prev, prescription }));
     }
-  };
-
-  const calculateTotalPrice = () => {
-    let total = product.price;
-    if (selections.selectedLensType) total += selections.selectedLensType.priceAdditional;
-    if (selections.selectedLensThickness) total += selections.selectedLensThickness.priceAdditional;
-    return total;
   };
 
   const handleComplete = () => {
@@ -206,23 +201,6 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
     }
   };
 
-  const getStepTitle = () => {
-    switch (currentStep) {
-      case 0:
-        return t('lenses.selectVisionType');
-      case 1:
-        return t('lenses.enterPrescription');
-      case 2:
-        return t('lenses.selectLensType');
-      case 3:
-        return t('lenses.selectLensThickness');
-      case 4:
-        return t('lenses.reviewOrder');
-      default:
-        return '';
-    }
-  };
-
   return (
     <div className="flex min-h-screen">
       {/* Left side - Product Image */}
@@ -236,32 +214,31 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
 
       {/* Right side - Selection Interface */}
       <div className="w-1/2 p-8 overflow-y-auto">
-        <div className="max-w-xl">
-          {/* Close button */}
-          <button onClick={() => window.history.back()} className="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-
-          {/* Frame price */}
-          <div className="mb-8 flex justify-between items-center">
-            <span className="text-sm text-gray-500">Frame price:</span>
-            <span className="font-medium">${product.price.toFixed(2)}</span>
+        <div className="flex flex-col h-full">
+          <div className="flex-grow">
+            {currentStep > 0 && (
+              <button
+                onClick={handleBack}
+                className="flex items-center text-gray-600 mb-4 hover:text-gray-800"
+              >
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                {t('common.back')}
+              </button>
+            )}
+            
+            <div className="mb-8">
+              {getStepContent()}
+            </div>
           </div>
 
-      {currentStep > 0 && (
-        <button
-          onClick={handleBack}
-          className="flex items-center text-gray-600 mb-4 hover:text-gray-800"
-        >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          {t('common.back')}
-        </button>
-      )}
-
-      <div className="mb-8">
-        {getStepContent()}
+          {/* Price display at bottom */}
+          <div className="mt-auto pt-4 border-t">
+            <div className="flex justify-between items-center">
+              <span className="text-sm text-gray-500">{t('lenses.framePrice')}:</span>
+              <span className="font-medium">${calculateTotalPrice().toFixed(2)}</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
