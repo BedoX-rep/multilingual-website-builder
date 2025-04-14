@@ -1,15 +1,9 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 import { useFormattedTranslation } from '../../utils/translationHelper';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft } from 'lucide-react';
-import { VisionNeedSelector } from './VisionNeedSelector';
-import { PrescriptionForm } from './PrescriptionForm';
-import { LensTypeSelector } from './LensTypeSelector';
-import { LensThicknessSelector } from './LensThicknessSelector';
-import { OrderReview } from './OrderReview';
-import { ProductOrder, VisionNeed } from './types';
-import { useLensContext } from './context/LensContext';
-import { useLensOptions } from './hooks/useLensOptions';
+import { ArrowLeft, Check } from 'lucide-react';
+import { ProductOrder, VisionNeed, PrescriptionData, LensTypeOption, LensThicknessOption } from './types';
 
 interface SelectLensesWizardProps {
   product: {
@@ -21,78 +15,273 @@ interface SelectLensesWizardProps {
   onComplete: (orderDetails: ProductOrder) => void;
 }
 
-export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ 
-  product, 
-  onComplete 
-}) => {
+export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product, onComplete }) => {
   const { formattedT: t } = useFormattedTranslation();
-  const { lensTypeOptions, lensThicknessOptions } = useLensOptions();
-  const {
-    currentStep,
-    visionNeed,
-    prescription,
-    selectedLensType,
-    selectedLensThickness,
-    updateSelection,
-    calculateTotalPrice
-  } = useLensContext();
+  const [currentStep, setCurrentStep] = useState(0);
+  const [selections, setSelections] = useState({
+    visionNeed: null as VisionNeed | null,
+    prescription: {
+      rightSphere: '',
+      rightCylinder: '',
+      rightAxis: '',
+      leftSphere: '',
+      leftCylinder: '',
+      leftAxis: '',
+      pupillaryDistance: '',
+      useSavedPrescription: false
+    } as PrescriptionData,
+    selectedLensType: null as LensTypeOption | null,
+    selectedLensThickness: null as LensThicknessOption | null
+  });
 
-  const canProceedToNextStep = () => {
-    switch (currentStep) {
-      case 0: return visionNeed !== null;
-      case 1: return prescription.useSavedPrescription || 
-        (prescription.rightSphere && prescription.leftSphere && prescription.pupillaryDistance);
-      case 2: return selectedLensType !== null;
-      case 3: return selectedLensThickness !== null;
-      default: return true;
+  const lensTypeOptions: LensTypeOption[] = [
+    {
+      id: 'clear',
+      name: t('lenses.clearLens'),
+      description: t('lenses.clearLensDescription'),
+      priceAdditional: 0,
+      image: '/lovable-uploads/4e9518da-6945-4bfb-b417-e85e94b64c19.png'
+    },
+    {
+      id: 'blueLight',
+      name: t('lenses.blueLightLens'),
+      description: t('lenses.blueLightLensDescription'),
+      priceAdditional: 50,
+      image: '/lovable-uploads/4e9518da-6945-4bfb-b417-e85e94b64c19.png'
+    },
+    {
+      id: 'transition',
+      name: t('lenses.transitionLens'),
+      description: t('lenses.transitionLensDescription'),
+      priceAdditional: 100,
+      image: '/lovable-uploads/4e9518da-6945-4bfb-b417-e85e94b64c19.png'
     }
-  };
+  ];
 
-  const trackNavigation = (direction: 'next' | 'back', fromStep: number, toStep: number) => {
-    console.log(`Navigation ${direction}: ${fromStep} -> ${toStep}`);
-    // Here you can add your analytics implementation
-  };
-
-  const handleNext = () => {
-    if (canProceedToNextStep()) {
-      const nextStep = currentStep + 1;
-      trackNavigation('next', currentStep, nextStep);
-      updateSelection({ currentStep: nextStep });
+  const lensThicknessOptions: LensThicknessOption[] = [
+    {
+      id: 'standard',
+      name: t('lenses.standardThickness'),
+      description: t('lenses.standardThicknessDescription'),
+      priceAdditional: 0,
+      image: '/lovable-uploads/4e9518da-6945-4bfb-b417-e85e94b64c19.png'
+    },
+    {
+      id: 'thin',
+      name: t('lenses.thinLens'),
+      description: t('lenses.thinLensDescription'),
+      priceAdditional: 30,
+      image: '/lovable-uploads/4e9518da-6945-4bfb-b417-e85e94b64c19.png'
+    },
+    {
+      id: 'ultraThin',
+      name: t('lenses.ultraThinLens'),
+      description: t('lenses.ultraThinLensDescription'),
+      priceAdditional: 60,
+      image: '/lovable-uploads/4e9518da-6945-4bfb-b417-e85e94b64c19.png'
     }
-  };
+  ];
 
-  const handleBack = () => {
-    if (currentStep > 0) {
-      const prevStep = currentStep <= 2 ? 0 : currentStep - 1;
-      trackNavigation('back', currentStep, prevStep);
-      // Always reset to initial state when going back to vision selection
-      if (currentStep <= 2) {
-        updateSelection({ currentStep: 0 });
+  const visionNeedOptions = [
+    {
+      id: 'singleVision' as VisionNeed,
+      title: t('lenses.singleVisionLenses'),
+      description: t('lenses.singleVisionDescription'),
+      icon: <img src="/lovable-uploads/4e9518da-6945-4bfb-b417-e85e94b64c19.png" alt="Single Vision" className="h-16 w-16 object-contain" />
+    },
+    {
+      id: 'nonPrescription' as VisionNeed,
+      title: t('lenses.nonPrescriptionLenses'),
+      description: t('lenses.nonPrescriptionDescription'),
+      icon: <Eye className="h-10 w-10 text-blue-500" />
+    },
+    {
+      id: 'frameOnly' as VisionNeed,
+      title: t('lenses.frameOnly'),
+      description: t('lenses.frameOnlyDescription'),
+      icon: <Frame className="h-10 w-10 text-blue-500" />
+    }
+  ];
+
+  const handleSelection = (key: keyof typeof selections, value: any) => {
+    setSelections(prev => ({ ...prev, [key]: value }));
+    
+    if (key === 'visionNeed') {
+      if (value === 'frameOnly') {
+        setCurrentStep(4);
+      } else if (value === 'nonPrescription') {
+        setCurrentStep(2);
       } else {
-        updateSelection({ currentStep: prevStep });
+        setCurrentStep(currentStep + 1);
       }
+    } else if (key !== 'prescription') {
+      setCurrentStep(currentStep + 1);
     }
+  };
+
+  const calculateTotalPrice = () => {
+    let total = product.price;
+    if (selections.selectedLensType) total += selections.selectedLensType.priceAdditional;
+    if (selections.selectedLensThickness) total += selections.selectedLensThickness.priceAdditional;
+    return total;
   };
 
   const handleComplete = () => {
-    if (canProceedToNextStep()) {
-      const orderDetails: ProductOrder = {
-        productId: product.id,
-        productName: product.name,
-        productPrice: product.price,
-        visionNeed: visionNeed!,
-        prescription: visionNeed === 'singleVision' ? prescription : undefined,
-        lensType: visionNeed !== 'frameOnly' ? selectedLensType : undefined,
-        lensThickness: visionNeed === 'singleVision' ? selectedLensThickness : undefined,
-        totalPrice: calculateTotalPrice()
-      };
-      onComplete(orderDetails);
-    }
+    const orderDetails: ProductOrder = {
+      productId: product.id,
+      productName: product.name,
+      productPrice: product.price,
+      visionNeed: selections.visionNeed!,
+      prescription: selections.visionNeed === 'singleVision' ? selections.prescription : undefined,
+      lensType: selections.visionNeed !== 'frameOnly' ? selections.selectedLensType : undefined,
+      lensThickness: selections.visionNeed === 'singleVision' ? selections.selectedLensThickness : undefined,
+      totalPrice: calculateTotalPrice()
+    };
+    onComplete(orderDetails);
   };
 
-  const handleVisionNeedChange = (need: VisionNeed) => {
-    updateSelection({ visionNeed: need });
-    handleNext();
+  const renderVisionNeedSelector = () => (
+    <div className="space-y-4">
+      {visionNeedOptions.map((option) => (
+        <div
+          key={option.id}
+          className={`border rounded-lg p-6 cursor-pointer transition-all hover:border-blue-500 ${
+            selections.visionNeed === option.id ? 'border-blue-500 bg-blue-50' : 'border-gray-200'
+          }`}
+          onClick={() => handleSelection('visionNeed', option.id)}
+        >
+          <div className="flex items-center gap-6">
+            <div className="shrink-0 w-16 h-16 flex items-center justify-center">
+              {option.icon}
+            </div>
+            <div>
+              <h4 className="font-semibold text-lg">{option.title}</h4>
+              <p className="text-gray-600">{option.description}</p>
+            </div>
+            {selections.visionNeed === option.id && (
+              <Check className="w-6 h-6 text-blue-500 ml-auto" />
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+
+  const renderLensType = () => (
+    <div className="space-y-4">
+      {lensTypeOptions.map((option) => (
+        <div
+          key={option.id}
+          className={`border rounded-lg p-6 cursor-pointer transition-all hover:border-blue-500 ${
+            selections.selectedLensType?.id === option.id ? 'border-blue-500 bg-blue-50' : 'border-gray-200'
+          }`}
+          onClick={() => handleSelection('selectedLensType', option)}
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-start gap-4">
+              <div className="shrink-0">
+                <img src={option.image} alt={option.name} className="w-16 h-16 object-contain" />
+              </div>
+              <div>
+                <h4 className="font-semibold text-lg mb-1">{option.name}</h4>
+                <p className="text-gray-600 text-sm">{option.description}</p>
+                <p className="text-blue-600 font-semibold mt-2">+${option.priceAdditional}</p>
+              </div>
+            </div>
+            {selections.selectedLensType?.id === option.id && (
+              <Check className="w-6 h-6 text-blue-500" />
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+
+  const renderLensThickness = () => (
+    <div className="space-y-4">
+      {lensThicknessOptions.map((option) => (
+        <div
+          key={option.id}
+          className={`border rounded-lg p-6 cursor-pointer transition-all hover:border-blue-500 ${
+            selections.selectedLensThickness?.id === option.id ? 'border-blue-500 bg-blue-50' : 'border-gray-200'
+          }`}
+          onClick={() => handleSelection('selectedLensThickness', option)}
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-start gap-4">
+              <div className="shrink-0">
+                <img src={option.image} alt={option.name} className="w-16 h-16 object-contain" />
+              </div>
+              <div>
+                <h4 className="font-semibold text-lg mb-1">{option.name}</h4>
+                <p className="text-gray-600 text-sm">{option.description}</p>
+                <p className="text-blue-600 font-semibold mt-2">+${option.priceAdditional}</p>
+              </div>
+            </div>
+            {selections.selectedLensThickness?.id === option.id && (
+              <Check className="w-6 h-6 text-blue-500" />
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+
+  const renderReview = () => (
+    <div className="space-y-6">
+      <div className="border rounded-lg p-6">
+        <h3 className="font-semibold text-xl mb-4">{t('lenses.orderSummary')}</h3>
+        <div className="space-y-4">
+          <div className="flex justify-between">
+            <span>{t('lenses.frame')}</span>
+            <span>${product.price}</span>
+          </div>
+          {selections.selectedLensType && (
+            <div className="flex justify-between">
+              <span>{selections.selectedLensType.name}</span>
+              <span>+${selections.selectedLensType.priceAdditional}</span>
+            </div>
+          )}
+          {selections.selectedLensThickness && (
+            <div className="flex justify-between">
+              <span>{selections.selectedLensThickness.name}</span>
+              <span>+${selections.selectedLensThickness.priceAdditional}</span>
+            </div>
+          )}
+          <div className="border-t pt-4">
+            <div className="flex justify-between font-semibold">
+              <span>{t('lenses.total')}</span>
+              <span>${calculateTotalPrice()}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Button onClick={handleComplete} className="w-full">
+        {t('lenses.addToCart')}
+      </Button>
+    </div>
+  );
+
+  const getStepContent = () => {
+    switch (currentStep) {
+      case 0:
+        return renderVisionNeedSelector();
+      case 1:
+        return (
+          <>
+            <p className="text-gray-600 mb-6">{t('lenses.prescriptionExplanation')}</p>
+            {/* Your existing prescription form JSX */}
+          </>
+        );
+      case 2:
+        return renderLensType();
+      case 3:
+        return renderLensThickness();
+      case 4:
+        return renderReview();
+      default:
+        return null;
+    }
   };
 
   const getStepTitle = () => {
@@ -114,7 +303,6 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({
 
   return (
     <div className="max-w-2xl mx-auto">
-      {/* Progress Steps */}
       <div className="mb-8">
         <h2 className="text-2xl font-bold mb-2">{t('lenses.customizeLenses')}</h2>
         <p className="text-gray-600 mb-4">{getStepTitle()}</p>
@@ -130,10 +318,9 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({
         </div>
       </div>
 
-      {/* Back Button */}
       {currentStep > 0 && (
         <button
-          onClick={handleBack}
+          onClick={() => setCurrentStep(currentStep - 1)}
           className="flex items-center text-gray-600 mb-4 hover:text-gray-800"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
@@ -141,71 +328,20 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({
         </button>
       )}
 
-      {/* Step Content */}
       <div className="mb-8">
-        {currentStep === 0 && (
-          <VisionNeedSelector
-            selected={visionNeed}
-            onChange={handleVisionNeedChange}
-            handleNext={handleNext}
-          />
-        )}
-
-        {currentStep === 1 && visionNeed === 'singleVision' && (
-          <PrescriptionForm
-            prescription={prescription}
-            onChange={(newPrescription) => updateSelection({ prescription: newPrescription })}
-          />
-        )}
-
-        {currentStep === 2 && visionNeed !== 'frameOnly' && (
-          <LensTypeSelector
-            options={lensTypeOptions}
-            selected={selectedLensType}
-            onChange={(type) => updateSelection({ selectedLensType: type })}
-            handleNext={handleNext}
-          />
-        )}
-
-        {currentStep === 3 && visionNeed === 'singleVision' && (
-          <LensThicknessSelector
-            options={lensThicknessOptions}
-            selected={selectedLensThickness}
-            onChange={(thickness) => updateSelection({ selectedLensThickness: thickness })}
-            handleNext={handleNext}
-          />
-        )}
-
-        {currentStep === 4 && (
-          <OrderReview
-            product={product}
-            visionNeed={visionNeed!}
-            prescription={prescription}
-            lensType={selectedLensType}
-            lensThickness={selectedLensThickness}
-            totalPrice={calculateTotalPrice()}
-          />
-        )}
+        {getStepContent()}
       </div>
 
-      {/* Navigation Buttons */}
-      <div className="flex justify-between">
-        {currentStep === 1 && (
-          <Button
-            onClick={handleNext}
-            disabled={!canProceedToNextStep()}
-            className="ml-auto"
-          >
-            {t('common.next')}
-          </Button>
-        )}
-
-        {currentStep === 4 && (
-          <Button onClick={handleComplete} className="ml-auto">
-            {t('common.addToCart')}
-          </Button>
-        )}
-      </div>
+      {currentStep === 1 && (
+        <Button
+          onClick={() => setCurrentStep(currentStep + 1)}
+          disabled={!selections.prescription.useSavedPrescription && 
+            (!selections.prescription.rightSphere || !selections.prescription.leftSphere || !selections.prescription.pupillaryDistance)}
+          className="ml-auto"
+        >
+          {t('common.next')}
+        </Button>
+      )}
     </div>
   );
 };
