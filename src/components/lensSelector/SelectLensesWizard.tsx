@@ -45,7 +45,29 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
   };
 
   const handleBack = () => {
-    setCurrentStep(prev => prev - 1);
+    setCurrentStep(prev => {
+      // If we're going back from lens type (step 2), go back to vision need (step 0)
+      if (prev === 2 && selections.visionNeed !== 'singleVision') {
+        setSelections(prevSelections => ({
+          ...prevSelections,
+          visionNeed: null,
+          selectedLensType: null,
+          selectedLensThickness: null,
+          prescription: {
+            rightSphere: '',
+            rightCylinder: '',
+            rightAxis: '',
+            leftSphere: '',
+            leftCylinder: '',
+            leftAxis: '',
+            pupillaryDistance: '',
+            useSavedPrescription: false
+          }
+        }));
+        return 0;
+      }
+      return prev - 1;
+    });
   };
 
   const handleVisionNeedSelect = (need: VisionNeed) => {
