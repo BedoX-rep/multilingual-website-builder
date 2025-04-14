@@ -1,43 +1,32 @@
-
-export type LensType = 'clear' | 'blueLight' | 'transition';
-export type LensThickness = 'standard' | 'thin' | 'ultraThin';
 export type VisionNeed = 'singleVision' | 'nonPrescription' | 'frameOnly';
 
-export interface LensTypeOption {
-  id: LensType;
+export interface LensOption {
+  id: string;
   name: string;
   description: string;
-  priceAdditional: number;
+  price: number;
   image: string;
 }
 
-export interface LensThicknessOption {
-  id: LensThickness;
-  name: string;
-  description: string;
-  priceAdditional: number;
-  image: string;
+export interface Prescription {
+  rightEye: {
+    sphere: string;
+    cylinder: string;
+    axis: string;
+  };
+  leftEye: {
+    sphere: string;
+    cylinder: string;
+    axis: string;
+  };
+  pd: string;
+  useSaved: boolean;
 }
 
-export interface PrescriptionData {
-  rightSphere: string;
-  rightCylinder: string;
-  rightAxis: string;
-  leftSphere: string;
-  leftCylinder: string;
-  leftAxis: string;
-  pupillaryDistance: string;
-  useSavedPrescription: boolean;
-}
-
-export interface ProductOrder {
-  cartItemId?: string;
-  productId: string;
-  productName: string;
-  productPrice: number;
+export interface LensOrder {
   visionNeed: VisionNeed;
-  prescription?: PrescriptionData;
-  lensType?: LensTypeOption;
-  lensThickness?: LensThicknessOption;
+  prescription?: Prescription;
+  lensType?: LensOption;
+  lensThickness?: LensOption;
   totalPrice: number;
 }
