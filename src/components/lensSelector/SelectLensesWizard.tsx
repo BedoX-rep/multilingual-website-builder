@@ -207,11 +207,11 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
 
   return (
     <div className="fixed inset-0 bg-white z-50 flex">
-      {/* Progress bar */}
+      {/* Progress bar - always shows at least 20% */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gray-100">
         <div 
           className="h-full bg-blue-600 transition-all duration-300" 
-          style={{ width: `${(currentStepNumber / totalSteps) * 100}%` }}
+          style={{ width: `${Math.max(20, (currentStepNumber / totalSteps) * 100)}%` }}
         />
       </div>
 
@@ -225,7 +225,7 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
       </div>
 
       {/* Right side - Selection Interface */}
-      <div className="w-1/2 p-8 overflow-y-auto relative">
+      <div className="w-1/2 overflow-y-auto relative pt-12 pl-12 pr-8">
         {/* Close button */}
         <button 
           onClick={onClose}

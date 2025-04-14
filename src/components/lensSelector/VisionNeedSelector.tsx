@@ -38,10 +38,10 @@ export const VisionNeedSelector: React.FC<VisionNeedSelectorProps> = ({ selected
   ];
 
   return (
-    <div className="space-y-8">
-      <div className="flex flex-col gap-2">
-        <h2 className="text-2xl font-medium">Choose your vision need</h2>
-        <p className="text-gray-600 text-sm">
+    <div className="space-y-8 max-w-2xl">
+      <div className="flex flex-col gap-3">
+        <h2 className="text-2xl font-medium text-gray-900">Choose your vision need</h2>
+        <p className="text-gray-600 text-sm leading-relaxed">
           Based on your prescription, choose your lens from the options below or choose non-prescription if you want visual comfort without vision correction.
         </p>
         <a href="#" className="text-blue-600 text-sm hover:underline">Learn more about lens differences</a>
