@@ -141,39 +141,24 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
       </div>
       
       <div className="flex justify-between mt-auto">
-        {currentStep > 0 && (
-          <Button 
-            variant="outline" 
-            onClick={handleBack}
-            className="flex items-center"
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            {t('common.back')}
-          </Button>
-        )}
-        
-        {currentStep === 0 && (
-          <div></div> // Empty div to maintain layout when there's no back button
-        )}
-        
-        {currentStep < 4 ? (
+        {currentStep === 1 ? (
           <Button 
             disabled={!canProceed()}
             onClick={handleNext}
-            className="flex items-center"
+            className="flex items-center ml-auto"
           >
             {t('common.continue')}
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
-        ) : (
+        ) : currentStep === 4 ? (
           <Button 
             onClick={handleSubmit}
-            className="flex items-center"
+            className="flex items-center ml-auto"
           >
             {t('cart.addToCart')}
             <Check className="ml-2 h-4 w-4" />
           </Button>
-        )}
+        ) : null}
       </div>
     </div>
   );

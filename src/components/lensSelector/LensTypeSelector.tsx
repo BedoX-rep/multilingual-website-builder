@@ -28,7 +28,10 @@ export const LensTypeSelector: React.FC<LensTypeSelectorProps> = ({ options, sel
                 ? 'border-blue-500 bg-blue-50' 
                 : 'border-gray-200'
             }`}
-            onClick={() => onChange(option)}
+            onClick={() => {
+              onChange(option);
+              handleNext();
+            }}
           >
             <div className="flex items-center justify-between">
               <div className="flex items-start gap-4">
