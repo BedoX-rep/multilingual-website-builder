@@ -157,7 +157,7 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
       <div className="flex-1 mb-6">
         {currentStep === 0 && (
           <VisionNeedSelector
-            selected={visionNeed}
+            selected={visionNeed?.id}
             onChange={handleVisionNeedChange}
             handleNext={handleNext}
           />

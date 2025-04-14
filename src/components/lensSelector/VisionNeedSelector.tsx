@@ -55,7 +55,7 @@ export const VisionNeedSelector: React.FC<VisionNeedSelectorProps> = ({ selected
                 : 'border-gray-200'
             }`}
             onClick={() => {
-              onChange(option);
+              onChange(option.id);
               handleNext();
             }}
           >
