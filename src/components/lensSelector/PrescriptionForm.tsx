@@ -70,7 +70,7 @@ export const PrescriptionForm: React.FC<PrescriptionFormProps> = ({ prescription
   );
 
   return (
-    <div className="space-y-6">
+    <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
           <h4 className="font-medium">{t('lenses.useSavedPrescription')}</h4>
@@ -154,6 +154,22 @@ export const PrescriptionForm: React.FC<PrescriptionFormProps> = ({ prescription
           <p className="text-sm text-blue-600">{t('lenses.savedPrescriptionExplanation')}</p>
         </div>
       )}
-    </div>
+      
+      <Button 
+        type="button"
+        className="w-full mt-6"
+        onClick={() => {
+          if (prescription.useSavedPrescription || (
+            prescription.rightSphere && 
+            prescription.leftSphere && 
+            prescription.pupillaryDistance
+          )) {
+            onChange(prescription);
+          }
+        }}
+      >
+        {t('common.continue')}
+      </Button>
+    </form>
   );
 };
