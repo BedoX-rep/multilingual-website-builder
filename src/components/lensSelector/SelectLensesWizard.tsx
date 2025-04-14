@@ -36,31 +36,7 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
   const [visionNeed, setVisionNeed] = useState<VisionNeed | null>(null);
   
   const handleVisionNeedChange = (need: VisionNeed) => {
-    // Reset all subsequent selections if vision need changes
     setVisionNeed(need);
-    setPrescription({
-      rightSphere: '',
-      rightCylinder: '',
-      rightAxis: '',
-      leftSphere: '',
-      leftCylinder: '',
-      leftAxis: '',
-      pupillaryDistance: '',
-      useSavedPrescription: false
-    });
-    setSelectedLensType(null);
-    setSelectedLensThickness(null);
-  };
-
-  // Reset subsequent selections when going back
-  const handleBack = () => {
-    if (currentStep === 2) {
-      setSelectedLensType(null);
-      setSelectedLensThickness(null);
-    } else if (currentStep === 3) {
-      setSelectedLensThickness(null);
-    }
-    setCurrentStep(prev => prev - 1);
   };
   const [prescription, setPrescription] = useState<PrescriptionData>({
     rightSphere: '',
