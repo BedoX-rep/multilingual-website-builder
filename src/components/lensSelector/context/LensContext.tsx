@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
-import { VisionNeed, PrescriptionData, LensTypeOption, LensThicknessOption } from '../types';
+import { VisionNeed, PrescriptionData, LensTypeOption, LensThicknessOption, ProductOrder } from '../types';
+import { useFormattedTranslation } from '../../../utils/translationHelper';
 
 interface LensState {
   currentStep: number;
@@ -13,21 +14,26 @@ interface LensContextType extends LensState {
   updateSelection: (updates: Partial<LensState>) => void;
   resetSelections: () => void;
   calculateTotalPrice: () => number;
+  handleStepChange: (step: number) => void;
+  handleSelectionComplete: () => void;
 }
+
+const initialPrescription: PrescriptionData = {
+  rightSphere: '',
+  rightCylinder: '',
+  rightAxis: '',
+  leftSphere: '',
+  leftCylinder: '',
+  leftAxis: '',
+  pupillaryDistance: '',
+  useSavedPrescription: false,
+  isCompleted: false
+};
 
 const initialState: LensState = {
   currentStep: 0,
   visionNeed: null,
-  prescription: {
-    rightSphere: '',
-    rightCylinder: '',
-    rightAxis: '',
-    leftSphere: '',
-    leftCylinder: '',
-    leftAxis: '',
-    pupillaryDistance: '',
-    useSavedPrescription: false
-  },
+  prescription: initialPrescription,
   selectedLensType: null,
   selectedLensThickness: null
 };
@@ -41,7 +47,7 @@ export const LensProvider: React.FC<{
 }> = ({ children, product, onComplete }) => {
   const [state, setState] = useState<LensState>(initialState);
   const { formattedT: t } = useFormattedTranslation();
-  
+
   const handleStepChange = (step: number) => {
     setState(prev => ({ ...prev, currentStep: step }));
   };
@@ -60,66 +66,22 @@ export const LensProvider: React.FC<{
     onComplete(orderDetails);
   };
 
-  const trackStepCompletion = (step: number, selection?: any) => {
-    // Track step completion
-    const stepNames = {
-      0: 'Vision Need',
-      1: 'Prescription',
-      2: 'Lens Type',
-      3: 'Lens Thickness',
-      4: 'Review'
-    };
-    
-    console.log(`Step ${step} (${stepNames[step as keyof typeof stepNames]}) completed`, selection);
-    // Here you can add your analytics implementation
-  };
-
   const updateSelection = (updates: Partial<LensState>) => {
     setState(prev => {
       let newState = { ...prev };
 
-      // Complete reset when going back to vision selection
-      if (updates.currentStep === 0) {
-        newState = { ...initialState };
-      }
-      // Apply new updates
-      newState = { ...newState, ...updates };
-
-      // Track meaningful selections
-      if (updates.visionNeed) {
-        trackStepCompletion(0, updates.visionNeed);
-      }
-      if (updates.selectedLensType) {
-        trackStepCompletion(2, updates.selectedLensType);
-      }
-      if (updates.selectedLensThickness) {
-        trackStepCompletion(3, updates.selectedLensThickness);
-      }
-
-      // Reset dependent selections when vision need changes
       if (updates.visionNeed && updates.visionNeed !== prev.visionNeed) {
-        newState.selectedLensType = null;
-        newState.selectedLensThickness = null;
-        newState.prescription = initialState.prescription;
-        
-        // Set appropriate step based on vision need
-        if (updates.visionNeed === 'frameOnly') {
-          newState.currentStep = 4;
-        } else if (updates.visionNeed === 'nonPrescription') {
-          newState.currentStep = 2;
-        } else {
-          newState.currentStep = 1;
-        }
-      }
-
-      // Handle back navigation
-      if (updates.currentStep < prev.currentStep) {
-        if (prev.currentStep === 2 && updates.currentStep === 0) {
-          newState.visionNeed = null;
-          newState.selectedLensType = null;
-          newState.selectedLensThickness = null;
-          newState.prescription = initialState.prescription;
-        }
+        // Reset selections when vision type changes
+        newState = {
+          ...initialState,
+          visionNeed: updates.visionNeed,
+          currentStep: updates.visionNeed === 'frameOnly' ? 4 
+                      : updates.visionNeed === 'nonPrescription' ? 2 
+                      : 1
+        };
+      } else {
+        // Apply new updates
+        newState = { ...newState, ...updates };
       }
 
       return newState;
@@ -130,8 +92,12 @@ export const LensProvider: React.FC<{
 
   const calculateTotalPrice = () => {
     let total = product.price;
-    if (state.selectedLensType) total += state.selectedLensType.priceAdditional;
-    if (state.selectedLensThickness) total += state.selectedLensThickness.priceAdditional;
+    if (state.selectedLensType) {
+      total += state.selectedLensType.priceAdditional;
+    }
+    if (state.selectedLensThickness) {
+      total += state.selectedLensThickness.priceAdditional;
+    }
     return total;
   };
 
@@ -140,7 +106,9 @@ export const LensProvider: React.FC<{
       ...state,
       updateSelection,
       resetSelections,
-      calculateTotalPrice
+      calculateTotalPrice,
+      handleStepChange,
+      handleSelectionComplete
     }}>
       {children}
     </LensContext.Provider>
