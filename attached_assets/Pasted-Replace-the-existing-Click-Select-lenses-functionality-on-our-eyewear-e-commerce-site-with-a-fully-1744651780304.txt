@@ -1,0 +1,144 @@
+Replace the existing “Click Select lenses” functionality on our eyewear e-commerce site with a fully functional multi-step lens customization wizard. This wizard must replace legacy code by completely deleting the old files related to the previous implementation.
+
+Overall Requirements:
+
+Develop a modular wizard component that handles multi-step navigation and includes a dynamic progress indicator showing the user’s current progress through the customization process.
+
+Ensure that the component is responsive and integrates cleanly within the site’s design and style guidelines.
+
+Implement conditional logic such that the user’s selections determine the appropriate sequence of steps.
+
+The wizard should support three user flows based on the initial “Vision Type” selection:
+
+Single Vision (prescription needed)
+
+Non-Prescription
+
+Frame Only
+
+Delete any and all legacy files or code responsible for the “Select lenses” action to prevent interference with the new functionality.
+
+Step-by-Step Requirements:
+
+Step 1: Vision Type Selector
+
+Create a landing page for the wizard that lets users choose their vision requirements. Provide three clearly labeled options:
+
+Single Vision (prescription needed)
+
+Non-Prescription
+
+Frame Only
+
+Ensure that the chosen option determines which subsequent pages are shown.
+
+Provide clear instructions and visual cues to guide the user.
+
+Include a button to confirm the vision type and proceed to the next step.
+
+Flow A – Single Vision:
+
+Step 2: Fill in Your Prescription Form
+
+Present a form for entering prescription data. The form must include:
+
+Right Eye Inputs: Sphere, Cylinder, and Axis
+
+Left Eye Inputs: Sphere, Cylinder, and Axis
+
+Pupillary Distance (PD): A numeric input for the pupillary distance
+
+Include an option (e.g., a toggle or checkbox) that allows the user to “Use Saved Prescription” if available.
+
+Validate the inputs to ensure that the prescription is complete and formatted correctly.
+
+Provide a “Next” button to proceed to the following step.
+
+Step 3: Lens Type Selector
+
+Allow the user to choose among three lens types, each with a price indicator:
+
+Clear lenses: $0 additional
+
+Blue light filtering lenses: +$50 additional
+
+Transition lenses: +$100 additional
+
+Use radio buttons or styled selection cards for clarity.
+
+Update any state or pricing information dynamically based on the selection.
+
+Include navigation controls to move back to prescription step or forward.
+
+Step 4: Lens Thickness Options
+
+Let the user select from three lens thickness options:
+
+Standard: $0 additional
+
+Thin: +$30 additional
+
+Ultra-thin: +$60 additional
+
+As with previous steps, use clear visual cues and selection indicators.
+
+Reflect any price changes immediately.
+
+Provide navigation to go back or move ahead.
+
+Step 5: Order Review and Summary
+
+On this final review page, display the following elements:
+
+Frame Details: Summarize details of the chosen frame (these should be pulled from the current order context).
+
+Selected Options: List all selected options – vision type, prescription details (if applicable), lens type, and lens thickness.
+
+Total Price Calculation: Dynamically compute and display the total order price based on the additional costs of selected options.
+
+Include an “Edit” option beside each section so users can go back to change a specific detail if needed.
+
+Provide a clear “Confirm Order” call-to-action button.
+
+Flow B – Non-Prescription:
+
+Replicate the flow for Single Vision with one key difference:
+
+Skip the Prescription Form: After the Vision Type Selector (Step 1), proceed directly to the Lens Type Selector (Step 3).
+
+Continue with Steps 4 (Lens Thickness) and 5 (Order Review) as detailed above.
+
+Flow C – Frame Only:
+
+Again, starting from the Vision Type Selector:
+
+Skip directly to Order Review (Step 5): In this flow, do not show the prescription, lens type, or lens thickness pages.
+
+Make sure that the order review page still accurately reflects the frame details and any applicable configurations (if, for example, frame-only orders have different pricing/logic).
+
+Additional Technical and UX Instructions:
+
+The wizard should be stateful; as the user advances, the selections are stored and used in subsequent pages.
+
+Ensure the progress indicator updates dynamically. For example, if the user is in Flow A (Single Vision), the progress might display 5 steps total, while Flow C (Frame Only) might only display 2 steps.
+
+Implement proper error handling and field validation for user inputs.
+
+Design the wizard UI to be mobile-responsive and accessible (consider proper labeling, keyboard navigation, and ARIA attributes as necessary).
+
+Maintain a clean component structure that allows for easy unit testing and potential reuse of individual steps.
+
+Integrate with your pricing logic to update the order review and ensure that any additions (e.g., +$50 for blue light filtering) are correctly calculated and displayed.
+
+Finally, ensure to completely remove and clean up any deprecated files or code associated with the legacy "Select lenses" functionality.
+
+Expected Deliverable:
+The AI agent should deliver a fully functional wizard component with all pages integrated, state management, and navigation built in. It should support different workflow paths depending on the vision type selection. Additionally, the agent must provide a summary of the architectural changes and a code cleanup report detailing which files were deleted and the reason for their removal.
+
+Notes:
+
+Please provide inline comments within the code to explain major sections, especially where conditional flows and data calculations occur.
+
+Where applicable, include unit test stubs or suggestions for how the component can be tested.
+
+The implementation may use your preferred front-end framework (e.g., React, Vue, Angular), but ensure that the final integration process is clearly documented.
