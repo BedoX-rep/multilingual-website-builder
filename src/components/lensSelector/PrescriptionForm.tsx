@@ -154,16 +154,6 @@ export const PrescriptionForm: React.FC<PrescriptionFormProps> = ({ prescription
           <p className="text-sm text-blue-600">{t('lenses.savedPrescriptionExplanation')}</p>
         </div>
       )}
-      
-      <div className="mt-6">
-        <Button 
-          onClick={() => onChange(prescription)}
-          className="w-full"
-          disabled={!prescription.useSavedPrescription && (!prescription.rightSphere || !prescription.leftSphere || !prescription.pupillaryDistance)}
-        >
-          {t('common.continue')}
-        </Button>
-      </div>
     </div>
   );
 };
