@@ -37,8 +37,28 @@ const LensContext = createContext<LensContextType | undefined>(undefined);
 export const LensProvider: React.FC<{
   children: React.ReactNode;
   product: { id: string; name: string; price: number; };
-}> = ({ children, product }) => {
+  onComplete: (orderDetails: ProductOrder) => void;
+}> = ({ children, product, onComplete }) => {
   const [state, setState] = useState<LensState>(initialState);
+  const { formattedT: t } = useFormattedTranslation();
+  
+  const handleStepChange = (step: number) => {
+    setState(prev => ({ ...prev, currentStep: step }));
+  };
+
+  const handleSelectionComplete = () => {
+    const orderDetails: ProductOrder = {
+      productId: product.id,
+      productName: product.name,
+      productPrice: product.price,
+      visionNeed: state.visionNeed!,
+      prescription: state.visionNeed === 'singleVision' ? state.prescription : undefined,
+      lensType: state.visionNeed !== 'frameOnly' ? state.selectedLensType : undefined,
+      lensThickness: state.visionNeed === 'singleVision' ? state.selectedLensThickness : undefined,
+      totalPrice: calculateTotalPrice()
+    };
+    onComplete(orderDetails);
+  };
 
   const trackStepCompletion = (step: number, selection?: any) => {
     // Track step completion
