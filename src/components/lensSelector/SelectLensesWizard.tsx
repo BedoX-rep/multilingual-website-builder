@@ -57,8 +57,8 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({
 
   const handleBack = () => {
     if (currentStep > 0) {
-      // When going back from lens type to vision need selection
-      if (currentStep === 2) {
+      // Always reset to initial state when going back to vision selection
+      if (currentStep <= 2) {
         updateSelection({ currentStep: 0 });
       } else {
         updateSelection({ currentStep: currentStep - 1 });

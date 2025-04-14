@@ -42,14 +42,21 @@ export const LensProvider: React.FC<{
 
   const updateSelection = (updates: Partial<LensState>) => {
     setState(prev => {
-      const newState = { ...prev, ...updates };
+      let newState = { ...prev };
+
+      // Complete reset when going back to vision selection
+      if (updates.currentStep === 0) {
+        newState = { ...initialState };
+      } 
+      // Apply new updates
+      newState = { ...newState, ...updates };
 
       // Reset dependent selections when vision need changes
       if (updates.visionNeed && updates.visionNeed !== prev.visionNeed) {
         newState.selectedLensType = null;
         newState.selectedLensThickness = null;
         newState.prescription = initialState.prescription;
-
+        
         // Set appropriate step based on vision need
         if (updates.visionNeed === 'frameOnly') {
           newState.currentStep = 4;
