@@ -33,7 +33,8 @@ const SelectLenses: React.FC = () => {
   const product = mockProducts.find(p => p.id === id) || mockProducts[0];
 
   const handleAddToCart = (orderDetails: ProductOrder) => {
-    navigate('/product/' + id);
+    addToCart(orderDetails);
+    navigate('/cart');
   };
 
   return (

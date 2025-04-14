@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useFormattedTranslation } from '../../utils/translationHelper';
 import { Button } from '@/components/ui/button';
@@ -75,24 +74,20 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({
     }
   };
 
-  const handleSubmit = () => {
-    const orderDetails: ProductOrder = {
-      productId: product.id,
-      productName: product.name,
-      productPrice: product.price,
-      visionNeed: visionNeed!,
-      totalPrice: calculateTotalPrice()
-    };
-
-    if (visionNeed === 'singleVision') {
-      orderDetails.prescription = prescription;
-      orderDetails.lensType = selectedLensType!;
-      orderDetails.lensThickness = selectedLensThickness!;
-    } else if (visionNeed === 'nonPrescription') {
-      orderDetails.lensType = selectedLensType!;
+  const handleComplete = () => {
+    if (canProceedToNextStep()) {
+      const orderDetails: ProductOrder = {
+        productId: product.id,
+        productName: product.name,
+        productPrice: product.price,
+        visionNeed: visionNeed!,
+        prescription: visionNeed === 'singleVision' ? prescription : undefined,
+        lensType: visionNeed !== 'frameOnly' ? selectedLensType : undefined,
+        lensThickness: visionNeed === 'singleVision' ? selectedLensThickness : undefined,
+        totalPrice: calculateTotalPrice()
+      };
+      onComplete(orderDetails);
     }
-
-    onComplete(orderDetails);
   };
 
   const handleVisionNeedChange = (need: VisionNeed) => {
@@ -136,14 +131,14 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({
             handleNext={handleNext}
           />
         )}
-        
+
         {currentStep === 1 && visionNeed === 'singleVision' && (
           <PrescriptionForm
             prescription={prescription}
             onChange={(newPrescription) => updateSelection({ prescription: newPrescription })}
           />
         )}
-        
+
         {currentStep === 2 && visionNeed !== 'frameOnly' && (
           <LensTypeSelector
             options={lensTypeOptions}
@@ -152,7 +147,7 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({
             handleNext={handleNext}
           />
         )}
-        
+
         {currentStep === 3 && visionNeed === 'singleVision' && (
           <LensThicknessSelector
             options={lensThicknessOptions}
@@ -161,7 +156,7 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({
             handleNext={handleNext}
           />
         )}
-        
+
         {currentStep === 4 && (
           <OrderReview
             product={product}
@@ -185,9 +180,9 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({
             {t('common.next')}
           </Button>
         )}
-        
+
         {currentStep === 4 && (
-          <Button onClick={handleSubmit} className="ml-auto">
+          <Button onClick={handleComplete} className="ml-auto">
             {t('common.addToCart')}
           </Button>
         )}
