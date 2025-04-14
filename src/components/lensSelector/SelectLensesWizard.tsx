@@ -50,12 +50,18 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
 
   const handleVisionNeedSelect = (need: VisionNeed) => {
     setSelections(prev => ({ ...prev, visionNeed: need }));
-    if (need === 'frameOnly') {
-      setCurrentStep(4); // Go to review
-    } else if (need === 'nonPrescription') {
-      setCurrentStep(2); // Skip prescription, go to lens type
-    } else {
-      setCurrentStep(1); // Go to prescription
+    switch (need) {
+      case 'frameOnly':
+        setCurrentStep(4); // Go to review
+        break;
+      case 'nonPrescription':
+        setCurrentStep(2); // Skip prescription, go to lens type
+        break;
+      case 'singleVision':
+        setCurrentStep(1); // Go to prescription
+        break;
+      default:
+        setCurrentStep(0);
     }
   };
 
