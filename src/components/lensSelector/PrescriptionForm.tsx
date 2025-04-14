@@ -17,15 +17,6 @@ interface PrescriptionFormProps {
   onChange: (prescription: PrescriptionData) => void;
 }
 
-const generateOptions = (start: number, end: number, step: number, format: (val: number) => string): FieldOption[] => {
-  const options = [];
-  for (let i = start; i <= end; i += step) {
-    const value = format(i);
-    options.push({ value, label: value });
-  }
-  return options;
-};
-
 export const PrescriptionForm: React.FC<PrescriptionFormProps> = ({ prescription, onChange }) => {
   const { formattedT: t } = useFormattedTranslation();
 
@@ -44,10 +35,17 @@ export const PrescriptionForm: React.FC<PrescriptionFormProps> = ({ prescription
   const handleInputChange = (field: keyof PrescriptionData, value: string) => {
     const updatedPrescription = {
       ...prescription,
-      [field]: value
+      [field]: value,
+      preventNavigation: true
     };
-    // Only update the prescription without triggering navigation
-    onChange({...updatedPrescription, preventNavigation: true});
+    onChange(updatedPrescription);
+  };
+
+  const handleContinue = () => {
+    if (canContinue) {
+      const { preventNavigation, ...prescriptionData } = prescription;
+      onChange(prescriptionData);
+    }
   };
 
   const PrescriptionField = ({ label, options, value, onChange }: {
@@ -168,15 +166,20 @@ export const PrescriptionForm: React.FC<PrescriptionFormProps> = ({ prescription
       <Button 
         type="button"
         className="w-full mt-6"
-        onClick={() => {
-          if (canContinue) {
-            onChange({...prescription});
-          }
-        }}
+        onClick={handleContinue}
         disabled={!canContinue}
       >
         {t('common.continue')}
       </Button>
     </div>
   );
+};
+
+const generateOptions = (start: number, end: number, step: number, format: (val: number) => string): FieldOption[] => {
+  const options = [];
+  for (let i = start; i <= end; i += step) {
+    const value = format(i);
+    options.push({ value, label: value });
+  }
+  return options;
 };
