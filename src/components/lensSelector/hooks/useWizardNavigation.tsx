@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useFormattedTranslation } from '../../../utils/translationHelper';
 import { VisionNeedSelector } from '../VisionNeedSelector';
@@ -51,19 +50,19 @@ export const useWizardNavigation = ({
   // Calculate total price based on selections
   const calculateTotalPrice = () => {
     let total = product.price;
-    
+
     if (visionNeed === 'frameOnly') {
       return total;
     }
-    
+
     if (selectedLensType) {
       total += selectedLensType.priceAdditional;
     }
-    
+
     if (visionNeed === 'singleVision' && selectedLensThickness) {
       total += selectedLensThickness.priceAdditional;
     }
-    
+
     return total;
   };
 
@@ -75,19 +74,19 @@ export const useWizardNavigation = ({
         setCurrentStep(4); // Skip directly to the review step (index 4)
         return;
       }
-      
+
       // Special case for nonPrescription which skips the prescription form step
       if (visionNeed === 'nonPrescription') {
         setCurrentStep(2); // Skip to lens type selection
         return;
       }
     }
-    
+
     if (currentStep < getMaxSteps() - 1) {
       setCurrentStep(currentStep + 1);
     }
   };
-  
+
   // Back step handler with fixes for special flows
   const handleBack = () => {
     // Special case for frameOnly which jumps back to vision need selection
@@ -95,7 +94,7 @@ export const useWizardNavigation = ({
       setCurrentStep(0);
       return;
     }
-    
+
     // Special case for nonPrescription which skips the prescription form step
     if (visionNeed === 'nonPrescription' && currentStep > 0) {
       if (currentStep === 2) {
@@ -106,17 +105,22 @@ export const useWizardNavigation = ({
         return;
       }
     }
-    
+    if (currentStep === 2) {
+      setSelectedLensType(null);
+      setSelectedLensThickness(null);
+    } else if (currentStep === 3) {
+      setSelectedLensThickness(null);
+    }
     if (currentStep > 0) {
       setCurrentStep(currentStep - 1);
     }
   };
-  
+
   // Get maximum steps based on vision need
   const getMaxSteps = () => {
     return 5; // We always keep 5 steps total, but navigate through them differently
   };
-  
+
   // Determine if we can proceed to the next step
   const canProceed = () => {
     switch (currentStep) {
@@ -133,7 +137,7 @@ export const useWizardNavigation = ({
         return true;
     }
   };
-  
+
   // Get step title
   const getStepTitle = () => {
     switch (currentStep) {
@@ -158,7 +162,7 @@ export const useWizardNavigation = ({
     if (visionNeed === 'frameOnly') {
       return currentStep === 0 ? 0 : 1;
     }
-    
+
     // For non-prescription, we have 3 steps (selection, lens type, review)
     if (visionNeed === 'nonPrescription') {
       if (currentStep === 0) return 0;
@@ -166,7 +170,7 @@ export const useWizardNavigation = ({
       if (currentStep === 4) return 1;
       return 0;
     }
-    
+
     // For single vision, we have all 5 steps
     return currentStep / 4; // Divide by (steps-1) to get proportion
   };
