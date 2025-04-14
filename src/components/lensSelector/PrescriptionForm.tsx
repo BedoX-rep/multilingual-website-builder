@@ -46,7 +46,8 @@ export const PrescriptionForm: React.FC<PrescriptionFormProps> = ({ prescription
       ...prescription,
       [field]: value
     };
-    onChange(updatedPrescription);
+    // Only update the prescription without triggering navigation
+    onChange({...updatedPrescription, preventNavigation: true});
   };
 
   const PrescriptionField = ({ label, options, value, onChange }: {
