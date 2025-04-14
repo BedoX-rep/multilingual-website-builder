@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useFormattedTranslation } from "../utils/translationHelper";
@@ -7,12 +6,30 @@ import { Button } from "@/components/ui/button";
 import LanguageSelector from "./LanguageSelector";
 import { useCart } from "../contexts/CartContext";
 
+// Basic CartDisplay component (needs improvement based on actual cart data structure)
+const CartDisplay = () => {
+  const { cartItems } = useCart(); // Assuming cartItems is available in CartContext
+  return (
+    <div>
+      {cartItems.length > 0 ? (
+        cartItems.map((item, index) => (
+          <div key={index}>
+            <p>{item.name} - {item.quantity}</p>
+          </div>
+        ))
+      ) : (
+        <p>Your cart is empty.</p>
+      )}
+    </div>
+  );
+};
+
+
 const Header: React.FC = () => {
   const { formattedT: t } = useFormattedTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { cartCount } = useCart();
+  const { cartCount, cartItems } = useCart();
 
-  // Close mobile menu on window resize
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
@@ -31,7 +48,6 @@ const Header: React.FC = () => {
   return (
     <header className="sticky top-0 z-40 w-full bg-white border-b border-gray-200">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        {/* Logo */}
         <Link to="/" className="flex-shrink-0">
           <img
             src="/lovable-uploads/navlogo1.png"
@@ -40,7 +56,6 @@ const Header: React.FC = () => {
           />
         </Link>
 
-        {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           <Link to="/" className="text-gray-600 hover:text-blue-600 transition-colors">
             {t("nav.home")}
@@ -56,7 +71,6 @@ const Header: React.FC = () => {
           </Link>
         </nav>
 
-        {/* Right side items (Language, Cart, Account) */}
         <div className="flex items-center space-x-2 md:space-x-4">
           <LanguageSelector />
           <div className="relative">
@@ -73,7 +87,6 @@ const Header: React.FC = () => {
             <User className="h-5 w-5" />
           </Button>
 
-          {/* Mobile menu button */}
           <Button
             variant="outline"
             size="icon"
@@ -86,33 +99,32 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {isMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-200">
           <div className="container mx-auto px-4 py-3 space-y-2">
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               className="block py-2 text-gray-600 hover:text-blue-600 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               {t("nav.home")}
             </Link>
-            <Link 
-              to="/products" 
+            <Link
+              to="/products"
               className="block py-2 text-gray-600 hover:text-blue-600 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               {t("nav.products")}
             </Link>
-            <Link 
-              to="/about" 
+            <Link
+              to="/about"
               className="block py-2 text-gray-600 hover:text-blue-600 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               {t("nav.about")}
             </Link>
-            <Link 
-              to="/contact" 
+            <Link
+              to="/contact"
               className="block py-2 text-gray-600 hover:text-blue-600 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
