@@ -49,19 +49,28 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({
     }
   };
 
+  const trackNavigation = (direction: 'next' | 'back', fromStep: number, toStep: number) => {
+    console.log(`Navigation ${direction}: ${fromStep} -> ${toStep}`);
+    // Here you can add your analytics implementation
+  };
+
   const handleNext = () => {
     if (canProceedToNextStep()) {
-      updateSelection({ currentStep: currentStep + 1 });
+      const nextStep = currentStep + 1;
+      trackNavigation('next', currentStep, nextStep);
+      updateSelection({ currentStep: nextStep });
     }
   };
 
   const handleBack = () => {
     if (currentStep > 0) {
+      const prevStep = currentStep <= 2 ? 0 : currentStep - 1;
+      trackNavigation('back', currentStep, prevStep);
       // Always reset to initial state when going back to vision selection
       if (currentStep <= 2) {
         updateSelection({ currentStep: 0 });
       } else {
-        updateSelection({ currentStep: currentStep - 1 });
+        updateSelection({ currentStep: prevStep });
       }
     }
   };

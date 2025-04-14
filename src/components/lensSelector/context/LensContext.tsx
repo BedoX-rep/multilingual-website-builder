@@ -40,6 +40,20 @@ export const LensProvider: React.FC<{
 }> = ({ children, product }) => {
   const [state, setState] = useState<LensState>(initialState);
 
+  const trackStepCompletion = (step: number, selection?: any) => {
+    // Track step completion
+    const stepNames = {
+      0: 'Vision Need',
+      1: 'Prescription',
+      2: 'Lens Type',
+      3: 'Lens Thickness',
+      4: 'Review'
+    };
+    
+    console.log(`Step ${step} (${stepNames[step as keyof typeof stepNames]}) completed`, selection);
+    // Here you can add your analytics implementation
+  };
+
   const updateSelection = (updates: Partial<LensState>) => {
     setState(prev => {
       let newState = { ...prev };
@@ -47,9 +61,20 @@ export const LensProvider: React.FC<{
       // Complete reset when going back to vision selection
       if (updates.currentStep === 0) {
         newState = { ...initialState };
-      } 
+      }
       // Apply new updates
       newState = { ...newState, ...updates };
+
+      // Track meaningful selections
+      if (updates.visionNeed) {
+        trackStepCompletion(0, updates.visionNeed);
+      }
+      if (updates.selectedLensType) {
+        trackStepCompletion(2, updates.selectedLensType);
+      }
+      if (updates.selectedLensThickness) {
+        trackStepCompletion(3, updates.selectedLensThickness);
+      }
 
       // Reset dependent selections when vision need changes
       if (updates.visionNeed && updates.visionNeed !== prev.visionNeed) {
