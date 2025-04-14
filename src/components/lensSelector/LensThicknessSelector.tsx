@@ -3,15 +3,21 @@ import React from 'react';
 import { useFormattedTranslation } from '../../utils/translationHelper';
 import { LensThicknessOption } from './types';
 import { Check } from 'lucide-react';
+import { Card } from '../ui/card';
 
-interface LensThicknessSelectorProps {
-  options: LensThicknessOption[];
-  selected: LensThicknessOption | null;
-  onChange: (selected: LensThicknessOption) => void;
+interface OptionSelectorProps<T> {
+  options: T[];
+  selected: T | null;
+  onChange: (selected: T) => void;
   handleNext: () => void;
 }
 
-export const LensThicknessSelector: React.FC<LensThicknessSelectorProps> = ({ options, selected, onChange, handleNext }) => {
+export const LensThicknessSelector: React.FC<OptionSelectorProps<LensThicknessOption>> = ({ 
+  options, 
+  selected, 
+  onChange, 
+  handleNext 
+}) => {
   const { formattedT: t } = useFormattedTranslation();
   
   return (
@@ -22,9 +28,9 @@ export const LensThicknessSelector: React.FC<LensThicknessSelectorProps> = ({ op
       
       <div className="space-y-4">
         {options.map((option) => (
-          <div 
+          <Card 
             key={option.id}
-            className={`border rounded-lg p-6 cursor-pointer transition-all hover:border-blue-500 ${
+            className={`p-6 cursor-pointer transition-all hover:border-blue-500 ${
               selected?.id === option.id 
                 ? 'border-blue-500 bg-blue-50' 
                 : 'border-gray-200'
@@ -62,7 +68,7 @@ export const LensThicknessSelector: React.FC<LensThicknessSelectorProps> = ({ op
                 </div>
               )}
             </div>
-          </div>
+          </Card>
         ))}
       </div>
     </div>
