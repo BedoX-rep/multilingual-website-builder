@@ -73,10 +73,6 @@ export const VisionNeedSelector: React.FC<VisionNeedSelectorProps> = ({ selected
           </div>
         ))}
       </div>
-      <div className="mt-6"> {/* Added progress tracker */}
-        <p>Step {currentStep} of {totalSteps}</p> {/* Simple progress tracker */}
-        <button onClick={handleNext} className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Next</button>
-      </div>
     </div>
   );
 };
