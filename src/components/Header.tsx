@@ -74,14 +74,16 @@ const Header: React.FC = () => {
         <div className="flex items-center space-x-2 md:space-x-4">
           <LanguageSelector />
           <div className="relative">
-            <Button variant="outline" size="icon" aria-label="Shopping Cart">
-              <ShoppingCart className="h-5 w-5" />
-              {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
-                  {cartCount}
-                </span>
-              )}
-            </Button>
+            <Link to="/cart">
+              <Button variant="outline" size="icon" aria-label="Shopping Cart">
+                <ShoppingCart className="h-5 w-5" />
+                {cartCount > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+                    {cartCount}
+                  </span>
+                )}
+              </Button>
+            </Link>
           </div>
           <Button variant="outline" size="icon" aria-label="Account">
             <User className="h-5 w-5" />
