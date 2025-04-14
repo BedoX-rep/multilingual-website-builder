@@ -1,6 +1,6 @@
+
 import React, { createContext, useContext, useState } from 'react';
 import { VisionNeed, PrescriptionData, LensTypeOption, LensThicknessOption, ProductOrder } from '../types';
-import { useFormattedTranslation } from '../../../utils/translationHelper';
 
 interface LensState {
   currentStep: number;
@@ -46,7 +46,6 @@ export const LensProvider: React.FC<{
   onComplete: (orderDetails: ProductOrder) => void;
 }> = ({ children, product, onComplete }) => {
   const [state, setState] = useState<LensState>(initialState);
-  const { formattedT: t } = useFormattedTranslation();
 
   const handleStepChange = (step: number) => {
     setState(prev => ({ ...prev, currentStep: step }));
@@ -80,7 +79,6 @@ export const LensProvider: React.FC<{
                       : 1
         };
       } else {
-        // Apply new updates
         newState = { ...newState, ...updates };
       }
 
