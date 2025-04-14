@@ -43,6 +43,7 @@ export const PrescriptionForm: React.FC<PrescriptionFormProps> = ({ prescription
 
   const handleContinue = () => {
     if (canContinue) {
+      // Remove preventNavigation flag to allow navigation
       const { preventNavigation, ...prescriptionData } = prescription;
       onChange(prescriptionData);
     }

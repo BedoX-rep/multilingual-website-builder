@@ -74,8 +74,15 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
   };
 
   const handlePrescriptionSubmit = (prescriptionData: PrescriptionData) => {
-    setSelections(prev => ({ ...prev, prescription: prescriptionData }));
-    setCurrentStep(2); // Go to lens type
+    // Only navigate if it's not an automatic update
+    if (!('preventNavigation' in prescriptionData)) {
+      setSelections(prev => ({ ...prev, prescription: prescriptionData }));
+      setCurrentStep(2); // Go to lens type
+    } else {
+      // Just update the prescription without navigation
+      const { preventNavigation, ...prescription } = prescriptionData;
+      setSelections(prev => ({ ...prev, prescription }));
+    }
   };
 
   const calculateTotalPrice = () => {
