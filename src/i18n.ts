@@ -29,6 +29,7 @@ const enTranslations = {
   },
   lenses: {
     selectLenses: "Select Lenses",
+    customizeLenses: "Customize Your Lenses",
     chooseVisionNeed: "Choose your vision need",
     enterPrescription: "Enter your prescription",
     selectLensType: "Select lens type",
@@ -66,7 +67,16 @@ const enTranslations = {
     totalPrice: "Total Price",
     rightEye: "Right Eye",
     leftEye: "Left Eye",
-    usingSavedPrescription: "Using your saved prescription"
+    useSavedPrescription: "Use saved prescription",
+    pupillaryDistance: "Pupillary Distance",
+    sphere: "Sphere",
+    cylinder: "Cylinder",
+    axis: "Axis",
+    priceAdditional: "+${price}",
+    included: "Included",
+    next: "Next",
+    back: "Back",
+    addToCart: "Add to Cart"
   },
   common: {
     back: "Back",
