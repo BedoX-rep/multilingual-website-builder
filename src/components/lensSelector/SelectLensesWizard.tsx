@@ -92,6 +92,7 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({
 
   const handleVisionNeedChange = (need: VisionNeed) => {
     updateSelection({ visionNeed: need });
+    handleNext();
   };
 
   const getStepTitle = () => {

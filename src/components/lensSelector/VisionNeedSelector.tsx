@@ -54,10 +54,7 @@ export const VisionNeedSelector: React.FC<VisionNeedSelectorProps> = ({ selected
                 ? 'border-blue-500 bg-blue-50' 
                 : 'border-gray-200'
             }`}
-            onClick={() => {
-              onChange(option.id);
-              handleNext();
-            }}
+            onClick={() => onChange(option.id)}
           >
             <div className="flex items-center gap-6">
               <div className="shrink-0 w-16 h-16 flex items-center justify-center">
