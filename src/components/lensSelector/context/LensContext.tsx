@@ -60,6 +60,16 @@ export const LensProvider: React.FC<{
         }
       }
 
+      // Handle back navigation
+      if (updates.currentStep < prev.currentStep) {
+        if (prev.currentStep === 2 && updates.currentStep === 0) {
+          newState.visionNeed = null;
+          newState.selectedLensType = null;
+          newState.selectedLensThickness = null;
+          newState.prescription = initialState.prescription;
+        }
+      }
+
       return newState;
     });
   };
