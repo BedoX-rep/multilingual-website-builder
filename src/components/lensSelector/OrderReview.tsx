@@ -5,28 +5,22 @@ import { VisionNeed, LensTypeOption, LensThicknessOption, PrescriptionData } fro
 import { Check } from 'lucide-react';
 
 interface OrderReviewProps {
-  product: {
+  frame: {
     id: string;
     name: string;
     price: number;
     image: string;
   };
-  visionNeed: VisionNeed;
-  prescription?: PrescriptionData;
-  lensType?: LensTypeOption;
-  lensThickness?: LensThicknessOption;
-  totalPrice: number;
+  onComplete: () => void;
 }
 
 export const OrderReview: React.FC<OrderReviewProps> = ({ 
-  product,
-  visionNeed,
-  prescription,
-  lensType,
-  lensThickness,
-  totalPrice
+  frame,
+  onComplete
 }) => {
   const { formattedT: t } = useFormattedTranslation();
+  const { visionNeed, prescription, selectedLensType, selectedLensThickness, calculateTotalPrice } = useLensContext();
+  const totalPrice = calculateTotalPrice();
   
   const renderVisionNeedType = () => {
     switch (visionNeed) {

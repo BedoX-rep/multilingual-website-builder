@@ -154,6 +154,25 @@ export const PrescriptionForm: React.FC<PrescriptionFormProps> = ({ prescription
           <p className="text-sm text-blue-600">{t('lenses.savedPrescriptionExplanation')}</p>
         </div>
       )}
+      
+      <div className="mt-6 flex justify-end">
+        <button
+          onClick={() => handleInputChange('completed', 'true')}
+          disabled={!canProceed()}
+          className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50"
+        >
+          {t('common.continue')}
+        </button>
+      </div>
     </div>
+  );
+};
+
+const canProceed = () => {
+  if (prescription.useSavedPrescription) return true;
+  return Boolean(
+    prescription.rightSphere &&
+    prescription.leftSphere &&
+    prescription.pupillaryDistance
   );
 };
