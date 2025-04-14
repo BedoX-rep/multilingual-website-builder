@@ -46,8 +46,8 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
 
   const handleBack = () => {
     setCurrentStep(prev => {
-      // If we're going back from lens type (step 2), go back to vision need (step 0)
-      if (prev === 2 && selections.visionNeed !== 'singleVision') {
+      // Always go back to vision need (step 0) for non-prescription and frame only
+      if (selections.visionNeed === 'nonPrescription' || selections.visionNeed === 'frameOnly') {
         setSelections(prevSelections => ({
           ...prevSelections,
           visionNeed: null,
@@ -66,6 +66,7 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
         }));
         return 0;
       }
+      // Regular back navigation for single vision
       return prev - 1;
     });
   };
