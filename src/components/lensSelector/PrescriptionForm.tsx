@@ -157,7 +157,10 @@ export const PrescriptionForm: React.FC<PrescriptionFormProps> = ({ prescription
       
       <div className="mt-6">
         <Button 
-          onClick={() => onChange(prescription)}
+          onClick={() => onChange({
+            ...prescription,
+            isCompleted: true
+          })}
           className="w-full"
           disabled={!prescription.useSavedPrescription && (!prescription.rightSphere || !prescription.leftSphere || !prescription.pupillaryDistance)}
         >

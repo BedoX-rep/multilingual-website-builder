@@ -81,7 +81,9 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
 
   const handlePrescriptionSubmit = (prescriptionData: PrescriptionData) => {
     setSelections(prev => ({ ...prev, prescription: prescriptionData }));
-    handleNext();
+    if (prescriptionData.isCompleted) {
+      setCurrentStep(2); // Move to lens type selection
+    }
   };
 
   const calculateTotalPrice = () => {
