@@ -4,22 +4,25 @@ import { LensTypeOption } from './types';
 import { Check } from 'lucide-react';
 import { Card } from '../ui/card';
 
-interface OptionSelectorProps<T> {
-  options: T[];
-  selected: T | null;
-  onChange: (selected: T) => void;
+interface LensTypeSelectorProps {
+  options: LensTypeOption[];
+  selected: LensTypeOption | null;
+  onChange: (selected: LensTypeOption) => void;
   handleNext: () => void;
-  isPrescriptionPage: boolean; // Added prop to indicate page type
 }
 
-export const LensTypeSelector: React.FC<OptionSelectorProps<LensTypeOption>> = ({ 
+export const LensTypeSelector: React.FC<LensTypeSelectorProps> = ({ 
   options, 
   selected, 
-  onChange, 
-  handleNext,
-  isPrescriptionPage
+  onChange,
+  handleNext
 }) => {
   const { formattedT: t } = useFormattedTranslation();
+
+  const handleSelection = (option: LensTypeOption) => {
+    onChange(option);
+    handleNext();
+  };
 
   return (
     <div>
@@ -29,52 +32,35 @@ export const LensTypeSelector: React.FC<OptionSelectorProps<LensTypeOption>> = (
 
       <div className="space-y-4">
         {options.map((option) => (
-          <Card 
+          <div
             key={option.id}
-            className={`p-6 cursor-pointer transition-all hover:border-blue-500 ${
+            className={`border rounded-lg p-6 cursor-pointer transition-all hover:border-blue-500 ${
               selected?.id === option.id 
                 ? 'border-blue-500 bg-blue-50' 
                 : 'border-gray-200'
             }`}
-            onClick={() => {
-              onChange(option);
-              if (!isPrescriptionPage) {
-                handleNext();
-              }
-            }}
+            onClick={() => handleSelection(option)}
           >
             <div className="flex items-center justify-between">
               <div className="flex items-start gap-4">
-                <div className="shrink-0 w-16 h-16 bg-gray-100 rounded flex items-center justify-center">
-                  <img 
-                    src={option.image} 
-                    alt={option.name} 
-                    className="w-12 h-12 object-contain"
-                  />
+                <div className="shrink-0">
+                  {option.icon}
                 </div>
-                <div className="flex-1">
-                  <div className="flex items-center justify-between mb-1">
-                    <h4 className="font-semibold text-lg">{option.name}</h4>
-                    {option.priceAdditional > 0 && (
-                      <span className="text-sm font-medium">
-                        + ${option.priceAdditional.toFixed(2)}
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-gray-600">{option.description}</p>
+                <div>
+                  <h4 className="font-semibold text-lg mb-1">{option.name}</h4>
+                  <p className="text-gray-600 text-sm">{option.description}</p>
+                  <p className="text-blue-600 font-semibold mt-2">
+                    +${option.priceAdditional}
+                  </p>
                 </div>
               </div>
-
               {selected?.id === option.id && (
-                <div className="shrink-0 ml-4 text-blue-500">
-                  <Check className="h-6 w-6" />
-                </div>
+                <Check className="w-6 h-6 text-blue-500" />
               )}
             </div>
-          </Card>
+          </div>
         ))}
       </div>
-      {isPrescriptionPage && <button>{t('common.next')}</button>} {/*Conditional rendering of the button*/}
     </div>
   );
 };
