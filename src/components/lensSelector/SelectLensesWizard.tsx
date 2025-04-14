@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useFormattedTranslation } from '../../utils/translationHelper';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Check } from 'lucide-react';
+import { ArrowLeft, X } from 'lucide-react';
 import { ProductOrder, VisionNeed, PrescriptionData, LensTypeOption, LensThicknessOption } from './types';
 import { VisionNeedSelector } from './VisionNeedSelector';
 import { LensTypeSelector } from './LensTypeSelector';
@@ -18,9 +18,10 @@ interface SelectLensesWizardProps {
     image: string;
   };
   onComplete: (orderDetails: ProductOrder) => void;
+  onClose: () => void;
 }
 
-export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product, onComplete }) => {
+export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product, onComplete, onClose }) => {
   const { formattedT: t } = useFormattedTranslation();
   const { lensTypeOptions, lensThicknessOptions } = useLensOptions();
   const [currentStep, setCurrentStep] = useState(0);
@@ -202,9 +203,9 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
   };
 
   return (
-    <div className="flex min-h-screen">
+    <div className="fixed inset-0 bg-white z-50 flex">
       {/* Left side - Product Image */}
-      <div className="w-1/2 bg-gray-50 p-8 flex items-center justify-center">
+      <div className="w-1/2 bg-gray-50 p-8 flex items-center justify-center relative">
         <img 
           src={product.image} 
           alt={product.name}
@@ -213,8 +214,16 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
       </div>
 
       {/* Right side - Selection Interface */}
-      <div className="w-1/2 p-8 overflow-y-auto">
-        <div className="flex flex-col h-full">
+      <div className="w-1/2 p-8 overflow-y-auto relative">
+        {/* Close button */}
+        <button 
+          onClick={onClose}
+          className="absolute top-4 right-4 p-2 text-gray-500 hover:text-gray-700 transition-colors"
+        >
+          <X className="w-6 h-6" />
+        </button>
+
+        <div className="flex flex-col h-full max-w-xl mx-auto">
           <div className="flex-grow">
             {currentStep > 0 && (
               <button
