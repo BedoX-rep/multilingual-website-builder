@@ -1,9 +1,11 @@
+
 import React, { useMemo } from 'react';
 import { useFormattedTranslation } from '../../utils/translationHelper';
 import { PrescriptionData } from './types';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Button } from '@/components/ui/button';
 
 interface FieldOption {
   value: string;
@@ -40,10 +42,11 @@ export const PrescriptionForm: React.FC<PrescriptionFormProps> = ({ prescription
     (val) => val.toFixed(1)), []);
 
   const handleInputChange = (field: keyof PrescriptionData, value: string) => {
-    onChange({
+    const updatedPrescription = {
       ...prescription,
       [field]: value
-    });
+    };
+    onChange(updatedPrescription);
   };
 
   const PrescriptionField = ({ label, options, value, onChange }: {
@@ -69,8 +72,14 @@ export const PrescriptionForm: React.FC<PrescriptionFormProps> = ({ prescription
     </div>
   );
 
+  const canContinue = prescription.useSavedPrescription || (
+    prescription.rightSphere && 
+    prescription.leftSphere && 
+    prescription.pupillaryDistance
+  );
+
   return (
-    <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
+    <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
           <h4 className="font-medium">{t('lenses.useSavedPrescription')}</h4>
@@ -159,17 +168,14 @@ export const PrescriptionForm: React.FC<PrescriptionFormProps> = ({ prescription
         type="button"
         className="w-full mt-6"
         onClick={() => {
-          if (prescription.useSavedPrescription || (
-            prescription.rightSphere && 
-            prescription.leftSphere && 
-            prescription.pupillaryDistance
-          )) {
-            onChange(prescription);
+          if (canContinue) {
+            onChange({...prescription});
           }
         }}
+        disabled={!canContinue}
       >
         {t('common.continue')}
       </Button>
-    </form>
+    </div>
   );
 };
