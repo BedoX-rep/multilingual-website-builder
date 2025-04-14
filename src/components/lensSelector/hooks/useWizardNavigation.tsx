@@ -70,17 +70,20 @@ export const useWizardNavigation = ({
   // Next step handler with fix for frameOnly flow
   const handleNext = () => {
     if (currentStep === 0) {
-      // Special case for frameOnly which now properly jumps to the review step
-      if (visionNeed === 'frameOnly') {
-        setCurrentStep(4); // Skip directly to the review step (index 4)
-        return;
+      switch(visionNeed) {
+        case 'frameOnly':
+          setCurrentStep(4); // Skip to review
+          break;
+        case 'nonPrescription':
+          setCurrentStep(2); // Skip prescription form
+          break;
+        case 'singleVision':
+          setCurrentStep(1); // Go to prescription form
+          break;
+        default:
+          break;
       }
-      
-      // Special case for nonPrescription which skips the prescription form step
-      if (visionNeed === 'nonPrescription') {
-        setCurrentStep(2); // Skip to lens type selection
-        return;
-      }
+      return;
     }
     
     if (currentStep < getMaxSteps() - 1) {
