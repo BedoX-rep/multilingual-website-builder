@@ -224,21 +224,31 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
   };
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <div className="mb-8">
-        <h2 className="text-2xl font-bold mb-2">{t('lenses.customizeLenses')}</h2>
-        <p className="text-gray-600 mb-4">{getStepTitle()}</p>
-        <div className="flex items-center space-x-2">
-          {Array.from({ length: 5 }).map((_, index) => (
-            <div
-              key={index}
-              className={`h-2 flex-1 rounded ${
-                index <= currentStep ? 'bg-blue-500' : 'bg-gray-200'
-              }`}
-            />
-          ))}
-        </div>
+    <div className="flex min-h-screen">
+      {/* Left side - Product Image */}
+      <div className="w-1/2 bg-gray-50 p-8 flex items-center justify-center">
+        <img 
+          src={product.image} 
+          alt={product.name}
+          className="max-w-md w-full object-contain"
+        />
       </div>
+
+      {/* Right side - Selection Interface */}
+      <div className="w-1/2 p-8 overflow-y-auto">
+        <div className="max-w-xl">
+          {/* Close button */}
+          <button onClick={() => window.history.back()} className="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+          {/* Frame price */}
+          <div className="mb-8 flex justify-between items-center">
+            <span className="text-sm text-gray-500">Frame price:</span>
+            <span className="font-medium">${product.price.toFixed(2)}</span>
+          </div>
 
       {currentStep > 0 && (
         <button

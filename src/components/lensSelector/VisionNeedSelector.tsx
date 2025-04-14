@@ -35,34 +35,34 @@ export const VisionNeedSelector: React.FC<VisionNeedSelectorProps> = ({ selected
 
   return (
     <div>
-      <h2 className="text-2xl font-semibold mb-4">{t('lenses.chooseVisionNeed')}</h2>
+      <h2 className="text-xl font-medium mb-2">{t('lenses.chooseVisionNeed')}</h2>
 
-      <p className="text-gray-600 mb-3">
-        {t('lenses.visionNeedExplanation')}
+      <p className="text-sm text-gray-600 mb-4">
+        Based on your prescription, choose your lens from the options below or choose non-prescription if you want visual comfort without vision correction.
       </p>
 
-      <p className="text-sm text-blue-600 mb-6 underline cursor-pointer">
-        {t('lenses.learnMoreAboutLensDifferences')}
+      <p className="text-sm text-blue-600 mb-6 hover:underline cursor-pointer">
+        Learn more about lens differences
       </p>
 
-      <div className="space-y-4">
+      <div className="space-y-3">
         {options.map((option) => (
           <div 
             key={option.id}
-            className={`border rounded-lg p-6 cursor-pointer transition-all hover:border-blue-500 ${
+            className={`border rounded-lg p-4 cursor-pointer transition-all hover:border-blue-500 ${
               selected?.id === option.id 
-                ? 'border-blue-500 bg-blue-50' 
-                : 'border-gray-200'
+                ? 'border-blue-500 bg-white shadow-sm' 
+                : 'border-gray-200 bg-white'
             }`}
             onClick={() => onChange(option.id)}
           >
-            <div className="flex items-center gap-6">
-              <div className="shrink-0 w-16 h-16 flex items-center justify-center">
+            <div className="flex items-start gap-4">
+              <div className="shrink-0 w-12 h-12 flex items-center justify-center">
                 {option.icon}
               </div>
               <div className="flex-1">
-                <h4 className="font-semibold text-lg mb-1">{option.title}</h4>
-                <p className="text-gray-600 text-sm">{option.description}</p>
+                <h4 className="font-medium text-base mb-1">{option.title}</h4>
+                <p className="text-gray-500 text-sm">{option.description}</p>
               </div>
             </div>
           </div>
