@@ -5,8 +5,7 @@ run = "npm run dev"
 channel = "stable-24_05"
 
 [deployment]
-run = ["sh", "-c", "npx serve dist -s -l 8080"]
-build = ["sh", "-c", "npm run build"]
+run = ["sh", "-c", "vite preview"]
 
 [[ports]]
 localPort = 8080
