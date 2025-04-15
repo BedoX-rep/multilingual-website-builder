@@ -15,6 +15,9 @@ export default defineConfig(({ mode }) => ({
   preview: {
     port: 8080,
     strictPort: true,
+  },
+  preview: {
+    port: 8080,
     strictPort: true,
   },
   plugins: [
