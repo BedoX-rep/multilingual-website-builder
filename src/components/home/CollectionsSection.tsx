@@ -16,7 +16,10 @@ const CollectionsSection: React.FC = () => {
               dragFree: false,
               containScroll: "trimSnaps",
               slidesToScroll: 2,
-              speed: 15
+              speed: 5,
+              duration: 20,
+              inViewThreshold: 0.7,
+              snapForce: 0.8
             }}
             className="w-full px-16"
           >
