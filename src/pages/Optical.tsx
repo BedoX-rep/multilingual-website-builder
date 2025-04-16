@@ -6,6 +6,7 @@ import ProductCard from '../components/ProductCard';
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Slider } from "@/components/ui/slider";
 import { Filter, SlidersHorizontal } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -239,8 +240,20 @@ const Optical: React.FC = () => {
 
         <div className="flex gap-8">
           <div className="hidden lg:block w-72 flex-shrink-0">
-            <div className="sticky top-24 bg-white p-6 rounded-xl border">
-              <FilterSection />
+            <div className="sticky top-24 bg-white rounded-xl border">
+              <Collapsible>
+                <CollapsibleTrigger asChild>
+                  <Button variant="ghost" className="w-full flex justify-between items-center p-6 border-b">
+                    <span className="font-semibold">Filters</span>
+                    <SlidersHorizontal className="h-4 w-4" />
+                  </Button>
+                </CollapsibleTrigger>
+                <CollapsibleContent>
+                  <div className="p-6">
+                    <FilterSection />
+                  </div>
+                </CollapsibleContent>
+              </Collapsible>
             </div>
           </div>
 
