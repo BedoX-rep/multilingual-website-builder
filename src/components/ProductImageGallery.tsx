@@ -23,13 +23,22 @@ const ProductImageGallery: React.FC<ProductImageGalleryProps> = ({ images }) => 
   };
 
   return (
-    <div className="flex flex-col-reverse md:flex-row gap-4">
+    <div className="flex flex-row gap-4">
+      {/* Main image */}
+      <div className="relative h-[400px] sm:h-[500px] md:h-[600px] w-full overflow-hidden">
+        <img
+          src={images[currentIndex]}
+          alt="Product"
+          className="w-full h-full object-contain"
+        />
+      </div>
+      
       {/* Thumbnails */}
-      <div className="flex flex-row md:flex-col space-x-2 md:space-x-0 md:space-y-2 justify-center">
+      <div className="flex flex-col space-y-2 justify-start">
         {images.map((image, index) => (
           <button
             key={index}
-            className={`relative border-2 flex-shrink-0 w-16 h-16 rounded-md overflow-hidden transition-all ${
+            className={`relative border-2 flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-md overflow-hidden transition-all ${
               currentIndex === index 
                 ? 'border-black' 
                 : 'border-transparent hover:border-gray-300'
@@ -45,14 +54,7 @@ const ProductImageGallery: React.FC<ProductImageGalleryProps> = ({ images }) => 
         ))}
       </div>
       
-      {/* Main image */}
-      <div className="relative h-[600px] w-full overflow-hidden">
-        <img
-          src={images[currentIndex]}
-          alt="Product"
-          className="w-full h-full object-contain"
-        />
-      </div>
+      
     </div>
   );
 };
