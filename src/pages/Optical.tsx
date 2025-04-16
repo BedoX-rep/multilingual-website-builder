@@ -50,7 +50,7 @@ const Optical: React.FC = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       <Header />
 
       <main className="container mx-auto px-4 py-8">
@@ -85,13 +85,70 @@ const Optical: React.FC = () => {
             </Sheet>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {products.map(product => (
-              <OpticalProductCard 
-                key={product.id}
-                {...product}
-              />
-            ))}
+          <div className="flex gap-8">
+            {/* Desktop Filters */}
+            <div className="hidden lg:block w-72 flex-shrink-0">
+              <div className="sticky top-24 bg-white p-6 rounded-xl border">
+                <div className="space-y-6">
+                  {/* Frame Shape Filter */}
+                  <div>
+                    <h3 className="font-medium mb-4">Frame Shape</h3>
+                    <div className="space-y-2">
+                      {['Round', 'Square', 'Rectangle', 'Aviator', 'Cat-eye'].map((shape) => (
+                        <label key={shape} className="flex items-center space-x-2">
+                          <input type="checkbox" className="rounded border-gray-300" />
+                          <span>{shape}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Material Filter */}
+                  <div>
+                    <h3 className="font-medium mb-4">Material</h3>
+                    <div className="space-y-2">
+                      {['Metal', 'Acetate', 'Titanium', 'Plastic'].map((material) => (
+                        <label key={material} className="flex items-center space-x-2">
+                          <input type="checkbox" className="rounded border-gray-300" />
+                          <span>{material}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Price Range Filter */}
+                  <div>
+                    <h3 className="font-medium mb-4">Price Range</h3>
+                    <div className="space-y-2">
+                      <label className="flex items-center space-x-2">
+                        <input type="radio" name="price" className="rounded border-gray-300" />
+                        <span>Under $100</span>
+                      </label>
+                      <label className="flex items-center space-x-2">
+                        <input type="radio" name="price" className="rounded border-gray-300" />
+                        <span>$100 - $200</span>
+                      </label>
+                      <label className="flex items-center space-x-2">
+                        <input type="radio" name="price" className="rounded border-gray-300" />
+                        <span>$200+</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Products Grid */}
+            <div className="flex-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {products.map(product => (
+                  <OpticalProductCard 
+                    key={product.id}
+                    {...product}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </main>
