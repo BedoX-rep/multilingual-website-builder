@@ -172,7 +172,12 @@ const Optical: React.FC = () => {
       price: 149.99,
       image: '/lovable-uploads/productmockup/2b61f335e979f96b25e95b1a527333b8e8cf3da6.png',
       colors: ['#000000', '#8B4513', '#0047AB'],
-      type: 'optical'
+      type: 'optical',
+      gender: 'unisex',
+      frameSize: 'medium',
+      frameShape: 'round',
+      material: 'metal',
+      rimType: 'full'
     },
     {
       id: '2',
@@ -180,9 +185,90 @@ const Optical: React.FC = () => {
       price: 179.99,
       image: '/lovable-uploads/productmockup/3435b33b8f6649ded6fc392bcf9471aa11742d28.png',
       colors: ['#000000', '#8B4513', '#F5F5F5'],
-      type: 'optical'
+      type: 'optical',
+      gender: 'men',
+      frameSize: 'large',
+      frameShape: 'rectangle',
+      material: 'acetate',
+      rimType: 'full'
     },
+    {
+      id: '3',
+      name: 'Elegant Cat-Eye Optical',
+      price: 169.99,
+      image: '/lovable-uploads/productmockup/9e225f5dc69f0335cf2ff7fd4bbaf15322763546.png',
+      colors: ['#C0C0C0', '#8B4513', '#000000'],
+      type: 'optical',
+      gender: 'women',
+      frameSize: 'small',
+      frameShape: 'cat-eye',
+      material: 'metal',
+      rimType: 'semi'
+    },
+    {
+      id: '4',
+      name: 'Square Business Optical',
+      price: 189.99,
+      image: '/lovable-uploads/productmockup/e9e88c5864ae35e00d6400c6e3d07f23b1e05d4b.png',
+      colors: ['#000000', '#4169E1', '#8B4513'],
+      type: 'optical',
+      gender: 'men',
+      frameSize: 'medium',
+      frameShape: 'square',
+      material: 'titanium',
+      rimType: 'full'
+    },
+    {
+      id: '5',
+      name: 'Vintage Browline Optical',
+      price: 159.99,
+      image: '/lovable-uploads/productmockup/2b61f335e979f96b25e95b1a527333b8e8cf3da6.png',
+      colors: ['#8B4513', '#000000', '#C0C0C0'],
+      type: 'optical',
+      gender: 'unisex',
+      frameSize: 'medium',
+      frameShape: 'browline',
+      material: 'acetate',
+      rimType: 'semi'
+    },
+    {
+      id: '6',
+      name: 'Minimalist Rectangle Optical',
+      price: 199.99,
+      image: '/lovable-uploads/productmockup/3435b33b8f6649ded6fc392bcf9471aa11742d28.png',
+      colors: ['#000000', '#C0C0C0', '#4169E1'],
+      type: 'optical',
+      gender: 'unisex',
+      frameSize: 'large',
+      frameShape: 'rectangle',
+      material: 'titanium',
+      rimType: 'rimless'
+    },
+    {
+      id: '7',
+      name: 'Modern Aviator Optical',
+      price: 169.99,
+      image: '/lovable-uploads/productmockup/9e225f5dc69f0335cf2ff7fd4bbaf15322763546.png',
+      colors: ['#C0C0C0', '#000000', '#8B4513'],
+      type: 'optical',
+      gender: 'men',
+      frameSize: 'large',
+      frameShape: 'aviator',
+      material: 'metal',
+      rimType: 'full'
+    }
   ];
+
+  const filteredProducts = products.filter(product => {
+    return (
+      (!filters.gender || product.gender === filters.gender) &&
+      (!filters.frameSize || product.frameSize === filters.frameSize) &&
+      (!filters.frameShape || product.frameShape === filters.frameShape) &&
+      (!filters.material || product.material === filters.material) &&
+      (!filters.rimType || product.rimType === filters.rimType) &&
+      (product.price >= filters.priceRange[0] && product.price <= filters.priceRange[1])
+    );
+  });
 
   return (
     <div className="min-h-screen bg-white">
@@ -232,7 +318,7 @@ const Optical: React.FC = () => {
         <div className="flex gap-8">
           <div className="flex-1">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {products.map(product => (
+              {filteredProducts.map(product => (
                 <OpticalProductCard 
                   key={product.id}
                   {...product}
