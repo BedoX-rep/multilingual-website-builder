@@ -12,7 +12,7 @@ const InsuranceBenefitsSection: React.FC = () => {
         <img 
           src="/lovable-uploads/sectionassuranceimage.png" 
           alt="Insurance Benefits" 
-          className="w-full h-full object-cover brightness-100"
+          className="w-full h-full object-cover"
         />
       </div>
 
