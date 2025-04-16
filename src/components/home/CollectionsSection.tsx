@@ -21,9 +21,9 @@ const CollectionsSection: React.FC = () => {
               inViewThreshold: 0.7,
               snapForce: 0.8
             }}
-            className="w-full px-16"
+            className="w-full px-8"
           >
-            <CarouselContent className="-ml-4">
+            <CarouselContent className="-ml-2">
               {[
                 {
                   title: "CHASE STOKES",
@@ -58,8 +58,8 @@ const CollectionsSection: React.FC = () => {
                   gradient: "from-green-100/90",
                 }
               ].map((collection, index) => (
-                <CarouselItem key={index} className="pl-4 basis-[40%]">
-                  <div className="relative h-[450px] rounded-xl overflow-hidden group cursor-pointer">
+                <CarouselItem key={index} className="pl-2 basis-[45%]">
+                  <div className="relative h-[550px] rounded-xl overflow-hidden group cursor-pointer">
                     <div className="absolute inset-0">
                       <img 
                         src={collection.image} 
