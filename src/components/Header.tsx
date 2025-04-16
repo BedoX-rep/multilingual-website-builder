@@ -49,15 +49,18 @@ const Header: React.FC = () => {
     <header className="sticky top-0 z-40 w-full bg-white border-b border-gray-200">
       <div className="w-full px-[2.5%] py-4 flex items-center justify-between">
         <Link to="/" className="flex-shrink-0">
-          <h1 className="text-2xl md:text-3xl font-serif text-gray-800">Lens Optique</h1>
+          <h1 className="text-2xl md:text-3xl font-serif text-black font-bold">Lens Optique</h1>
         </Link>
 
         <nav className="hidden md:flex items-center space-x-8">
           <Link to="/" className="text-gray-600 hover:text-blue-600 transition-colors">
             {t("nav.home")}
           </Link>
-          <Link to="/products" className="text-gray-600 hover:text-blue-600 transition-colors">
-            {t("nav.products")}
+          <Link to="/optical" className="text-gray-600 hover:text-blue-600 transition-colors">
+            {t("nav.optical")}
+          </Link>
+          <Link to="/sunglasses" className="text-gray-600 hover:text-blue-600 transition-colors">
+            {t("nav.sunglasses")}
           </Link>
           <Link to="/about" className="text-gray-600 hover:text-blue-600 transition-colors">
             {t("nav.about")}
@@ -108,11 +111,18 @@ const Header: React.FC = () => {
               {t("nav.home")}
             </Link>
             <Link
-              to="/products"
+              to="/optical"
               className="block py-2 text-gray-600 hover:text-blue-600 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              {t("nav.products")}
+              {t("nav.optical")}
+            </Link>
+            <Link
+              to="/sunglasses"
+              className="block py-2 text-gray-600 hover:text-blue-600 transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {t("nav.sunglasses")}
             </Link>
             <Link
               to="/about"
