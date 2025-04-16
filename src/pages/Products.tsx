@@ -120,10 +120,10 @@ const Products: React.FC = () => {
   });
 
   const FilterSection = () => (
-    <div className="space-y-6">
-      <div className="space-y-4">
+    <div className="space-y-8">
+      <div className="space-y-6">
         <div>
-          <h3 className="font-medium mb-3">Gender</h3>
+          <h3 className="text-lg font-semibold mb-4">Gender</h3>
           <div className="flex flex-wrap gap-2">
             {['men', 'women', 'unisex'].map((gender) => (
               <FilterButton
@@ -138,7 +138,7 @@ const Products: React.FC = () => {
         </div>
 
         <div>
-          <h3 className="font-medium mb-3">Frame Size</h3>
+          <h3 className="text-lg font-semibold mb-4">Frame Size</h3>
           <div className="flex flex-wrap gap-2">
             {['small', 'medium', 'large'].map((size) => (
               <FilterButton
@@ -153,7 +153,7 @@ const Products: React.FC = () => {
         </div>
 
         <div>
-          <h3 className="font-medium mb-3">Frame Shape</h3>
+          <h3 className="text-lg font-semibold mb-4">Frame Shape</h3>
           <div className="flex flex-wrap gap-2">
             {['round', 'square', 'rectangle', 'aviator', 'cat-eye', 'browline'].map((shape) => (
               <FilterButton
@@ -168,7 +168,7 @@ const Products: React.FC = () => {
         </div>
 
         <div>
-          <h3 className="font-medium mb-3">Material</h3>
+          <h3 className="text-lg font-semibold mb-4">Material</h3>
           <div className="flex flex-wrap gap-2">
             {['metal', 'acetate', 'titanium', 'plastic'].map((material) => (
               <FilterButton
@@ -183,7 +183,7 @@ const Products: React.FC = () => {
         </div>
 
         <div>
-          <h3 className="font-medium mb-3">Rim Type</h3>
+          <h3 className="text-lg font-semibold mb-4">Rim Type</h3>
           <div className="flex flex-wrap gap-2">
             {['full', 'semi', 'rimless'].map((type) => (
               <FilterButton
@@ -198,7 +198,7 @@ const Products: React.FC = () => {
         </div>
 
         <div>
-          <h3 className="font-medium mb-3">Price Range</h3>
+          <h3 className="text-lg font-semibold mb-4">Price Range</h3>
           <div className="space-y-4">
             <Slider
               defaultValue={[0, 500]}
@@ -206,8 +206,9 @@ const Products: React.FC = () => {
               step={10}
               value={filters.priceRange}
               onValueChange={(value) => setFilters(prev => ({ ...prev, priceRange: value as [number, number] }))}
+              className="mb-6"
             />
-            <div className="flex justify-between">
+            <div className="flex justify-between text-sm">
               <span>${filters.priceRange[0]}</span>
               <span>${filters.priceRange[1]}</span>
             </div>
@@ -218,12 +219,15 @@ const Products: React.FC = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       <Header />
       
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-12">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold">Eyewear Collection</h1>
+          <div>
+            <h1 className="text-4xl font-bold mb-2">Eyewear Collection</h1>
+            <p className="text-gray-600">{filteredProducts.length} products</p>
+          </div>
           
           {/* Mobile Filter Button */}
           <Sheet>
@@ -245,7 +249,7 @@ const Products: React.FC = () => {
 
         {/* Active Filters */}
         {activeFilters.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-6">
+          <div className="flex flex-wrap gap-2 mb-8">
             {activeFilters.map((filter) => (
               <Button
                 key={filter}
@@ -255,7 +259,7 @@ const Products: React.FC = () => {
                 className="flex items-center gap-1"
               >
                 {filter}
-                <Filter className="h-4 w-4" />
+                <Filter className="h-4 w-4 ml-1" />
               </Button>
             ))}
           </div>
@@ -263,15 +267,15 @@ const Products: React.FC = () => {
 
         <div className="flex gap-8">
           {/* Desktop Filters */}
-          <div className="hidden lg:block w-64 flex-shrink-0">
-            <div className="sticky top-24">
+          <div className="hidden lg:block w-72 flex-shrink-0">
+            <div className="sticky top-24 bg-white p-6 rounded-xl border">
               <FilterSection />
             </div>
           </div>
 
           {/* Products Grid */}
           <div className="flex-1">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredProducts.map(product => (
                 <ProductCard 
                   key={product.id}
