@@ -12,6 +12,11 @@ interface ProductCardProps {
   colors: string[];
   rating: number;
   reviews: number;
+  gender: 'men' | 'women' | 'unisex';
+  frameSize: 'small' | 'medium' | 'large';
+  frameShape: 'round' | 'square' | 'rectangle' | 'aviator' | 'cat-eye' | 'browline';
+  material: 'metal' | 'acetate' | 'titanium' | 'plastic';
+  rimType: 'full' | 'semi' | 'rimless';
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ 
