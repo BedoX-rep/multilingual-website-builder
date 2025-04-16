@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -56,13 +55,27 @@ const Index: React.FC = () => {
             mobileHeroImage="/lovable-uploads/mobileimg3.png" 
           />
           <HomeComponents.ShippingBanner />
-          <HomeComponents.CollectionsSection />
-          <HomeComponents.BestSellersSection bestSellers={bestSellers} />
-          <HomeComponents.FrameShapeSection />
-          <HomeComponents.HowToPickSection />
-          <HomeComponents.InsuranceBenefitsSection />
-          <HomeComponents.BrandPartnersSection />
-          <HomeComponents.ClientReviewsSection />
+          <div className="py-16">
+            <HomeComponents.CollectionsSection />
+          </div>
+          <div className="py-16">
+            <HomeComponents.BestSellersSection bestSellers={bestSellers} />
+          </div>
+          <div className="py-16">
+            <HomeComponents.FrameShapeSection />
+          </div>
+          <div className="py-16">
+            <HomeComponents.HowToPickSection />
+          </div>
+          <div className="py-16">
+            <HomeComponents.InsuranceBenefitsSection />
+          </div>
+          <div className="py-16">
+            <HomeComponents.BrandPartnersSection />
+          </div>
+          <div className="py-16">
+            <HomeComponents.ClientReviewsSection />
+          </div>
         </main>
         <Footer />
       </div>
