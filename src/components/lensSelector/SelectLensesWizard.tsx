@@ -206,7 +206,7 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
   const currentStepNumber = currentStep + 1;
 
   return (
-    <div className="fixed inset-0 bg-white z-50 flex">
+    <div className="fixed inset-0 bg-white z-50 flex flex-col md:flex-row">
       {/* Progress bar - always shows at least 20% */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gray-100">
         <div 
@@ -215,23 +215,23 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
         />
       </div>
 
-      {/* Left side - Product Image */}
-      <div className="w-1/2 bg-gray-50 p-8 flex items-center justify-center relative">
+      {/* Product Image */}
+      <div className="w-full md:w-1/2 bg-gray-50 p-4 md:p-8 flex items-center justify-center relative min-h-[200px] md:min-h-[auto]">
         <img 
           src={product.image} 
           alt={product.name}
-          className="max-w-md w-full object-contain"
+          className="max-w-[200px] md:max-w-md w-full object-contain"
         />
       </div>
 
-      {/* Right side - Selection Interface */}
-      <div className="w-1/2 overflow-y-auto relative pt-12 pl-12 pr-8">
+      {/* Selection Interface */}
+      <div className="w-full md:w-1/2 overflow-y-auto relative pt-6 md:pt-12 px-4 md:px-8 flex-grow">
         {/* Close button */}
         <button 
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 text-gray-500 hover:text-gray-700 transition-colors"
+          className="fixed md:absolute top-2 md:top-4 right-2 md:right-4 p-2 text-gray-500 hover:text-gray-700 transition-colors bg-white rounded-full shadow-md md:shadow-none"
         >
-          <X className="w-6 h-6" />
+          <X className="w-5 h-5 md:w-6 md:h-6" />
         </button>
 
         <div className="flex flex-col h-full max-w-xl mx-auto">
@@ -239,9 +239,9 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
             {currentStep > 0 && (
               <button
                 onClick={handleBack}
-                className="flex items-center text-gray-600 mb-4 hover:text-gray-800"
+                className="flex items-center text-gray-600 mb-4 hover:text-gray-800 text-sm md:text-base"
               >
-                <ArrowLeft className="w-4 h-4 mr-2" />
+                <ArrowLeft className="w-4 h-4 mr-1 md:mr-2" />
                 {t('common.back')}
               </button>
             )}
@@ -252,10 +252,10 @@ export const SelectLensesWizard: React.FC<SelectLensesWizardProps> = ({ product,
           </div>
 
           {/* Price display at bottom */}
-          <div className="mt-auto pt-4 border-t">
+          <div className="sticky bottom-0 left-0 right-0 mt-auto pt-4 border-t bg-white pb-4 md:pb-0">
             <div className="flex justify-between items-center">
               <span className="text-sm text-gray-500">{t('lenses.framePrice')}:</span>
-              <span className="font-medium">${calculateTotalPrice().toFixed(2)}</span>
+              <span className="font-medium text-lg">${calculateTotalPrice().toFixed(2)}</span>
             </div>
           </div>
         </div>
