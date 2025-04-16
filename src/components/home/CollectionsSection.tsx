@@ -10,10 +10,13 @@ const CollectionsSection: React.FC = () => {
         <div className="hidden md:block">
           <Carousel
             opts={{
-              align: "center",
+              align: "start",
               loop: true,
-              skipSnaps: false,
-              containScroll: "trimSnaps"
+              skipSnaps: true,
+              dragFree: false,
+              containScroll: "trimSnaps",
+              slidesToScroll: 2,
+              speed: 15
             }}
             className="w-full"
           >
@@ -52,7 +55,7 @@ const CollectionsSection: React.FC = () => {
                   gradient: "from-green-100/90",
                 }
               ].map((collection, index) => (
-                <CarouselItem key={index} className="pl-4 basis-[45%]">
+                <CarouselItem key={index} className="pl-4 basis-[42.5%]">
                   <div className="relative h-[450px] rounded-xl overflow-hidden group cursor-pointer">
                     <div className="absolute inset-0">
                       <img 
@@ -64,8 +67,8 @@ const CollectionsSection: React.FC = () => {
                     </div>
                     <div className="relative h-full p-8 flex flex-col justify-center">
                       <div className="max-w-[50%]">
-                        <h3 className="text-sm font-bold text-black mb-1">{collection.title}</h3>
-                        <h2 className="text-[32px] leading-tight font-bold text-black mb-4">{collection.subtitle}</h2>
+                        <h3 className="text-sm font-extrabold text-black mb-1">{collection.title}</h3>
+                        <h2 className="text-[32px] leading-tight font-black text-black mb-4">{collection.subtitle}</h2>
                         <p className="text-base text-gray-800 mb-8">{collection.description}</p>
                         <button className="bg-black text-white text-sm px-6 py-3 rounded-full hover:opacity-90 transition-opacity">
                           {collection.cta}
