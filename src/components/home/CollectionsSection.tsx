@@ -52,8 +52,8 @@ const CollectionsSection: React.FC = () => {
                   gradient: "from-green-100/90",
                 }
               ].map((collection, index) => (
-                <CarouselItem key={index} className="pl-4 basis-[45%]">
-                  <div className="relative h-[600px] rounded-xl overflow-hidden group cursor-pointer">
+                <CarouselItem key={index} className="pl-4 basis-[40%]">
+                  <div className="relative h-[700px] rounded-xl overflow-hidden group cursor-pointer">
                     <div className="absolute inset-0">
                       <img 
                         src={collection.image} 
