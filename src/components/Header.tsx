@@ -47,13 +47,9 @@ const Header: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-40 w-full bg-white border-b border-gray-200">
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+      <div className="container mx-auto px-[5%] py-4 flex items-center justify-between">
         <Link to="/" className="flex-shrink-0">
-          <img
-            src="/lovable-uploads/navlogo1.png"
-            alt="Logo"
-            className="h-8 w-auto"
-          />
+          <h1 className="text-2xl md:text-3xl font-serif text-gray-800">Lens Optique</h1>
         </Link>
 
         <nav className="hidden md:flex items-center space-x-8">
