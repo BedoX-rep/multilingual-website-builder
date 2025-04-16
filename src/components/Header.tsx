@@ -53,19 +53,19 @@ const Header: React.FC = () => {
         </Link>
 
         <nav className="hidden md:flex items-center space-x-8">
-          <Link to="/" className="text-gray-600 hover:text-blue-600 transition-colors">
+          <Link to="/" className="text-black font-bold hover:text-blue-600 transition-colors">
             {t("nav.home")}
           </Link>
-          <Link to="/optical" className="text-gray-600 hover:text-blue-600 transition-colors">
+          <Link to="/optical" className="text-black font-bold hover:text-blue-600 transition-colors">
             {t("nav.optical")}
           </Link>
-          <Link to="/sunglasses" className="text-gray-600 hover:text-blue-600 transition-colors">
+          <Link to="/sunglasses" className="text-black font-bold hover:text-blue-600 transition-colors">
             {t("nav.sunglasses")}
           </Link>
-          <Link to="/about" className="text-gray-600 hover:text-blue-600 transition-colors">
+          <Link to="/about" className="text-black font-bold hover:text-blue-600 transition-colors">
             {t("nav.about")}
           </Link>
-          <Link to="/contact" className="text-gray-600 hover:text-blue-600 transition-colors">
+          <Link to="/contact" className="text-black font-bold hover:text-blue-600 transition-colors">
             {t("nav.contact")}
           </Link>
         </nav>

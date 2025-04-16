@@ -7,7 +7,8 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 const enTranslations = {
   nav: {
     home: "Home",
-    products: "Products",
+    optical: "Optical",
+    sunglasses: "Sunglasses",
     about: "About Us",
     contact: "Contact"
   },
@@ -145,7 +146,8 @@ const enTranslations = {
 const frTranslations = {
   nav: {
     home: "Accueil",
-    products: "Produits",
+    optical: "Optique",
+    sunglasses: "Solaires",
     about: "À Propos",
     contact: "Contact"
   },
