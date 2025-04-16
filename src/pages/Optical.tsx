@@ -5,93 +5,9 @@ import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Slider } from "@/components/ui/slider";
-import { Label } from "@/components/ui/label";
 import { Filter, SlidersHorizontal } from 'lucide-react';
-
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
-  type: 'optical' | 'sunglasses';
-  colors: string[];
-  rating: number;
-  reviews: number;
-  gender: 'men' | 'women' | 'unisex';
-  frameSize: 'small' | 'medium' | 'large';
-  frameShape: 'round' | 'square' | 'rectangle' | 'aviator' | 'cat-eye' | 'browline';
-  material: 'metal' | 'acetate' | 'titanium' | 'plastic';
-  rimType: 'full' | 'semi' | 'rimless';
-}
-
-const products: Product[] = [
-  {
-    id: '1',
-    name: 'Bravo Browline',
-    price: 159.95,
-    image: '/lovable-uploads/productmockup/2b61f335e979f96b25e95b1a527333b8e8cf3da6.png',
-    type: 'optical',
-    colors: ['#000000', '#8B4513', '#0047AB'],
-    rating: 4.5,
-    reviews: 380,
-    gender: 'men',
-    frameSize: 'medium',
-    frameShape: 'browline',
-    material: 'metal',
-    rimType: 'full'
-  },
-  {
-    id: '2',
-    name: 'Atlas Round',
-    price: 139.95,
-    image: '/lovable-uploads/productmockup/3435b33b8f6649ded6fc392bcf9471aa11742d28.png',
-    type: 'optical',
-    colors: ['#000000', '#8B4513', '#F5F5F5'],
-    rating: 4.2,
-    reviews: 215,
-    gender: 'unisex',
-    frameSize: 'small',
-    frameShape: 'round',
-    material: 'acetate',
-    rimType: 'full'
-  },
-  {
-    id: '3',
-    name: 'Solar Aviator',
-    price: 179.95,
-    image: '/lovable-uploads/productmockup/9e225f5dc69f0335cf2ff7fd4bbaf15322763546.png',
-    type: 'sunglasses',
-    colors: ['#C0C0C0', '#FFD700', '#000000'],
-    rating: 4.8,
-    reviews: 425,
-    gender: 'unisex',
-    frameSize: 'large',
-    frameShape: 'aviator',
-    material: 'metal',
-    rimType: 'full'
-  },
-  {
-    id: '4',
-    name: 'Wave Runner',
-    price: 199.95,
-    image: '/lovable-uploads/productmockup/e9e88c5864ae35e00d6400c6e3d07f23b1e05d4b.png',
-    type: 'sunglasses',
-    colors: ['#000000', '#8B4513', '#4169E1'],
-    rating: 4.6,
-    reviews: 310,
-    gender: 'unisex',
-    frameSize: 'medium',
-    frameShape: 'square',
-    material: 'acetate',
-    rimType: 'full'
-  },
-];
 
 const FilterButton: React.FC<{
   active: boolean;
@@ -108,7 +24,7 @@ const FilterButton: React.FC<{
   </Button>
 );
 
-const Products: React.FC = () => {
+const Optical: React.FC = () => {
   const [filters, setFilters] = useState({
     gender: '',
     frameSize: '',
@@ -137,17 +53,6 @@ const Products: React.FC = () => {
       }
     });
   };
-
-  const filteredProducts = products.filter(product => {
-    return (
-      (!filters.gender || product.gender === filters.gender) &&
-      (!filters.frameSize || product.frameSize === filters.frameSize) &&
-      (!filters.frameShape || product.frameShape === filters.frameShape) &&
-      (!filters.material || product.material === filters.material) &&
-      (!filters.rimType || product.rimType === filters.rimType) &&
-      (product.price >= filters.priceRange[0] && product.price <= filters.priceRange[1])
-    );
-  });
 
   const FilterSection = () => (
     <div className="space-y-8">
@@ -255,11 +160,10 @@ const Products: React.FC = () => {
       <main className="container mx-auto px-4 py-12">
         <div className="flex justify-between items-center mb-8">
           <div>
-            <h1 className="text-4xl font-bold mb-2">Eyewear Collection</h1>
-            <p className="text-gray-600">{filteredProducts.length} products</p>
+            <h1 className="text-4xl font-bold mb-2">Optical Collection</h1>
+            <p className="text-gray-600">Explore our prescription eyewear</p>
           </div>
           
-          {/* Mobile Filter Button */}
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="outline" className="lg:hidden">
@@ -277,7 +181,6 @@ const Products: React.FC = () => {
           </Sheet>
         </div>
 
-        {/* Active Filters */}
         {activeFilters.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-8">
             {activeFilters.map((filter) => (
@@ -296,17 +199,23 @@ const Products: React.FC = () => {
         )}
 
         <div className="flex gap-8">
-          {/* Desktop Filters */}
           <div className="hidden lg:block w-72 flex-shrink-0">
             <div className="sticky top-24 bg-white p-6 rounded-xl border">
               <FilterSection />
             </div>
           </div>
 
-          {/* Products Grid */}
           <div className="flex-1">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredProducts.map(product => (
+              {products.filter(product => 
+                product.type === 'optical' &&
+                (!filters.gender || product.gender === filters.gender) &&
+                (!filters.frameSize || product.frameSize === filters.frameSize) &&
+                (!filters.frameShape || product.frameShape === filters.frameShape) &&
+                (!filters.material || product.material === filters.material) &&
+                (!filters.rimType || product.rimType === filters.rimType) &&
+                (product.price >= filters.priceRange[0] && product.price <= filters.priceRange[1])
+              ).map(product => (
                 <ProductCard 
                   key={product.id}
                   {...product}
@@ -322,4 +231,4 @@ const Products: React.FC = () => {
   );
 };
 
-export default Products;
+export default Optical;
