@@ -8,6 +8,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Slider } from "@/components/ui/slider";
 import { Filter, SlidersHorizontal } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const FilterButton: React.FC<{
   active: boolean;
@@ -25,6 +26,7 @@ const FilterButton: React.FC<{
 );
 
 const Optical: React.FC = () => {
+  const { t } = useTranslation();
   const [filters, setFilters] = useState({
     gender: '',
     frameSize: '',
@@ -152,6 +154,43 @@ const Optical: React.FC = () => {
       </div>
     </div>
   );
+
+  // Mock products data
+  const products = [
+    {
+      id: '1',
+      name: 'Classic Round Optical',
+      price: 149.99,
+      image: '/lovable-uploads/productmockup/2b61f335e979f96b25e95b1a527333b8e8cf3da6.png',
+      category: 'Optical',
+      colors: ['Black', 'Gold'],
+      rating: 4.5,
+      reviews: 128,
+      gender: 'unisex',
+      frameSize: 'medium',
+      frameShape: 'round',
+      material: 'metal',
+      rimType: 'full',
+      type: 'optical'
+    },
+    {
+      id: '2',
+      name: 'Modern Rectangle Optical',
+      price: 179.99,
+      image: '/lovable-uploads/productmockup/3435b33b8f6649ded6fc392bcf9471aa11742d28.png',
+      category: 'Optical',
+      colors: ['Silver', 'Black'],
+      rating: 4.8,
+      reviews: 95,
+      gender: 'men',
+      frameSize: 'large',
+      frameShape: 'rectangle',
+      material: 'titanium',
+      rimType: 'semi',
+      type: 'optical'
+    },
+    // Add more optical products as needed
+  ];
 
   return (
     <div className="min-h-screen bg-white">

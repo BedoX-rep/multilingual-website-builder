@@ -8,6 +8,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Slider } from "@/components/ui/slider";
 import { Filter, SlidersHorizontal } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const FilterButton: React.FC<{
   active: boolean;
@@ -25,6 +26,7 @@ const FilterButton: React.FC<{
 );
 
 const Sunglasses: React.FC = () => {
+  const { t } = useTranslation();
   const [filters, setFilters] = useState({
     gender: '',
     frameSize: '',
@@ -152,6 +154,43 @@ const Sunglasses: React.FC = () => {
       </div>
     </div>
   );
+
+  // Mock products data
+  const products = [
+    {
+      id: '3',
+      name: 'Aviator Sunglasses',
+      price: 199.99,
+      image: '/lovable-uploads/productmockup/9e225f5dc69f0335cf2ff7fd4bbaf15322763546.png',
+      category: 'Sunglasses',
+      colors: ['Gold', 'Silver'],
+      rating: 4.7,
+      reviews: 156,
+      gender: 'unisex',
+      frameSize: 'medium',
+      frameShape: 'aviator',
+      material: 'metal',
+      rimType: 'full',
+      type: 'sunglasses'
+    },
+    {
+      id: '4',
+      name: 'Cat-Eye Sunglasses',
+      price: 159.99,
+      image: '/lovable-uploads/productmockup/e9e88c5864ae35e00d6400c6e3d07f23b1e05d4b.png',
+      category: 'Sunglasses',
+      colors: ['Black', 'Tortoise'],
+      rating: 4.6,
+      reviews: 89,
+      gender: 'women',
+      frameSize: 'small',
+      frameShape: 'cat-eye',
+      material: 'acetate',
+      rimType: 'full',
+      type: 'sunglasses'
+    },
+    // Add more sunglasses products as needed
+  ];
 
   return (
     <div className="min-h-screen bg-white">
