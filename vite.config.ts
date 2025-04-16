@@ -16,10 +16,6 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
     strictPort: true,
   },
-  preview: {
-    port: 8080,
-    strictPort: true,
-  },
   plugins: [
     react(),
     mode === 'development' &&
