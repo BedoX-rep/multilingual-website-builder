@@ -55,25 +55,25 @@ const Index: React.FC = () => {
             mobileHeroImage="/lovable-uploads/mobileimg3.png" 
           />
           <HomeComponents.ShippingBanner />
-          <div className="py-16">
+          <div className="py-8">
             <HomeComponents.CollectionsSection />
           </div>
-          <div className="py-16">
+          <div className="py-8">
             <HomeComponents.BestSellersSection bestSellers={bestSellers} />
           </div>
-          <div className="py-16">
+          <div className="py-8">
             <HomeComponents.FrameShapeSection />
           </div>
-          <div className="py-16">
+          <div className="py-8">
             <HomeComponents.HowToPickSection />
           </div>
-          <div className="py-16">
+          <div className="py-8">
             <HomeComponents.InsuranceBenefitsSection />
           </div>
-          <div className="py-16">
+          <div className="py-8">
             <HomeComponents.BrandPartnersSection />
           </div>
-          <div className="py-16">
+          <div className="py-8">
             <HomeComponents.ClientReviewsSection />
           </div>
         </main>
