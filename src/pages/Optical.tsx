@@ -229,13 +229,7 @@ const Optical: React.FC = () => {
           </div>
         )}
 
-        <div className="flex flex-row-reverse gap-8">
-          <div className="hidden lg:block w-72">
-            <div className="sticky top-24 bg-white p-6 rounded-xl border">
-              <FilterSection />
-            </div>
-          </div>
-
+        <div className="flex gap-8">
           <div className="flex-1">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {products.map(product => (
@@ -244,6 +238,24 @@ const Optical: React.FC = () => {
                   {...product}
                 />
               ))}
+            </div>
+          </div>
+
+          <div className="hidden lg:block w-72">
+            <div className="sticky top-24">
+              <Collapsible>
+                <CollapsibleTrigger asChild>
+                  <Button variant="outline" className="w-full mb-4">
+                    <Filter className="h-4 w-4 mr-2" />
+                    Filters
+                  </Button>
+                </CollapsibleTrigger>
+                <CollapsibleContent>
+                  <div className="bg-white p-6 rounded-xl border">
+                    <FilterSection />
+                  </div>
+                </CollapsibleContent>
+              </Collapsible>
             </div>
           </div>
         </div>
