@@ -3,18 +3,16 @@ import React, { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
-import { useFormattedTranslation } from '../utils/translationHelper';
-import { TooltipWrapper } from '../components/TooltipWrapper';
+import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { Slider } from "@/components/ui/slider";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { Filter, SlidersHorizontal } from 'lucide-react';
 
 interface Product {
   id: string;
@@ -63,20 +61,52 @@ const products: Product[] = [
     material: 'acetate',
     rimType: 'full'
   },
-  // Add more products with similar structure...
 ];
 
+const FilterButton: React.FC<{
+  active: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}> = ({ active, onClick, children }) => (
+  <Button
+    variant={active ? "default" : "outline"}
+    size="sm"
+    onClick={onClick}
+    className="whitespace-nowrap"
+  >
+    {children}
+  </Button>
+);
+
 const Products: React.FC = () => {
-  const { formattedT: t } = useFormattedTranslation();
   const [filters, setFilters] = useState({
     gender: '',
     frameSize: '',
     frameShape: '',
     material: '',
     rimType: '',
-    priceRange: [0, 500],
-    colors: [] as string[]
+    priceRange: [0, 500] as [number, number],
   });
+
+  const [activeFilters, setActiveFilters] = useState<string[]>([]);
+
+  const handleFilterChange = (filterType: string, value: string) => {
+    setFilters(prev => ({ ...prev, [filterType]: value }));
+    if (!activeFilters.includes(value) && value !== '') {
+      setActiveFilters(prev => [...prev, value]);
+    } else if (value === '') {
+      setActiveFilters(prev => prev.filter(f => f !== filters[filterType as keyof typeof filters]));
+    }
+  };
+
+  const removeFilter = (filter: string) => {
+    setActiveFilters(prev => prev.filter(f => f !== filter));
+    Object.keys(filters).forEach(key => {
+      if (filters[key as keyof typeof filters] === filter) {
+        setFilters(prev => ({ ...prev, [key]: '' }));
+      }
+    });
+  };
 
   const filteredProducts = products.filter(product => {
     return (
@@ -85,134 +115,176 @@ const Products: React.FC = () => {
       (!filters.frameShape || product.frameShape === filters.frameShape) &&
       (!filters.material || product.material === filters.material) &&
       (!filters.rimType || product.rimType === filters.rimType) &&
-      (product.price >= filters.priceRange[0] && product.price <= filters.priceRange[1]) &&
-      (filters.colors.length === 0 || product.colors.some(color => filters.colors.includes(color)))
+      (product.price >= filters.priceRange[0] && product.price <= filters.priceRange[1])
     );
   });
 
-  return (
-    <TooltipWrapper>
-      <div>
-        <Header />
-        
-        <main className="container mx-auto px-4 py-16 mt-16">
-          <div className="grid grid-cols-12 gap-6">
-            {/* Filters Sidebar */}
-            <div className="col-span-3 space-y-6">
-              <div className="space-y-4">
-                <h2 className="text-xl font-semibold">Filters</h2>
-                
-                <div className="space-y-4">
-                  <div>
-                    <Label>Gender</Label>
-                    <Select onValueChange={(value) => setFilters(prev => ({ ...prev, gender: value }))}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select gender" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="men">Men</SelectItem>
-                        <SelectItem value="women">Women</SelectItem>
-                        <SelectItem value="unisex">Unisex</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
+  const FilterSection = () => (
+    <div className="space-y-6">
+      <div className="space-y-4">
+        <div>
+          <h3 className="font-medium mb-3">Gender</h3>
+          <div className="flex flex-wrap gap-2">
+            {['men', 'women', 'unisex'].map((gender) => (
+              <FilterButton
+                key={gender}
+                active={filters.gender === gender}
+                onClick={() => handleFilterChange('gender', filters.gender === gender ? '' : gender)}
+              >
+                {gender.charAt(0).toUpperCase() + gender.slice(1)}
+              </FilterButton>
+            ))}
+          </div>
+        </div>
 
-                  <div>
-                    <Label>Frame Size</Label>
-                    <Select onValueChange={(value) => setFilters(prev => ({ ...prev, frameSize: value }))}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select size" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="small">Small</SelectItem>
-                        <SelectItem value="medium">Medium</SelectItem>
-                        <SelectItem value="large">Large</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
+        <div>
+          <h3 className="font-medium mb-3">Frame Size</h3>
+          <div className="flex flex-wrap gap-2">
+            {['small', 'medium', 'large'].map((size) => (
+              <FilterButton
+                key={size}
+                active={filters.frameSize === size}
+                onClick={() => handleFilterChange('frameSize', filters.frameSize === size ? '' : size)}
+              >
+                {size.charAt(0).toUpperCase() + size.slice(1)}
+              </FilterButton>
+            ))}
+          </div>
+        </div>
 
-                  <div>
-                    <Label>Frame Shape</Label>
-                    <Select onValueChange={(value) => setFilters(prev => ({ ...prev, frameShape: value }))}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select shape" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="round">Round</SelectItem>
-                        <SelectItem value="square">Square</SelectItem>
-                        <SelectItem value="rectangle">Rectangle</SelectItem>
-                        <SelectItem value="aviator">Aviator</SelectItem>
-                        <SelectItem value="cat-eye">Cat-Eye</SelectItem>
-                        <SelectItem value="browline">Browline</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
+        <div>
+          <h3 className="font-medium mb-3">Frame Shape</h3>
+          <div className="flex flex-wrap gap-2">
+            {['round', 'square', 'rectangle', 'aviator', 'cat-eye', 'browline'].map((shape) => (
+              <FilterButton
+                key={shape}
+                active={filters.frameShape === shape}
+                onClick={() => handleFilterChange('frameShape', filters.frameShape === shape ? '' : shape)}
+              >
+                {shape.charAt(0).toUpperCase() + shape.slice(1)}
+              </FilterButton>
+            ))}
+          </div>
+        </div>
 
-                  <div>
-                    <Label>Material</Label>
-                    <Select onValueChange={(value) => setFilters(prev => ({ ...prev, material: value }))}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select material" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="metal">Metal</SelectItem>
-                        <SelectItem value="acetate">Acetate</SelectItem>
-                        <SelectItem value="titanium">Titanium</SelectItem>
-                        <SelectItem value="plastic">Plastic</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
+        <div>
+          <h3 className="font-medium mb-3">Material</h3>
+          <div className="flex flex-wrap gap-2">
+            {['metal', 'acetate', 'titanium', 'plastic'].map((material) => (
+              <FilterButton
+                key={material}
+                active={filters.material === material}
+                onClick={() => handleFilterChange('material', filters.material === material ? '' : material)}
+              >
+                {material.charAt(0).toUpperCase() + material.slice(1)}
+              </FilterButton>
+            ))}
+          </div>
+        </div>
 
-                  <div>
-                    <Label>Rim Type</Label>
-                    <Select onValueChange={(value) => setFilters(prev => ({ ...prev, rimType: value }))}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select rim type" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="full">Full Rim</SelectItem>
-                        <SelectItem value="semi">Semi Rimless</SelectItem>
-                        <SelectItem value="rimless">Rimless</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
+        <div>
+          <h3 className="font-medium mb-3">Rim Type</h3>
+          <div className="flex flex-wrap gap-2">
+            {['full', 'semi', 'rimless'].map((type) => (
+              <FilterButton
+                key={type}
+                active={filters.rimType === type}
+                onClick={() => handleFilterChange('rimType', filters.rimType === type ? '' : type)}
+              >
+                {type.charAt(0).toUpperCase() + type.slice(1)}
+              </FilterButton>
+            ))}
+          </div>
+        </div>
 
-                  <div>
-                    <Label>Price Range</Label>
-                    <div className="pt-4">
-                      <Slider
-                        defaultValue={[0, 500]}
-                        max={500}
-                        step={10}
-                        onValueChange={(value) => setFilters(prev => ({ ...prev, priceRange: value }))}
-                      />
-                      <div className="flex justify-between mt-2">
-                        <span>${filters.priceRange[0]}</span>
-                        <span>${filters.priceRange[1]}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Products Grid */}
-            <div className="col-span-9">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredProducts.map(product => (
-                  <ProductCard 
-                    key={product.id}
-                    {...product}
-                  />
-                ))}
-              </div>
+        <div>
+          <h3 className="font-medium mb-3">Price Range</h3>
+          <div className="space-y-4">
+            <Slider
+              defaultValue={[0, 500]}
+              max={500}
+              step={10}
+              value={filters.priceRange}
+              onValueChange={(value) => setFilters(prev => ({ ...prev, priceRange: value as [number, number] }))}
+            />
+            <div className="flex justify-between">
+              <span>${filters.priceRange[0]}</span>
+              <span>${filters.priceRange[1]}</span>
             </div>
           </div>
-        </main>
-        
-        <Footer />
+        </div>
       </div>
-    </TooltipWrapper>
+    </div>
+  );
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <Header />
+      
+      <main className="container mx-auto px-4 py-8">
+        <div className="flex justify-between items-center mb-8">
+          <h1 className="text-3xl font-bold">Eyewear Collection</h1>
+          
+          {/* Mobile Filter Button */}
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="outline" className="lg:hidden">
+                <SlidersHorizontal className="h-4 w-4 mr-2" />
+                Filters
+              </Button>
+            </SheetTrigger>
+            <SheetContent>
+              <ScrollArea className="h-[calc(100vh-4rem)]">
+                <div className="px-1 py-4">
+                  <FilterSection />
+                </div>
+              </ScrollArea>
+            </SheetContent>
+          </Sheet>
+        </div>
+
+        {/* Active Filters */}
+        {activeFilters.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-6">
+            {activeFilters.map((filter) => (
+              <Button
+                key={filter}
+                variant="secondary"
+                size="sm"
+                onClick={() => removeFilter(filter)}
+                className="flex items-center gap-1"
+              >
+                {filter}
+                <Filter className="h-4 w-4" />
+              </Button>
+            ))}
+          </div>
+        )}
+
+        <div className="flex gap-8">
+          {/* Desktop Filters */}
+          <div className="hidden lg:block w-64 flex-shrink-0">
+            <div className="sticky top-24">
+              <FilterSection />
+            </div>
+          </div>
+
+          {/* Products Grid */}
+          <div className="flex-1">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredProducts.map(product => (
+                <ProductCard 
+                  key={product.id}
+                  {...product}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </main>
+      
+      <Footer />
+    </div>
   );
 };
 
