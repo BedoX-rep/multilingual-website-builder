@@ -47,7 +47,7 @@ const Header: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-40 w-full bg-white border-b border-gray-200">
-      <div className="w-full px-[5%] py-4 flex items-center justify-between">
+      <div className="w-full px-[2.5%] py-4 flex items-center justify-between">
         <Link to="/" className="flex-shrink-0">
           <h1 className="text-2xl md:text-3xl font-serif text-gray-800">Lens Optique</h1>
         </Link>
