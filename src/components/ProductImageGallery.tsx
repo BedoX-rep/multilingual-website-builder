@@ -23,9 +23,9 @@ const ProductImageGallery: React.FC<ProductImageGalleryProps> = ({ images }) => 
   };
 
   return (
-    <div className="flex gap-4">
+    <div className="flex flex-col-reverse md:flex-row gap-4">
       {/* Thumbnails */}
-      <div className="flex flex-col space-y-2">
+      <div className="flex flex-row md:flex-col space-x-2 md:space-x-0 md:space-y-2 justify-center">
         {images.map((image, index) => (
           <button
             key={index}
