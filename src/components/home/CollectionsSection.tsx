@@ -10,7 +10,7 @@ const CollectionsSection: React.FC = () => {
         <div className="hidden md:block">
           <Carousel
             opts={{
-              align: "start",
+              align: "center",
               loop: true,
               skipSnaps: true,
               dragFree: false,
@@ -18,7 +18,7 @@ const CollectionsSection: React.FC = () => {
               slidesToScroll: 2,
               speed: 15
             }}
-            className="w-full"
+            className="w-full px-16"
           >
             <CarouselContent className="-ml-4">
               {[
@@ -55,7 +55,7 @@ const CollectionsSection: React.FC = () => {
                   gradient: "from-green-100/90",
                 }
               ].map((collection, index) => (
-                <CarouselItem key={index} className="pl-4 basis-[42.5%]">
+                <CarouselItem key={index} className="pl-4 basis-[40%]">
                   <div className="relative h-[450px] rounded-xl overflow-hidden group cursor-pointer">
                     <div className="absolute inset-0">
                       <img 
